@@ -1,6 +1,6 @@
 # Justinjdaniel.com
 
-[![Deploy Next.js site to Pages](https://github.com/Justinjdaniel/Justinjdaniel.github.io/actions/workflows/build-deploy.yml/badge.svg?branch=main)](https://github.com/Justinjdaniel/Justinjdaniel.github.io/actions/workflows/build-deploy.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/161563c0-f086-473c-a2ed-d13c599183d4/deploy-status)](https://app.netlify.com/sites/justinjdaniel/deploys)
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/Justinjdaniel/Justinjdaniel.github.io)
 [![Open in Codespace](https://img.shields.io/badge/Open%20in-Codespace-blue?logo=visual-studio-code)](https://github.com/codespaces)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Justinjdaniel/Justinjdaniel.github.io/blob/main/LICENSE)
