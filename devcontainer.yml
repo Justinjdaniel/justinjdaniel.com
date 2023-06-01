@@ -1,0 +1,12 @@
+# This is a codespace configuration file for github.com/justinjdaniel/justinjdaniel.github.io
+name: justinjdaniel.github.io
+image: mcr.microsoft.com/vscode/devcontainers/javascript-node:0-18
+forwardPorts:
+  - 3000 # Node server port
+postCreateCommand: npm install
+extensions:
+  - ms-vscode-remote.remote-containers
+  - davidanson.vscode-markdownlint
+  - docsmsft.docs-authoring-pack
+  - rome.rome
+  - streetsidesoftware.code-spell-checker

@@ -1,0 +1,29 @@
+{
+  // Editor settings
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  // Theme settings
+  "workbench.colorTheme": "Night Owl",
+  "workbench.iconTheme": "material-icon-theme",
+  // JSON settings
+  "json.schemas": [
+    {
+      "fileMatch": ["/package.json"],
+      "url": "http://json.schemastore.org/package"
+    },
+    {
+      "fileMatch": ["/bower.json"],
+      "url": "http://json.schemastore.org/bower"
+    }
+  ], // ESLint settings
+  "eslint.validate": ["javascript", "javascriptreact"], // Enable ESLint for JavaScript
+  // Rome settings
+  "[javascript]": {
+    "editor.defaultFormatter": "rome.rome" // Use Rome as the default formatter for JavaScript files
+  }
+}
