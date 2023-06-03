@@ -5,7 +5,7 @@
 [![Open in Codespace](https://img.shields.io/badge/Open%20in-Codespace-blue?logo=visual-studio-code)](https://github.com/codespaces)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Justinjdaniel/Justinjdaniel.github.io/blob/main/LICENSE)
 
-This repository contains the source code and content for my personal portfolio website. You can view it live at <https://justinjdaniel.github.io/>.
+This repository contains the source code and content for my personal portfolio website. You can view it live at <https://justinjdaniel.com/>.
 
 <!-- ## Features
 
