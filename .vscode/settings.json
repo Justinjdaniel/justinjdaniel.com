@@ -5,7 +5,6 @@
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
-  "editor.minimap.enabled": false,
   "editor.wordWrap": "on",
   // Theme settings
   "workbench.colorTheme": "Night Owl",
