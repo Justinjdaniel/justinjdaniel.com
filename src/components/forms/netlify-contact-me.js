@@ -26,12 +26,20 @@ export default function NetlifyContactMeForm({ onClose, ...rest }) {
 
 	return (
 		<chakra.form
+			name="contact"
+			method="POST"
 			py="4"
 			netlify
 			netlify-honeypot="bot-field"
 			onSubmit={handleSubmit(onSubmit)}
 			{...rest}
 		>
+			<div hidden aria-hidden="true">
+				<label>
+					Do not fill this out if you are human:
+					<input name="bot-field" />
+				</label>
+			</div>
 			<Input
 				mb="4"
 				name="name"
