@@ -26,7 +26,7 @@ To run this website locally, you need to have [Git](https://git-scm.com/), [Node
 1. Clone this repository using the following command:
 
 ```bash
-git clone https://github.com/Justinjdaniel/Justinjdaniel.github.io.git
+git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
 ```
 
 2. Navigate to the project folder and install the dependencies using the following command:
