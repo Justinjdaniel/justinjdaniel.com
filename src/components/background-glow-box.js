@@ -25,6 +25,7 @@ const BackGroundGlowBox = ({ children, ...rest }) => {
 				borderRadius: "50%",
 				w: "480px",
 				h: "380px",
+				mt: "-100px",
 				ml: "-400px",
 				...backgroundGlow,
 			}}

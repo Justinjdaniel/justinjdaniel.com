@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import BackGroundGlowBox from "@/components/background-glow-box";
 import Particles from "@/components/particles";
-import { keyframes } from "@chakra-ui/react";
+import { keyframes, Button } from "@chakra-ui/react";
 import ModalComponent from "@/components/modal";
 import { useDisclosure } from "@chakra-ui/hooks";
 import NetlifyContactMeForm from "@/components/forms/netlify-contact-me";
@@ -48,7 +48,7 @@ export default function Home() {
 				</Flex>
 			</Box>
 
-			<BackGroundGlowBox>
+			<BackGroundGlowBox flexDir="column">
 				<Text
 					as="h1"
 					cursor="default"
@@ -64,6 +64,30 @@ export default function Home() {
 					<Text as="span" whiteSpace="nowrap" display={{ md: "block" }}>
 						for Everyone
 					</Text>
+				</Text>
+				<Text
+					as="h2"
+					fontWeight="thin"
+					fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
+					textAlign="center"
+					color="whiteAlpha.800"
+				>
+					Hey, I&apos;m Justin. I&apos;m the Blockchain Software Developer,{" "}
+					<br />
+					Learn more{" "}
+					<Button
+						as="a"
+						href="#"
+						size="xs"
+						variant="outline"
+						cursor="pointer"
+						fontWeight="thin"
+						color="whiteAlpha.800"
+						rel="noopener noreferrer"
+						fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
+					>
+						about me
+					</Button>
 				</Text>
 			</BackGroundGlowBox>
 
