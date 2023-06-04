@@ -72,7 +72,7 @@ export default function Home() {
 					textAlign="center"
 					color="whiteAlpha.800"
 				>
-					Hey, I&apos;m Justin. I&apos;m the Blockchain Software Developer,{" "}
+					Hey, I&apos;m Justin, a Blockchain Software Developer:{" "}
 					<br />
 					Learn more{" "}
 					<Button
@@ -95,7 +95,6 @@ export default function Home() {
 				<Link
 					href="#"
 					className={styles.card}
-					target="_blank"
 					rel="noopener noreferrer"
 				>
 					<Text as="h2">
