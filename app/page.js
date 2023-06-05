@@ -1,14 +1,18 @@
 "use client";
-import { Box, Text, Flex } from "@chakra-ui/layout";
-import { Link } from "@chakra-ui/next-js";
-import styles from "./page.module.css";
-import Image from "next/image";
-import BackGroundGlowBox from "@/components/background-glow-box";
-import Particles from "@/components/particles";
-import { keyframes, Button } from "@chakra-ui/react";
-import ModalComponent from "@/components/modal";
 import { useDisclosure } from "@chakra-ui/hooks";
+import { Box, Flex, Text } from "@chakra-ui/layout";
+import { Link as ChakraLink } from "@chakra-ui/next-js";
+import { Button, keyframes } from "@chakra-ui/react";
+
+import Image from "next/image";
+import Link from "next/link";
+
+import BackGroundGlowBox from "@/components/background-glow-box";
 import NetlifyContactMeForm from "@/components/forms/netlify-contact-me";
+import ModalComponent from "@/components/modal";
+import Particles from "@/components/particles";
+
+import styles from "./page.module.css";
 
 export default function Home() {
 	const animation = keyframes`
@@ -31,20 +35,20 @@ export default function Home() {
 			<Box className={styles.description} zIndex={10}>
 				<Text>Justin J Daniel</Text>
 				<Flex gap="4" justifyContent="center" alignItems="center">
-					<Link
+					<ChakraLink
 						href="https://www.linkedin.com/in/justin-j-daniel/"
 						rel="noopener noreferrer"
 						{...socialLinkStyle}
 					>
 						<Image src="linked-in.svg" width={20} height={20} alt="linkedin" />
-					</Link>
-					<Link
+					</ChakraLink>
+					<ChakraLink
 						href="https://github.com/Justinjdaniel"
 						rel="noopener noreferrer"
 						{...socialLinkStyle}
 					>
 						<Image src="github.svg" width={20} height={20} alt="github" />
-					</Link>
+					</ChakraLink>
 				</Flex>
 			</Box>
 
@@ -72,12 +76,11 @@ export default function Home() {
 					textAlign="center"
 					color="whiteAlpha.800"
 				>
-					Hey, I&apos;m Justin, a Blockchain Software Developer:{" "}
-					<br />
+					Hey, I&apos;m Justin, a Blockchain Software Developer: <br />
 					Learn more{" "}
 					<Button
-						as="a"
-						href="#"
+						as={Link}
+						href="/about"
 						size="xs"
 						variant="outline"
 						cursor="pointer"
@@ -92,11 +95,7 @@ export default function Home() {
 			</BackGroundGlowBox>
 
 			<Box className={styles.grid}>
-				<Link
-					href="#"
-					className={styles.card}
-					rel="noopener noreferrer"
-				>
+				<ChakraLink href="#" className={styles.card} rel="noopener noreferrer">
 					<Text as="h2">
 						Projects <span>-&gt;</span>
 					</Text>
@@ -104,7 +103,7 @@ export default function Home() {
 						Find More About My Work and How I Can Help You Achieve Your Web
 						Goals.
 					</Text>
-				</Link>
+				</ChakraLink>
 
 				<Box as="a" className={styles.card} onClick={onOpen} cursor="pointer">
 					<Text as="h2">
