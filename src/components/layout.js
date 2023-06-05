@@ -3,12 +3,7 @@ import React from "react";
 
 const PagesLayout = ({ children }) => {
 	return (
-		<Flex
-			minH="100dvh"
-			justifyContent="center"
-			alignItems="center"
-			bg="gray.900"
-		>
+		<Flex minH="100dvh" bg="gray.900">
 			{children}
 		</Flex>
 	);
