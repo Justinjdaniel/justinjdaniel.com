@@ -1,7 +1,9 @@
+/* eslint-disable react/display-name */
 import { Box } from "@chakra-ui/react";
 import React, { useRef } from "react";
 
-export const GlowCardContainer = ({ children, ...rest }) => {
+// Use React.memo() to prevent unnecessary re-renders
+export const GlowCardContainer = React.memo(({ children, ...rest }) => {
 	return (
 		<Box
 			display="flex"
@@ -15,12 +17,13 @@ export const GlowCardContainer = ({ children, ...rest }) => {
 			{children}
 		</Box>
 	);
-};
+});
 
-const GlowCard = ({ children, ...rest }) => {
-	const boxRef = useRef(null); // create a reference to the Box element
+const GlowCard = React.memo(({ children, ...rest }) => {
+	const boxRef = useRef(null);
 
-	const handleMouseMove = (e) => {
+	// Use useCallback() to memoize the function
+	const handleMouseMove = React.useCallback((e) => {
 		const rect = boxRef.current.getBoundingClientRect();
 		const x = e.clientX - rect.left;
 		const y = e.clientY - rect.top;
@@ -28,7 +31,7 @@ const GlowCard = ({ children, ...rest }) => {
 		// assign the current mouse position to the ref attribute
 		boxRef.current.style.setProperty("--mouse-x", `${x}px`);
 		boxRef.current.style.setProperty("--mouse-y", `${y}px`);
-	};
+	}, []);
 
 	return (
 		<Box
@@ -37,7 +40,7 @@ const GlowCard = ({ children, ...rest }) => {
 					opacity: 1,
 				},
 			}}
-			ref={boxRef} // assign the reference to the ref attribute
+			ref={boxRef}
 			borderWidth="1px"
 			borderRadius="lg"
 			overflow="hidden"
@@ -92,9 +95,9 @@ const GlowCard = ({ children, ...rest }) => {
 				position="absolute"
 				z-index="2"
 			/>
-			{children}
+			<Box zIndex="1">{children}</Box>
 		</Box>
 	);
-};
+});
 
 export default GlowCard;
