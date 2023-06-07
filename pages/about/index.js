@@ -1,9 +1,9 @@
 import {
+	Image as ChakraImage,
 	Container,
 	Flex,
 	Heading,
 	Text,
-	Image as ChakraImage,
 } from "@chakra-ui/react";
 
 import Image from "next/image";
@@ -11,10 +11,10 @@ import bgPic from "../../public/images/about-bg.webp";
 
 const About = () => {
 	return (
-		<Flex flexDir="column" w="full" h="full">
+		<Flex flexDir="column" w="full" h="full" htmlFor="about">
 			<Flex
 				w="full"
-				h="410"
+				minH={{ md: "400" }}
 				bg="#020202"
 				position="relative"
 				alignItems={"center"}
@@ -72,7 +72,11 @@ const About = () => {
 					please feel free to contact me or visit my portfolio website
 				</Text>
 			</Container>
-			{/* <Flex w="full" h="10" bgGradient="linear(to-t, #020202, transparent)" /> */}
+			<Flex
+				w="full"
+				h="10"
+				// bgGradient="linear(to-t, blackAlpha.800, transparent)"
+			/>
 		</Flex>
 	);
 };
