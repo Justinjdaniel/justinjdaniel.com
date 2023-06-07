@@ -3,7 +3,7 @@ import React from "react";
 
 const PagesLayout = ({ children }) => {
 	return (
-		<Flex minH="100dvh" bg="blackAlpha.600">
+		<Flex minH="100dvh" bg="blackAlpha.700">
 			{children}
 		</Flex>
 	);
