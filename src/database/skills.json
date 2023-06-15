@@ -1,5 +1,5 @@
 {
-  "Language": [
+  "Languages": [
     {
       "name": "HTML",
       "icon": "https://simpleicons.org/icons/html5.svg"
@@ -18,7 +18,7 @@
     },
     {
       "name": ".NET",
-      "icon": "https://simpleicons.org/icons/dot-net.svg"
+      "icon": "https://simpleicons.org/icons/dotnet.svg"
     },
     {
       "name": "Solidity",
@@ -29,14 +29,14 @@
       "icon": "https://simpleicons.org/icons/markdown.svg"
     }
   ],
-  "Framework": [
+  "Frameworks": [
     {
       "name": "React",
       "icon": "https://simpleicons.org/icons/react.svg"
     },
     {
       "name": "Next JS",
-      "icon": "https://simpleicons.org/icons/next-dot-js.svg"
+      "icon": "https://simpleicons.org/icons/nextdotjs.svg"
     },
     {
       "name": "Express JS",
@@ -71,10 +71,10 @@
       "icon": "https://simpleicons.org/icons/pwa.svg"
     }
   ],
-  "Tool": [
+  "Tools": [
     {
       "name": "Node JS",
-      "icon": "https://simpleicons.org/icons/node-dot-js.svg"
+      "icon": "https://simpleicons.org/icons/nodedotjs.svg"
     },
     {
       "name": "Git",
@@ -110,7 +110,7 @@
     },
     {
       "name": "JSON Web Token",
-      "icon": "https://simpleicons.org/icons/jwt.svg"
+      "icon": "https://simpleicons.org/icons/jsonwebtokens.svg"
     },
     {
       "name": "Figma",
@@ -131,10 +131,6 @@
     {
       "name": "Adobe Lightroom",
       "icon": "https://simpleicons.org/icons/adobelightroom.svg"
-    },
-    {
-      "name": "Lens",
-      "icon": "https://simpleicons.org/icons/lenside.svg"
     },
     {
       "name": "Codepen.io",
