@@ -1,13 +1,8 @@
-import {
-	Image as ChakraImage,
-	Container,
-	Flex,
-	Heading,
-	Text,
-} from "@chakra-ui/react";
+import NextImage from "@/components/next-image";
+import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 
-import Image from "next/image";
 import bgPic from "../../public/images/about-bg.webp";
+import AboutSkills from "./skills";
 
 const About = () => {
 	return (
@@ -33,8 +28,7 @@ const About = () => {
 						services and products.
 					</Text>
 				</Container>
-				<ChakraImage
-					as={Image}
+				<NextImage
 					right="0"
 					bottom="0"
 					style={{ aspectRatio: "1" }}
@@ -72,11 +66,8 @@ const About = () => {
 					please feel free to contact me or visit my portfolio website
 				</Text>
 			</Container>
-			<Flex
-				w="full"
-				h="10"
-				// bgGradient="linear(to-t, blackAlpha.800, transparent)"
-			/>
+			<Flex w="full" my="4" />
+			<AboutSkills />
 		</Flex>
 	);
 };
