@@ -1,0 +1,56 @@
+[
+  {
+    "abbr": "CBR",
+    "title": "Certified Blockchain Architect",
+    "credentials": "ABCD-KBA-0901027-CBR-21",
+    "issuedDate": "Nov 2021",
+    "issuedBy": "Kerala Blockchain Academy",
+    "link": "https://verify.kba.ai/view/ABCD-KBA-0901027-CBR-21",
+    "icon": "https://media.licdn.com/dms/image/C560BAQGGSmIMuNqZAQ/company-logo_100_100/0/1662016461879?e=1694649600&v=beta&t=qtviHd_kGV9TJg_-PESS0FeJaTSyVmHBJFLI4vwkK1c"
+  },
+  {
+    "abbr": "CHF",
+    "title": "Certified Hyperledger Fabric Developer",
+    "credentials": "ABCD-KBA-0506002-CHF-V2-21",
+    "issuedDate": "Aug 2021",
+    "issuedBy": "Kerala Blockchain Academy",
+    "link": "https://verify.kba.ai/view/ABCD-KBA-0506002-CHF-V2-21",
+    "icon": "https://media.licdn.com/dms/image/C560BAQGGSmIMuNqZAQ/company-logo_100_100/0/1662016461879?e=1694649600&v=beta&t=qtviHd_kGV9TJg_-PESS0FeJaTSyVmHBJFLI4vwkK1c"
+  },
+  {
+    "abbr": "CED",
+    "title": "Certified Ethereum Developer",
+    "credentials": "ABCD-KBA-1005003-CED-V1-20",
+    "issuedDate": "Feb 2021",
+    "issuedBy": "Kerala Blockchain Academy",
+    "link": "https://verify.kba.ai/view/ABCD-KBA-1005003-CED-V1-20",
+    "icon": "https://media.licdn.com/dms/image/C560BAQGGSmIMuNqZAQ/company-logo_100_100/0/1662016461879?e=1694649600&v=beta&t=qtviHd_kGV9TJg_-PESS0FeJaTSyVmHBJFLI4vwkK1c"
+  },
+  {
+    "abbr": "CBA",
+    "title": "Certified Blockchain Associate",
+    "issuedBy": "Kerala Blockchain Academy",
+    "credentials": "ABCD-KBA-0928019-CBA-V1-20",
+    "issuedDate": "Sep 2020",
+    "link": "https://verify.kba.ai/view/ABCD-KBA-0928019-CBA-V1-20",
+    "icon": "https://media.licdn.com/dms/image/C560BAQGGSmIMuNqZAQ/company-logo_100_100/0/1662016461879?e=1694649600&v=beta&t=qtviHd_kGV9TJg_-PESS0FeJaTSyVmHBJFLI4vwkK1c"
+  },
+  {
+    "abbr": "CBS",
+    "title": "Certified Blockchain Startup Program",
+    "issuedBy": "Kerala Blockchain Academy",
+    "credentials": "KBA-CBS04-VB-22-11002",
+    "issuedDate": "Feb 2023",
+    "link": "https://verify.kba.ai/view/KBA-CBS04-VB-22-11002",
+    "icon": "https://media.licdn.com/dms/image/C560BAQGGSmIMuNqZAQ/company-logo_100_100/0/1662016461879?e=1694649600&v=beta&t=qtviHd_kGV9TJg_-PESS0FeJaTSyVmHBJFLI4vwkK1c"
+  },
+  {
+    "abbr": "FSD",
+    "title": "Full Stack Development",
+    "issuedBy": "ICT Academy of Kerala",
+    "credentials": "5f479c5f-ac88-4a5f-8432-04a92d4f065b",
+    "issuedDate": "Aug 2020",
+    "link": null,
+    "icon": "https://media.licdn.com/dms/image/C560BAQHqi9P_Tb57Qg/company-logo_200_200/0/1673593108140?e=1694649600&v=beta&t=iYjAobrfWJVkoqC07UtatgEDq252DRzcIavp4d8MU_4"
+  }
+]

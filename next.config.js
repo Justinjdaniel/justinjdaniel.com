@@ -7,6 +7,10 @@ const nextConfig = {
 	trailingSlash: true,
 	// Optional: Change the output directory `out` -> `dist`
 	distDir: "out",
+	// Optional: Disable the image optimizer.
+	images: {
+		unoptimized: true,
+	},
 };
 
 module.exports = nextConfig;
