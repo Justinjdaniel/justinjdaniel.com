@@ -1,6 +1,6 @@
 {
   "name": "justinjdaniel.com",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -23,7 +23,8 @@
     "react-hook-form": "^7.44.3"
   },
   "devDependencies": {
-    "rome": "^12.1.2"
+    "rome": "^12.1.2",
+    "@netlify/plugin-nextjs":"^4.37.4"
   },
   "author": {
     "name": "Justin J Daniel"
