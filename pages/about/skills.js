@@ -13,8 +13,8 @@ import { useEffect, useState } from "react";
 
 const AboutSkills = (props) => {
 	return (
-		<Container px="6" maxW="2xl" centerContent {...props}>
-			<Heading mb="4">Skills</Heading>
+		<Container maxW="2xl" centerContent {...props}>
+			<Heading mb="2">Skills</Heading>
 			<TagsComponent />
 		</Container>
 	);
