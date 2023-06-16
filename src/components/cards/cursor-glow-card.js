@@ -1,12 +1,11 @@
 /* eslint-disable react/display-name */
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React, { useRef } from "react";
 
 // Use React.memo() to prevent unnecessary re-renders
 export const GlowCardContainer = React.memo(({ children, ...rest }) => {
 	return (
-		<Box
-			display="flex"
+		<Flex
 			flexWrap="wrap"
 			gap="8px"
 			maxWidth="916px"
@@ -15,11 +14,11 @@ export const GlowCardContainer = React.memo(({ children, ...rest }) => {
 			{...rest}
 		>
 			{children}
-		</Box>
+		</Flex>
 	);
 });
 
-const GlowCard = React.memo(({ children, ...rest }) => {
+const GlowCard = React.memo(({ children, cardProps, ...rest }) => {
 	const boxRef = useRef(null);
 
 	// Use useCallback() to memoize the function
@@ -34,7 +33,7 @@ const GlowCard = React.memo(({ children, ...rest }) => {
 	}, []);
 
 	return (
-		<Box
+		<Flex
 			_groupHover={{
 				_after: {
 					opacity: 1,
@@ -46,11 +45,10 @@ const GlowCard = React.memo(({ children, ...rest }) => {
 			overflow="hidden"
 			bg="rgba(255, 255, 255, 0.1)"
 			cursor="pointer"
-			display="flex"
-			height="260px"
+			height="auto"
 			flexDirection="column"
 			position="relative"
-			width="300px"
+			width="auto"
 			_hover={{
 				_before: {
 					opacity: 1,
@@ -82,12 +80,11 @@ const GlowCard = React.memo(({ children, ...rest }) => {
 				},
 			}}
 			onMouseMove={handleMouseMove}
-			{...rest}
+			{...cardProps}
 		>
-			<Box
+			<Flex
 				backgroundColor="rgb(23, 23, 23)"
 				borderRadius="inherit"
-				display="flex"
 				flex-direction="column"
 				flex-grow="1"
 				inset="1px"
@@ -95,8 +92,10 @@ const GlowCard = React.memo(({ children, ...rest }) => {
 				position="absolute"
 				z-index="2"
 			/>
-			<Box zIndex="1">{children}</Box>
-		</Box>
+			<Box zIndex="1" display="flex" {...rest}>
+				{children}
+			</Box>
+		</Flex>
 	);
 });
 
