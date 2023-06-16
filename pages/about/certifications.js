@@ -30,11 +30,11 @@ const Certifications = () => {
 				spacing="6"
 				mb="6"
 			>
-				{certifications.map((certification, index) => (
+				{certifications.map((certification) => (
 					<LinkBox
 						as={GlowCard}
 						{...cardStyle}
-						key={certification.abbr + index}
+						key={certification.abbr}
 					>
 						<Avatar src={certification.icon} name={certification.issuedBy} />
 						<Box w="full" p="2">
