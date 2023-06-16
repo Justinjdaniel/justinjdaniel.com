@@ -2,6 +2,8 @@ import NextImage from "@/components/next-image";
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 
 import bgPic from "../../public/images/about-bg.webp";
+import award from "../../public/images/award.webp";
+import Certifications from "./certifications";
 import AboutSkills from "./skills";
 
 const About = () => {
@@ -66,8 +68,50 @@ const About = () => {
 					please feel free to contact me or visit my portfolio website
 				</Text>
 			</Container>
+			<AboutSkills my="8" />
+			<Container p="6" maxW="2xl">
+				<Certifications />
+				<Heading mb="4">Awards</Heading>
+
+				<Heading mb="2" as="h6" size="md">
+					Blockchain Panelist Award
+				</Heading>
+				<Text mb="2" color="gray.500">
+					South India Blockchain Summit, Dec 2022
+				</Text>
+				<NextImage
+					src={award}
+					width="auto"
+					height={200}
+					mx="auto"
+					rounded="md"
+					alt="Awarded by Kerala Digital University's Vice Chancellor"
+				/>
+				<Text
+					mb="4"
+					mt="1"
+					fontSize="xx-small"
+					textAlign="center"
+					color="gray.500"
+					fontFamily="mono"
+				>
+					Being honored with an award by the Vice Chancellor of Kerala Digital
+					University
+				</Text>
+				<Text mb="6">
+					Received an award for being part of a panel discussion on Blockchain
+					Adoptions and Entrepreneurial Journey with experts and enthusiasts
+					from across the country and beyond.
+					<br /> Shared insights and best practices on how to leverage
+					blockchain technology for innovation and social impact in various
+					domains and sectors. Demonstrated knowledge, communication skills,
+					engagement with the audience, and relevance to the theme of the
+					summit.
+				</Text>
+				{/* <Heading mb="4">Contact Me</Heading> */}
+			</Container>
+
 			<Flex w="full" my="4" />
-			<AboutSkills />
 		</Flex>
 	);
 };
