@@ -12,6 +12,7 @@ import NetlifyContactMeForm from "@/components/forms/netlify-contact-me";
 import ModalComponent from "@/components/modal";
 import Particles from "@/components/particles";
 
+import { motion } from "framer-motion";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -28,6 +29,21 @@ export default function Home() {
 	};
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
+	const headingAnimations = {
+		hidden: {
+			opacity: 0,
+			y: "50%",
+			scale: 1.5,
+			clipPath: "polygon(0 0, 100% 0, 100% 00%, 0 00%)",
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+		},
+	};
 
 	return (
 		<main className={styles.main}>
@@ -53,22 +69,29 @@ export default function Home() {
 			</Box>
 
 			<BackGroundGlowBox flexDir="column">
-				<Text
-					as="h1"
-					cursor="default"
-					fontWeight="extrabold"
-					bgClip="text"
-					textAlign={{ base: "center", md: "left" }}
-					backgroundSize="200% auto"
-					animation={`${animation} 5s linear infinite`}
-					fontSize={{ base: "3xl", md: "5xl", lg: "6xl", "2xl": "8xl" }}
-					bgGradient="linear(to-r, pink.500, purple.500, cyan.500, green.500, teal.500, yellow.500, orange.500, red.500, pink.500)"
+				<motion.div
+					variants={headingAnimations}
+					transition={{ duration: 1, ease: "easeInOut" }}
+					initial="hidden"
+					whileInView="visible"
 				>
-					<Text as="span">Design, Code & Build </Text>
-					<Text as="span" whiteSpace="nowrap" display={{ md: "block" }}>
-						for Everyone
+					<Text
+						as="h1"
+						cursor="default"
+						fontWeight="extrabold"
+						bgClip="text"
+						textAlign={{ base: "center", md: "left" }}
+						backgroundSize="200% auto"
+						animation={`${animation} 5s linear infinite`}
+						fontSize={{ base: "3xl", md: "5xl", lg: "6xl", "2xl": "8xl" }}
+						bgGradient="linear(to-r, pink.500, purple.500, cyan.500, green.500, teal.500, yellow.500, orange.500, red.500, pink.500)"
+					>
+						<Text as="span">Design, Code & Build </Text>
+						<Text as="span" whiteSpace="nowrap" display={{ md: "block" }}>
+							for Everyone
+						</Text>
 					</Text>
-				</Text>
+				</motion.div>
 				<Text
 					as="h2"
 					fontWeight="thin"
