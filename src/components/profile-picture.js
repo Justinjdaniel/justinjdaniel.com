@@ -20,6 +20,7 @@ const ProfilePicture = () => {
 				width={400}
 				height={400}
 				quality={100}
+				loading="lazy"
 			/>
 			<Flex
 				display={{ base: "flex", md: "none" }}
@@ -51,6 +52,7 @@ const ProfilePicture = () => {
 					width={250}
 					height={250}
 					quality={100}
+					loading="lazy"
 				/>
 				<Flex
 					h="16"
