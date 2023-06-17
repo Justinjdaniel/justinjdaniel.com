@@ -1,7 +1,7 @@
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
 
-import BackButton from "@/components/buttons/back-button";
+import LetterFadeIn from "@/components/animations/letter-fade-in";
 import NextImage from "@/components/next-image";
 import ProfilePicture from "@/components/profile-picture";
 import award from "../../public/images/award.webp";
@@ -26,22 +26,26 @@ const About = () => {
 				htmlFor="about-page"
 				position="relative"
 			>
-				<BackButton />
 				<Flex
 					w="full"
 					minH={{ md: "400" }}
 					bg="#020202"
 					position="relative"
 					alignItems={"center"}
+					justifyContent={"center"}
 					flexDirection={"column"}
 				>
 					<ProfilePicture />
 					<Container p="6" maxW="2xl" zIndex={1}>
 						<Heading mb="4">About</Heading>
-						<Text mb="2">
+						<Text mb="2" as={LetterFadeIn} animationDelay="0.01">
 							Hey, I&apos;m Justin J Daniel, a Blockchain Software Developer.
 						</Text>
-						<Text pr={{ md: "16", lg: "8" }}>
+						<Text
+							pr={{ md: "16", lg: "8" }}
+							as={LetterFadeIn}
+							animationDelay="0.005"
+						>
 							As a Blockchain Software Developer and Technical Lead with several
 							years of experience in the industry. I specialize in developing
 							smart contracts, decentralized applications, and NFTs using
@@ -107,15 +111,16 @@ const About = () => {
 						Being honored with an award by the Vice Chancellor of Kerala Digital
 						University
 					</Text>
-					<Text mb="6">
+					<Text mb="2">
 						Received an award for being part of a panel discussion on Blockchain
 						Adoptions and Entrepreneurial Journey with experts and enthusiasts
 						from across the country and beyond.
-						<br /> Shared insights and best practices on how to leverage
-						blockchain technology for innovation and social impact in various
-						domains and sectors. Demonstrated knowledge, communication skills,
-						engagement with the audience, and relevance to the theme of the
-						summit.
+					</Text>
+					<Text mb="6">
+						Shared insights and best practices on how to leverage blockchain
+						technology for innovation and social impact in various domains and
+						sectors. Demonstrated knowledge, communication skills, engagement
+						with the audience, and relevance to the theme of the summit.
 					</Text>
 					{/* <Heading mb="4">Contact Me</Heading> */}
 				</Container>
