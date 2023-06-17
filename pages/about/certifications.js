@@ -1,6 +1,7 @@
 import GlowCard from "@/components/cards/cursor-glow-card";
 import certifications from "@/database/certifications.json";
-import { Avatar, Box, Heading, Link, SimpleGrid, Text } from "@chakra-ui/react";
+import { Avatar, Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 const Certifications = () => {
 	const cardStyle = {
@@ -23,12 +24,15 @@ const Certifications = () => {
 			>
 				{certifications.map((certification, i) => (
 					<GlowCard
-						as={Link}
+						cardProps={{
+							as: Link,
+							href: certification.link || "#",
+							target: "_blank",
+							rel: "noreferrer",
+							key: i,
+						}}
 						// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 						key={i}
-						href={certification.link || "#"}
-						target="_blank"
-						rel="noreferrer"
 						{...cardStyle}
 					>
 						<Avatar src={certification.icon} name={certification.issuedBy} />
