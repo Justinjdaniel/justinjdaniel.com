@@ -3,3 +3,7 @@
   publish = "out"
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+[[redirects]]
+  from = "/about/index.txt"
+  to = "/about.html"
+  status = 200
