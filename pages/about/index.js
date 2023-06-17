@@ -4,6 +4,7 @@ import Head from "next/head";
 import BackButton from "@/components/buttons/back-button";
 import NextImage from "@/components/next-image";
 import bgPic from "../../public/images/about-bg.webp";
+import profilePic from "../../public/images/about-profile-pic.webp";
 import award from "../../public/images/award.webp";
 import Certifications from "./certifications";
 import AboutSkills from "./skills";
@@ -33,24 +34,12 @@ const About = () => {
 					bg="#020202"
 					position="relative"
 					alignItems={"center"}
+					flexDirection={"column"}
 				>
-					<Container p="6" maxW="2xl" zIndex={1}>
-						<Heading mb="4">About</Heading>
-						<Text mb="2">
-							Hey, I&apos;m Justin J Daniel, a Blockchain Software Developer.
-						</Text>
-						<Text pr={{ base: "24", md: "16", lg: "8" }}>
-							As a Blockchain Software Developer and Technical Lead with several
-							years of experience in the industry. I specialize in developing
-							smart contracts, decentralized applications, and NFTs using
-							Solidity, Web3.js, and Ethereum. I also have a strong background
-							in web development and implementation of a blockchain-based system
-							for services and products.
-						</Text>
-					</Container>
 					<NextImage
 						right="0"
 						bottom="0"
+						display={{ base: "none", md: "block" }}
 						style={{ aspectRatio: "1" }}
 						objectFit="cover"
 						objectPosition="right"
@@ -61,6 +50,61 @@ const About = () => {
 						height={400}
 						quality={100}
 					/>
+					<Flex
+						display={{ base: "flex", md: "none" }}
+						position="relative"
+						w="full"
+						h="full"
+						justifyContent={"center"}
+						// flexDirection={"column"}
+						alignItems="center"
+					>
+						<Flex
+							w="2"
+							height='full'
+							bg='red'
+							position='absolute'
+							left='0'
+							bottom='16'
+							rounded='full'
+							boxShadow="0 0 10px 5px red"
+						/>
+						<NextImage
+							right="0"
+							bottom="0"
+							style={{ aspectRatio: "1" }}
+							objectFit="cover"
+							rounded="full"
+							objectPosition="center"
+							display={{ base: "block", md: "none" }}
+							src={profilePic}
+							alt="Image of the author with dark background"
+							width={250}
+							height={250}
+							quality={100}
+						/>
+						<Flex
+							h="16"
+							w="full"
+							bottom='0'
+							pos='absolute'
+							bgGradient="linear(to-t, #020202, transparent)"
+						/>
+					</Flex>
+					<Container p="6" maxW="2xl" zIndex={1}>
+						<Heading mb="4">About</Heading>
+						<Text mb="2">
+							Hey, I&apos;m Justin J Daniel, a Blockchain Software Developer.
+						</Text>
+						<Text pr={{ md: "16", lg: "8" }}>
+							As a Blockchain Software Developer and Technical Lead with several
+							years of experience in the industry. I specialize in developing
+							smart contracts, decentralized applications, and NFTs using
+							Solidity, Web3.js, and Ethereum. I also have a strong background
+							in web development and implementation of a blockchain-based system
+							for services and products.
+						</Text>
+					</Container>
 				</Flex>
 
 				<Flex w="full" h="10" bgGradient="linear(to-b, #020202, transparent)" />
