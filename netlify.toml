@@ -4,6 +4,7 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 [[redirects]]
-  from = "/about/index.txt"
+  from = "/about/*"
   to = "/about.html"
   status = 200
+  force = true
