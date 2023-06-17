@@ -30,8 +30,8 @@ const Certifications = () => {
 				spacing="6"
 				mb="6"
 			>
-				{certifications.map((certification) => (
-					<LinkBox as={GlowCard} {...cardStyle} key={certification.abbr}>
+				{certifications.map((certification, i) => (
+					<LinkBox as={GlowCard} {...cardStyle} key={i * Math.random()}>
 						<Avatar src={certification.icon} name={certification.issuedBy} />
 						<Box w="full" p="2">
 							<LinkOverlay

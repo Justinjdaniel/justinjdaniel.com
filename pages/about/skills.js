@@ -133,7 +133,7 @@ const TagsComponent = (props) => {
 				pointerEvents="none"
 				pos="absolute"
 				inset="0"
-				background="linear-gradient(90deg, #090c10, transparent 30%, transparent 70%, #090c10)"
+				background="linear-gradient(90deg, #050609, transparent 30%, transparent 70%, #050609)"
 			/>
 		</Flex>
 	);
