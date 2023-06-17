@@ -19,8 +19,8 @@ const ProfilePicture = () => {
 				alt="Image of the author with dark background"
 				width={400}
 				height={400}
-				quality={100}
-				loading="lazy"
+				quality={90}
+				placeholder="blur"
 			/>
 			<Flex
 				display={{ base: "flex", md: "none" }}
@@ -48,11 +48,11 @@ const ProfilePicture = () => {
 					objectFit="cover"
 					objectPosition="center"
 					src={profilePic}
-					alt="Image of the author with dark background"
+					alt="Image of the author without background"
 					width={250}
 					height={250}
-					quality={100}
-					loading="lazy"
+					quality={90}
+					placeholder="blur" // {empty} | {blur}
 				/>
 				<Flex
 					h="16"

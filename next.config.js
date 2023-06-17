@@ -10,6 +10,7 @@ const nextConfig = {
 	// Optional: Disable the image optimizer.
 	images: {
 		unoptimized: true,
+		formats: ["image/avif", "image/webp"],
 	},
 };
 
