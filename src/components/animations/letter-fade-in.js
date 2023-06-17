@@ -8,7 +8,6 @@ const LetterFadeIn = ({
 	animationDelay = 0.1,
 	...rest
 }) => {
-
 	return (
 		<Box as={motion.p} {...rest}>
 			{/* <AnimatePresence> */}
