@@ -79,7 +79,7 @@ export default function Home() {
 					Hey, I&apos;m Justin, a Blockchain Software Developer: <br />
 					Learn more{" "}
 					<Button
-						as={ChakraLink}
+						as={Link}
 						href="/about"
 						size="xs"
 						variant="outline"
