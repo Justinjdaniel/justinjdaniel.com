@@ -1,15 +1,6 @@
 import GlowCard from "@/components/cards/cursor-glow-card";
 import certifications from "@/database/certifications.json";
-import {
-	Avatar,
-	Box,
-	Heading,
-	LinkBox,
-	LinkOverlay,
-	SimpleGrid,
-	Text,
-} from "@chakra-ui/react";
-import Link from "next/link";
+import { Avatar, Box, Heading, Link, SimpleGrid, Text } from "@chakra-ui/react";
 
 const Certifications = () => {
 	const cardStyle = {
@@ -31,18 +22,20 @@ const Certifications = () => {
 				mb="6"
 			>
 				{certifications.map((certification, i) => (
-					<LinkBox as={GlowCard} {...cardStyle} key={i * Math.random()}>
+					<GlowCard
+						as={Link}
+						// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						key={i}
+						href={certification.link || "#"}
+						target="_blank"
+						rel="noreferrer"
+						{...cardStyle}
+					>
 						<Avatar src={certification.icon} name={certification.issuedBy} />
 						<Box w="full" p="2">
-							<LinkOverlay
-								as={Link}
-								href={certification.link || "#"}
-								target="_blank"
-							>
-								<Heading as="h4" size="sm" mb="1">
-									{certification.title}
-								</Heading>
-							</LinkOverlay>
+							<Heading as="h4" size="sm" mb="1">
+								{certification.title}
+							</Heading>
 							<Text fontSize="sm" color="gray.200">
 								{certification.issuedBy}
 							</Text>
@@ -53,7 +46,7 @@ const Certifications = () => {
 								Credential ID {certification.credentials}
 							</Text>
 						</Box>
-					</LinkBox>
+					</GlowCard>
 				))}
 			</SimpleGrid>
 		</>
