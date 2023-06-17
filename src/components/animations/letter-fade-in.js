@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 const LetterFadeIn = ({
@@ -10,22 +10,22 @@ const LetterFadeIn = ({
 }) => {
 	return (
 		<Box as={motion.p} {...rest}>
-			{/* <AnimatePresence> */}
-			{children.split("").map((letter, i) => (
-				<motion.span
-					key={i * Math.random()}
-					initial={{ opacity: 0 }}
-					whileInView={{
-						opacity: 1,
-					}}
-					viewport={{ once: true }}
-					transition={{ delay: i * animationDelay }}
-					{...animationProps}
-				>
-					{letter}
-				</motion.span>
-			))}
-			{/* </AnimatePresence> */}
+			<AnimatePresence>
+				{children.split("").map((letter, i) => (
+					<motion.span
+						key={i * Math.random()}
+						initial={{ opacity: 0 }}
+						whileInView={{
+							opacity: 1,
+						}}
+						viewport={{ once: true }}
+						transition={{ delay: i * animationDelay }}
+						{...animationProps}
+					>
+						{letter}
+					</motion.span>
+				))}
+			</AnimatePresence>
 		</Box>
 	);
 };

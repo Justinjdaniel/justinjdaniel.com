@@ -12,6 +12,16 @@ const nextConfig = {
 		unoptimized: true,
 		formats: ["image/avif", "image/webp"],
 	},
+	exportPathMap: async function (
+		defaultPathMap,
+		{ dev, dir, outDir, distDir, buildId },
+	) {
+		return {
+			"/": { page: "/" },
+			"/about": { page: "/about" },
+			"/about/index.txt": { page: "/about" },
+		};
+	},
 };
 
 module.exports = nextConfig;
