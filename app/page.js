@@ -33,7 +33,7 @@ export default function Home() {
 		<main className={styles.main}>
 			<Particles quantity={200} position="absolute" w="full" h="80dvh" />
 			<Box className={styles.description} zIndex={10}>
-				<Text>Justin J Daniel</Text>
+				<Text fontWeight="extrabold">Justin J Daniel</Text>
 				<Flex gap="4" justifyContent="center" alignItems="center">
 					<ChakraLink
 						href="https://www.linkedin.com/in/justin-j-daniel/"

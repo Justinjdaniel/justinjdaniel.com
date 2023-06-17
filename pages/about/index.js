@@ -1,7 +1,8 @@
-import NextImage from "@/components/next-image";
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
 
+import BackButton from "@/components/buttons/back-button";
+import NextImage from "@/components/next-image";
 import bgPic from "../../public/images/about-bg.webp";
 import award from "../../public/images/award.webp";
 import Certifications from "./certifications";
@@ -18,7 +19,14 @@ const About = () => {
 				/>
 				<link rel="canonical" href="https://justinjdaniel.com/about" />
 			</Head>
-			<Flex flexDir="column" w="full" h="full" htmlFor="about">
+			<Flex
+				flexDir="column"
+				w="full"
+				h="full"
+				htmlFor="about-page"
+				position="relative"
+			>
+				<BackButton />
 				<Flex
 					w="full"
 					minH={{ md: "400" }}

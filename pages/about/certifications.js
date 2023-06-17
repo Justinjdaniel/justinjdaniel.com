@@ -31,11 +31,7 @@ const Certifications = () => {
 				mb="6"
 			>
 				{certifications.map((certification) => (
-					<LinkBox
-						as={GlowCard}
-						{...cardStyle}
-						key={certification.abbr}
-					>
+					<LinkBox as={GlowCard} {...cardStyle} key={certification.abbr}>
 						<Avatar src={certification.icon} name={certification.issuedBy} />
 						<Box w="full" p="2">
 							<LinkOverlay
