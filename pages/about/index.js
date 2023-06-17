@@ -36,6 +36,11 @@ const About = () => {
 					content="I&apos;m Justin J Daniel, a Blockchain Software Developer and Technical Lead with several years of experience in the industry. I specialize in developing smart contracts, decentralized applications, and NFTs using Solidity, Web3.js, and Ethereum."
 				/>
 				<link rel="canonical" href="https://justinjdaniel.com/about" />
+				<meta
+					property="og:title"
+					content="About | Justin J Daniel"
+					key="title"
+				/>
 			</Head>
 			<Flex
 				flexDir="column"
