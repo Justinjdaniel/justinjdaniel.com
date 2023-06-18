@@ -28,7 +28,7 @@ const Certifications = () => {
 							as: Link,
 							href: certification.link || "#",
 							target: "_blank",
-							rel: "noreferrer",
+							rel: "noopener noreferrer",
 							key: i,
 						}}
 						// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
