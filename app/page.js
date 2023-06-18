@@ -5,7 +5,7 @@ import { Link as ChakraLink } from "@chakra-ui/next-js";
 import { Button, keyframes } from "@chakra-ui/react";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import BackGroundGlowBox from "@/components/background-glow-box";
 import NetlifyContactMeForm from "@/components/forms/netlify-contact-me";
@@ -16,6 +16,8 @@ import { motion } from "framer-motion";
 import styles from "./page.module.css";
 
 export default function Home() {
+	const router = useRouter();
+
 	const animation = keyframes`
     to { background-position: 200% center; }
   `;
@@ -94,22 +96,22 @@ export default function Home() {
 				</motion.div>
 				<Text
 					as="h2"
+					textAlign="center"
 					fontWeight="thin"
 					fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
-					textAlign="center"
 					color="whiteAlpha.800"
 				>
 					Hey, I&apos;m Justin, a Blockchain Software Developer: <br />
 					Learn more{" "}
 					<Button
-						as={Link}
-						href="/about"
+						// as={Link}
+						// href="/about"
 						size="xs"
-						variant="outline"
 						cursor="pointer"
+						variant="outline"
 						fontWeight="thin"
 						color="whiteAlpha.800"
-						rel="noopener noreferrer"
+						onClick={() => router.push("/about")}
 						fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
 					>
 						about me

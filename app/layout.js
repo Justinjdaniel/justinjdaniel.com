@@ -5,12 +5,16 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Justin J Daniel",
+	title: {
+		default: "Justin J Daniel",
+		template: "%s | Justin J Daniel",
+	},
 	description:
-		"This is my portfolio website where I showcase my skills and projects as a blockchain software developer.",
+		"Programmer, Blockchain Architect, Web Developer, Technical Advisor, UI/UX Designer.",
 	openGraph: {
 		title: "justinjdaniel.com",
-		description: "Blockchain software developer",
+		description:
+			"Programmer, Blockchain Architect, Web Developer, Technical Advisor, UI/UX Designer.",
 		url: "https://justinjdaniel.com",
 		siteName: "justinjdaniel.com",
 		images: [
