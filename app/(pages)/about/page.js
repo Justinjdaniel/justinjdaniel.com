@@ -1,10 +1,12 @@
+"use client";
+
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 import Head from "next/head";
 
 import LetterFadeIn from "@/components/animations/letter-fade-in";
 import NextImage from "@/components/next-image";
 import ProfilePicture from "@/components/profile-picture";
-import award from "../../public/images/award.webp";
+import award from "public/images/award.webp";
 import Certifications from "./certifications";
 import AboutSkills from "./skills";
 
