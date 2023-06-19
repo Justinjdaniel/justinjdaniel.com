@@ -11,6 +11,9 @@ const AppRouterPagesLayout = ({ children }) => {
 			minH="100dvh"
 			bg="#050609"
 			// bg='blackAlpha.800'
+			style={{
+				scrollbarGutter: "stable", // auto | stable && both-edges?
+			}}
 		>
 			<Header>
 				<BackButton />

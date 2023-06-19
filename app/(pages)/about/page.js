@@ -17,7 +17,7 @@ const About = () => {
 				<title>About | Justin J Daniel</title>
 				<meta
 					name="description"
-					content="I&apos;m Justin J Daniel, a Blockchain Software Developer and Technical Lead with several years of experience in the industry. I specialize in developing smart contracts, decentralized applications, and NFTs using Solidity, Web3.js, and Ethereum."
+					content="Blockchain Software Developer and Technical Lead."
 				/>
 				<link rel="canonical" href="https://justinjdaniel.com/about" />
 				<meta
