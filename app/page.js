@@ -1,4 +1,5 @@
 "use client";
+
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Link as ChakraLink } from "@chakra-ui/next-js";
@@ -92,32 +93,40 @@ export default function Home() {
 						</Text>
 					</Text>
 				</motion.div>
-				<Text
-					as="h2"
-					textAlign="center"
-					fontWeight="thin"
-					fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
-					color="whiteAlpha.800"
+				<motion.div
+					variants={headingAnimations}
+					transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
+					initial="hidden"
+					whileInView="visible"
 				>
-					Hey, I&apos;m Justin, a Blockchain Software Developer: <br />
-					Learn more{" "}
-					<Button
-						as={Link}
-						href="/about"
-						size="xs"
-						cursor="pointer"
-						variant="outline"
+					<Text
+						as="h2"
+						textAlign="center"
 						fontWeight="thin"
-						color="whiteAlpha.800"
 						fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
+						color="whiteAlpha.800"
+						whiteSpace="nowrap"
 					>
-						about me
-					</Button>
-				</Text>
+						Hey, I&apos;m Justin, a Blockchain Software Developer, <br />
+						Learn more{" "}
+						<Button
+							as={Link}
+							href="/about"
+							size="xs"
+							cursor="pointer"
+							variant="outline"
+							fontWeight="thin"
+							color="whiteAlpha.800"
+							fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
+						>
+							about me
+						</Button>
+					</Text>
+				</motion.div>
 			</BackGroundGlowBox>
 
 			<Box className={styles.grid}>
-				<ChakraLink href="#" className={styles.card} rel="noopener noreferrer">
+				<Link href="#" className={styles.card} rel="noopener noreferrer">
 					<Text as="h2">
 						Projects <span>-&gt;</span>
 					</Text>
@@ -125,7 +134,7 @@ export default function Home() {
 						Find More About My Work and How I Can Help You Achieve Your Web
 						Goals.
 					</Text>
-				</ChakraLink>
+				</Link>
 
 				<Box as="a" className={styles.card} onClick={onOpen} cursor="pointer">
 					<Text as="h2">
