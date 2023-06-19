@@ -10,11 +10,6 @@ import award from "public/images/award.webp";
 import Certifications from "./certifications";
 import AboutSkills from "./skills";
 
-export const metadata = {
-	title: "About",
-	description: "Blockchain Software Developer and Technical Lead.",
-};
-
 const About = () => {
 	return (
 		<>

@@ -3,11 +3,6 @@
 import { Container, Flex, Heading } from "@chakra-ui/react";
 import Head from "next/head";
 
-export const metadata = {
-	title: "Projects",
-	description: "",
-};
-
 const Page = () => {
 	return (
 		<>
