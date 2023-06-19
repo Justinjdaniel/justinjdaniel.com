@@ -61,7 +61,7 @@ export default function NetlifyContactMeForm({ onClose, ...rest }) {
 				placeholder="Your query or feedback"
 				{...register("message", { required: true })}
 			/>
-			<Button colorScheme="teal" mb="4" type="submit">
+			<Button colorScheme="teal" mb="4" type="submit" size="sm">
 				Submit
 			</Button>
 			<Divider />
