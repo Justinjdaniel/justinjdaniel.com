@@ -2,7 +2,7 @@ import { Input } from "@chakra-ui/input";
 import { Textarea } from "@chakra-ui/textarea";
 import { Button } from "@chakra-ui/button";
 import { useForm } from "react-hook-form";
-import { Divider, Heading, Highlight, Text, chakra } from "@chakra-ui/react";
+import { Divider, Text, chakra } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/toast";
 import { Link } from "@chakra-ui/next-js";
 
@@ -12,7 +12,6 @@ export default function NetlifyContactMeForm({ onClose, ...rest }) {
 
 	const onSubmit = (data) => {
 		// send data to netlify
-		console.log(data);
 		toast({
 			title: "Thank you",
 			description:
@@ -27,19 +26,16 @@ export default function NetlifyContactMeForm({ onClose, ...rest }) {
 	return (
 		<chakra.form
 			name="contact"
-			method="POST"
+			method="post"
 			py="4"
 			netlify
 			netlify-honeypot="bot-field"
 			onSubmit={handleSubmit(onSubmit)}
+			data-netlify="true"
+			data-netlify-honeypot="bot-field"
 			{...rest}
 		>
-			<div hidden aria-hidden="true">
-				<label>
-					Do not fill this out if you are human:
-					<input name="bot-field" />
-				</label>
-			</div>
+			<input type="hidden" name="form-name" value="contact" />
 			<Input
 				mb="4"
 				name="name"
