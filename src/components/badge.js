@@ -1,24 +1,22 @@
-import { Link } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/layout";
 
-export default function Badge(props) {
+export default function Badge({ children, ...rest }) {
 	return (
-		<Link
-			{...props}
-			target="_blank"
-			border="1px"
-			borderColor="gray.200"
-			darkBorderColor="gray.700"
-			bg="gray.50"
-			darkBg="gray.800"
+		<Flex
+			p="2"
 			rounded="md"
-			p="1"
+			border="1px"
 			fontSize="sm"
-			display="inline-flex"
-			alignItems="center"
 			lineHeight="4"
-			color="gray.900"
-			darkColor="gray.100"
+			w="max-content"
+			alignItems="center"
+			bg="whiteAlpha.100"
+			color="whiteAlpha.800"
 			textDecoration="none"
-		/>
+			borderColor="whiteAlpha.200"
+			{...rest}
+		>
+			{children}
+		</Flex>
 	);
 }
