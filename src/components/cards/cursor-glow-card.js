@@ -43,7 +43,7 @@ const GlowCard = React.memo(({ children, cardProps, ...rest }) => {
 			borderWidth="1px"
 			borderRadius="lg"
 			overflow="hidden"
-			bg="rgba(255, 255, 255, 0.1)"
+			bg="whiteAlpha.50"
 			cursor="pointer"
 			height="auto"
 			flexDirection="column"
@@ -83,7 +83,6 @@ const GlowCard = React.memo(({ children, cardProps, ...rest }) => {
 			{...cardProps}
 		>
 			<Flex
-				backgroundColor="rgb(23, 23, 23)"
 				borderRadius="inherit"
 				flex-direction="column"
 				flex-grow="1"
@@ -92,7 +91,7 @@ const GlowCard = React.memo(({ children, cardProps, ...rest }) => {
 				position="absolute"
 				z-index="2"
 			/>
-			<Box zIndex="1" display="flex" {...rest}>
+			<Box zIndex="4" display="flex" {...rest}>
 				{children}
 			</Box>
 		</Flex>

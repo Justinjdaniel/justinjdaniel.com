@@ -7,6 +7,7 @@ import { Link as ChakraLink } from "@chakra-ui/next-js";
 import { keyframes } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,6 +15,9 @@ import BackGroundGlowBox from "@/components/background-glow-box";
 import NetlifyContactMeForm from "@/components/forms/netlify-contact-me";
 import ModalComponent from "@/components/modal";
 import Particles from "@/components/particles";
+
+import github from "public/icons/github.svg";
+import linkedin from "public/icons/linked-in.svg";
 
 import styles from "./page.module.css";
 
@@ -58,14 +62,14 @@ export default function Home() {
 						rel="noopener noreferrer"
 						{...socialLinkStyle}
 					>
-						<Image src="linked-in.svg" width={20} height={20} alt="linkedin" />
+						<Image src={linkedin} width={20} height={20} alt="linkedin" />
 					</ChakraLink>
 					<ChakraLink
 						href="https://github.com/Justinjdaniel"
 						rel="noopener noreferrer"
 						{...socialLinkStyle}
 					>
-						<Image src="github.svg" width={20} height={20} alt="github" />
+						<Image src={github} width={20} height={20} alt="github" />
 					</ChakraLink>
 				</Flex>
 			</Box>
@@ -134,7 +138,7 @@ export default function Home() {
 			</BackGroundGlowBox>
 
 			<Box className={styles.grid}>
-				<Link href="#" className={styles.card} rel="noopener noreferrer">
+				<Link href="/projects" className={styles.card} rel="noopener noreferrer">
 					<Text as="h2">
 						Projects <span>-&gt;</span>
 					</Text>
