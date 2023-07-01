@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Flex, Heading, Text } from "@chakra-ui/react";
+import { Container, Flex, Heading, Text } from "@chakra-ui/layout";
 import Head from "next/head";
 
 import LetterFadeIn from "@/components/animations/letter-fade-in";

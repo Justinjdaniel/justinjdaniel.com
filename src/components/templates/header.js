@@ -1,5 +1,5 @@
 import MotionBox from "@/components/motion/motion-box";
-import { Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/layout";
 import { useScroll, useSpring } from "framer-motion";
 
 const Header = ({ children, ...rest }) => {
