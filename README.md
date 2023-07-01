@@ -7,7 +7,7 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/justinjdaniel/justinjdaniel.com?color=009cdf&label=repo%20size&logo=git&logoColor=white)](https://github.com/justinjdaniel/justinjdaniel.com)
 
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/Justinjdaniel/Justinjdaniel.com)
-[![Open in Codespace](https://img.shields.io/badge/Open%20in-Codespace-blue?logo=visual-studio-code)](https://github.com/codespaces)
+[![Open in Codespace](https://img.shields.io/static/v1?logo=github&label=&message=Open%20in%20Codespace&labelColor=2c2c32&color=0D597F&logoColor=white)](https://github.com/codespaces)
 
 This repository contains the source code and content for my personal portfolio website. You can view it live at <https://justinjdaniel.com/>.
 
