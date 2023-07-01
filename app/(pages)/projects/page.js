@@ -131,7 +131,6 @@ const Page = () => {
 										href={project.github}
 										target="_blank"
 										rel="noopener noreferrer"
-										onClick={(e) => alert("This feature is not yet available")}
 									>
 										<Image src={github} alt="github" width={15} height={15} />
 										GitHub Repo

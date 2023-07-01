@@ -138,7 +138,11 @@ export default function Home() {
 			</BackGroundGlowBox>
 
 			<Box className={styles.grid}>
-				<Link href="/projects" className={styles.card} rel="noopener noreferrer">
+				<Link
+					href="/projects"
+					className={styles.card}
+					rel="noopener noreferrer"
+				>
 					<Text as="h2">
 						Projects <span>-&gt;</span>
 					</Text>
