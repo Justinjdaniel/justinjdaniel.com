@@ -1,5 +1,5 @@
-import { Icon, IconButton, Link } from "@chakra-ui/react";
-// import Link from "next/link";
+import { Icon, IconButton } from "@chakra-ui/react";
+import Link from "next/link";
 
 const BackButton = () => {
 	return (
