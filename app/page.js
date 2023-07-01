@@ -1,9 +1,10 @@
 "use client";
 
+import { Button } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Link as ChakraLink } from "@chakra-ui/next-js";
-import { Button, keyframes } from "@chakra-ui/react";
+import { keyframes } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -115,9 +116,16 @@ export default function Home() {
 							size="xs"
 							cursor="pointer"
 							variant="outline"
-							fontWeight="thin"
+							fontWeight="medium"
 							color="whiteAlpha.800"
 							fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
+							bgGradient="linear(to-r, pink.500, purple.500, cyan.500)"
+							bgClip="text"
+							_hover={{
+								bgGradient: "linear(to-r, purple.500, cyan.500)",
+								bgClip: "text",
+								borderColor: "gray.600",
+							}}
 						>
 							about me
 						</Button>

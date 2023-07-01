@@ -24,5 +24,6 @@
   // Rome settings
   "[javascript]": {
     "editor.defaultFormatter": "rome.rome" // Use Rome as the default formatter for JavaScript files
-  }
+  },
+  "cSpell.words": ["apos", "Chakra", "Codespace", "justinjdaniel", "noopener", "noreferrer"]
 }

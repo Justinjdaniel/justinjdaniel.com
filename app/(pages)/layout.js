@@ -3,7 +3,7 @@
 import BackButton from "@/components/buttons/back-button";
 import Footer from "@/components/templates/footer";
 import Header from "@/components/templates/header";
-import { Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/layout";
 
 const AppRouterPagesLayout = ({ children }) => {
 	return (

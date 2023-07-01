@@ -1,4 +1,7 @@
+import AnalyticsGTM from "@/components/analytics";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -48,6 +51,10 @@ export default function RootLayout({ children }) {
 		<html lang="en">
 			<body className={inter.className}>
 				<Providers>{children}</Providers>
+				<Suspense>
+					<Analytics />
+					<AnalyticsGTM />
+				</Suspense>
 			</body>
 		</html>
 	);

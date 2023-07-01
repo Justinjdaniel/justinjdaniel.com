@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Flex, Heading } from "@chakra-ui/react";
+import { Container, Flex, Heading } from "@chakra-ui/layout";
 import Head from "next/head";
 
 const Page = () => {
