@@ -1,180 +1,180 @@
 {
-  "Languages": [
-    {
-      "name": "HTML",
-      "icon": "https://simpleicons.org/icons/html5.svg"
-    },
-    {
-      "name": "CSS",
-      "icon": "https://simpleicons.org/icons/css3.svg"
-    },
-    {
-      "name": "TypeScript",
-      "icon": "https://simpleicons.org/icons/typescript.svg"
-    },
-    {
-      "name": "JavaScript",
-      "icon": "https://simpleicons.org/icons/javascript.svg"
-    },
-    {
-      "name": ".NET",
-      "icon": "https://simpleicons.org/icons/dotnet.svg"
-    },
-    {
-      "name": "Solidity",
-      "icon": "https://simpleicons.org/icons/solidity.svg"
-    },
-    {
-      "name": "Markdown",
-      "icon": "https://simpleicons.org/icons/markdown.svg"
-    }
-  ],
-  "Frameworks": [
-    {
-      "name": "React",
-      "icon": "https://simpleicons.org/icons/react.svg"
-    },
-    {
-      "name": "Next JS",
-      "icon": "https://simpleicons.org/icons/nextdotjs.svg"
-    },
-    {
-      "name": "Express JS",
-      "icon": "https://simpleicons.org/icons/express.svg"
-    },
-    {
-      "name": "Chakra UI",
-      "icon": "https://simpleicons.org/icons/chakraui.svg"
-    },
-    {
-      "name": "Hyperledger",
-      "icon": "https://simpleicons.org/icons/hyperledger.svg"
-    },
-    {
-      "name": "Bootstrap",
-      "icon": "https://simpleicons.org/icons/bootstrap.svg"
-    },
-    {
-      "name": "SASS",
-      "icon": "https://simpleicons.org/icons/sass.svg"
-    },
-    {
-      "name": "TailwindCss",
-      "icon": "https://simpleicons.org/icons/tailwindcss.svg"
-    },
-    {
-      "name": "Green sock",
-      "icon": "https://simpleicons.org/icons/greensock.svg"
-    },
-    {
-      "name": "PWA",
-      "icon": "https://simpleicons.org/icons/pwa.svg"
-    }
-  ],
-  "Tools": [
-    {
-      "name": "Node JS",
-      "icon": "https://simpleicons.org/icons/nodedotjs.svg"
-    },
-    {
-      "name": "Git",
-      "icon": "https://simpleicons.org/icons/git.svg"
-    },
-    {
-      "name": "GitHub",
-      "icon": "https://simpleicons.org/icons/github.svg"
-    },
-    {
-      "name": "GitHub Actions",
-      "icon": "https://simpleicons.org/icons/githubactions.svg"
-    },
-    {
-      "name": "MongoDB",
-      "icon": "https://simpleicons.org/icons/mongodb.svg"
-    },
-    {
-      "name": "Vercel",
-      "icon": "https://simpleicons.org/icons/vercel.svg"
-    },
-    {
-      "name": "AWS S3",
-      "icon": "https://simpleicons.org/icons/amazons3.svg"
-    },
-    {
-      "name": "Azure",
-      "icon": "https://simpleicons.org/icons/microsoftazure.svg"
-    },
-    {
-      "name": "WebAssembly",
-      "icon": "https://simpleicons.org/icons/webassembly.svg"
-    },
-    {
-      "name": "JSON Web Token",
-      "icon": "https://simpleicons.org/icons/jsonwebtokens.svg"
-    },
-    {
-      "name": "Figma",
-      "icon": "https://simpleicons.org/icons/figma.svg"
-    },
-    {
-      "name": "Blender",
-      "icon": "https://simpleicons.org/icons/blender.svg"
-    },
-    {
-      "name": "Framer",
-      "icon": "https://simpleicons.org/icons/framer.svg"
-    },
-    {
-      "name": "Adobe Photoshop",
-      "icon": "https://simpleicons.org/icons/adobephotoshop.svg"
-    },
-    {
-      "name": "Adobe Lightroom",
-      "icon": "https://simpleicons.org/icons/adobelightroom.svg"
-    },
-    {
-      "name": "Codepen.io",
-      "icon": "https://simpleicons.org/icons/codepen.svg"
-    },
-    {
-      "name": "Unity",
-      "icon": "https://simpleicons.org/icons/unity.svg"
-    },
-    {
-      "name": "Oculus",
-      "icon": "https://simpleicons.org/icons/oculus.svg"
-    },
-    {
-      "name": "Notion",
-      "icon": "https://simpleicons.org/icons/notion.svg"
-    },
-    {
-      "name": "Ansible",
-      "icon": "https://simpleicons.org/icons/ansible.svg"
-    },
-    {
-      "name": "Webpack",
-      "icon": "https://simpleicons.org/icons/webpack.svg"
-    },
-    {
-      "name": "Amazon ECS",
-      "icon": "https://simpleicons.org/icons/amazonecs.svg"
-    },
-    {
-      "name": "Amazon S3",
-      "icon": "https://simpleicons.org/icons/amazons3.svg"
-    },
-    {
-      "name": "Postman",
-      "icon": "https://simpleicons.org/icons/postman.svg"
-    },
-    {
-      "name": "Docker",
-      "icon": "https://simpleicons.org/icons/docker.svg"
-    },
-    {
-      "name": "Kubernetes",
-      "icon": "https://simpleicons.org/icons/kubernetes.svg"
-    }
-  ]
+	"Languages": [
+		{
+			"name": "HTML",
+			"icon": "https://simpleicons.org/icons/html5.svg"
+		},
+		{
+			"name": "CSS",
+			"icon": "https://simpleicons.org/icons/css3.svg"
+		},
+		{
+			"name": "TypeScript",
+			"icon": "https://simpleicons.org/icons/typescript.svg"
+		},
+		{
+			"name": "JavaScript",
+			"icon": "https://simpleicons.org/icons/javascript.svg"
+		},
+		{
+			"name": ".NET",
+			"icon": "https://simpleicons.org/icons/dotnet.svg"
+		},
+		{
+			"name": "Solidity",
+			"icon": "https://simpleicons.org/icons/solidity.svg"
+		},
+		{
+			"name": "Markdown",
+			"icon": "https://simpleicons.org/icons/markdown.svg"
+		}
+	],
+	"Frameworks": [
+		{
+			"name": "React",
+			"icon": "https://simpleicons.org/icons/react.svg"
+		},
+		{
+			"name": "Next JS",
+			"icon": "https://simpleicons.org/icons/nextdotjs.svg"
+		},
+		{
+			"name": "Express JS",
+			"icon": "https://simpleicons.org/icons/express.svg"
+		},
+		{
+			"name": "Chakra UI",
+			"icon": "https://simpleicons.org/icons/chakraui.svg"
+		},
+		{
+			"name": "Hyperledger",
+			"icon": "https://simpleicons.org/icons/hyperledger.svg"
+		},
+		{
+			"name": "Bootstrap",
+			"icon": "https://simpleicons.org/icons/bootstrap.svg"
+		},
+		{
+			"name": "SASS",
+			"icon": "https://simpleicons.org/icons/sass.svg"
+		},
+		{
+			"name": "TailwindCss",
+			"icon": "https://simpleicons.org/icons/tailwindcss.svg"
+		},
+		{
+			"name": "Green sock",
+			"icon": "https://simpleicons.org/icons/greensock.svg"
+		},
+		{
+			"name": "PWA",
+			"icon": "https://simpleicons.org/icons/pwa.svg"
+		}
+	],
+	"Tools": [
+		{
+			"name": "Node JS",
+			"icon": "https://simpleicons.org/icons/nodedotjs.svg"
+		},
+		{
+			"name": "Git",
+			"icon": "https://simpleicons.org/icons/git.svg"
+		},
+		{
+			"name": "GitHub",
+			"icon": "https://simpleicons.org/icons/github.svg"
+		},
+		{
+			"name": "GitHub Actions",
+			"icon": "https://simpleicons.org/icons/githubactions.svg"
+		},
+		{
+			"name": "MongoDB",
+			"icon": "https://simpleicons.org/icons/mongodb.svg"
+		},
+		{
+			"name": "Vercel",
+			"icon": "https://simpleicons.org/icons/vercel.svg"
+		},
+		{
+			"name": "AWS S3",
+			"icon": "https://simpleicons.org/icons/amazons3.svg"
+		},
+		{
+			"name": "Azure",
+			"icon": "https://simpleicons.org/icons/microsoftazure.svg"
+		},
+		{
+			"name": "WebAssembly",
+			"icon": "https://simpleicons.org/icons/webassembly.svg"
+		},
+		{
+			"name": "JSON Web Token",
+			"icon": "https://simpleicons.org/icons/jsonwebtokens.svg"
+		},
+		{
+			"name": "Figma",
+			"icon": "https://simpleicons.org/icons/figma.svg"
+		},
+		{
+			"name": "Blender",
+			"icon": "https://simpleicons.org/icons/blender.svg"
+		},
+		{
+			"name": "Framer",
+			"icon": "https://simpleicons.org/icons/framer.svg"
+		},
+		{
+			"name": "Adobe Photoshop",
+			"icon": "https://simpleicons.org/icons/adobephotoshop.svg"
+		},
+		{
+			"name": "Adobe Lightroom",
+			"icon": "https://simpleicons.org/icons/adobelightroom.svg"
+		},
+		{
+			"name": "Codepen.io",
+			"icon": "https://simpleicons.org/icons/codepen.svg"
+		},
+		{
+			"name": "Unity",
+			"icon": "https://simpleicons.org/icons/unity.svg"
+		},
+		{
+			"name": "Oculus",
+			"icon": "https://simpleicons.org/icons/oculus.svg"
+		},
+		{
+			"name": "Notion",
+			"icon": "https://simpleicons.org/icons/notion.svg"
+		},
+		{
+			"name": "Ansible",
+			"icon": "https://simpleicons.org/icons/ansible.svg"
+		},
+		{
+			"name": "Webpack",
+			"icon": "https://simpleicons.org/icons/webpack.svg"
+		},
+		{
+			"name": "Amazon ECS",
+			"icon": "https://simpleicons.org/icons/amazonecs.svg"
+		},
+		{
+			"name": "Amazon S3",
+			"icon": "https://simpleicons.org/icons/amazons3.svg"
+		},
+		{
+			"name": "Postman",
+			"icon": "https://simpleicons.org/icons/postman.svg"
+		},
+		{
+			"name": "Docker",
+			"icon": "https://simpleicons.org/icons/docker.svg"
+		},
+		{
+			"name": "Kubernetes",
+			"icon": "https://simpleicons.org/icons/kubernetes.svg"
+		}
+	]
 }
