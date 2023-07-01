@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "out":"npx serve@latest out",
+    "out": "npx serve@latest out",
     "format": "npx rome check . --apply-unsafe && npx rome format . --write"
   },
   "dependencies": {
@@ -15,17 +15,20 @@
     "@chakra-ui/react": "^2.6.1",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@vercel/analytics": "1.0.1",
+    "@vercel/edge-config": "0.2.1",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "framer-motion": "^10.12.16",
     "next": "13.4.4",
+    "next-contentlayer":"0.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.44.3"
   },
   "devDependencies": {
     "rome": "^12.1.2",
-    "@netlify/plugin-nextjs":"^4.37.4"
+    "@netlify/plugin-nextjs": "^4.37.4"
   },
   "author": {
     "name": "Justin J Daniel"
