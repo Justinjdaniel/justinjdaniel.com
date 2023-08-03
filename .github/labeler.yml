@@ -1,0 +1,16 @@
+# Add 'components' label to any change to *.js files
+components: app/_components/**/*.js
+
+# Add 'utils' label to any change to *.js files
+utils: app/_utils/**/*.js'
+
+config:
+- .github/**
+- .vscode/**
+- '*'
+- '!readme.md'
+- '!package*.json'
+
+dependencies: package*.json
+
+# check this ref link for further details: https://github.com/marketplace/actions/labeler
