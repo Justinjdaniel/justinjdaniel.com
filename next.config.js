@@ -1,4 +1,4 @@
-const { get } = require("@vercel/edge-config");
+// const { get } = require("@vercel/edge-config");
 // const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
@@ -24,13 +24,13 @@ const nextConfig = {
 		// 	},
 		// ],
 	},
-	redirects() {
-		try {
-			return get("redirects");
-		} catch {
-			return [];
-		}
-	},
+	// redirects() {
+	// 	try {
+	// 		return get("redirects");
+	// 	} catch {
+	// 		return [];
+	// 	}
+	// },
 	headers() {
 		return [
 			{

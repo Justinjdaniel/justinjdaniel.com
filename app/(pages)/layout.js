@@ -1,27 +1,25 @@
-"use client";
+import { css } from "@/styled-system/css";
 
-import BackButton from "@/components/buttons/back-button";
-import Footer from "@/components/templates/footer";
-import Header from "@/components/templates/header";
-import { Flex } from "@chakra-ui/layout";
-
-const AppRouterPagesLayout = ({ children }) => {
+export default function PagesLayout({ children }) {
 	return (
-		<Flex
-			minH="100dvh"
-			bg="#050609"
-			// bg='blackAlpha.800'
-			style={{
-				scrollbarGutter: "stable", // auto | stable && both-edges?
-			}}
+		<div
+			className={css({
+				pos: "relative",
+				minH: "screen",
+				bgGradient: "to-tl",
+				gradientFrom: "black",
+				gradientVia: "zinc.900",
+				gradientTo: "black",
+				minW: "0",
+				flex: "auto",
+				display: "flex",
+				flexDir: "column",
+				color: "stone.100",
+			})}
 		>
-			<Header>
-				<BackButton />
-			</Header>
+      {/* Header */}
 			{children}
-			<Footer />
-		</Flex>
+      {/* Footer */}
+		</div>
 	);
-};
-
-export default AppRouterPagesLayout;
+}

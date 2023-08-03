@@ -31,25 +31,25 @@ Another key technology in this project is [Framer Motion](https://www.framer.com
 
 To run this website locally, you need to have [Git](https://git-scm.com/), [Node.js](https://nodejs.org/en/), and [npm](https://www.npmjs.com/) installed on your machine.
 
-1. Clone this repository using the following command:
+- Clone this repository using the following command:
 
 ```bash
 git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
 ```
 
-2. Navigate to the project folder and install the dependencies using the following command:
+- Navigate to the project folder and install the dependencies using the following command:
 
 ```bash
 npm install
 ```
 
-3. Start the development server using the following command:
+- Start the development server using the following command:
 
 ```bash
 npm run dev
 ```
 
-4. Open <http://localhost:3000> in your web browser to view the website.
+- Open <http://localhost:3000> in your web browser to view the website.
 
 Alternatively, you can use [Visual Studio Code](https://code.visualstudio.com/) with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension to launch the website.
 
