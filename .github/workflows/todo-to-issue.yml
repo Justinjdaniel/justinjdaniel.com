@@ -1,0 +1,15 @@
+# Usage: https://github.com/alstr/todo-to-issue-action/blob/master/README.md#usage
+
+name: 'TODO to Issue'
+
+on: ['push']
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: 'actions/checkout@v3'
+      - name: 'TODO to Issue'
+        uses: 'alstr/todo-to-issue-action@v4'
+        with:
+          AUTO_ASSIGN: true
