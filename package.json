@@ -11,7 +11,7 @@
     "format": "npx rome check . --apply-unsafe && npx rome format . --write"
   },
   "dependencies": {
-    "@chakra-ui/next-js": "^2.1.3",
+    "@chakra-ui/next-js": "^2.1.5",
     "@chakra-ui/react": "^2.6.1",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
