@@ -1,32 +1,25 @@
-import AnalyticsGTM from "@/components/analytics";
+import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
-import "./globals.css";
-import { Providers } from "./providers";
+import AnalyticsGTM from "@components/analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+	metadataBase: new URL("https://justinjdaniel.com"),
 	title: {
 		default: "Justin J Daniel",
 		template: "%s | Justin J Daniel",
 	},
 	description:
-		"Programmer, Blockchain Architect, Web Developer, Technical Advisor, UI/UX Designer.",
+		"Programmer, Blockchain Architect, Web Developer, Technical Advisor and UI/UX Designer.",
 	openGraph: {
 		title: "justinjdaniel.com",
 		description:
-			"Programmer, Blockchain Architect, Web Developer, Technical Advisor, UI/UX Designer.",
+			"Programmer, Blockchain Architect, Web Developer, Technical Advisor and UI/UX Designer.",
 		url: "https://justinjdaniel.com",
 		siteName: "justinjdaniel.com",
-		images: [
-			{
-				url: "https://justinjdaniel.com/og.png",
-				width: 1920,
-				height: 1080,
-			},
-		],
 		locale: "en-US",
 		type: "website",
 	},
@@ -50,11 +43,13 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<Providers>{children}</Providers>
-				<Suspense>
-					<Analytics />
-					<AnalyticsGTM />
-				</Suspense>
+				<main>
+					{children}
+					<Suspense>
+						<Analytics />
+						<AnalyticsGTM />
+					</Suspense>
+				</main>
 			</body>
 		</html>
 	);

@@ -5,9 +5,26 @@
 		"rules": {
 			"recommended": true
 		},
-		"ignore": ["node_modules", ".next", "dist"]
+		"ignore": [
+			"node_modules",
+			".github",
+			".vscode",
+			".next",
+			"dist",
+			"styled-system"
+		]
 	},
 	"formatter": {
-		"ignore": ["node_modules", ".next", ".vscode", "dist"]
+		"ignore": [
+			"node_modules",
+			".github",
+			".vscode",
+			".next",
+			"dist",
+			"styled-system"
+		]
+	},
+	"organizeImports": {
+		"enabled": true
 	}
 }
