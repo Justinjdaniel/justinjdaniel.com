@@ -36,5 +36,6 @@
     "noreferrer",
     "pageview",
     "tailwindcss"
-  ]
+  ],
+  "conventionalCommits.scopes": ["format"]
 }
