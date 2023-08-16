@@ -1,8 +1,8 @@
 import "./globals.css";
+import AnalyticsGTM from "@components/analytics";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
-import AnalyticsGTM from "@components/analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,13 +43,11 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<main>
-					{children}
-					<Suspense>
-						<Analytics />
-						<AnalyticsGTM />
-					</Suspense>
-				</main>
+				<main>{children}</main>
+				<Suspense>
+					<Analytics />
+					<AnalyticsGTM />
+				</Suspense>
 			</body>
 		</html>
 	);
