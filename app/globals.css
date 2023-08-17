@@ -28,7 +28,7 @@ body {
 
 
 .link__graphic {
-  @apply absolute pointer-events-none fill-none stroke-white/50 stroke-[1px] left-0 top-0;
+  @apply absolute pointer-events-none fill-none stroke-[1px] left-0 top-0;
 }
 .link__graphic--slide {
   @apply top-[-3px] stroke-[2px] transition-transform duration-[0.7s] ease-[cubic-bezier(0,0.25,0.5,1)];
