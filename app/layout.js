@@ -1,5 +1,5 @@
 import "./globals.css";
-import AnalyticsGTM from "@components/analytics";
+import AnalyticsGTM from "@/components/analytics";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";

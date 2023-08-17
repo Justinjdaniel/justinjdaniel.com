@@ -1,8 +1,8 @@
+import Header from "@/components/header";
 import Particles from "@/components/particles";
 import Image from "next/image";
 import award from "public/images/home/award.webp";
 import React from "react";
-import Header from "@/components/header";
 
 function ArrowIcon() {
 	return (
@@ -21,8 +21,6 @@ function ArrowIcon() {
 		</svg>
 	);
 }
-
-
 
 const IntroAnimation = () => {
 	return (
