@@ -1,5 +1,5 @@
 "use client";
-import { useMousePosition } from "@utils/mouse";
+import { useMousePosition } from "@/utils/mouse";
 import React, { useEffect, useRef } from "react";
 
 export default function Particles({
