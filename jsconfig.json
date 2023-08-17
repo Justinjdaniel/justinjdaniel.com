@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"],
       "@/*": ["./*"],
       "@/components/*": ["./app/_components/*"],
       "@/utils/*": ["./app/_utils/*"]
     }
-  }
+  },
+  "include": [".contentlayer/generated"]
 }
