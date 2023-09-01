@@ -1,42 +1,18 @@
-import Header from "@/components/header";
-import Particles from "@/components/particles";
+import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
 import award from "public/images/home/award.webp";
+import team from "public/images/home/team.webp";
 import React from "react";
 
-function ArrowIcon() {
-	return (
-		<svg
-			width="12"
-			height="12"
-			viewBox="0 0 12 12"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<title>Arrow Icon</title>
-			<path
-				d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-				fill="currentColor"
-			/>
-		</svg>
-	);
-}
-
-const IntroAnimation = () => {
-	return (
-		<div>
-			{/* <h1 className="z-10 text-center text-4xl text-transparent duration-1000 bg-white cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text">
-				Justin J Daniel
-			</h1> */}
-			<div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
-		</div>
-	);
-};
-
 const ProfileContent = () => {
+	// FIXME: change remaining two images
+	// replace other two random images to correct one.
+	// assignees: justinjdaniel
+	// labels: enhancement, fix-me, ui
+
 	return (
-		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto animate-fade-in w-full">
-			<h1 className="font-bold text-2xl mb-8 text-left animate-fade-in w-max">
+		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto w-full">
+			<h1 className="font-bold text-2xl mb-8 text-left w-max">
 				hey, I'm{" "}
 				<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
 					Justin{" "}
@@ -54,42 +30,43 @@ const ProfileContent = () => {
 				</p>
 			</div>
 			<div className="columns-2 gap-4 my-8">
-				<div className="relative mb-4 h-40">
+				<div className="relative h-80 mb-4">
 					<img
 						alt="..."
-						src={"https://source.unsplash.com/random/600x400"}
+						src={"https://source.unsplash.com/random/400x600"}
 						fill
 						sizes="(max-width: 768px) 213px, 50vw"
-						priority
+						priority="true"
+						className="rounded-lg object-cover h-80 w-full"
+					/>
+				</div>
+				<div className="relative h-40">
+					<Image
+						alt="Our team"
+						src={team}
+						fill
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
 						className="rounded-lg object-cover h-40 w-full"
+					/>
+				</div>
+
+				<div className="relative h-40 mb-4">
+					<Image
+						alt="Awarded by Kerala Digital University's Vice Chancellor"
+						src={award}
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-40 w-ful"
 					/>
 				</div>
 				<div className="relative h-80">
 					<img
 						alt="..."
 						src={"https://source.unsplash.com/random/400x600"}
-						fill
 						sizes="(max-width: 768px) 213px, 50vw"
-						priority
+						priority="true"
 						className="rounded-lg object-cover h-80 w-full"
-					/>
-				</div>
-				<div className="relative mb-4 h-80">
-					<img
-						alt="..."
-						src={"https://source.unsplash.com/random/400x600"}
-						sizes="(max-width: 768px) 213px, 50vw"
-						priority
-						className="rounded-lg object-cover h-80 w-full"
-					/>
-				</div>
-				<div className="relative h-40">
-					<Image
-						alt="Awarded by Kerala Digital University's Vice Chancellor"
-						src={award}
-						sizes="(max-width: 768px) 213px, 50vw"
-						priority
-						className="rounded-lg object-cover h-40 w-ful"
 					/>
 				</div>
 			</div>
@@ -148,16 +125,5 @@ const ProfileContent = () => {
 };
 
 export default function Home() {
-	return (
-		<div className="flex flex-col w-screen h-screen overflow-x-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
-			<div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
-			<Particles
-				className="absolute inset-0 -z-10 animate-fade-in"
-				quantity={100}
-			/>
-			<Header />
-			<IntroAnimation />
-			<ProfileContent />
-		</div>
-	);
+	return <ProfileContent />;
 }

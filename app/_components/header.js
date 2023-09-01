@@ -5,9 +5,9 @@ import bg from "public/images/home/bg.png";
 import React from "react";
 
 const Header = () => {
-	// TODO: Update Header
+	// TODO: Update Header Image
 	// assignees: Justinjdaniel
-	// labels: enhancement, feature, ui
+	// labels: enhancement, feature-request, ui
 
 	return (
 		<header>
@@ -16,7 +16,7 @@ const Header = () => {
 				src={bg}
 				alt="bg"
 			/>
-			<div className="max-w-2xl flex items-center justify-between mx-auto animate-fade-in">
+			<div className="max-w-2xl flex items-center justify-between mx-auto">
 				<Navbar />
 
 				<ul className="flex items-center justify-center gap-4">
