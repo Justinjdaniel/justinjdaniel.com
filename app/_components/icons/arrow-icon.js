@@ -1,6 +1,5 @@
 export default function ArrowIcon() {
 	return (
-		// rome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
 		<svg
 			width="12"
 			height="12"
@@ -8,6 +7,7 @@ export default function ArrowIcon() {
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
+			<title>Arrow Icon</title>
 			<path
 				d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
 				fill="currentColor"
