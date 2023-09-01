@@ -14,6 +14,8 @@ jobs:
       - name: Dependabot metadata
         id: dependabot-metadata
         uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
       - uses: actions/checkout@v3
       - name: Approve a PR if not already approved
         run: |
@@ -26,8 +28,9 @@ jobs:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Enable auto-merge for Dependabot PRs
-        if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
-        run: gh pr merge --auto --squash "$PR_URL"
+        if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' &&   steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major'}}
+        #  && contains(steps.metadata.outputs.dependency-names, 'my-dependency') }}
+        run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
