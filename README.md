@@ -32,33 +32,20 @@ It also uses [Tailwind CSS](tailwind-css), a utility-first CSS framework for rap
 
 Another key technology in this project is [GSAP](https://greensock.com/gsap/), a professional-grade animation platform for the modern web. GSAP is a robust JavaScript tool-set that turns developers into animation superheroes. It can animate anything JavaScript can touch, in any framework, with blazing speed and cross-browser compatibility. It also offers a variety of plugins for specific animation challenges, such as scroll-based animation, draggable interactions, morphing, and more. You can watch the [screen-casts](https://greensock.com/get-started) or visit the [npm page](https://www.npmjs.com/package/gsap) to learn more about GSAP.
 
-## Installation
+## Running Locally
 
-To run this website locally, you need to have [Git](https://git-scm.com/), [Node.js](https://nodejs.org/en/), and [npm](https://www.npmjs.com/) installed on your machine.
+To run this website locally, you need to have [Git](https://git-scm.com/), [Node.js v16.13+](https://nodejs.org/en/), and [npm](https://www.npmjs.com/) installed on your machine.
 
 - Clone this repository using the following command:
 
 ```bash
 git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
-```
-
-- Navigate to the project folder and install the dependencies using the following command:
-
-```bash
-npm install
-```
-
-- Start the development server using the following command:
-
-```bash
-npm run dev
+cd justinjdaniel.com
+pnpm install
+pnpm dev
 ```
 
 - Open <http://localhost:3000> in your web browser to view the website.
-
-## Contribution
-
-If you find any issues or have any suggestions for improvement, feel free to open an issue or a pull request. I appreciate your feedback and support.
 
 ## License
 
