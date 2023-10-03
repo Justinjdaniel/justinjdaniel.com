@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "rome": "^12.1.2",
-    "@netlify/plugin-nextjs": "^4.37.4"
+    "@netlify/plugin-nextjs": "^4.40.2"
   },
   "author": {
     "name": "Justin J Daniel"
