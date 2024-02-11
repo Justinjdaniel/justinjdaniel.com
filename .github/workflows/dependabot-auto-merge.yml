@@ -1,0 +1,45 @@
+name: Dependabot Pull Request Merge
+
+on: pull_request_target
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v1
+
+      - uses: actions/checkout@v3
+
+      - name: Check for breaking changes
+        id: check_for_breaking_changes
+        run: |
+          # Use appropriate tool (e.g., npm audit, yarn audit) to check for breaking changes
+          # based on your package manager and configuration
+          # Store the result in a variable
+          BREAKING_CHANGES=$(your_breaking_change_check_command)
+          echo "BREAKING_CHANGES=$BREAKING_CHANGES" >> $GITHUB_ENV
+
+      - name: Set has_breaking_changes output
+        id: set_has_breaking_changes
+        run: |
+          echo "has_breaking_changes=${{ steps.check_for_breaking_changes.outputs.BREAKING_CHANGES == 'true' }}" >> $GITHUB_ENV
+
+      - name: Enable auto-merge for safe updates
+        if: ${{ !steps.set_has_breaking_changes.outputs.has_breaking_changes && steps.dependabot-metadata.outputs.update_type != 'version-update:semver-major' }}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Manual review required for breaking changes or major updates
+        if: ${{ steps.set_has_breaking_changes.outputs.has_breaking_changes || steps.dependabot-metadata.outputs.update_type == 'version-update:semver-major' }}
+        run: |
+          gh pr comment "$PR_URL" --body "This pull request requires manual review due to potential breaking changes or major version update."
+          # Optionally add labels or set required reviewers for manual review

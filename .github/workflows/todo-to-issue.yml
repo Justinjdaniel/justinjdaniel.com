@@ -13,3 +13,9 @@ jobs:
         uses: 'alstr/todo-to-issue-action@v4'
         with:
           AUTO_ASSIGN: true
+          CLOSE_ISSUES: true
+          ACTOR: true
+          # Add more options as per your needs. For example, to add labels and assignees, use the following format in your code:
+          # TODO (username): Task description
+          # assignees: user1, user2
+          # labels: label1, label2
