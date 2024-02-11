@@ -2,7 +2,14 @@
 
 name: 'TODO to Issue'
 
-on: ['push']
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types: [closed]
 
 jobs:
   build:
@@ -13,9 +20,5 @@ jobs:
         uses: 'alstr/todo-to-issue-action@v4'
         with:
           AUTO_ASSIGN: true
-          CLOSE_ISSUES: true
-          ACTOR: true
-          # Add more options as per your needs. For example, to add labels and assignees, use the following format in your code:
-          # TODO (username): Task description
-          # assignees: user1, user2
-          # labels: label1, label2
+          # CLOSE_ISSUES: true
+          # ACTOR: true
