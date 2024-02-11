@@ -23,7 +23,7 @@ jobs:
           # Use appropriate tool (e.g., npm audit, yarn audit) to check for breaking changes
           # based on your package manager and configuration
           # Store the result in a variable
-          BREAKING_CHANGES=$(your_breaking_change_check_command)
+          BREAKING_CHANGES=$(pnpm audit)
           echo "BREAKING_CHANGES=$BREAKING_CHANGES" >> $GITHUB_ENV
 
       - name: Set has_breaking_changes output
