@@ -9,7 +9,6 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-	console.log(allBlogs);
 	return (
 		<section className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto w-full">
 			<h1 className="font-bold text-2xl mb-8 tracking-tighter">Read my blog</h1>
