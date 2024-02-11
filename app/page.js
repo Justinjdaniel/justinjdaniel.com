@@ -2,11 +2,12 @@ import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
 import award from "public/images/home/award.webp";
 import team from "public/images/home/team.webp";
+import speaking from "public/images/home/speaking.webp";
 import React from "react";
 
 const ProfileContent = () => {
-	// FIXME: change remaining two images
-	// replace other two random images to correct one.
+	// FIXME: change dummy image
+	// replace dummy images to correct one.
 	// assignees: justinjdaniel
 	// labels: enhancement, fix-me, ui
 
@@ -31,10 +32,10 @@ const ProfileContent = () => {
 			</div>
 			<div className="columns-2 gap-4 my-8">
 				<div className="relative h-80 mb-4">
-					<img
-						alt="..."
-						src={"https://source.unsplash.com/random/400x600"}
-						fill
+					<Image
+						alt="speaking in blockchain meetup"
+						src={speaking}
+						fill="true"
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
 						className="rounded-lg object-cover h-80 w-full"
@@ -42,9 +43,9 @@ const ProfileContent = () => {
 				</div>
 				<div className="relative h-40">
 					<Image
-						alt="Our team"
+						alt="Team meetup in Kerala mid 2023"
 						src={team}
-						fill
+						fill="true"
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
 						className="rounded-lg object-cover h-40 w-full"
