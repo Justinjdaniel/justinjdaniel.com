@@ -2,18 +2,22 @@
 <img src='.github/images/landing.png' width='500px' alt='landing page preview'/>
 </p>
 
-<!-- TODO: Readme: add links like live-website, some social links etc.-->
-<!-- make the links centered to the page -->
-<!-- labels: enhancement -->
-<!-- [github][github-link] | [linkedIn][linkedIn-link] | [Contributing](#contributing) -->
+<p align='center'>
+<a href='https://justinjdaniel.com'>Website</a> 
+| <a href='https://github.com/justinjdaniel'>Github</a> 
+| <a href='https://www.linkedin.com/in/justin-j-daniel'>LinkedIn</a> 
+<!-- | <a href='...'>Contributing</a> -->
+</p>
 
 # [Justinjdaniel.com](website)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](license)
+[![Next.js version](https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![GitHub repo size](https://img.shields.io/github/repo-size/justinjdaniel/justinjdaniel.com?color=009cdf&label=repo%20size&logo=git&logoColor=white)](repo)
+
 [![Build Next.js site](https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml/badge.svg)](https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml)
 [![Vercel deployment](https://img.shields.io/github/deployments/Justinjdaniel/Justinjdaniel.com/production?label=vercel&logo=vercel&logoColor=white)](vercel-deploy)
-[![Next.js version](https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](license)
-[![GitHub repo size](https://img.shields.io/github/repo-size/justinjdaniel/justinjdaniel.com?color=009cdf&label=repo%20size&logo=git&logoColor=white)](repo)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fjustinjdaniel.com%2F&up_message=live&down_message=down&logo=unitedairlines)
 
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](open-iin-vscode)
 [![Open in Codespace](https://img.shields.io/static/v1?logo=github&label=&message=Open%20in%20Codespace&labelColor=2c2c32&color=0D597F&logoColor=white)](open-in-codespace)
