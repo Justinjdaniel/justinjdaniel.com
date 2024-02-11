@@ -1,181 +1,129 @@
-"use client";
-
-import { Button } from "@chakra-ui/button";
-import { useDisclosure } from "@chakra-ui/hooks";
-import { Box, Flex, Text } from "@chakra-ui/layout";
-import { Link as ChakraLink } from "@chakra-ui/next-js";
-import { keyframes } from "@chakra-ui/react";
-
-import { motion } from "framer-motion";
-
+import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
-import Link from "next/link";
+import award from "public/images/home/award.webp";
+import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
+import teamMeetUpEnd2023 from "public/images/home/team-meetup-end-2023.webp";
+import speaking from "public/images/home/speaking.webp";
+import React from "react";
 
-import BackGroundGlowBox from "@/components/background-glow-box";
-import NetlifyContactMeForm from "@/components/forms/netlify-contact-me";
-import ModalComponent from "@/components/modal";
-import Particles from "@/components/particles";
+const ProfileContent = () => {
+	return (
+		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto w-full">
+			<h1 className="font-bold text-2xl mb-8 text-left w-max">
+				hey, I'm{" "}
+				<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+					Justin{" "}
+				</span>
+				👋
+			</h1>
+			<div>
+				<p className="text-zinc-300 prose prose-neutral dark:prose-invert">
+					{`I'm a blockchain software developer, optimist, and team player with several
+						years of experience in the industry. I specialize in developing
+						smart contracts, decentralized applications, and NFTs using
+						Solidity, Web3.js, and Ethereum. I also have a strong background in
+						web development and implementation of a blockchain-based system for
+						services and products.`}
+				</p>
+			</div>
+			<div className="columns-2 gap-4 my-8">
+				<div className="relative h-80 mb-4">
+					<Image
+						alt="speaking in blockchain meetup"
+						src={speaking}
+						fill="true"
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-80 w-full"
+					/>
+				</div>
+				<div className="relative h-40">
+					<Image
+						alt="Team meetup in Kerala mid 2023"
+						src={teamMeetUpMid2023}
+						fill="true"
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-40 w-full"
+					/>
+				</div>
 
-import github from "public/icons/github.svg";
-import linkedin from "public/icons/linked-in.svg";
+				<div className="relative h-40 mb-4">
+					<Image
+						alt="Awarded by Kerala Digital University's Vice Chancellor"
+						src={award}
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-40 w-ful"
+					/>
+				</div>
+				<div className="relative h-80">
+					<Image
+						alt="Team meetup in Kerala mid 2023"
+						src={teamMeetUpEnd2023}
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-80 w-full"
+					/>
+				</div>
+			</div>
+			<div className="mb-4 text-zinc-300">
+				<p className="prose prose-neutral dark:prose-invert mb-4">
+					{`I manage our developers work and ensure
+						the quality and security of our blockchain solutions. I have
+						extensive experience in developing and advising on public and
+						private blockchain platforms, such as Ethereum, Polygon and Hyper Ledger Fabric.`}
+				</p>
+				{/* TODO: Add more content about projects */}
+				{/* Add more content regarding projects, achievements, and tools I've worked with. Also, consider including links to another page that provides detailed information about the projects I've completed, those currently in progress, as well as any side projects or personal endeavors. */}
+				{/* assignees: justinjdaniel */}
+				{/* labels: enhancement, fix-me, ui */}
+				<p className="prose prose-neutral dark:prose-invert">
+					{`I have successfully led the development of a NFT platform with a
+					simple multi-platform compatible DApp for organizations and
+					institutes, as well as a private blockchain service for supply chain
+					management and. I am also currently working on a blockchain
+					traceability in supply chain management system.`}
+				</p>
+			</div>
 
-import styles from "./page.module.css";
+			<div>
+				<p className="prose prose-neutral dark:prose-invert">
+					{`I am passionate about learning new skills and exploring new
+						challenges in the blockchain space. I am always looking for
+						opportunities to collaborate with other developers and innovators
+						who share my vision of building a more decentralized and trustless
+						world.`}
+				</p>
+			</div>
+			<ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300">
+				<li>
+					<a
+						className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
+						rel="noopener noreferrer"
+						target="_blank"
+						href="https://twitter.com/justinjdaniel"
+					>
+						<ArrowIcon />
+						<p className="h-7 ml-2">follow me</p>
+					</a>
+				</li>
+				<li>
+					<a
+						className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
+						rel="noopener noreferrer"
+						target="_blank"
+						href="mailto:justinjdaniel@duck.com"
+					>
+						<ArrowIcon />
+						<p className="h-7 ml-2">connect with me</p>
+					</a>
+				</li>
+			</ul>
+		</content>
+	);
+};
 
 export default function Home() {
-	const animation = keyframes`
-    to { background-position: 200% center; }
-  `;
-
-	const socialLinkStyle = {
-		p: "1rem",
-		borderRadius: "1rem",
-		border: "1px solid rgba(108, 108, 108, 0.3)",
-		backgroundColor: "rgba(20, 20, 20, 0.5)",
-		target: "_blank",
-	};
-
-	const { isOpen, onOpen, onClose } = useDisclosure();
-
-	const headingAnimations = {
-		hidden: {
-			opacity: 0,
-			y: "50%",
-			scale: 1.5,
-			clipPath: "polygon(0 0, 100% 0, 100% 00%, 0 00%)",
-		},
-		visible: {
-			opacity: 1,
-			y: 0,
-			scale: 1,
-			clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-		},
-	};
-
-	return (
-		<main className={styles.main}>
-			<Particles quantity={200} position="absolute" w="full" h="80dvh" />
-			<Box className={styles.description} zIndex={10}>
-				<Text fontWeight="extrabold">Justin J Daniel</Text>
-				<Flex gap="4" justifyContent="center" alignItems="center">
-					<ChakraLink
-						href="https://www.linkedin.com/in/justin-j-daniel/"
-						rel="noopener noreferrer"
-						{...socialLinkStyle}
-					>
-						<Image src={linkedin} width={20} height={20} alt="linkedin" />
-					</ChakraLink>
-					<ChakraLink
-						href="https://github.com/Justinjdaniel"
-						rel="noopener noreferrer"
-						{...socialLinkStyle}
-					>
-						<Image src={github} width={20} height={20} alt="github" />
-					</ChakraLink>
-				</Flex>
-			</Box>
-
-			<BackGroundGlowBox flexDir="column">
-				<motion.div
-					variants={headingAnimations}
-					transition={{ duration: 1, ease: "easeInOut" }}
-					initial="hidden"
-					whileInView="visible"
-				>
-					<Text
-						as="h1"
-						cursor="default"
-						fontWeight="extrabold"
-						bgClip="text"
-						textAlign={{ base: "center", md: "left" }}
-						backgroundSize="200% auto"
-						animation={`${animation} 5s linear infinite`}
-						fontSize={{ base: "3xl", md: "5xl", lg: "6xl", "2xl": "8xl" }}
-						bgGradient="linear(to-r, pink.500, purple.500, cyan.500, green.500, teal.500, yellow.500, orange.500, red.500, pink.500)"
-					>
-						<Text as="span">Design, Code & Build </Text>
-						<Text as="span" whiteSpace="nowrap" display={{ md: "block" }}>
-							for Everyone
-						</Text>
-					</Text>
-				</motion.div>
-				<motion.div
-					variants={headingAnimations}
-					transition={{ duration: 1, ease: "easeInOut", delay: 1 }}
-					initial="hidden"
-					whileInView="visible"
-				>
-					<Text
-						as="h2"
-						textAlign="center"
-						fontWeight="thin"
-						fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
-						color="whiteAlpha.800"
-						whiteSpace="nowrap"
-					>
-						Hey, I&apos;m Justin, a Blockchain Software Developer, <br />
-						Learn more{" "}
-						<Button
-							as={Link}
-							href="/about"
-							size="xs"
-							cursor="pointer"
-							variant="outline"
-							fontWeight="medium"
-							color="whiteAlpha.800"
-							fontSize={{ base: "xs", md: "sm", "2xl": "md" }}
-							bgGradient="linear(to-r, pink.500, purple.500, cyan.500)"
-							bgClip="text"
-							_hover={{
-								bgGradient: "linear(to-r, purple.500, cyan.500)",
-								bgClip: "text",
-								borderColor: "gray.600",
-							}}
-						>
-							about me
-						</Button>
-					</Text>
-				</motion.div>
-			</BackGroundGlowBox>
-
-			<Box className={styles.grid}>
-				<Link
-					href="/projects"
-					className={styles.card}
-					rel="noopener noreferrer"
-				>
-					<Text as="h2">
-						Projects <span>-&gt;</span>
-					</Text>
-					<Text>
-						Find More About My Work and How I Can Help You Achieve Your Web
-						Goals.
-					</Text>
-				</Link>
-
-				<Box as="a" className={styles.card} onClick={onOpen} cursor="pointer">
-					<Text as="h2">
-						Contact <span>-&gt;</span>
-					</Text>
-					<p>
-						If you have any questions, comments, or feedback, please feel free
-						to contact me. Thank you for your interest in my work.
-					</p>
-				</Box>
-			</Box>
-			<ModalComponent
-				isOpen={isOpen}
-				onClose={onClose}
-				modalContentProps={{
-					mx: "2",
-					backdropFilter: "blur(16px) saturate(180%)",
-					backgroundColor: "blackAlpha.600",
-					borderRadius: "12px",
-					border: "1px solid rgba(209, 213, 219, 0.3)",
-				}}
-				modalHeader="Contact Me"
-			>
-				<NetlifyContactMeForm onClose={onClose} />
-			</ModalComponent>
-		</main>
-	);
+	return <ProfileContent />;
 }

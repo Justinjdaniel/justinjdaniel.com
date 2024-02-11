@@ -1,5 +1,5 @@
 const { get } = require("@vercel/edge-config");
-// const { withContentlayer } = require("next-contentlayer");
+const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,9 +8,9 @@ const nextConfig = {
 	// trailingSlash: true,
 	// Optional: Change the output directory `out` -> `dist`
 	// distDir: "out",
-	// experimental: {
-	// 	serverActions: true,
-	// },
+	experimental: {
+		serverActions: true,
+	},
 	// Optional: Disable the image optimizer.
 	images: {
 		// 	unoptimized: true,
@@ -90,5 +90,4 @@ const securityHeaders = [
 	},
 ];
 
-// module.exports = withContentlayer(nextConfig);
-module.exports = nextConfig;
+module.exports = withContentlayer(nextConfig);

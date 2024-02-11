@@ -25,5 +25,27 @@
   "[javascript]": {
     "editor.defaultFormatter": "rome.rome" // Use Rome as the default formatter for JavaScript files
   },
-  "cSpell.words": ["apos", "Chakra", "Codespace", "justinjdaniel", "noopener", "noreferrer"]
+  "cSpell.words": [
+    "apos",
+    "Chakra",
+    "Codespace",
+    "contentlayer",
+    "gsap",
+    "justinjdaniel",
+    "noopener",
+    "noreferrer",
+    "pageview",
+    "tailwindcss"
+  ],
+  "conventionalCommits.scopes": [
+    "format",
+    "assets",
+    "page",
+    "structure",
+    "dependencies",
+    "docs",
+    "configuration",
+    "components",
+    "blog"
+  ]
 }

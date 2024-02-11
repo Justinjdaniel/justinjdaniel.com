@@ -11,6 +11,7 @@ jobs:
         uses: "pascalgn/size-label-action@v0.4.2"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          IGNORED: ".*\n!.gitignore\npnpm-lock.yaml\nsystem-system/**"
         with:
           sizes: >
             {
