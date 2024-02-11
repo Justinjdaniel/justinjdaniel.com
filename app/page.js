@@ -6,11 +6,6 @@ import speaking from "public/images/home/speaking.webp";
 import React from "react";
 
 const ProfileContent = () => {
-	// FIXME: change dummy image
-	// replace dummy images to correct one.
-	// assignees: justinjdaniel
-	// labels: enhancement, fix-me, ui
-
 	return (
 		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto w-full">
 			<h1 className="font-bold text-2xl mb-8 text-left w-max">
@@ -62,13 +57,13 @@ const ProfileContent = () => {
 					/>
 				</div>
 				<div className="relative h-80">
-					<img
+					{/* <Image
 						alt="..."
 						src={"https://source.unsplash.com/random/400x600"}
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
 						className="rounded-lg object-cover h-80 w-full"
-					/>
+					/> */}
 				</div>
 			</div>
 			<div className="mb-4 text-zinc-300">
@@ -76,15 +71,18 @@ const ProfileContent = () => {
 					{`I manage our developers work and ensure
 						the quality and security of our blockchain solutions. I have
 						extensive experience in developing and advising on public and
-						private blockchain platforms, such as Ethereum and Polygon.`}
+						private blockchain platforms, such as Ethereum, Polygon and Hyper Ledger Fabric.`}
 				</p>
+				{/* TODO: Add more content about projects */}
+				{/* Add more content regarding projects, achievements, and tools I've worked with. Also, consider including links to another page that provides detailed information about the projects I've completed, those currently in progress, as well as any side projects or personal endeavors. */}
+				{/* assignees: justinjdaniel */}
+				{/* labels: enhancement, fix-me, ui */}
 				<p className="prose prose-neutral dark:prose-invert">
 					{`I have successfully led the development of a NFT platform with a
 					simple multi-platform compatible DApp for organizations and
 					institutes, as well as a private blockchain service for supply chain
 					management and. I am also currently working on a blockchain
-					certification platform for colleges, universities, and companies that
-					issue certificates. It is fully customizable and secure.`}
+					traceability in supply chain management system.`}
 				</p>
 			</div>
 
