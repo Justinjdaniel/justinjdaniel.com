@@ -1,9 +1,13 @@
 # [Justinjdaniel.com](website)
 
-<!-- add image -->
+<!-- TODO: Readme: add preview image -->
+<!-- add a corner rounded image of the website -->
+<!-- labels: enhancement -->
 <!-- ![title](doc/images/something.png) -->
 
-<!-- some social links -->
+<!-- TODO: Readme: add links like live-website, some social links etc.-->
+<!-- make the links centered to the page -->
+<!-- labels: enhancement -->
 <!-- [github][github-link] | [linkedIn][linkedIn-link] | [Contributing](#contributing) -->
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/161563c0-f086-473c-a2ed-d13c599183d4/deploy-status)](netlify-deploy-status)
@@ -21,14 +25,7 @@ This repository contains the source code and content for my personal portfolio w
 
 This project uses [Next.js](next-js), a React framework that enables hybrid static and server rendering, fast refresh, code splitting, built-in CSS support, and more. To learn more about Next.js, you can visit their [documentation](next-js-docs) or [blog](next-js-blog).
 
-[next-js]: https://nextjs.org/
-[next-js-docs]: https://nextjs.org/docs
-[next-js-blog]: https://nextjs.org/blog
-
 It also uses [Tailwind CSS](tailwind-css), a utility-first CSS framework for rapidly building custom designs. Tailwind CSS works by scanning your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file. It's fast, flexible, and reliable — with zero-runtime. You can read the [installation guide](tailwind-css-installation).
-
-[tailwind-css]: https://tailwindcss.com/docs/installation
-[tailwind-css-installation]: https://tailwindcss.com/docs/installation
 
 Another key technology in this project is [GSAP](https://greensock.com/gsap/), a professional-grade animation platform for the modern web. GSAP is a robust JavaScript tool-set that turns developers into animation superheroes. It can animate anything JavaScript can touch, in any framework, with blazing speed and cross-browser compatibility. It also offers a variety of plugins for specific animation challenges, such as scroll-based animation, draggable interactions, morphing, and more. You can watch the [screen-casts](https://greensock.com/get-started) or visit the [npm page](https://www.npmjs.com/package/gsap) to learn more about GSAP.
 
@@ -38,6 +35,9 @@ To run this website locally, you need to have [Git](https://git-scm.com/), [Node
 
 - Clone this repository using the following command:
 
+<!-- TODO: add other installation methods -->
+<!-- add optional step to install with npm too instead of pnpm only -->
+<!-- labels: enhancement -->
 ```bash
 git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
 cd justinjdaniel.com
@@ -52,11 +52,3 @@ pnpm dev
 This project is licensed under the MIT License - see the [LICENSE](license) file for details.
 
 <!-- link reference -->
-
-[website]: https://justinjdaniel.com
-[repo]: https://github.com/Justinjdaniel/Justinjdaniel.com
-[netlify-deploy-status]: https://app.netlify.com/sites/justinjdaniel/deploys
-[vercel-deploy]: https://vercel.com/deployments/justinjdaniel.com
-[license]: https://github.com/Justinjdaniel/Justinjdaniel.com/blob/main/LICENSE
-[open-in-vscode]: https://open.vscode.dev/Justinjdaniel/Justinjdaniel.com
-[open-in-codespace]: https://github.com/codespaces
