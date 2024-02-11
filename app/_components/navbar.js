@@ -3,12 +3,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const navigation = [
-	{ name: "Home", href: "/" },
-	{ name: "Projects", href: "/projects" },
-	{ name: "Contact", href: "/contact" },
-	{ name: "Blog", href: "/blog" },
-];
+/**
+ * Defines the navigation items array.
+ */
 const navItems = {
 	"/": {
 		name: "Home",
@@ -16,11 +13,18 @@ const navItems = {
 	"/blog": {
 		name: "Blog",
 	},
-	"/project": {
-		name: "Project",
-	},
+	// "/project": {
+	// 	name: "Project",
+	// },
 };
 
+/**
+ * Navbar component.
+ *
+ * This component renders a navigation bar with links based on the current pathname.
+ *
+ * @returns {React.Element} The rendered navigation bar.
+ */
 const Navbar = () => {
 	let pathname = usePathname() || "/";
 	if (pathname.includes("/blog/")) {
