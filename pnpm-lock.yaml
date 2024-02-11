@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@vercel/analytics':
-    specifier: ^1.0.2
-    version: 1.0.2
+    specifier: 1.1.3
+    version: 1.1.3
   '@vercel/edge-config':
-    specifier: ^0.2.1
-    version: 0.2.1
+    specifier: 0.4.1
+    version: 0.4.1
   autoprefixer:
     specifier: 10.4.15
     version: 10.4.15(postcss@8.4.27)
@@ -1047,16 +1047,18 @@ packages:
     resolution: {integrity: sha512-cputDpIbFgLUaGQn6Vqg3/YsJwxUwHLO13v3i5ouxT4lat0khip9AEWxtERujXV9wxIB1EyF97BSJFt6vpdI8g==}
     dev: false
 
-  /@vercel/analytics@1.0.2:
-    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
+  /@vercel/analytics@1.1.3:
+    resolution: {integrity: sha512-Z0l0y8TnUnnxr+on7oIMB9qQOoSJIniYMzUng6+NU8VVDkZ+kt2QGD5hzODwsuiRJAsjW528iUEtbWCEGkSCCg==}
+    dependencies:
+      server-only: 0.0.1
     dev: false
 
   /@vercel/edge-config-fs@0.1.0:
     resolution: {integrity: sha512-NRIBwfcS0bUoUbRWlNGetqjvLSwgYH/BqKqDN7vK1g32p7dN96k0712COgaz6VFizAm9b0g6IG6hR6+hc0KCPg==}
     dev: false
 
-  /@vercel/edge-config@0.2.1:
-    resolution: {integrity: sha512-847kYqJEbga4PGgNrctQ9XsD+2Kw/S+UjzZnIFpebQ9VbdtB0MX4anq33WetcYZYPfhZd2L0uXVnY/BcjI5dOw==}
+  /@vercel/edge-config@0.4.1:
+    resolution: {integrity: sha512-4Mc3H7lE+x4RrL17nY8CWeEorvJHbkNbQTy9p8H1tO7y11WeKj5xeZSr07wNgfWInKXDUwj5FZ3qd/jIzjPxug==}
     engines: {node: '>=14.6'}
     dependencies:
       '@vercel/edge-config-fs': 0.1.0
@@ -3047,6 +3049,10 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+    dev: false
+
+  /server-only@0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
     dev: false
 
   /shiki@0.14.3:
