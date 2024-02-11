@@ -1,7 +1,8 @@
 import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
 import award from "public/images/home/award.webp";
-import team from "public/images/home/team.webp";
+import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
+import teamMeetUpEnd2023 from "public/images/home/team-meetup-end-2023.webp";
 import speaking from "public/images/home/speaking.webp";
 import React from "react";
 
@@ -39,7 +40,7 @@ const ProfileContent = () => {
 				<div className="relative h-40">
 					<Image
 						alt="Team meetup in Kerala mid 2023"
-						src={team}
+						src={teamMeetUpMid2023}
 						fill="true"
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
@@ -57,13 +58,13 @@ const ProfileContent = () => {
 					/>
 				</div>
 				<div className="relative h-80">
-					{/* <Image
-						alt="..."
-						src={"https://source.unsplash.com/random/400x600"}
+					<Image
+						alt="Team meetup in Kerala mid 2023"
+						src={teamMeetUpEnd2023}
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
 						className="rounded-lg object-cover h-80 w-full"
-					/> */}
+					/>
 				</div>
 			</div>
 			<div className="mb-4 text-zinc-300">
