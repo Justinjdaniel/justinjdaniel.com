@@ -1,4 +1,4 @@
-name: Dependabot Pull Request Approve and Merge
+name: Dependabot Pull Request Merge
 
 on: pull_request_target
 
@@ -14,20 +14,31 @@ jobs:
       - name: Dependabot metadata
         id: dependabot-metadata
         uses: dependabot/fetch-metadata@v1
+
       - uses: actions/checkout@v3
-      - name: Approve a PR if not already approved
+
+      - name: Check for breaking changes
         run: |
-          gh pr checkout "$PR_URL" # sets the upstream metadata for `gh pr status`
-          if [ "$(gh pr status --json reviewDecision -q .currentBranch.reviewDecision)" != "APPROVED" ];
-          then gh pr review --approve "$PR_URL"
-          else echo "PR already approved, skipping additional approvals to minimize emails/notification noise.";
-          fi
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Enable auto-merge for Dependabot PRs
-        if: ${{ steps.dependabot-metadata.outputs.update-type != 'version-update:semver-major' }}
-        run: gh pr merge --auto --squash "$PR_URL"
+          # Use appropriate tool (e.g., npm audit, yarn audit) to check for breaking changes
+          # based on your package manager and configuration
+          # Store the result in a variable
+          BREAKING_CHANGES=$(your_breaking_change_check_command)
+
+        outputs:
+          has_breaking_changes: ${{ steps.check_for_breaking_changes.outputs.BREAKING_CHANGES == 'true' }}
+
+      - name: Enable auto-merge for safe updates
+        if: ${{ !steps.check_for_breaking_changes.outputs.has_breaking_changes &&
+               steps.dependabot-metadata.outputs.update_type != 'version-update:semver-major' }}
+        run: gh pr merge --auto --merge "$PR_URL"  # Replace with your preferred merge method (merge, rebase)
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Manual review required for breaking changes or major updates
+        if: ${{ steps.check_for_breaking_changes.outputs.has_breaking_changes ||
+               steps.dependabot-metadata.outputs.update_type == 'version-update:semver-major' }}
+        run: |
+          gh pr comment "$PR_URL" --body "This pull request requires manual review due to potential breaking changes or major version update."
+          # Optionally add labels or set required reviewers for manual review
+
