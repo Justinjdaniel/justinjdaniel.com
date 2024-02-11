@@ -1,16 +1,15 @@
-# [Justinjdaniel.com](website)
-
-<!-- TODO: Readme: add preview image -->
-<!-- add a corner rounded image of the website -->
-<!-- labels: enhancement -->
-<!-- ![title](doc/images/something.png) -->
+<p align='center'>
+<img src='.github/images/landing.png' width='500px' alt='landing page preview'/>
+</p>
 
 <!-- TODO: Readme: add links like live-website, some social links etc.-->
 <!-- make the links centered to the page -->
 <!-- labels: enhancement -->
 <!-- [github][github-link] | [linkedIn][linkedIn-link] | [Contributing](#contributing) -->
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/161563c0-f086-473c-a2ed-d13c599183d4/deploy-status)](netlify-deploy-status)
+# [Justinjdaniel.com](website)
+
+[![Build Next.js site](https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml/badge.svg)](https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml)
 [![Vercel deployment](https://img.shields.io/github/deployments/Justinjdaniel/Justinjdaniel.com/production?label=vercel&logo=vercel&logoColor=white)](vercel-deploy)
 [![Next.js version](https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](license)
@@ -38,6 +37,7 @@ To run this website locally, you need to have [Git](https://git-scm.com/), [Node
 <!-- TODO: add other installation methods -->
 <!-- add optional step to install with npm too instead of pnpm only -->
 <!-- labels: enhancement -->
+
 ```bash
 git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
 cd justinjdaniel.com
