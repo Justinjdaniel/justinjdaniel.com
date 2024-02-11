@@ -3,16 +3,16 @@
 </p>
 
 <p align='center'>
-<a href='https://justinjdaniel.com'>Website</a> 
-| <a href='https://github.com/justinjdaniel'>Github</a> 
-| <a href='https://www.linkedin.com/in/justin-j-daniel'>LinkedIn</a> 
+<a href='https://justinjdaniel.com'>Website</a>
+| <a href='https://github.com/justinjdaniel'>Github</a>
+| <a href='https://www.linkedin.com/in/justin-j-daniel'>LinkedIn</a>
 <!-- | <a href='...'>Contributing</a> -->
 </p>
 
 <p align='center'>
-  <a href='LICENSE'><img src='https://img.shields.io/badge/License-MIT-yellow.svg' alt='license'></a> 
-  <a href='https://nextjs.org/'><img src='https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white' alt='Next.js version'></a> 
-  <a href='repo'><img src='https://img.shields.io/github/repo-size/justinjdaniel/justinjdaniel.com?color=009cdf&label=repo%20size&logo=git&logoColor=white' alt='Next.js version'></a> 
+  <a href='LICENSE'><img src='https://img.shields.io/badge/License-MIT-yellow.svg' alt='license'></a>
+  <a href='https://nextjs.org/'><img src='https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white' alt='Next.js version'></a>
+  <a href='repo'><img src='https://img.shields.io/github/repo-size/justinjdaniel/justinjdaniel.com?color=009cdf&label=repo%20size&logo=git&logoColor=white' alt='Next.js version'></a>
 </p>
 
 <p align='center'>
@@ -36,9 +36,9 @@
   </a>
 </p>
 
-<hr/>
-
 This repository contains the source code and content for my personal portfolio website. You can view it live at <https://justinjdaniel.com/>.
+
+<hr/>
 
 ## Technologies
 
@@ -69,6 +69,6 @@ pnpm dev
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](license) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 <!-- link reference -->
