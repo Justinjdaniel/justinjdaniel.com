@@ -21,7 +21,7 @@ const ProfileContent = () => {
 				👋
 			</h1>
 			<div>
-				<p className="text-zinc-500 prose prose-neutral dark:prose-invert">
+				<p className="text-zinc-300 prose prose-neutral dark:prose-invert">
 					{`I'm a blockchain software developer, optimist, and team player with several
 						years of experience in the industry. I specialize in developing
 						smart contracts, decentralized applications, and NFTs using
@@ -71,14 +71,14 @@ const ProfileContent = () => {
 					/>
 				</div>
 			</div>
-			<div className="mb-4">
-				<p className="text-zinc-500 prose prose-neutral dark:prose-invert mb-4">
+			<div className="mb-4 text-zinc-300">
+				<p className="prose prose-neutral dark:prose-invert mb-4">
 					{`I manage our developers work and ensure
 						the quality and security of our blockchain solutions. I have
 						extensive experience in developing and advising on public and
 						private blockchain platforms, such as Ethereum and Polygon.`}
 				</p>
-				<p className="text-zinc-500 prose prose-neutral dark:prose-invert">
+				<p className="prose prose-neutral dark:prose-invert">
 					{`I have successfully led the development of a NFT platform with a
 					simple multi-platform compatible DApp for organizations and
 					institutes, as well as a private blockchain service for supply chain
@@ -89,7 +89,7 @@ const ProfileContent = () => {
 			</div>
 
 			<div>
-				<p className="text-zinc-500 prose prose-neutral dark:prose-invert">
+				<p className="prose prose-neutral dark:prose-invert">
 					{`I am passionate about learning new skills and exploring new
 						challenges in the blockchain space. I am always looking for
 						opportunities to collaborate with other developers and innovators
