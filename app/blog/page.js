@@ -1,5 +1,4 @@
-import { fullDate } from "../_utils/format-date";
-import { formatDate } from "@/utils/format-date";
+import { formatDate , fullDate} from "@/utils/format-date";
 import { allBlogs } from "contentlayer/generated";
 import Link from "next/link";
 
