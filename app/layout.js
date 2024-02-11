@@ -38,6 +38,9 @@ export const metadata = {
 		},
 	},
 	icons: {
+		// TODO: change the favicon.ico to a new image with the name of the website.
+		// assignees: justinjdaniel
+		// labels: enhancement, fix-me, ui
 		shortcut: "/favicon.png",
 	},
 };
