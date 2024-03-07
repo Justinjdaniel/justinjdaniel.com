@@ -36,7 +36,8 @@
   </a>
 </p>
 
-This repository contains the source code and content for my personal portfolio website. You can view it live at <https://justinjdaniel.com/>.
+> [!NOTE]
+> This repository contains the source code and content for my personal portfolio website. You can view it live at <https://justinjdaniel.com/>.
 
 <hr/>
 
