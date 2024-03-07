@@ -4,6 +4,12 @@ import { allBlogs } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 
+/**
+ * Generate metadata for a blog post.
+ *
+ * @param {Object} params - The parameters for generating the metadata
+ * @return {Object} The metadata object containing title, description, openGraph, and twitter information
+ */
 export async function generateMetadata({ params }) {
 	const post = allBlogs.find((post) => post.slug === params.slug);
 	if (!post) {
@@ -45,6 +51,12 @@ export async function generateMetadata({ params }) {
 	};
 }
 
+/**
+ * Function for rendering a blog post based on the provided parameters.
+ *
+ * @param {Object} params - The parameters for the blog post
+ * @return {JSX.Element} The blog post section component
+ */
 export default async function Blog({ params }) {
 	const post = allBlogs.find((post) => post.slug === params.slug);
 
