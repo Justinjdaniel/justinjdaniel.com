@@ -7,8 +7,8 @@
   "editor.formatOnSave": true,
   "editor.wordWrap": "on",
   // Theme settings
-  "workbench.colorTheme": "Night Owl",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Bearded Theme Arc Blueberry",
+  "workbench.iconTheme": "bearded-icons",
   // JSON settings
   "json.schemas": [
     {
@@ -27,6 +27,7 @@
   },
   "cSpell.words": [
     "apos",
+    "callout",
     "Chakra",
     "Codespace",
     "contentlayer",
@@ -35,6 +36,7 @@
     "noopener",
     "noreferrer",
     "pageview",
+    "rehype",
     "tailwindcss"
   ],
   "conventionalCommits.scopes": [
