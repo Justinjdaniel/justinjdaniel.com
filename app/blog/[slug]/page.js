@@ -1,9 +1,16 @@
 import { Mdx } from "@/components/mdx";
 import { formatDate } from "@/utils/format-date";
 import { allBlogs } from "contentlayer/generated";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 
+/**
+ * Generate metadata for a blog post.
+ *
+ * @param {Object} params - The parameters for generating the metadata
+ * @return {Object} The metadata object containing title, description, openGraph, and twitter information
+ */
 export async function generateMetadata({ params }) {
 	const post = allBlogs.find((post) => post.slug === params.slug);
 	if (!post) {
@@ -45,6 +52,12 @@ export async function generateMetadata({ params }) {
 	};
 }
 
+/**
+ * Function for rendering a blog post based on the provided parameters.
+ *
+ * @param {Object} params - The parameters for the blog post
+ * @return {JSX.Element} The blog post section component
+ */
 export default async function Blog({ params }) {
 	const post = allBlogs.find((post) => post.slug === params.slug);
 
@@ -53,7 +66,7 @@ export default async function Blog({ params }) {
 	}
 
 	return (
-		<section className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto w-full">
+		<section className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
@@ -73,6 +86,16 @@ export default async function Blog({ params }) {
 					{formatDate(post.publishedAt)}
 				</p>
 			</div>
+			{post.image && (
+				<Image
+					alt={`${post.title} cover image`}
+					src={post.image}
+					width="500"
+					height="500"
+					priority="true"
+					className="rounded-lg object-cover h-80 w-full object-left"
+				/>
+			)}
 			<Mdx code={post.body.code} />
 		</section>
 	);

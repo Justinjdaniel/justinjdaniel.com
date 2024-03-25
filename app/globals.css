@@ -116,6 +116,7 @@ input[type='email'] {
 table {
   display: block;
   max-width: fit-content;
+  max-width: -moz-fit-content;
   overflow-x: auto;
   white-space: nowrap;
 }
@@ -127,6 +128,7 @@ table {
 [data-rehype-pretty-code-fragment] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
   counter-reset: line;
+  -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 [data-rehype-pretty-code-fragment] .line {

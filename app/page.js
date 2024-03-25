@@ -1,14 +1,14 @@
 import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
 import award from "public/images/home/award.webp";
-import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
-import teamMeetUpEnd2023 from "public/images/home/team-meetup-end-2023.webp";
 import speaking from "public/images/home/speaking.webp";
+import teamMeetUpEnd2023 from "public/images/home/team-meetup-end-2023.webp";
+import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
 import React from "react";
 
 const ProfileContent = () => {
 	return (
-		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto w-full">
+		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
 			<h1 className="font-bold text-2xl mb-8 text-left w-max">
 				hey, I'm{" "}
 				<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
