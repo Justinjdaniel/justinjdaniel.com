@@ -2,23 +2,15 @@
 
 name: 'TODO to Issue'
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-    types: [closed]
-
+on: [push]
 jobs:
   build:
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: 'actions/checkout@v3'
+      - uses: actions/checkout@v4
       - name: 'TODO to Issue'
         uses: 'alstr/todo-to-issue-action@v4'
         with:
           AUTO_ASSIGN: true
-          # CLOSE_ISSUES: true
-          # ACTOR: true
+          CLOSE_ISSUES: true
+          ACTOR: true

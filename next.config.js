@@ -1,6 +1,9 @@
 const { get } = require("@vercel/edge-config");
 const { withContentlayer } = require("next-contentlayer");
 
+// TODO: Update NextJs to latest v14
+// labels: enhancement, feature-request, dependencies
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	// output: "export",
@@ -8,9 +11,6 @@ const nextConfig = {
 	// trailingSlash: true,
 	// Optional: Change the output directory `out` -> `dist`
 	// distDir: "out",
-	experimental: {
-		serverActions: true,
-	},
 	// Optional: Disable the image optimizer.
 	images: {
 		// 	unoptimized: true,

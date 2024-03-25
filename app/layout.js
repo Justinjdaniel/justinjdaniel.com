@@ -54,12 +54,12 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<main className="flex flex-col w-screen h-screen overflow-x-hidden bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+				<main className="flex flex-col min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black">
 					<Particles
 						className="absolute inset-0 -z-10 animate-fade-in"
 						quantity={100}
 					/>
-					<div className="flex flex-col animate-fade-in">
+					<div className="flex flex-col animate-fade-in text-pretty">
 						<Header />
 						{children}
 					</div>

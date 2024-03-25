@@ -1,4 +1,4 @@
-import { formatDate , fullDate} from "@/utils/format-date";
+import { formatDate, fullDate } from "@/utils/format-date";
 import { allBlogs } from "contentlayer/generated";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ export const metadata = {
 
 export default async function BlogPage() {
 	return (
-		<section className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto w-full">
+		<section className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
 			<h1 className="font-bold text-2xl mb-8 tracking-tighter">Read my blog</h1>
 
 			{allBlogs.length === 0 && <p>No blogs yet.</p>}
