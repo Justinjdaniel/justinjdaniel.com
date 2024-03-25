@@ -4,6 +4,11 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+// TODO: Update contentlayer config
+// need to update the contentlayer config with latest configuration.
+// assignees: justinjdaniel
+// labels: enhancement, feature-request, ui
+
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
 	slug: {
