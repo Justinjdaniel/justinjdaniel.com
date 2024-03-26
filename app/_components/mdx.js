@@ -117,7 +117,6 @@ function ConsCard({ title, cons }) {
 	);
 }
 
-// FIXME: the highlight function is not working
 function Code({ children, ...props }) {
 	const codeHTML = highlight(children);
 	// rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
