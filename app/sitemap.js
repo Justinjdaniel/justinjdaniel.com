@@ -1,4 +1,4 @@
-import { getBlogPosts } from "@/db/blog";
+import { getBlogPosts } from "app/_db/blog";
 
 export default async function sitemap() {
 	const blogs = getBlogPosts.map((post) => ({
