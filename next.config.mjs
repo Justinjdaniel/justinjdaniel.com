@@ -1,10 +1,3 @@
-const { get } = require("@vercel/edge-config");
-const { withContentlayer } = require("next-contentlayer");
-
-// TODO: Update NextJs to latest v14
-// labels: enhancement, feature-request, dependencies
-
-/** @type {import('next').NextConfig} */
 const nextConfig = {
 	// output: "export",
 	// Optional: Add a trailing slash to all paths `/about` -> `/about/`
@@ -44,12 +37,13 @@ const nextConfig = {
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
     default-src 'self' vercel.live;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com vercel.live;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com vercel.live va.vercel-scripts.com;
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src 'none';
     connect-src *;
     font-src 'self' data:;
+    frame-src 'self' *.codesandbox.io vercel.live;
 `;
 
 const securityHeaders = [
@@ -90,4 +84,4 @@ const securityHeaders = [
 	},
 ];
 
-module.exports = withContentlayer(nextConfig);
+export default nextConfig;
