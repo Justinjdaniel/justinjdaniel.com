@@ -15,10 +15,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "contentlayer/generated": ["./.contentlayer/generated"],
       "@/*": ["./*"],
       "@/components/*": ["./app/_components/*"],
-      "@/utils/*": ["./app/_utils/*"]
+      "@/utils/*": ["./app/_utils/*"],
+      "@/db/*": ["app/_db/*"]
     },
     "incremental": true,
     "plugins": [
@@ -28,6 +28,6 @@
     ],
     "strictNullChecks": true
   },
-  "include": [".contentlayer/generated"],
+  "include": ["**/*.js", "**/*.jsx"],
   "exclude": ["node_modules"]
 }

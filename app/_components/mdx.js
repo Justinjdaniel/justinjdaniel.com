@@ -1,9 +1,36 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
-import * as React from "react";
+import React from "react";
+import { highlight } from "sugar-high";
 
-const CustomLink = (props) => {
+function Table({ data: { headers, rows } }) {
+	return (
+		<table>
+			<thead>
+				<tr>
+					{headers.map((header, index) => (
+						// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						<th key={index}>{header}</th>
+					))}
+				</tr>
+			</thead>
+			<tbody>
+				{rows.map((row, index) => (
+					// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+					<tr key={index}>
+						{row.map((cell, cellIndex) => (
+							// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+							<td key={cellIndex}>{cell}</td>
+						))}
+					</tr>
+				))}
+			</tbody>
+		</table>
+	);
+}
+
+function CustomLink(props) {
 	const href = props.href;
 
 	if (href.startsWith("/")) {
@@ -19,7 +46,7 @@ const CustomLink = (props) => {
 	}
 
 	return <a target="_blank" rel="noopener noreferrer" {...props} />;
-};
+}
 
 function RoundedImage(props) {
 	return <Image alt={props.alt} className="rounded-lg" {...props} />;
@@ -42,8 +69,8 @@ function ProsCard({ title, pros }) {
 				{pros.map((pro) => (
 					<div key={pro} className="flex font-medium items-baseline mb-2">
 						<div className="h-4 w-4 mr-2">
-							{/* rome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
 							<svg className="h-4 w-4 text-emerald-500" viewBox="0 0 24 24">
+								<title>Check-mark icon</title>
 								<g
 									fill="none"
 									stroke="currentColor"
@@ -72,13 +99,13 @@ function ConsCard({ title, cons }) {
 				{cons.map((con) => (
 					<div key={con} className="flex font-medium items-baseline mb-2">
 						<div className="h-4 w-4 mr-2">
-							{/* rome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 20 20"
 								fill="currentColor"
 								className="h-4 w-4 text-red-500"
 							>
+								<title>Warning Icon</title>
 								<path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
 							</svg>
 						</div>
@@ -90,20 +117,62 @@ function ConsCard({ title, cons }) {
 	);
 }
 
+function Code({ children, ...props }) {
+	const codeHTML = highlight(children);
+	// rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+	return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+}
+
+function slugify(str) {
+	return str
+		.toString()
+		.toLowerCase()
+		.trim() // Remove whitespace from both ends of a string
+		.replace(/\s+/g, "-") // Replace spaces with -
+		.replace(/&/g, "-and-") // Replace & with 'and'
+		.replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
+		.replace(/\-\-+/g, "-"); // Replace multiple - with single -
+}
+
+function createHeading(level) {
+	return ({ children }) => {
+		const slug = slugify(children);
+		return React.createElement(
+			`h${level}`,
+			{ id: slug },
+			[
+				React.createElement("a", {
+					href: `#${slug}`,
+					key: `link-${slug}`,
+					className: "anchor",
+				}),
+			],
+			children,
+		);
+	};
+}
+
 const components = {
+	h1: createHeading(1),
+	h2: createHeading(2),
+	h3: createHeading(3),
+	h4: createHeading(4),
+	h5: createHeading(5),
+	h6: createHeading(6),
 	Image: RoundedImage,
 	a: CustomLink,
 	Callout,
 	ProsCard,
 	ConsCard,
+	code: Code,
+	Table,
 };
 
-export function Mdx({ code }) {
-	const Component = useMDXComponent(code);
-
+export function CustomMDX(props) {
 	return (
-		<article className="prose prose-quoteless prose-neutral dark:prose-invert">
-			<Component components={{ ...components }} />
-		</article>
+		<MDXRemote
+			{...props}
+			components={{ ...components, ...(props.components || {}) }}
+		/>
 	);
 }
