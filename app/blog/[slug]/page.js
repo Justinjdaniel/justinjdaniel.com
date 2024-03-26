@@ -1,9 +1,9 @@
-import { Mdx } from "@/components/mdx";
+import { CustomMDX } from "@/components/mdx";
+import { getBlogPosts } from "@/db/blog";
 import { formatDate } from "@/utils/format-date";
-import { allBlogs } from "contentlayer/generated";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import Balancer from "react-wrap-balancer";
+import { Suspense } from "react";
 
 /**
  * Generate metadata for a blog post.
@@ -12,7 +12,7 @@ import Balancer from "react-wrap-balancer";
  * @return {Object} The metadata object containing title, description, openGraph, and twitter information
  */
 export async function generateMetadata({ params }) {
-	const post = allBlogs.find((post) => post.slug === params.slug);
+	const post = getBlogPosts().find((post) => post.slug === params.slug);
 	if (!post) {
 		return;
 	}
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
 		summary: description,
 		image,
 		slug,
-	} = post;
+	} = post.metadata;
 	const ogImage = image
 		? `https://justinjdaniel.com${image}`
 		: `https://justinjdaniel.com/og?title=${title}`;
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
  * @return {JSX.Element} The blog post section component
  */
 export default async function Blog({ params }) {
-	const post = allBlogs.find((post) => post.slug === params.slug);
+	const post = getBlogPosts().find((post) => post.slug === params.slug);
 
 	if (!post) {
 		notFound();
@@ -72,31 +72,47 @@ export default async function Blog({ params }) {
 				suppressHydrationWarning
 				// rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(post.structuredData),
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "BlogPosting",
+						headline: post.metadata.title,
+						datePublished: post.metadata.publishedAt,
+						dateModified: post.metadata.publishedAt,
+						description: post.metadata.summary,
+						image: post.metadata.image
+							? `https://justinjdaniel.com${post.metadata.image}`
+							: `https://justinjdaniel.com/og?title=${post.metadata.title}`,
+						url: `https://justinjdaniel.com/blog/${post.slug}`,
+						author: {
+							"@type": "Person",
+							name: "Justin J Daniel",
+						},
+					}),
 				}}
 			/>
-			<h1 className="font-bold text-2xl tracking-tighter max-w-[650px] mb-2">
-				<Balancer>{post.title}</Balancer>
+			<h1 className="title font-bold text-2xl tracking-tighter max-w-[650px] mb-2">
+				{post.metadata.title}
 			</h1>
-			<h3 className="text-sm text-neutral-800 dark:text-neutral-200">
-				{post.summary}
-			</h3>
 			<div className="flex justify-between items-center mt-2 mb-8 text-sm max-w-[650px]">
-				<p className="text-sm text-neutral-600 dark:text-neutral-400">
-					{formatDate(post.publishedAt)}
-				</p>
+				<Suspense fallback={<p className="h-5" />}>
+					<p className="text-sm text-neutral-600 dark:text-neutral-400">
+						{formatDate(post.metadata.publishedAt)}
+					</p>
+				</Suspense>
 			</div>
-			{post.image && (
+			{post.metadata.image && (
 				<Image
-					alt={`${post.title} cover image`}
-					src={post.image}
+					alt={`${post.metadata.title} cover image`}
+					src={post.metadata.image}
 					width="500"
 					height="500"
 					priority="true"
 					className="rounded-lg object-cover h-80 w-full object-left"
 				/>
 			)}
-			<Mdx code={post.body.code} />
+			<article className="prose prose-quoteless prose-neutral dark:prose-invert">
+				<CustomMDX source={post.content} />
+			</article>
 		</section>
 	);
 }
