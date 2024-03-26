@@ -46,7 +46,7 @@ const Header = () => {
 				src={bg}
 				alt="bg"
 			/>
-			<div className="max-w-2xl px-4 flex items-center justify-between mx-auto">
+			<div className="max-w-2xl px-4 md:px-0 flex items-center justify-between mx-auto">
 				<Navbar />
 
 				<ul className="flex items-center justify-center gap-4">
