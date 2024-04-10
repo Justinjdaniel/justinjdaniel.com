@@ -1,4 +1,5 @@
-import BackToTopButton from "@/app/_components/buttons/back-to-top";
+import BackToTopButton from "@/components/buttons/back-to-top";
+import ScrollIndicator from "@/components/scroll-indicator";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/db/blog";
 import { formatDate } from "@/utils/format-date";
@@ -91,6 +92,7 @@ export default async function Blog({ params }) {
 					}),
 				}}
 			/>
+			<ScrollIndicator/>
 			<h1 className="title font-bold text-2xl tracking-tighter max-w-[650px] mb-2">
 				{post.metadata.title}
 			</h1>
