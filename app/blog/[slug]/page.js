@@ -1,3 +1,4 @@
+import BackToTopButton from "@/app/_components/buttons/back-to-top";
 import { CustomMDX } from "@/components/mdx";
 import { getBlogPosts } from "@/db/blog";
 import { formatDate } from "@/utils/format-date";
@@ -113,6 +114,7 @@ export default async function Blog({ params }) {
 			<article className="prose prose-quoteless prose-neutral dark:prose-invert">
 				<CustomMDX source={post.content} />
 			</article>
+			<BackToTopButton />
 		</section>
 	);
 }
