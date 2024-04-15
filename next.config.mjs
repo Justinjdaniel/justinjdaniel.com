@@ -17,6 +17,7 @@ const nextConfig = {
 		// 	},
 		// ],
 	},
+	transpilePackages: ["next-mdx-remote"],
 	redirects() {
 		try {
 			return get("redirects");
