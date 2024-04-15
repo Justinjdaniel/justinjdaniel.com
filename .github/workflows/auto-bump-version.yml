@@ -5,9 +5,14 @@
 name: 'Bump Version'
 
 on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
   push:
     branches:
-      - 'main'
+      - main
+
 
 jobs:
   bump-version:
