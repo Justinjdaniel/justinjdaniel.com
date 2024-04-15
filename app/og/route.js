@@ -19,7 +19,7 @@ export async function GET(req) {
 				flexDirection: "column",
 				alignItems: "flex-start",
 				justifyContent: "center",
-				backgroundImage: "url(http://localhost:3000/images/og-bg.png)",
+				backgroundImage: "url(https://justinjdaniel.com/images/og-bg.png)",
 			}}
 		>
 			<div
