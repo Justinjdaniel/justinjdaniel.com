@@ -12,7 +12,8 @@ const ScrollIndicator = () => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+			const totalScroll =
+				document.documentElement.scrollHeight - window.innerHeight;
 			const currentScroll = window.scrollY;
 			const newProgress = Math.round((currentScroll * 100) / totalScroll);
 			setProgress(newProgress);
