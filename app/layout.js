@@ -18,7 +18,7 @@ export const metadata = {
 	description:
 		"Programmer, Blockchain Developer, Web Developer, and UI/UX Designer.",
 	openGraph: {
-		title: "justinjdaniel.com",
+		title: "Justin J Daniel",
 		description:
 			"Programmer, Blockchain Developer, Web Developer, and UI/UX Designer.",
 		url: "https://justinjdaniel.com",
@@ -38,10 +38,7 @@ export const metadata = {
 		},
 	},
 	icons: {
-		// TODO: change the favicon.ico to a new image with the name of the website.
-		// assignees: justinjdaniel
-		// labels: enhancement, fix-me, ui
-		shortcut: "/favicon.png",
+		shortcut: "/favicon.ico",
 	},
 };
 
