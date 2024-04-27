@@ -1,3 +1,4 @@
+import AnimatedText from "./_components/animated-text";
 import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
 import award from "public/images/home/award.webp";
@@ -7,6 +8,11 @@ import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
 import React from "react";
 
 const ProfileContent = () => {
+	// TODO: Section for Projects
+	// Add a section for content regarding projects, achievements, and tools I've worked with. Also, consider including links to another page that provides detailed information about the projects I've completed, those currently in progress, as well as any side projects or personal endeavors.
+	// assignees: justinjdaniel
+	// labels: enhancement, fix-me, ui
+
 	return (
 		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
 			<h1 className="font-semibold text-2xl mb-8 text-left w-max">
@@ -18,12 +24,14 @@ const ProfileContent = () => {
 			</h1>
 			<div>
 				<p className="text-zinc-300 prose prose-neutral dark:prose-invert">
-					I'm a blockchain software developer, optimist, and team player with
-					several years of experience in the industry. I specialize in
-					developing smart contracts, decentralized applications, and NFTs using
-					Solidity, Web3.js, and Ethereum. I also have a strong background in
-					web development and implementation of a blockchain-based system for
-					services and products.
+					I am a blockchain developer and researcher with over three years of
+					experience. I specialize in smart contracts, dApps, tokens, and NFTs
+					using Solidity, Web3.js, and Ethers.js. With my full-stack development
+					background and DevOps experience, I ensure seamless integration and
+					deployment for any blockchain project. My passion for blockchain
+					technology extends to ongoing research to stay updated with the latest
+					advancements in the field. conduct research to stay updated with
+					emerging technologies.
 				</p>
 			</div>
 			<div className="columns-2 gap-4 my-8">
@@ -74,11 +82,8 @@ const ProfileContent = () => {
 					and advising on public and private blockchain platforms, such as
 					Ethereum, Polygon and Hyper Ledger Fabric.
 				</p>
-				{/* TODO: Add more content about projects */}
-				{/* Add more content regarding projects, achievements, and tools I've worked with. Also, consider including links to another page that provides detailed information about the projects I've completed, those currently in progress, as well as any side projects or personal endeavors. */}
-				{/* assignees: justinjdaniel */}
-				{/* labels: enhancement, fix-me, ui */}
-				<p className="prose prose-neutral dark:prose-invert">
+
+				<p className="prose prose-neutral dark:prose-invert text-pretty">
 					I have successfully led the development of a NFT platform with a
 					simple multi-platform compatible DApp for organizations and
 					institutes, as well as a private blockchain service for supply chain
