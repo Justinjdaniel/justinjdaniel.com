@@ -1,4 +1,3 @@
-import AnimatedText from "./_components/animated-text";
 import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
 import award from "public/images/home/award.webp";
@@ -77,27 +76,28 @@ const ProfileContent = () => {
 			</div>
 			<div className="mb-4 text-zinc-300">
 				<p className="prose prose-neutral dark:prose-invert mb-4">
-					I manage our developers work and ensure the quality and security of
-					our blockchain solutions. I have extensive experience in developing
-					and advising on public and private blockchain platforms, such as
-					Ethereum, Polygon and Hyper Ledger Fabric.
+					I lead the development and quality assurance of secure blockchain
+					solutions. My expertise spans public and private platforms like
+					Ethereum, Polygon, and Hyperledger Fabric.
 				</p>
 
 				<p className="prose prose-neutral dark:prose-invert text-pretty">
-					I have successfully led the development of a NFT platform with a
-					simple multi-platform compatible DApp for organizations and
-					institutes, as well as a private blockchain service for supply chain
-					management and. I am also currently working on a blockchain
-					traceability in supply chain management system.
+					I spearheaded the creation of a user-friendly, multi-platform DApp NFT
+					platform for organizations and institutes. Additionally, I led the
+					development of a private blockchain service for efficient supply chain
+					management. I also designed and built a tokenization platform with
+					RBAC functionality, which can be used as a plug-and-play service for
+					existing platforms. Currently, I'm building a blockchain traceability
+					system to enhance supply chain transparency.
 				</p>
 			</div>
 
 			<div>
 				<p className="prose prose-neutral dark:prose-invert">
-					I am passionate about learning new skills and exploring new challenges
-					in the blockchain space. I am always looking for opportunities to
-					collaborate with other developers and innovators who share my vision
-					of building a more decentralized and trustless world.
+					I'm a lifelong learner, constantly seeking new blockchain challenges
+					and skills. I thrive in collaborative environments, working with
+					developers and visionaries to build a more decentralized and secure
+					future.
 				</p>
 			</div>
 			<ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300">
