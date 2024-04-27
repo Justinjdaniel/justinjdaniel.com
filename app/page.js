@@ -37,45 +37,49 @@ const ProfileContent = () => {
 				<div className="relative h-80 mb-4">
 					<Image
 						alt="speaking in blockchain meetup"
+						title="speaking in blockchain meetup"
 						src={speaking}
 						fill="true"
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
-						className="rounded-lg object-cover h-80 w-full"
+						className="rounded-lg object-cover h-80 w-full transition-transform duration-300 ease-in-out hover:scale-105"
 					/>
 				</div>
 				<div className="relative h-40">
 					<Image
 						alt="Team meetup in Kerala mid 2023"
+						title="Team meetup in Kerala mid 2023"
 						src={teamMeetUpMid2023}
 						fill="true"
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
-						className="rounded-lg object-cover h-40 w-full"
+						className="rounded-lg object-cover h-40 w-full transition-transform duration-300 ease-in-out hover:scale-105"
 					/>
 				</div>
 
 				<div className="relative h-40 mb-4">
 					<Image
 						alt="Awarded by Kerala Digital University's Vice Chancellor"
+						title="Awarded by Kerala Digital University's Vice Chancellor"
 						src={award}
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
-						className="rounded-lg object-cover h-40 w-ful"
+						className="rounded-lg object-cover h-40 w-ful transition-transform duration-300 ease-in-out hover:scale-105"
 					/>
 				</div>
 				<div className="relative h-80">
 					<Image
 						alt="Team meetup in Kerala mid 2023"
+						title="Team meetup in Kerala mid 2023"
 						src={teamMeetUpEnd2023}
 						sizes="(max-width: 768px) 213px, 50vw"
 						priority="true"
-						className="rounded-lg object-cover h-80 w-full"
+						className="rounded-lg object-cover h-80 w-full transition-transform duration-300 ease-in-out hover:scale-105"
 					/>
 				</div>
 			</div>
 			<div className="mb-4 text-zinc-300">
-				<p className="prose prose-neutral dark:prose-invert mb-4">
+				<p className="prose prose-neutral dark:prose-invert mb-4 text-pretty">
 					I lead the development and quality assurance of secure blockchain
 					solutions. My expertise spans public and private platforms like
 					Ethereum, Polygon, and Hyperledger Fabric.
@@ -93,7 +97,7 @@ const ProfileContent = () => {
 			</div>
 
 			<div>
-				<p className="prose prose-neutral dark:prose-invert">
+				<p className="prose prose-neutral dark:prose-invert text-pretty">
 					I'm a lifelong learner, constantly seeking new blockchain challenges
 					and skills. I thrive in collaborative environments, working with
 					developers and visionaries to build a more decentralized and secure
