@@ -36,7 +36,7 @@
   </a>
 </p>
 
-<p align='center'>
+<p align='left'>
     <a href="https://justinjdaniel.com">
     <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/MyPortfolio/myportfolio3.svg" alt="Website" />
   </a>
@@ -49,7 +49,7 @@
 </p>
 
 > [!NOTE]
-> This repository contains the source code and content for my personal portfolio website. You can view it live at.
+> This repository contains the source code and content for my personal portfolio website. You can view it live at <https://justinjdaniel.com/>.
 
 <hr/>
 
@@ -67,6 +67,10 @@ To run this website locally, you need to have [Git](https://git-scm.com/), [Node
 
 - Clone this repository using the following command:
 
+<!-- TODO: add other installation methods -->
+<!-- add optional step to install with npm too instead of pnpm only -->
+<!-- labels: enhancement -->
+
 ```bash
 git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
 cd justinjdaniel.com
@@ -74,7 +78,7 @@ pnpm install
 pnpm dev
 ```
 
-- Open in your web browser to view the website.
+- Open <http://localhost:3000> in your web browser to view the website.
 
 ## License
 
