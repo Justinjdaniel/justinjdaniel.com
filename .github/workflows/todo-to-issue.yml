@@ -1,8 +1,9 @@
 # Usage: https://github.com/alstr/todo-to-issue-action/blob/master/README.md#usage
 
-name: 'TODO to Issue'
+name: 'Run TODO to Issue'
 
-on: [push]
+on: ['push']
+
 jobs:
   build:
     runs-on: 'ubuntu-latest'
@@ -10,7 +11,3 @@ jobs:
       - uses: actions/checkout@v4
       - name: 'TODO to Issue'
         uses: 'alstr/todo-to-issue-action@v4'
-        with:
-          AUTO_ASSIGN: true
-          CLOSE_ISSUES: true
-          ACTOR: true

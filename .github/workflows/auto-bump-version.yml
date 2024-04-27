@@ -5,13 +5,13 @@
 name: 'Bump Version'
 
 on:
-  pull_request:
+ pull_request:
     types: [closed]
     branches:
       - main
 
 jobs:
-  bump-version:
+ bump-version:
     name: 'Bump Version on main'
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
@@ -19,26 +19,29 @@ jobs:
       contents: write
 
     steps:
-      - name: 'Checkout source code'
-        uses: 'actions/checkout@v4'
+      - name: 'Checkout main branch'
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref }}
-      - name: 'cat package.json'
-        run: cat ./package.json
+          ref: 'main'
+          fetch-depth: 0 # Fetch all history for all branches and tags
+      - name: 'Set up Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14' # Use the version of Node.js you need
+      - name: 'Install dependencies'
+        run: npm ci
       - name: 'Automated Version Bump'
         id: version-bump
-        uses: 'phips28/gh-action-bump-version@master'
+        uses: phips28/gh-action-bump-version@master
         with:
           tag-prefix: 'v'
           commit-message: 'CI: bumps version to {{version}} [skip ci]'
-          # minor-wording: 'add,Adds,new'
-          # major-wording: 'MAJOR,cut-major'
-          # patch-wording: 'patch,fixes'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'cat package.json'
-        run: cat ./package.json
-      - name: 'Output Step'
-        env:
-          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
-        run: echo "new tag $NEW_TAG"
+      - name: 'Commit version bump'
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add .
+          git commit -m "CI: bumps version to ${{ steps.version-bump.outputs.newTag }} [skip ci]"
+          git push
