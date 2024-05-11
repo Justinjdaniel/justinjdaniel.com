@@ -16,7 +16,7 @@ const ProfileContent = () => {
 		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
 			<h1 className="font-semibold text-2xl mb-8 text-left w-max">
 				hey, I'm{" "}
-				<span className="bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">
+				<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
 					Justin{" "}
 				</span>
 				👋

@@ -31,10 +31,12 @@ export default function Particles({
 		};
 	}, []);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		onMouseMove();
 	}, [mousePosition.x, mousePosition.y]);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		initCanvas();
 	}, [refresh]);
@@ -78,7 +80,9 @@ export default function Particles({
 		const translateY = 0;
 		const size = Math.floor(Math.random() * 2) + 0.1;
 		const alpha = 0;
-		const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
+		const targetAlpha = Number.parseFloat(
+			(Math.random() * 0.6 + 0.1).toFixed(1),
+		);
 		const dx = (Math.random() - 0.5) * 0.2;
 		const dy = (Math.random() - 0.5) * 0.2;
 		const magnetism = 0.1 + Math.random() * 4;
@@ -149,7 +153,7 @@ export default function Particles({
 				canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
 			];
 			const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-			const remapClosestEdge = parseFloat(
+			const remapClosestEdge = Number.parseFloat(
 				remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
 			);
 			if (remapClosestEdge > 1) {

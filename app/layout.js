@@ -5,8 +5,8 @@ import IntroAnimation from "@/components/intro-animation";
 import Particles from "@/components/particles";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
-import { Suspense } from "react";
 import NextTopLoader from "nextjs-toploader";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
 	// labels: enhancement, feature-request, ui
 
 	return (
-		<html lang="en">
+		<html lang="en" className="scroll-smooth">
 			<body className={inter.className}>
 				<NextTopLoader />
 				<main className="flex flex-col min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
 						<Header />
 						{children}
 					</div>
-					{/* <IntroAnimation /> */}
+					<IntroAnimation />
 				</main>
 				<Suspense>
 					<Analytics />

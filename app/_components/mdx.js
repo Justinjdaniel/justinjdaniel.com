@@ -10,17 +10,17 @@ function Table({ data: { headers, rows } }) {
 			<thead>
 				<tr>
 					{headers.map((header, index) => (
-						// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 						<th key={index}>{header}</th>
 					))}
 				</tr>
 			</thead>
 			<tbody>
 				{rows.map((row, index) => (
-					// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 					<tr key={index}>
 						{row.map((cell, cellIndex) => (
-							// rome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 							<td key={cellIndex}>{cell}</td>
 						))}
 					</tr>
@@ -119,7 +119,7 @@ function ConsCard({ title, cons }) {
 
 function Code({ children, ...props }) {
 	const codeHTML = highlight(children);
-	// rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+	// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 	return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 

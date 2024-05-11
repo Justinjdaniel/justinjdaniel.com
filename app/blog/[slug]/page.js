@@ -72,7 +72,7 @@ export default async function Blog({ params }) {
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
-				// rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify({
 						"@context": "https://schema.org",

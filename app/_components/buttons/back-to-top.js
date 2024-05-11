@@ -14,6 +14,7 @@ const BackToTopButton = () => {
 		setIsVisible(window.scrollY > 300);
 	};
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	React.useEffect(() => {
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);

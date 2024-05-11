@@ -9,6 +9,7 @@ export default function AnalyticsGTM() {
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (pathname) {
 			pageview(pathname);
@@ -32,7 +33,7 @@ export default function AnalyticsGTM() {
 			<Script
 				id="gtm-script"
 				strategy="afterInteractive"
-				// rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 				dangerouslySetInnerHTML={{
 					__html: `
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

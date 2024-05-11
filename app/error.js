@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-// rome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
+// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 export default function Error({ error, reset }) {
 	useEffect(() => {
 		// Log the error to an error reporting service
