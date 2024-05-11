@@ -8,5 +8,5 @@ extensions:
   - ms-vscode-remote.remote-containers
   - davidanson.vscode-markdownlint
   - docsmsft.docs-authoring-pack
-  - rome.rome
+  - biomejs.biome
   - streetsidesoftware.code-spell-checker
