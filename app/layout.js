@@ -6,6 +6,7 @@ import Particles from "@/components/particles";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,6 +52,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={inter.className}>
+				<NextTopLoader />
 				<main className="flex flex-col min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
 					<Particles
 						className="absolute inset-0 -z-10 animate-fade-in"
@@ -60,7 +62,7 @@ export default function RootLayout({ children }) {
 						<Header />
 						{children}
 					</div>
-					<IntroAnimation />
+					{/* <IntroAnimation /> */}
 				</main>
 				<Suspense>
 					<Analytics />
