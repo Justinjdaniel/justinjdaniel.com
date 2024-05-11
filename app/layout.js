@@ -54,15 +54,12 @@ export default function RootLayout({ children }) {
 			<body className={inter.className}>
 				<NextTopLoader />
 				<main className="flex flex-col min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
-					<Particles
-						className="absolute inset-0 -z-10 animate-fade-in"
-						quantity={100}
-					/>
+					<Particles className="fixed inset-0 -z-10" quantity={150} refresh />
+					<IntroAnimation />
 					<div className="flex flex-col animate-fade-in text-pretty">
 						<Header />
 						{children}
 					</div>
-					<IntroAnimation />
 				</main>
 				<Suspense>
 					<Analytics />

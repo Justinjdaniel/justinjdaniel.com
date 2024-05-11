@@ -4,8 +4,13 @@ import award from "public/images/home/award.webp";
 import speaking from "public/images/home/speaking.webp";
 import teamMeetUpEnd2023 from "public/images/home/team-meetup-end-2023.webp";
 import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
-import React from "react";
+import React, { Fragment } from "react";
 
+/**
+ * Renders the profile content section of the webpage.
+ *
+ * @return {JSX.Element} The profile content section.
+ */
 const ProfileContent = () => {
 	// TODO: Section for Projects
 	// Add a section for content regarding projects, achievements, and tools I've worked with. Also, consider including links to another page that provides detailed information about the projects I've completed, those currently in progress, as well as any side projects or personal endeavors.
@@ -104,34 +109,47 @@ const ProfileContent = () => {
 					future.
 				</p>
 			</div>
-			<ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300">
-				<li>
-					<a
-						className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
-						rel="noopener noreferrer"
-						target="_blank"
-						href="https://twitter.com/justinjdaniel"
-					>
-						<ArrowIcon />
-						<p className="h-7 ml-2">follow me</p>
-					</a>
-				</li>
-				<li>
-					<a
-						className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
-						rel="noopener noreferrer"
-						target="_blank"
-						href="mailto:justinjdaniel@duck.com"
-					>
-						<ArrowIcon />
-						<p className="h-7 ml-2">connect with me</p>
-					</a>
-				</li>
-			</ul>
+			<Footer />
 		</content>
 	);
 };
 
+/**
+ * Renders the Footer component.
+ *
+ * @return {JSX.Element} The rendered Footer component.
+ */
+const Footer = () => (
+	<ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300">
+		<li>
+			<a
+				className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
+				rel="noopener noreferrer"
+				target="_blank"
+				href="https://twitter.com/justinjdaniel"
+			>
+				<ArrowIcon />
+				<p className="h-7 ml-2">follow me</p>
+			</a>
+		</li>
+		<li>
+			<a
+				className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
+				rel="noopener noreferrer"
+				target="_blank"
+				href="mailto:justinjdaniel@duck.com"
+			>
+				<ArrowIcon />
+				<p className="h-7 ml-2">connect with me</p>
+			</a>
+		</li>
+	</ul>
+);
+
 export default function Home() {
-	return <ProfileContent />;
+	return (
+		<Fragment>
+			<ProfileContent />
+		</Fragment>
+	);
 }
