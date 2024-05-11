@@ -30,6 +30,11 @@ const SocialIcon = ({ href, iconPath, title }) => (
 	</Link>
 );
 
+/**
+ * Renders the header component with an image and social icons.
+ *
+ * @return {JSX.Element} Rendered header component
+ */
 const Header = () => {
 	// TODO: Update Header Image
 	// assignees: Justinjdaniel
@@ -42,7 +47,7 @@ const Header = () => {
 	return (
 		<header>
 			<Image
-				className="h-32 md:h-40 mb-8 w-screen animate-fade-in object-cover"
+				className="h-32 md:h-40 mb-8 w-screen object-cover"
 				src={bg}
 				alt="bg"
 			/>

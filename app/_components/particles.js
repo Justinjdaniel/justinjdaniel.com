@@ -2,6 +2,17 @@
 import { useMousePosition } from "@/utils/mouse";
 import React, { useEffect, useRef } from "react";
 
+/**
+ * Renders a particle effect on a canvas.
+ *
+ * @param {Object} props - The properties for the Particles component.
+ * @param {string} [props.className=""] - The CSS class name for the container div.
+ * @param {number} [props.quantity=30] - The number of particles to render.
+ * @param {number} [props.staticity=50] - The staticity of the particles.
+ * @param {number} [props.ease=50] - The ease of the particles.
+ * @param {boolean} [props.refresh=false] - Whether to refresh the particles.
+ * @return {JSX.Element} The Particles component.
+ */
 export default function Particles({
 	className = "",
 	quantity = 30,
