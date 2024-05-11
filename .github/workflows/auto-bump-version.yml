@@ -1,47 +1,34 @@
-# Auto Bump Version
-
-# refer: https://github.com/phips28/gh-action-bump-version
-
-name: 'Bump Version'
+name: Bump package version
 
 on:
- pull_request:
+  pull_request:
     types: [closed]
-    branches:
-      - main
+    branches: [main]
 
 jobs:
- bump-version:
-    name: 'Bump Version on main'
+  build:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
-    permissions:
-      contents: write
 
     steps:
-      - name: 'Checkout main branch'
-        uses: actions/checkout@v4
-        with:
-          ref: 'main'
-          fetch-depth: 0 # Fetch all history for all branches and tags
-      - name: 'Set up Node.js'
-        uses: actions/setup-node@v4
-        with:
-          node-version: '14' # Use the version of Node.js you need
-      - name: 'Install dependencies'
-        run: npm ci
-      - name: 'Automated Version Bump'
-        id: version-bump
-        uses: phips28/gh-action-bump-version@master
-        with:
-          tag-prefix: 'v'
-          commit-message: 'CI: bumps version to {{version}} [skip ci]'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Commit version bump'
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          git add .
-          git commit -m "CI: bumps version to ${{ steps.version-bump.outputs.newTag }} [skip ci]"
-          git push
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Bump version and push tag
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        if git log -1 --pretty=%B | grep -q "^feat"; then
+          npm version minor -m "Bump up package version to %s"
+        else
+          npm version patch -m "Bump up package version to %s"
+        fi
+        git push --follow-tags
