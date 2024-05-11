@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 function parseFrontmatter(fileContent) {
 	const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -9,6 +9,7 @@ function parseFrontmatter(fileContent) {
 	const frontMatterLines = frontMatterBlock.trim().split("\n");
 	const metadata = {};
 
+	// biome-ignore lint/complexity/noForEach: <explanation>
 	frontMatterLines.forEach((line) => {
 		const [key, ...valueArr] = line.split(": ");
 		let value = valueArr.join(": ").trim();

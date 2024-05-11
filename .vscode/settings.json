@@ -19,12 +19,9 @@
       "fileMatch": ["/bower.json"],
       "url": "http://json.schemastore.org/bower"
     }
-  ], // ESLint settings
-  "eslint.validate": ["javascript", "javascriptreact"], // Enable ESLint for JavaScript
-  // Rome settings
-  "[javascript]": {
-    "editor.defaultFormatter": "rome.rome" // Use Rome as the default formatter for JavaScript files
-  },
+  ],
+  // Biome settings
+  "editor.defaultFormatter": "biomejs.biome", // Use Biome as the default formatter for all files
   "cSpell.words": [
     "apos",
     "callout",
@@ -50,5 +47,8 @@
     "components",
     "blog",
     "style"
-  ]
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
