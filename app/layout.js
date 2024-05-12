@@ -44,11 +44,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-	// TODO: add intro animation
-	// currently a small line is given as animation. Replace that with a goof loading animation. Also add a time delay at on load only, currently fade in animation is given to the homepage.
-	// assignees: justinjdaniel
-	// labels: enhancement, feature-request, ui
-
 	return (
 		<html lang="en" className="scroll-smooth">
 			<body className={inter.className}>
