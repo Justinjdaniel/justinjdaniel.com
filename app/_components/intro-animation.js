@@ -1,16 +1,35 @@
 "use client";
-import React from "react";
+
+import { useEffect } from "react";
 
 /**
  * Renders the IntroAnimation component.
  *
  * @return {JSX.Element} The IntroAnimation component.
  */
-const IntroAnimation = () => {
+const IntroAnimation = ({ ...props }) => {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
-		<div>
-			<div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
+		<div
+			className="flex flex-col min-h-screen items-center justify-center animate-disappear"
+			{...props}
+		>
+			<div className="intro-helix-container animate-fade-out">
+				<div className="slice" />
+				<div className="slice" />
+				<div className="slice" />
+				<div className="slice" />
+				<div className="slice" />
+				<div className="slice" />
+			</div>
 		</div>
+		// ) : (
+		// 	<div>
+		// 		<div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
+		// 	</div>
 	);
 };
 

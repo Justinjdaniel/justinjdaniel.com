@@ -148,19 +148,19 @@ table {
   transform: translate3d(-66.6%, 0, 0);
 }
 
-/**--------------------------- **
-** Orbit animation starts here **
-** --------------------------- **/
-.orbit-animation-container {
-  --uib-size: 150px;
-  --uib-color: #ffffff;
-  --uib-speed: 2s;
-  height: var(--uib-size);
-  width: var(--uib-size);
+/**--------------------------------- **
+** Helix intro animation starts here **
+** --------------------------------- **/
+.intro-helix-container {
+  --uib-size: 120px;
+  --uib-color: #fff;
+  --uib-speed: 2.5s;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: var(--uib-size);
+  width: var(--uib-size);
 }
 
 .slice {
@@ -182,7 +182,7 @@ table {
   border-radius: 50%;
   background-color: var(--uib-color);
   flex-shrink: 0;
-  animation: orbit var(--uib-speed) infinite;
+  animation: orbit var(--uib-speed) linear infinite;
   transition: background-color 0.3s ease;
 }
 
@@ -224,6 +224,29 @@ table {
 }
 .slice:nth-child(6)::after {
   animation-delay: calc(var(--uib-a) + var(--uib-b) * 5);
+}
+
+@keyframes orbit {
+  0% {
+    transform: translateX(calc(var(--uib-size) * 0.25)) scale(0.73684);
+    opacity: 0.65;
+  }
+  25% {
+    transform: translateX(0%) scale(0.47368);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(calc(var(--uib-size) * -0.25)) scale(0.73684);
+    opacity: 0.65;
+  }
+  75% {
+    transform: translateX(0%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(var(--uib-size) * 0.25)) scale(0.73684);
+    opacity: 0.65;
+  }
 }
 /**------------------------- **
 ** Orbit animation keyframes **
