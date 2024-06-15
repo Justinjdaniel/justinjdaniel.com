@@ -10,6 +10,7 @@ import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// MARK: Metadata
 export const metadata = {
 	metadataBase: new URL("https://justinjdaniel.com"),
 	title: {
@@ -43,6 +44,7 @@ export const metadata = {
 	},
 };
 
+// MARK: Layout
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className="scroll-smooth">
