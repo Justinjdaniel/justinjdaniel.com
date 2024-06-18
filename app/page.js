@@ -16,7 +16,7 @@ const ProfileContent = () => {
 	// Add a section for content regarding projects, achievements, and tools I've worked with. Also, consider including links to another page that provides detailed information about the projects I've completed, those currently in progress, as well as any side projects or personal endeavors.
 	// assignees: justinjdaniel
 	// labels: enhancement, fix-me, ui
-// MARK: content
+	// MARK: content
 	return (
 		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
 			<h1 className="font-semibold text-2xl mb-8 text-left w-max">
