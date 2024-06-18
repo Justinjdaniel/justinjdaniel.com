@@ -4,9 +4,9 @@ import Header from "@/components/header";
 import IntroAnimation from "@/components/intro-animation";
 import Particles from "@/components/particles";
 import { Analytics } from "@vercel/analytics/react";
+import { ViewTransitions } from "next-view-transitions";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import { ViewTransitions } from "next-view-transitions";
 import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
