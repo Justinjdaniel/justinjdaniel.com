@@ -6,6 +6,7 @@ import Particles from "@/components/particles";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
+import { ViewTransitions } from "next-view-transitions";
 import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -47,22 +48,24 @@ export const metadata = {
 // MARK: Layout
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" className="scroll-smooth">
-			<body className={inter.className}>
-				<NextTopLoader />
-				<main className="flex flex-col min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
-					<Particles className="fixed inset-0 -z-10" quantity={150} refresh />
-					<IntroAnimation />
-					<div className="flex flex-col animate-fade-in text-pretty">
-						<Header />
-						{children}
-					</div>
-				</main>
-				<Suspense>
-					<Analytics />
-					<AnalyticsGTM />
-				</Suspense>
-			</body>
-		</html>
+		<ViewTransitions>
+			<html lang="en" className="scroll-smooth">
+				<body className={inter.className}>
+					<NextTopLoader />
+					<main className="flex flex-col min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
+						<Particles className="fixed inset-0 -z-10" quantity={150} refresh />
+						<IntroAnimation />
+						<div className="flex flex-col animate-fade-in text-pretty">
+							<Header />
+							{children}
+						</div>
+					</main>
+					<Suspense>
+						<Analytics />
+						<AnalyticsGTM />
+					</Suspense>
+				</body>
+			</html>
+		</ViewTransitions>
 	);
 }
