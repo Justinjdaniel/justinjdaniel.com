@@ -1,6 +1,6 @@
 import { getBlogPosts } from "@/db/blog";
 import { formatDate } from "@/utils/format-date";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Suspense } from "react";
 
 export const metadata = {

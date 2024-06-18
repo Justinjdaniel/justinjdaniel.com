@@ -1,5 +1,5 @@
+import { Link } from "next-view-transitions";
 import { headers } from "next/headers";
-import Link from "next/link";
 
 export default async function NotFound() {
 	const headersList = headers();

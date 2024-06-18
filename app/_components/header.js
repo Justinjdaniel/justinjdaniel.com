@@ -1,5 +1,5 @@
+import { Link } from "next-view-transitions";
 import Image from "next/image";
-import Link from "next/link";
 import bg from "public/images/home/bg.png";
 import React from "react";
 import Navbar from "./navbar";

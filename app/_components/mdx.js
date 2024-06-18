@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { Link } from "next-view-transitions";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { highlight } from "sugar-high";
 
