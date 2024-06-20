@@ -17,7 +17,7 @@ const IntroAnimation = ({ ...props }) => {
 			className="flex flex-col min-h-screen items-center justify-center animate-disappear"
 			{...props}
 		>
-			<div className="intro-helix-container animate-fade-out">
+			<div className="intro-helix-container animate-[fade-out_2s_ease-in-out_forwards]">
 				<div className="slice" />
 				<div className="slice" />
 				<div className="slice" />
