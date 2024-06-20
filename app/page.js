@@ -7,6 +7,12 @@ import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
 import React, { Fragment } from "react";
 
 const ProfileContent = () => {
+	// TODO: Section for Projects
+	// Add a section for content regarding projects, achievements, and tools I've worked with. Also, consider including links to another page that provides detailed information about the projects I've completed, those currently in progress, as well as any side projects or personal endeavors.
+	// assignees: justinjdaniel
+	// labels: enhancement, fix-me, ui
+
+	// MARK: images
 	const images = [
 		{
 			alt: "Speaking in blockchain meetup",
@@ -30,6 +36,7 @@ const ProfileContent = () => {
 		},
 	];
 
+	// MARK: content
 	return (
 		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
 			<h1 className="font-semibold text-2xl mb-8 text-left w-max">
@@ -47,7 +54,8 @@ const ProfileContent = () => {
 					background and DevOps experience, I ensure seamless integration and
 					deployment for any blockchain project. My passion for blockchain
 					technology extends to ongoing research to stay updated with the latest
-					advancements in the field.
+					advancements in the field. Conduct research to stay updated with
+					emerging technologies.
 				</p>
 			</div>
 			<div className="grid grid-cols-2 gap-4 my-8">
@@ -125,7 +133,7 @@ const Footer = () => (
 		</li>
 	</ul>
 );
-
+// MARK: Home main
 export default function Home() {
 	return (
 		<Fragment>
