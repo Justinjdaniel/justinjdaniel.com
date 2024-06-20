@@ -58,20 +58,52 @@ const ProfileContent = () => {
 					emerging technologies.
 				</p>
 			</div>
-			<div className="grid grid-cols-2 gap-4 my-8">
-				{images.map(({ alt, title, src }, index) => (
-					<div key={index + alt} className="relative h-60">
-						<Image
-							alt={alt}
-							title={title}
-							src={src}
-							fill="true"
-							sizes="(max-width: 768px) 213px, 50vw"
-							priority="true"
-							className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
-						/>
-					</div>
-				))}
+
+			<div className="grid grid-flow-dense grid-cols-4 grid-rows-2 gap-4 my-8">
+				<div className="relative row-span-1 col-span-2">
+					<Image
+						alt="Speaking in blockchain meetup"
+						title="Speaking in blockchain meetup"
+						src={speaking}
+						fill="true"
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
+					/>
+				</div>
+				<div className="relative row-span-1 col-span-2">
+					<Image
+						alt="Awarded by Kerala Digital University's Vice Chancellor"
+						title="Awarded by Kerala Digital University's Vice Chancellor"
+						src={award}
+						fill="true"
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
+					/>
+				</div>
+				{/* <div className="relative row-span-1 col-span-2">
+					<Image
+						alt="Team meetup in Kerala end of 2023"
+						title="Team meetup in Kerala end of 2023"
+						src={teamMeetUpEnd2023}
+						fill="true"
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
+					/>
+				</div> */}
+				<div className="relative col-span-4 row-span-1 h-80">
+					<Image
+						alt="Team meetup in Kerala mid 2023"
+						title="Team meetup in Kerala mid 2023"
+						src={teamMeetUpMid2023}
+						fill="true"
+						sizes="(max-width: 768px) 213px, 50vw"
+						priority="true"
+						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
+					/>
+				</div>
 			</div>
 			<div className="mb-4 text-zinc-300">
 				<p className="prose prose-neutral dark:prose-invert mb-4">
