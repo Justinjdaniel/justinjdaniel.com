@@ -24,17 +24,21 @@
   "editor.defaultFormatter": "biomejs.biome", // Use Biome as the default formatter for all files
   "cSpell.words": [
     "apos",
+    "biomejs",
     "callout",
     "Chakra",
     "Codespace",
     "gsap",
     "Hyperledger",
     "justinjdaniel",
+    "nextjs",
     "noopener",
     "noreferrer",
     "pageview",
     "rehype",
-    "tailwindcss"
+    "staticity",
+    "tailwindcss",
+    "toploader"
   ],
   "conventionalCommits.scopes": [
     "format",
@@ -55,6 +59,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
