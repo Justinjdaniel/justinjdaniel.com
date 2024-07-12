@@ -64,6 +64,10 @@ module.exports = {
 					from: { transform: "translateY(40%)", opacity: "0%" },
 					to: { transform: "translateY(0%)", opacity: "100%" },
 				},
+				"fade-out-up": {
+					from: { transform: "translateY(0%)", opacity: "100%" },
+					to: { transform: "translateY(-40%)", opacity: "0%" },
+				},
 				"fade-in-title": {
 					"0%": {
 						"line-height": "0%",
@@ -76,8 +80,8 @@ module.exports = {
 				},
 				disappear: { from: { display: "flex" }, to: { display: "none" } },
 				appear: {
-					"0%, 99%": { display: "none",  opacity: 0, },
-					"100%": { display: "flex",  opacity: 1 },
+					"0%, 99%": { display: "none", opacity: 0 },
+					"100%": { display: "flex", opacity: 1 },
 				},
 				wiggle: {
 					"0%, 100%": { transform: "rotate(-3deg)" },
@@ -90,6 +94,7 @@ module.exports = {
 				"fade-left": "fade-left 3s ease-in-out forwards",
 				"fade-right": "fade-right 3s ease-in-out forwards",
 				"fade-in-up": "fade-in-up linear forwards",
+				"fade-out-up": "fade-out-up linear forwards",
 				"fade-in-title": "fade-in-title 3s ease-out forwards",
 				disappear: "disappear 1.5s ease-out forwards",
 				appear: "appear 1.5s ease-out forwards",
