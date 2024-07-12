@@ -1,23 +1,12 @@
-name: 'Label Actions'
-
+name: "Pull Request Labeler"
 on:
-  issues:
-    types: [labeled, unlabeled]
-  pull_request_target:
-    types: [labeled, unlabeled]
-  discussion:
-    types: [labeled, unlabeled]
-
-permissions:
-  contents: read
-  issues: write
-  pull-requests: write
-  discussions: write
+- pull_request_target
 
 jobs:
-  action:
+  labeler:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v5
-        with:
-          dot: true
+    - uses: actions/labeler@v5

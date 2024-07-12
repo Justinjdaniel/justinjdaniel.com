@@ -1,16 +1,39 @@
-# Add 'components' label to any change to *.js files
-components: app/_components/**/*.js
+# check this ref link for further details: https://github.com/marketplace/actions/labeler
 
-# Add 'utils' label to any change to *.js files
-utils: app/_utils/**/*.js'
+# Add 'Blog' label to any file changes within 'content' folder
+blog:
+  - changed-files:
+      - any-glob-to-any-file: content/*
+
+component:
+  - changed-files:
+      - any-glob-to-any-file: app/_components/**/*.js
+
+utils:
+  - changed-files:
+      - any-glob-to-any-file: app/_utils/**/*.js
 
 config:
-- .github/**
-- .vscode/**
-- '*'
-- '!readme.md'
-- '!package*.json'
+  - changed-files:
+      - any-glob-to-any-file:
+          - app/_config/**/*.js
+          - .vscode/**
 
-dependencies: package*.json
+ci/cd:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**.yml
 
-# check this ref link for further details: https://github.com/marketplace/actions/labeler
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/**
+          - README.md
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file: package*.json
+
+# Add 'feature' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
+feature-request:
+  - head-branch: ['^feature', 'feature']
