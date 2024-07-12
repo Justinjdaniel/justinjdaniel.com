@@ -50,13 +50,18 @@ export default function RootLayout({ children }) {
 		<html lang="en" className="scroll-smooth">
 			<body className={inter.className}>
 				<NextTopLoader />
-				<main className="flex flex-col min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
+				<main className="flex flex-col h-[100dvh] bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
 					<Particles className="fixed inset-0 -z-10" quantity={150} refresh />
 					<IntroAnimation />
-					<div className="flex flex-col animate-fade-in text-pretty">
-						<Header />
-						{children}
-					</div>
+					<content className="overflow-hidden animate-appear">
+						<div
+							className="flex flex-col animate-[fade-in_1.5s_linear_forwards] text-pretty overflow-auto"
+							style={{ animationDelay: "-0.5s" }}
+						>
+							<Header />
+							{children}
+						</div>
+					</content>
 				</main>
 				<Suspense>
 					<Analytics />
