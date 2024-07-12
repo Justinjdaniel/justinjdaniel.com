@@ -226,6 +226,9 @@ table {
   animation-delay: calc(var(--uib-a) + var(--uib-b) * 5);
 }
 
+/**------------------------- **
+** Orbit animation keyframes **
+** ------------------------- **/
 @keyframes orbit {
   0% {
     transform: translateX(calc(var(--uib-size) * 0.25)) scale(0.73684);
@@ -248,6 +251,49 @@ table {
     opacity: 0.65;
   }
 }
-/**------------------------- **
-** Orbit animation keyframes **
-** ------------------------- **/
+
+@layer base {
+  @keyframes fill-text {
+    to {
+      --progress: 100%;
+    }
+  }
+
+  /* The @property tells the browser what type this variable is,
+    a percentage in our case. If we would not add that here, the
+    browser would not be able to animate it from 0% to 100%.
+  */
+  @property --progress {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+  }
+}
+
+@layer components {
+  .reveal-text {
+    --faded-color: #7a7a7a;
+    --highlighted-color: #d4d4d4;
+    /* Compared to the video, I updated this article to reflect
+       a solution that's so much easier. Creating a single gradient
+       with two colors, and then animating the starting/end point of
+       the two colors with a CSS variable --progress. CSS @property
+       makes this so much easier for us now.
+    */
+    --progress: 0%;
+    background-image: linear-gradient(
+      to right,
+      var(--highlighted-color),
+      var(--highlighted-color) var(--progress),
+      var(--faded-color) var(--progress),
+      var(--faded-color)
+    );
+    background-clip: text;
+    background-repeat: no-repeat;
+    color: transparent;
+    display: inline;
+    animation: fill-text linear both;
+    animation-timeline: --reveal-wrapper;
+    animation-range: entry 200% cover 80%;
+  }
+}
