@@ -47,7 +47,7 @@ const Header = () => {
 	return (
 		<header>
 			<Image
-				className="h-32 md:h-40 mb-8 w-screen object-cover"
+				className="h-32 md:h-40 mb-8 w-screen object-cover animate-[fade-in-out_ease-in-out_forwards] [animation-range:0px_10px] [animation-timeline:scroll()]"
 				src={bg}
 				alt="bg"
 			/>

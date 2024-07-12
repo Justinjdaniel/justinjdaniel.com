@@ -39,7 +39,7 @@ const ProfileContent = () => {
 	// MARK: content
 	return (
 		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
-			<h1 className="font-semibold text-2xl mb-8 text-left w-max">
+			<h1 className="font-semibold text-2xl mb-8 text-left w-max animate-[fade-out-up_ease-in_forwards] [animation-range:10%_25%] [animation-timeline:scroll()]">
 				Hey, I'm{" "}
 				<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
 					Justin
@@ -47,7 +47,7 @@ const ProfileContent = () => {
 				👋
 			</h1>
 			<div>
-				<p className="text-zinc-300 prose prose-neutral dark:prose-invert">
+				<p className="text-zinc-300 prose prose-neutral dark:prose-invert animate-[fade-out-up_ease-in_forwards] [animation-range:15%_55%] [animation-timeline:scroll()]">
 					I am a blockchain developer and researcher with over three years of
 					experience. I specialize in smart contracts, dApps, tokens, and NFTs
 					using Solidity, Web3.js, and Ethers.js. With my full-stack development
@@ -60,7 +60,7 @@ const ProfileContent = () => {
 			</div>
 
 			<div className="grid grid-flow-dense grid-cols-4 grid-rows-2 gap-4 my-8">
-				<div className="relative row-span-1 col-span-2">
+				<div className="relative row-span-1 col-span-2 animate-[fade-out-up_ease-in_forwards] [animation-range:55%_95%] [animation-timeline:scroll()]">
 					<Image
 						alt="Speaking in blockchain meetup"
 						title="Speaking in blockchain meetup"
@@ -71,7 +71,7 @@ const ProfileContent = () => {
 						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
 					/>
 				</div>
-				<div className="relative row-span-1 col-span-2">
+				<div className="relative row-span-1 col-span-2 animate-[fade-out-up_ease-in_forwards] [animation-range:55%_95%] [animation-timeline:scroll()]">
 					<Image
 						alt="Awarded by Kerala Digital University's Vice Chancellor"
 						title="Awarded by Kerala Digital University's Vice Chancellor"
@@ -82,18 +82,7 @@ const ProfileContent = () => {
 						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
 					/>
 				</div>
-				{/* <div className="relative row-span-1 col-span-2">
-					<Image
-						alt="Team meetup in Kerala end of 2023"
-						title="Team meetup in Kerala end of 2023"
-						src={teamMeetUpEnd2023}
-						fill="true"
-						sizes="(max-width: 768px) 213px, 50vw"
-						priority="true"
-						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
-					/>
-				</div> */}
-				<div className="relative col-span-4 row-span-1 h-80">
+				<div className="relative col-span-4 row-span-1 h-80 animate-[fade-in-up_ease-in-out_forwards] [animation-range:5%_56%] [animation-timeline:scroll()]">
 					<Image
 						alt="Team meetup in Kerala mid 2023"
 						title="Team meetup in Kerala mid 2023"
@@ -106,12 +95,12 @@ const ProfileContent = () => {
 				</div>
 			</div>
 			<div className="mb-4 text-zinc-300">
-				<p className="prose prose-neutral dark:prose-invert mb-4">
+				<p className="prose prose-neutral dark:prose-invert mb-4 animate-[fade-in-up_ease-in-out_forwards] [animation-range:30%_80%] [animation-timeline:scroll()]">
 					I lead the development and quality assurance of secure blockchain
 					solutions. My expertise spans public and private platforms like
 					Ethereum, Polygon, and Hyperledger Fabric.
 				</p>
-				<p className="prose prose-neutral dark:prose-invert">
+				<p className="prose prose-neutral dark:prose-invert animate-[fade-in-up_ease-in-out_forwards] [animation-range:40%_95%] [animation-timeline:scroll()]">
 					I spearheaded the creation of a user-friendly, multi-platform DApp NFT
 					platform for organizations and institutes. Additionally, I led the
 					development of a private blockchain service for efficient supply chain
@@ -122,7 +111,7 @@ const ProfileContent = () => {
 				</p>
 			</div>
 			<div>
-				<p className="prose prose-neutral dark:prose-invert">
+				<p className="prose prose-neutral dark:prose-invert animate-[fade-in-up_ease-in-out_forwards] [animation-range:60%_100%] [animation-timeline:scroll()]">
 					I'm a lifelong learner, constantly seeking new blockchain challenges
 					and skills. I thrive in collaborative environments, working with
 					developers and visionaries to build a more decentralized and secure
@@ -140,7 +129,7 @@ const ProfileContent = () => {
  * @return {JSX.Element} The rendered Footer component.
  */
 const Footer = () => (
-	<ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300">
+	<ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300 animate-[fade-in-up_ease-in-out_forwards] [animation-range:80%_100%] [animation-timeline:scroll()]">
 		<li>
 			<a
 				className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
