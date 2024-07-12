@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
 			<body className={inter.className}>
 				<NextTopLoader />
 				<main className="flex flex-col h-[100dvh] bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
-					<Particles className="fixed inset-0 -z-10" quantity={150} refresh />
+					<Particles className="fixed inset-0 -z-10" quantity={1500} refresh />
 					<IntroAnimation />
 					<content className="overflow-hidden animate-appear">
 						<div
