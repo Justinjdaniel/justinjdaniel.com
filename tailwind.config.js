@@ -40,6 +40,12 @@ module.exports = {
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 			keyframes: {
+				"in-and-out": {
+					"entry 0%": { opacity: 0, transform: "translateY(20%)" },
+					"entry 100%": { opacity: 1, transform: " translateY(0)" },
+					"exit 0%": { opacity: 1, transform: "translateY(0)" },
+					"exit 100%": { opacity: 0, transform: "translateY(-20%)" },
+				},
 				"fade-in": {
 					"0%": { opacity: "0%" },
 					"75%": { opacity: "0%" },
@@ -89,6 +95,7 @@ module.exports = {
 				},
 			},
 			animation: {
+				"in-and-out": "in-and-out linear forwards",
 				"fade-in": "fade-in 3s ease-in-out forwards",
 				"fade-out": "fade-out 3s ease-in-out forwards",
 				"fade-left": "fade-left 3s ease-in-out forwards",
