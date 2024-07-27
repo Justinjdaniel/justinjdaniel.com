@@ -1,12 +1,12 @@
-import "./globals.css";
 import AnalyticsGTM from "@/components/analytics";
-import Header from "@/components/header";
-import IntroAnimation from "@/components/animations/intro-animation";
-import Particles from "@/components/ui/particles";
 import { Analytics } from "@vercel/analytics/react";
+import Header from "@/components/header";
 import { Inter } from "next/font/google";
+import IntroAnimation from "@/components/animations/intro-animation";
+import Particles from "@/components/animations/backgrounds/particles";
 import NextTopLoader from "nextjs-toploader";
 import { Suspense } from "react";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
