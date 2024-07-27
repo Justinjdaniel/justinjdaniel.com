@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import "./style.css";
 
 /**
  * Renders the IntroAnimation component.
