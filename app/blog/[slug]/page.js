@@ -68,7 +68,8 @@ export default async function Blog({ params }) {
 	}
 
 	return (
-		<section className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto relative">
+		<section className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
+			<ScrollIndicator />
 			<script
 				type="application/ld+json"
 				suppressHydrationWarning
@@ -96,7 +97,6 @@ export default async function Blog({ params }) {
 			FIXME: the ScrollIndicator is using the window height and due to the use of overflow hidden in layout it will not work, Please change the logic to scroll driven animation
 			refer: https://developer.chrome.com/docs/css-ui/scroll-driven-animations 
 		 */}
-			<ScrollIndicator />
 			<h1 className="title font-bold text-2xl tracking-tighter max-w-[650px] mb-2">
 				{post.metadata.title}
 			</h1>
@@ -117,7 +117,7 @@ export default async function Blog({ params }) {
 					className="rounded-lg object-cover h-80 w-full object-left"
 				/>
 			)}
-			<article className="prose prose-quoteless prose-neutral dark:prose-invert">
+			<article className="prose prose-quoteless prose-neutral dark:prose-invert relative">
 				<CustomMDX source={post.content} />
 			</article>
 			<BackToTopButton />
