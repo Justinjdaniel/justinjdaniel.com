@@ -113,7 +113,7 @@ const ProfileContent = () => {
 				</p>
 			</div>
 			<Footer />
-		</content>
+		</div>
 	);
 };
 
