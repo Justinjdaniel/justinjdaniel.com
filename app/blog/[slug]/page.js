@@ -93,10 +93,6 @@ export default async function Blog({ params }) {
 					}),
 				}}
 			/>
-			{/* 
-			FIXME: the ScrollIndicator is using the window height and due to the use of overflow hidden in layout it will not work, Please change the logic to scroll driven animation
-			refer: https://developer.chrome.com/docs/css-ui/scroll-driven-animations 
-		 */}
 			<h1 className="title font-bold text-2xl tracking-tighter max-w-[650px] mb-2">
 				{post.metadata.title}
 			</h1>
