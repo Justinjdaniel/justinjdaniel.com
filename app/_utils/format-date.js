@@ -3,7 +3,7 @@
  *
  * @param {string | Date} date - The date to format.
  * @returns {string} - The formatted date string in the format "full date (relative time)".
- */ 
+ */
 export function formatDate(date) {
 	const currentDate = new Date();
 	const targetDate = new Date(date);
