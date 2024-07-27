@@ -1,3 +1,9 @@
+/**
+ * Formats a given date into a relative time string and a full date string.
+ *
+ * @param {string | Date} date - The date to format.
+ * @returns {string} - The formatted date string in the format "full date (relative time)".
+ */ 
 export function formatDate(date) {
 	const currentDate = new Date();
 	const targetDate = new Date(date);
@@ -37,6 +43,12 @@ export function formatDate(date) {
 	}
 }
 
+/**
+ * Formats a given date into a full date string.
+ *
+ * @param {Date|string} date - The date to format.
+ * @return {string} The formatted date string in the format "month day, year".
+ */
 export function fullDate(date) {
 	const targetDate = new Date(date);
 
