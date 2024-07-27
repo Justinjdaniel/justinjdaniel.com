@@ -1,12 +1,12 @@
-import "./globals.css";
 import AnalyticsGTM from "@/components/analytics";
-import Header from "@/components/header";
-import IntroAnimation from "@/components/intro-animation";
-import Particles from "@/components/particles";
 import { Analytics } from "@vercel/analytics/react";
+import Header from "@/components/header";
 import { Inter } from "next/font/google";
+import IntroAnimation from "@/components/animations/intro-animation";
+import Particles from "@/components/animations/backgrounds/particles";
 import NextTopLoader from "nextjs-toploader";
 import { Suspense } from "react";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
 		<html lang="en" className="scroll-smooth">
 			<body className={inter.className}>
 				<NextTopLoader />
-				<main className="flex flex-col h-[100dvh] bg-gradient-to-tl from-black via-zinc-600/20 to-black overflow-x-hidden">
+				<main className="flex flex-col h-[100dvh] overflow-x-hidden">
 					<Particles className="fixed inset-0 -z-10" quantity={1500} refresh />
 					<IntroAnimation />
 					<content className="overflow-hidden animate-appear">
