@@ -1,5 +1,6 @@
 // const defaultTheme = require("tailwindcss/defaultTheme");
 import typography from "@tailwindcss/typography";
+import addVariablesForColors from "./lib/utils/add-variables-for-colors";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -113,6 +114,7 @@ module.exports = {
 	plugins: [
 		typography,
 		require("@tailwindcss/typography"),
+		addVariablesForColors,
 		// require("tailwindcss-debug-screens"),
 	],
 };
