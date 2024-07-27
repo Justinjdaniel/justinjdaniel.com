@@ -1,6 +1,6 @@
+import ScrollIndicator from "@/components/ui/scroll-indicator";
 import BackToTopButton from "@/components/buttons/back-to-top";
 import { CustomMDX } from "@/components/mdx";
-import ScrollIndicator from "@/components/scroll-indicator";
 import { getBlogPosts } from "@/db/blog";
 import { formatDate } from "@/utils/format-date";
 import Image from "next/image";
