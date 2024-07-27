@@ -41,12 +41,11 @@ module.exports = {
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 			keyframes: {
-				"in-and-out": {
-					"entry 0%": { opacity: 0, transform: "translateY(20%)" },
-					"entry 100%": { opacity: 1, transform: " translateY(0)" },
-					"exit 0%": { opacity: 1, transform: "translateY(0)" },
-					"exit 100%": { opacity: 0, transform: "translateY(-20%)" },
+				appear: {
+					"0%, 99%": { display: "none", opacity: 0 },
+					"100%": { display: "flex", opacity: 1 },
 				},
+				disappear: { from: { display: "flex" }, to: { display: "none" } },
 				"fade-in": {
 					"0%": { opacity: "0%" },
 					"75%": { opacity: "0%" },
@@ -85,10 +84,15 @@ module.exports = {
 					"80%": { opacity: "100%" },
 					"100%": { "line-height": "100%", opacity: "100%" },
 				},
-				disappear: { from: { display: "flex" }, to: { display: "none" } },
-				appear: {
-					"0%, 99%": { display: "none", opacity: 0 },
-					"100%": { display: "flex", opacity: 1 },
+				"grow-progress": {
+					from: { transform: "scaleX(0)" },
+					to: { transform: "scaleX(1)" },
+				},
+				"in-and-out": {
+					"entry 0%": { opacity: 0, transform: "translateY(20%)" },
+					"entry 100%": { opacity: 1, transform: " translateY(0)" },
+					"exit 0%": { opacity: 1, transform: "translateY(0)" },
+					"exit 100%": { opacity: 0, transform: "translateY(-20%)" },
 				},
 				wiggle: {
 					"0%, 100%": { transform: "rotate(-3deg)" },
@@ -96,7 +100,8 @@ module.exports = {
 				},
 			},
 			animation: {
-				"in-and-out": "in-and-out linear forwards",
+				appear: "appear 1.5s ease-out forwards",
+				disappear: "disappear 1.5s ease-out forwards",
 				"fade-in": "fade-in 3s ease-in-out forwards",
 				"fade-out": "fade-out 3s ease-in-out forwards",
 				"fade-left": "fade-left 3s ease-in-out forwards",
@@ -104,8 +109,8 @@ module.exports = {
 				"fade-in-up": "fade-in-up linear forwards",
 				"fade-out-up": "fade-out-up linear forwards",
 				"fade-in-title": "fade-in-title 3s ease-out forwards",
-				disappear: "disappear 1.5s ease-out forwards",
-				appear: "appear 1.5s ease-out forwards",
+				"grow-progress": "grow-progress auto linear",
+				"in-and-out": "in-and-out linear forwards",
 				wiggle: "wiggle 1s ease-in-out infinite",
 			},
 			support: {},
