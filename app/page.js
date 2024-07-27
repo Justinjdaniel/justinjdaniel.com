@@ -2,7 +2,6 @@ import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
 import award from "public/images/home/award.webp";
 import speaking from "public/images/home/speaking.webp";
-import teamMeetUpEnd2023 from "public/images/home/team-meetup-end-2023.webp";
 import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
 import React, { Fragment } from "react";
 
