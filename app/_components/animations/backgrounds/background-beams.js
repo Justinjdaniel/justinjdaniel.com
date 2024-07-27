@@ -3,7 +3,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/class-name";
 
-
 /**
  * Renders a set of animated SVG beams as a background.
  *
