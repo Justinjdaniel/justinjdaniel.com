@@ -32,7 +32,7 @@ const ProfileContent = () => {
 
 	// MARK: content
 	return (
-		<content className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
+		<div className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
 			<h1 className="font-semibold text-2xl mb-8 text-left w-max animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
 				Hey, I'm{" "}
 				<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
