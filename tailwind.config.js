@@ -89,10 +89,10 @@ module.exports = {
 					to: { transform: "scaleX(1)" },
 				},
 				"in-and-out": {
-					"entry 0%": { opacity: 0, transform: "translateY(20%)" },
-					"entry 100%": { opacity: 1, transform: " translateY(0)" },
-					"exit 0%": { opacity: 1, transform: "translateY(0)" },
-					"exit 100%": { opacity: 0, transform: "translateY(-20%)" },
+					"entry 5%": { opacity: 0, transform: "translateY(5dvh)" },
+					"entry 95%": { opacity: 1, transform: " translateY(0)" },
+					"exit 5%": { opacity: 1, transform: "translateY(0)" },
+					"exit 95%": { opacity: 0, transform: "translateY(5dvh)" },
 				},
 				wiggle: {
 					"0%, 100%": { transform: "rotate(-3deg)" },
