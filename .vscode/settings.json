@@ -9,6 +9,10 @@
   // Theme settings
   "workbench.colorTheme": "Bearded Theme Arc Blueberry",
   "workbench.iconTheme": "bearded-icons",
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/page.js": "${dirname}/page.js",
+    "**/app/**/layout.js": "${dirname}/layout.js",
+  },
   // JSON settings
   "json.schemas": [
     {
