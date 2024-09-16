@@ -32,7 +32,7 @@
 		"@tailwindcss/typography": "^0.5.15",
 		"autoprefixer": "^10.4.20",
 		"husky": "9.0.11",
-		"postcss": "^8.4.45"
+		"postcss": "^8.4.47"
 	},
 	"author": {
 		"name": "Justin J Daniel"
