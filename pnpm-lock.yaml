@@ -21,8 +21,8 @@ importers:
         specifier: ^11.5.4
         version: 11.5.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gsap:
-        specifier: ^3.12.5
-        version: 3.12.5
+        specifier: ^3.12.7
+        version: 3.12.7
       next:
         specifier: ^14.2.9
         version: 14.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -388,8 +388,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/prop-types@15.7.12':
-    resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
+  '@types/prop-types@15.7.14':
+    resolution: {integrity: sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==}
 
   '@types/react@18.3.3':
     resolution: {integrity: sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==}
@@ -695,8 +695,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  gsap@3.12.5:
-    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
+  gsap@3.12.7:
+    resolution: {integrity: sha512-V4GsyVamhmKefvcAKaoy0h6si0xX7ogwBoBSs2CTJwt7luW0oZzC0LhdkyuKV8PJAXr7Yaj8pMjCKD4GJ+eEMg==}
 
   has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
@@ -1401,7 +1401,7 @@ snapshots:
 
   '@gsap/react@2.1.1':
     dependencies:
-      gsap: 3.12.5
+      gsap: 3.12.7
       react: 18.3.1
 
   '@img/sharp-darwin-arm64@0.33.5':
@@ -1624,11 +1624,11 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/prop-types@15.7.12': {}
+  '@types/prop-types@15.7.14': {}
 
   '@types/react@18.3.3':
     dependencies:
-      '@types/prop-types': 15.7.12
+      '@types/prop-types': 15.7.14
       csstype: 3.1.3
 
   '@types/unist@2.0.11': {}
@@ -1900,7 +1900,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  gsap@3.12.5: {}
+  gsap@3.12.7: {}
 
   has-flag@3.0.0: {}
 
