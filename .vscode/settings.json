@@ -1,19 +1,26 @@
 {
-  // Editor settings
+  // MARK: Editor settings
   "editor.fontSize": 14,
   "editor.tabSize": 2,
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.wordWrap": "on",
-  // Theme settings
+  "editor.defaultFormatter": "biomejs.biome", // Use Biome as the default formatter for all files
+  "[css][jsonc][github-actions-workflow][yaml][javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // MARK:Theme settings
   "workbench.colorTheme": "Bearded Theme Arc Blueberry",
   "workbench.iconTheme": "bearded-icons",
+  "workbench.editor.customLabels.enabled": true,
   "workbench.editor.customLabels.patterns": {
     "**/app/**/page.js": "${dirname}/page.js",
-    "**/app/**/layout.js": "${dirname}/layout.js",
+    "**/app/**/layout.js": "${dirname}/layout.js"
   },
-  // JSON settings
+
+  // MARK: JSON settings
   "json.schemas": [
     {
       "fileMatch": ["/package.json"],
@@ -24,8 +31,16 @@
       "url": "http://json.schemastore.org/bower"
     }
   ],
-  // Biome settings
-  "editor.defaultFormatter": "biomejs.biome", // Use Biome as the default formatter for all files
+
+  // MARK: Copilot settings
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": "docs/code-style.md" // import instructions from file `code-style.md`
+    },
+    { "file": "docs/spec.md" },
+    { "file": "docs/commit.md" }
+  ],
+  // MARK: Spell checker settings
   "cSpell.words": [
     "apos",
     "biomejs",
@@ -46,29 +61,5 @@
     "staticity",
     "tailwindcss",
     "toploader"
-  ],
-  "conventionalCommits.scopes": [
-    "format",
-    "assets",
-    "page",
-    "structure",
-    "dependencies",
-    "docs",
-    "configuration",
-    "components",
-    "blog",
-    "style"
-  ],
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[github-actions-workflow]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  ]
 }
