@@ -1,4 +1,4 @@
 echo "pre-commit"
 
 echo "Checking for formatting issues"
-pnpm run format
+pnpm run format:check
