@@ -1,158 +1,103 @@
-import ArrowIcon from "@/components/icons/arrow-icon";
 import Image from "next/image";
-import award from "public/images/home/award.webp";
-import speaking from "public/images/home/speaking.webp";
-import teamMeetUpMid2023 from "public/images/home/team-meetup-mid-2023.webp";
-import React, { Fragment } from "react";
 
-const ProfileContent = () => {
-	// TODO: Section for Projects
-	// Add a section for content regarding projects, achievements, and tools I've worked with. Also, consider including links to another page that provides detailed information about the projects I've completed, those currently in progress, as well as any side projects or personal endeavors.
-	// assignees: justinjdaniel
-	// labels: enhancement, fix-me, ui
-
-	// MARK: images
-	const images = [
-		{
-			alt: "Speaking in blockchain meetup",
-			title: "Speaking in blockchain meetup",
-			src: speaking,
-		},
-		{
-			alt: "Awarded by Kerala Digital University's Vice Chancellor",
-			title: "Awarded by Kerala Digital University's Vice Chancellor",
-			src: award,
-		},
-		{
-			alt: "Team meetup in Kerala mid 2023",
-			title: "Team meetup in Kerala mid 2023",
-			src: teamMeetUpMid2023,
-		},
-	];
-
-	// MARK: content
-	return (
-		<div className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
-			<h1 className="font-semibold text-2xl mb-8 text-left w-max animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-				Hey, I'm{" "}
-				<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-					Justin
-				</span>{" "}
-				👋
-			</h1>
-			<div>
-				<p className="text-zinc-300 prose prose-neutral dark:prose-invert animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-					I am a blockchain developer and researcher with over three years of
-					experience. I specialize in smart contracts, dApps, tokens, and NFTs
-					using Solidity, Web3.js, and Ethers.js. With my full-stack development
-					background and DevOps experience, I ensure seamless integration and
-					deployment for any blockchain project. My passion for blockchain
-					technology extends to ongoing research to stay updated with the latest
-					advancements in the field. Conduct research to stay updated with
-					emerging technologies.
-				</p>
-			</div>
-
-			<div className="grid grid-flow-dense grid-cols-4 grid-rows-2 gap-4 my-8">
-				<div className="relative row-span-1 col-span-2 animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-					<Image
-						alt="Speaking in blockchain meetup"
-						title="Speaking in blockchain meetup"
-						src={speaking}
-						fill="true"
-						sizes="(max-width: 768px) 213px, 50vw"
-						priority="true"
-						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
-					/>
-				</div>
-				<div className="relative row-span-1 col-span-2 animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-					<Image
-						alt="Awarded by Kerala Digital University's Vice Chancellor"
-						title="Awarded by Kerala Digital University's Vice Chancellor"
-						src={award}
-						fill="true"
-						sizes="(max-width: 768px) 213px, 50vw"
-						priority="true"
-						className="rounded-lg object-cover h-full w-full transition-transform duration-300 ease-in-out hover:scale-105 sm:object-center"
-					/>
-				</div>
-				<div className="relative col-span-4 row-span-1 h-80 animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-					<Image
-						alt="Team meetup in Kerala mid 2023"
-						title="Team meetup in Kerala mid 2023"
-						src={teamMeetUpMid2023}
-						fill="true"
-						sizes="(max-width: 768px) 213px, 50vw"
-						priority="true"
-						className="rounded-lg object-cover h-full w-full transition-transform duration-300 linear hover:scale-105 sm:object-center"
-					/>
-				</div>
-			</div>
-			<div className="mb-4 text-zinc-300">
-				<p className="prose prose-neutral dark:prose-invert mb-4 animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-					I lead the development and quality assurance of secure blockchain
-					solutions. My expertise spans public and private platforms like
-					Ethereum, Polygon, and Hyperledger Fabric.
-				</p>
-				<p className="prose prose-neutral dark:prose-invert animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-					I spearheaded the creation of a user-friendly, multi-platform DApp NFT
-					platform for organizations and institutes. Additionally, I led the
-					development of a private blockchain service for efficient supply chain
-					management. I also designed and built a tokenization platform with
-					RBAC functionality, which can be used as a plug-and-play service for
-					existing platforms. Currently, I'm building a blockchain traceability
-					system to enhance supply chain transparency.
-				</p>
-			</div>
-			<div>
-				<p className="prose prose-neutral dark:prose-invert animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-					I'm a lifelong learner, constantly seeking new blockchain challenges
-					and skills. I thrive in collaborative environments, working with
-					developers and visionaries to build a more decentralized and secure
-					future.
-				</p>
-			</div>
-			<Footer />
-		</div>
-	);
-};
-
-/**
- * Renders the Footer component.
- *
- * @return {JSX.Element} The rendered Footer component.
- */
-const Footer = () => (
-	<ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-600 dark:text-neutral-300 animate-in-and-out [animation-range:entry_exit] [animation-timeline:view()]">
-		<li>
-			<a
-				className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
-				rel="noopener noreferrer"
-				target="_blank"
-				href="https://twitter.com/justinjdaniel"
-			>
-				<ArrowIcon />
-				<p className="h-7 ml-2">follow me</p>
-			</a>
-		</li>
-		<li>
-			<a
-				className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
-				rel="noopener noreferrer"
-				target="_blank"
-				href="mailto:justinjdaniel@duck.com"
-			>
-				<ArrowIcon />
-				<p className="h-7 ml-2">connect with me</p>
-			</a>
-		</li>
-	</ul>
-);
-// MARK: Home main
 export default function Home() {
-	return (
-		<Fragment>
-			<ProfileContent />
-		</Fragment>
-	);
+  return (
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+        <Image
+          className="dark:invert"
+          src="/next.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
+        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+          <li className="mb-2 tracking-[-.01em]">
+            Get started by editing{" "}
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+              src/app/page.js
+            </code>
+            .
+          </li>
+          <li className="tracking-[-.01em]">
+            Save and see your changes instantly.
+          </li>
+        </ol>
+
+        <div className="flex gap-4 items-center flex-col sm:flex-row">
+          <a
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert"
+              src="/images/icon.png"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Deploy now
+          </a>
+          <a
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read our docs
+          </a>
+        </div>
+      </main>
+      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/file.svg"
+            alt="File icon"
+            width={16}
+            height={16}
+          />
+          Learn
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          Examples
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/globe.svg"
+            alt="Globe icon"
+            width={16}
+            height={16}
+          />
+          Go to nextjs.org →
+        </a>
+      </footer>
+    </div>
+  );
 }

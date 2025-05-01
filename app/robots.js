@@ -1,11 +1,13 @@
+const baseUrl = "https://justinjdaniel.com";
+
 export default function robots() {
-	return {
-		rules: [
-			{
-				userAgent: "*",
-			},
-		],
-		sitemap: "https://justinjdaniel.com/sitemap.xml",
-		host: "https://justinjdaniel.com",
-	};
+  return {
+    rules: {
+      userAgent: "*",
+      allow: ["/", "/api/og/*"],
+      disallow: "/private/",
+    },
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
+  };
 }

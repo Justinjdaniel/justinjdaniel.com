@@ -1,178 +1,316 @@
+// "use client";
+
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { highlight } from "sugar-high";
 
-function Table({ data: { headers, rows } }) {
-	return (
-		<table>
-			<thead>
-				<tr>
-					{headers.map((header, index) => (
-						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-						<th key={index}>{header}</th>
-					))}
-				</tr>
-			</thead>
-			<tbody>
-				{rows.map((row, index) => (
-					// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-					<tr key={index}>
-						{row.map((cell, cellIndex) => (
-							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-							<td key={cellIndex}>{cell}</td>
-						))}
-					</tr>
-				))}
-			</tbody>
-		</table>
-	);
+function Callout({ emoji = "💡", children }) {
+  return (
+    <div
+      className="
+        relative flex gap-4 p-4 my-6
+        bg-zinc-100 dark:bg-zinc-800
+        border border-zinc-200 dark:border-zinc-700
+        rounded-lg text-sm text-zinc-700 dark:text-zinc-300
+        transition-all duration-200 ease-in-out
+        view-transition-name:[--callout]
+        animate-in slide-in-from-bottom-2
+      "
+    >
+      <div className="select-none text-lg">{emoji}</div>
+      <div className="[&>:first-child]:mt-0 [&>:last-child]:mb-0">
+        {children}
+      </div>
+    </div>
+  );
 }
 
-function CustomLink(props) {
-	const href = props.href;
+function ProsCard({ title, pros = [] }) {
+  return (
+    <div
+      className="
+        p-6 my-4 rounded-xl
+        bg-zinc-100 dark:bg-zinc-800
+        border border-emerald-200/20 dark:border-emerald-800/20
+        view-transition-name:[--pros-card]
+      "
+    >
+      {title && (
+        <h3 className="mb-4 text-zinc-700 dark:text-zinc-300">
+          You might use {title} if...
+        </h3>
+      )}
+      <div className="space-y-2">
+        {pros.map((pro) => (
+          <div
+            key={`pro-${pro.substring(0, 20)}`}
+            className="flex items-center gap-2"
+          >
+            <svg
+              className="w-5 h-5 text-emerald-500"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              role="img"
+              title="Checkmark icon"
+            >
+              <path
+                d="M22 11.08V12a10 10 0 11-5.93-9.14"
+                stroke="currentColor"
+                fill="none"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M22 4L12 14.01l-3-3"
+                stroke="currentColor"
+                fill="none"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="text-zinc-700 dark:text-zinc-300 font-medium">
+              {pro}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-	if (href.startsWith("/")) {
-		return (
-			<Link href={href} {...props}>
-				{props.children}
-			</Link>
-		);
-	}
-
-	if (href.startsWith("#")) {
-		return <a {...props} />;
-	}
-
-	return <a target="_blank" rel="noopener noreferrer" {...props} />;
+function ConsCard({ title, cons = [] }) {
+  return (
+    <div
+      className="
+        p-6 my-4 rounded-xl
+        bg-zinc-100 dark:bg-zinc-800
+        border border-red-200/20 dark:border-red-900/20
+        view-transition-name:[--cons-card]
+      "
+    >
+      {title && (
+        <h3 className="mb-4 text-zinc-700 dark:text-zinc-300">
+          You might not use {title} if...
+        </h3>
+      )}
+      <div className="space-y-2">
+        {cons.map((con) => (
+          <div
+            key={`con-${con.substring(0, 20)}`}
+            className="flex items-center gap-2"
+          >
+            <svg
+              className="w-5 h-5 text-red-500"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+              role="img"
+              title="X mark icon"
+            >
+              <path
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                fill="currentColor"
+              />
+            </svg>
+            <span className="text-zinc-700 dark:text-zinc-300 font-medium">
+              {con}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function RoundedImage(props) {
-	return <Image alt={props.alt} className="rounded-lg" {...props} />;
-}
-
-function Callout(props) {
-	return (
-		<div className="px-4 py-3 border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded p-1 text-sm flex items-center text-neutral-900 dark:text-neutral-100 mb-8">
-			<div className="flex items-center w-4 mr-4">{props.emoji}</div>
-			<div className="w-full callout">{props.children}</div>
-		</div>
-	);
-}
-
-function ProsCard({ title, pros }) {
-	return (
-		<div className="border border-emerald-200 dark:border-emerald-900 bg-neutral-50 dark:bg-neutral-900 rounded-xl p-6 my-4 w-full">
-			<span>{`You might use ${title} if...`}</span>
-			<div className="mt-4">
-				{pros.map((pro) => (
-					<div key={pro} className="flex font-medium items-baseline mb-2">
-						<div className="h-4 w-4 mr-2">
-							<svg className="h-4 w-4 text-emerald-500" viewBox="0 0 24 24">
-								<title>Check-mark icon</title>
-								<g
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="2"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-								>
-									<path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-									<path d="M22 4L12 14.01l-3-3" />
-								</g>
-							</svg>
-						</div>
-						<span>{pro}</span>
-					</div>
-				))}
-			</div>
-		</div>
-	);
-}
-
-function ConsCard({ title, cons }) {
-	return (
-		<div className="border border-red-200 dark:border-red-900 bg-neutral-50 dark:bg-neutral-900 rounded-xl p-6 my-6 w-full">
-			<span>{`You might not use ${title} if...`}</span>
-			<div className="mt-4">
-				{cons.map((con) => (
-					<div key={con} className="flex font-medium items-baseline mb-2">
-						<div className="h-4 w-4 mr-2">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 20 20"
-								fill="currentColor"
-								className="h-4 w-4 text-red-500"
-							>
-								<title>Warning Icon</title>
-								<path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-							</svg>
-						</div>
-						<span>{con}</span>
-					</div>
-				))}
-			</div>
-		</div>
-	);
+  return (
+    <div
+      className="my-6 transition-all duration-200 ease-in-out hover:scale-[1.02]"
+      style={{
+        viewTransitionName: `image-${props.alt?.toLowerCase().replace(/\s+/g, "-")}`,
+      }}
+    >
+      <Image
+        alt={props.alt}
+        className="rounded-lg"
+        {...props}
+        width={props.width || 1200}
+        height={props.height || 630}
+      />
+    </div>
+  );
 }
 
 function Code({ children, ...props }) {
-	const codeHTML = highlight(children);
-	// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-	return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+  const codeHTML = highlight(children);
+  // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+}
+
+function CustomLink(props) {
+  const href = props.href;
+
+  if (href.startsWith("/")) {
+    return (
+      <Link
+        href={href}
+        className="
+          font-medium text-indigo-500 hover:text-indigo-600 
+          transition-colors relative
+          after:absolute after:bottom-0 after:left-0 
+          after:w-0 after:h-px after:bg-current
+          after:transition-all after:duration-200
+          hover:after:w-full
+        "
+        style={{ viewTransitionName: `link-${href.replace(/\//g, "")}` }}
+        {...props}
+      >
+        {props.children}
+      </Link>
+    );
+  }
+
+  if (href.startsWith("#")) {
+    return (
+      <a
+        {...props}
+        className="
+          anchor hover:text-indigo-500 transition-colors
+          relative after:absolute after:bottom-0 after:left-0 
+          after:w-0 after:h-px after:bg-current
+          after:transition-all after:duration-200
+          hover:after:w-full
+        "
+      />
+    );
+  }
+
+  return (
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        font-medium text-indigo-500 hover:text-indigo-600 
+        transition-colors relative
+        after:absolute after:bottom-0 after:left-0 
+        after:w-0 after:h-px after:bg-current
+        after:transition-all after:duration-200
+        hover:after:w-full
+      "
+      {...props}
+    />
+  );
+}
+
+function CustomList({ children, ordered }) {
+  const ListTag = ordered ? "ol" : "ul";
+  return (
+    <ListTag
+      className="
+        my-6 ml-6 list-outside
+        [&>li]:mt-2
+        [&>li]:leading-relaxed
+        [&>li]:text-zinc-700 dark:[&>li]:text-zinc-300
+        [&>li]:marker:text-zinc-500 dark:[&>li]:marker:text-zinc-400
+        [&>li>p]:my-0
+        [&>li>p:first-child]:mt-0
+        [&>li>p:last-child]:mb-0
+        [ol>&]:list-decimal
+        [ul>&]:list-disc
+      "
+    >
+      {children}
+    </ListTag>
+  );
 }
 
 function slugify(str) {
-	return str
-		.toString()
-		.toLowerCase()
-		.trim() // Remove whitespace from both ends of a string
-		.replace(/\s+/g, "-") // Replace spaces with -
-		.replace(/&/g, "-and-") // Replace & with 'and'
-		.replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
-		.replace(/\-\-+/g, "-"); // Replace multiple - with single -
+  return str
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/&/g, "-and-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-");
 }
 
 function createHeading(level) {
-	return ({ children }) => {
-		const slug = slugify(children);
-		return React.createElement(
-			`h${level}`,
-			{ id: slug },
-			[
-				React.createElement("a", {
-					href: `#${slug}`,
-					key: `link-${slug}`,
-					className: "anchor",
-				}),
-			],
-			children,
-		);
-	};
+  return ({ children }) => {
+    const slug = slugify(children);
+    const Tag = `h${level}`;
+
+    return (
+      <Tag
+        id={slug}
+        className="group relative scroll-mt-20 [&:hover_.anchor-link]:opacity-100"
+        style={{ viewTransitionName: `heading-${slug}` }}
+      >
+        <a
+          href={`#${slug}`}
+          className="
+            anchor-link absolute -left-5 top-1 opacity-0
+            text-zinc-500 dark:text-zinc-400
+            transition-opacity duration-200
+            hover:text-zinc-700 dark:hover:text-zinc-300
+            [&>svg]:h-4 [&>svg]:w-4
+          "
+          aria-label={`Link to section: ${children}`}
+        >
+          #
+        </a>
+        {children}
+      </Tag>
+    );
+  };
 }
 
 const components = {
-	h1: createHeading(1),
-	h2: createHeading(2),
-	h3: createHeading(3),
-	h4: createHeading(4),
-	h5: createHeading(5),
-	h6: createHeading(6),
-	Image: RoundedImage,
-	a: CustomLink,
-	Callout,
-	ProsCard,
-	ConsCard,
-	code: Code,
-	Table,
+  h1: createHeading(1),
+  h2: createHeading(2),
+  h3: createHeading(3),
+  h4: createHeading(4),
+  h5: createHeading(5),
+  h6: createHeading(6),
+  Image: RoundedImage,
+  a: CustomLink,
+  Callout,
+  ProsCard,
+  ConsCard,
+  code: Code,
+  ul: ({ children }) => <CustomList ordered={false}>{children}</CustomList>,
+  ol: ({ children }) => <CustomList ordered={true}>{children}</CustomList>,
+  strong: ({ children }) => (
+    <strong className="font-bold text-zinc-900 dark:text-zinc-100">
+      {children}
+    </strong>
+  ),
+  em: ({ children }) => (
+    <em className="italic text-zinc-800 dark:text-zinc-200">{children}</em>
+  ),
+  del: ({ children }) => (
+    <del className="line-through text-zinc-600 dark:text-zinc-400">
+      {children}
+    </del>
+  ),
+  hr: () => <hr className="my-8 border-zinc-200 dark:border-zinc-800" />,
+  blockquote: ({ children }) => (
+    <blockquote className="pl-4 my-4 border-l-4 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 italic">
+      {children}
+    </blockquote>
+  ),
 };
 
 export function CustomMDX(props) {
-	return (
-		<MDXRemote
-			{...props}
-			components={{ ...components, ...(props.components || {}) }}
-		/>
-	);
+  return (
+    <MDXRemote
+      {...props}
+      components={{
+        ...components,
+        ...(props.components || {}),
+      }}
+    />
+  );
 }
