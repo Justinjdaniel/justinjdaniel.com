@@ -61,15 +61,13 @@ export default async function Image() {
           }}
         >
           <img
-            src="https://justinjdaniel.com/images/og-bg.png"
+            src="https://avatars.githubusercontent.com/u/62233773?s=120&v=4"
+            alt="Profile"
             width={120}
             height={120}
-            alt="Profile"
             style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
               borderRadius: "16px",
+              overflow: "hidden",
             }}
           />
         </div>
