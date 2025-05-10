@@ -55,7 +55,7 @@ export default function Blog({ params }) {
   }
 
   return (
-    <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto">
+    <section className="z-10 antialiased max-w-2xl m-4 mt-16 mb-8 md:mx-auto">
       <BackButton />
       <ScrollProgress />
       <BlogSchema post={post} baseURL={baseURL} />

@@ -14,7 +14,7 @@ export default function BlogPage() {
   const allBlogs = getBlogPosts();
 
   return (
-    <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto">
+    <section className="z-10 antialiased max-w-2xl m-4 mt-16 mb-8 md:mx-auto">
       <BackButton />
       <div className="flex items-center mb-6">
         <BookDoodleIcon className="w-16 h-16 md:w-16 md:h-16 text-zinc-900 dark:text-zinc-100" />
