@@ -86,12 +86,14 @@ export default function HeroSection() {
             style={{ opacity: 0 }}
             className="px-8 py-3 rounded-full bg-indigo-500 text-white hover:bg-indigo-600 transition-all hover:scale-105"
           >
-            Explore My Work
+            Read My Blog
           </Link>
           <a
-            href="#contact"
+            href="mailto:justinjdaniel@duck.com"
             style={{ opacity: 0 }}
             className="px-8 py-3 rounded-full border border-indigo-500 text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all hover:scale-105"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Get in Touch
           </a>
