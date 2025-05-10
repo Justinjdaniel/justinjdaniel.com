@@ -3,7 +3,7 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
-import { GTM_ID, pageview } from "../../lib/gtm";
+import { GTM_ID, pageview } from "../../../lib/gtm";
 
 export default function GoogleTagManager() {
   const pathname = usePathname();

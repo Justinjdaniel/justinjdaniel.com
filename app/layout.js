@@ -1,9 +1,11 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import { unstable_ViewTransition as ViewTransition } from "react";
-import Footer from "./_components/footer";
-import GoogleTagManager from "./_components/google-tag-manager";
+
+import GoogleTagManager from "./_components/analytics/google-tag-manager";
+import Footer from "./_components/layout/footer";
+import Header from "./_components/layout/header";
+import Particles from "./_components/ui/particles";
 import "./globals.css";
 
 // If loading a variable font, you don't need to specify the font weight
@@ -37,16 +39,24 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      className={`${inter.className} ${jetbrainsMono.className} scroll-smooth`}
     >
       <body className="font-sans bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased tracking-tight">
         <NextTopLoader height={4} color="#818cf8" showSpinner={false} />
-        <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 dark:bg-zinc-900/95 bg-zinc-50/95 text-zinc-800 dark:text-zinc-200">
-          <main className="max-w-[75ch] mx-auto w-full space-y-6">
-            <ViewTransition mode="out-in">{children}</ViewTransition>
+        <div className="min-h-screen grid relative dark:bg-zinc-900/95 bg-zinc-50/95 text-zinc-800 dark:text-zinc-200">
+          {/* Particles as background */}
+          <Particles
+            className="col-start-1 row-start-1 animate-fade-in"
+            quantity={500}
+          />
+          {/* Foreground content */}
+          <Header />
+          <main className="col-start-1 row-start-1 mx-auto w-full space-y-6">
+            {children}
           </main>
           <Footer />
         </div>
+
         <GoogleTagManager />
         <Analytics />
       </body>

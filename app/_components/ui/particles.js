@@ -1,6 +1,6 @@
 "use client";
 import { useMousePosition } from "@/_utils/mouse";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Renders a particle effect on a canvas.
@@ -28,6 +28,22 @@ export default function Particles({
   const mouse = useRef({ x: 0, y: 0 });
   const canvasSize = useRef({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+
+  const [colorScheme, setColorScheme] = useState(
+    typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light",
+  );
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = () => setColorScheme(media.matches ? "dark" : "light");
+    media.addEventListener("change", handler);
+    return () => media.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -117,7 +133,12 @@ export default function Particles({
       context.current.translate(translateX, translateY);
       context.current.beginPath();
       context.current.arc(x, y, size, 0, 2 * Math.PI);
-      context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      const color =
+        colorScheme === "dark"
+          ? `rgba(255,255,255,${alpha})` // white for dark mode
+          : `rgba(0,0,0,${alpha})`; // black for light mode
+
+      context.current.fillStyle = color;
       context.current.fill();
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 

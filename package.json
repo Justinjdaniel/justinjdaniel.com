@@ -26,8 +26,10 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@next/mdx": "15.3.1",
     "@vercel/analytics": "^1.5.0",
+    "gsap": "^3.13.0",
     "motion": "^12.9.4",
     "next": "15.3.1",
     "next-mdx-remote": "^5.0.0",

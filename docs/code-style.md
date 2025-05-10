@@ -2,13 +2,12 @@
 
 This project uses JavaScript with the following styles:
 
-- Always use single quotes for strings.
-- Use double quotes for JSX attributes.
 - Follow Next.js best practices for file naming and routing conventions.
 - Use camelCase for variables, PascalCase for components, and kebab-case for files.
 
 ## Next.js
 
+- Uses Next.js version 15.3.0 or above.
 - Follow Next.js page/layout naming conventions.
 - Use route handlers for API endpoints.
 - Utilize Next.js built-in components like Image, Link, and Script for optimal performance.

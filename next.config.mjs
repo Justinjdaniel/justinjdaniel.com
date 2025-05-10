@@ -10,6 +10,9 @@ const nextConfig = {
     mdxRs: true,
     viewTransition: true,
   },
+  turbopack: {
+    resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".json"],
+  },
 };
 
 const withMDX = createMDX({});

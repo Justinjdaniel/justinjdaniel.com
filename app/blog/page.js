@@ -13,7 +13,7 @@ export default function BlogPage() {
   const allBlogs = getBlogPosts();
 
   return (
-    <section className="z-10 antialiased max-w-2xl mb-40 mx-4 mt-8 md:mx-auto">
+    <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto">
       <BackButton />
       <h1 className="font-medium text-2xl mb-8 tracking-tighter">
         Read my blog
