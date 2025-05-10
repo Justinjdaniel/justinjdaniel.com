@@ -1,44 +1,82 @@
-<p align='center'>
-<img src='.github/images/landing.png' width='500px' alt='landing page preview'/>
+<p align="center">
+  <img src="https://avatars.githubusercontent.com/u/62233773?s=500&v=4" width="100" alt="Landing page preview"/>
 </p>
 
-<p align='center'>
-<a href='https://justinjdaniel.com'>Website</a>
-| <a href='https://github.com/justinjdaniel'>Github</a>
-| <a href='https://www.linkedin.com/in/justin-j-daniel'>LinkedIn</a>
-
+<h1 align="center">Justin J Daniel</h1>
+<p align="center">
+  <b>Fullstack Developer & Data Analytics Enthusiast</b><br/>
+  <a href="https://justinjdaniel.com">Website</a> •
+  <a href="https://github.com/justinjdaniel">GitHub</a> •
+  <a href="https://www.linkedin.com/in/justin-j-daniel">LinkedIn</a>
 </p>
 
-<p align='center'>
-  <a href='LICENSE'><img src='https://img.shields.io/badge/License-MIT-yellow.svg' alt='license'></a>
-  <a href='https://nextjs.org/'><img src='https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white' alt='Next.js version'></a>
-  <a href='repo'><img src='https://img.shields.io/github/repo-size/justinjdaniel/justinjdaniel.com?color=009cdf&label=repo%20size&logo=git&logoColor=white' alt='repo size'></a>
-  <a href='https://biomejs.dev'><img src='https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome' alt='Checked with Biome'></a>
-</p>
-
-<p align='center'>
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license"></a>
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white" alt="Next.js version"></a>
   <a href="https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml">
-    <img src="https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml/badge.svg" alt="Build Next.js site" />
+    <img src="https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml/badge.svg" alt="Build status" />
   </a>
-  <a href="vercel-deploy">
+  <a href="https://img.shields.io/github/deployments/Justinjdaniel/Justinjdaniel.com/production?label=vercel&logo=vercel&logoColor=white">
     <img src="https://img.shields.io/github/deployments/Justinjdaniel/Justinjdaniel.com/production?label=vercel&logo=vercel&logoColor=white" alt="Vercel deployment" />
   </a>
   <a href="https://justinjdaniel.com/">
-    <img src="https://img.shields.io/website?url=https%3A%2F%2Fjustinjdaniel.com%2F&up_message=live&down_message=down&logo=unitedairlines" alt="Website" />
+    <img src="https://img.shields.io/website?url=https%3A%2F%2Fjustinjdaniel.com%2F&up_message=live&down_message=down&logo=unitedairlines" alt="Website status" />
   </a>
 </p>
 
-<p align='center'>
-  <a href="http://vscode.dev/https://github.com/Justinjdaniel/justinjdaniel.com">
-      <img src="https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc" alt="Open in Visual Studio Code" />
-  </a>
-  <a href="https://github.com/Justinjdaniel/justinjdaniel.com/codespaces">
-      <img src="https://img.shields.io/static/v1?logo=github&label=&message=Open%20in%20Codespace&labelColor=2c2c32&color=0D597F&logoColor=white" alt="Open in Codespace" />
-  </a>
+---
+
+## 👋 About Me
+
+I'm a full stack developer specializing in blockchain technology, passionate about transforming complex challenges into innovative, forward-thinking solutions. My expertise spans smart contract development, decentralized applications, and robust web platforms, all built with a relentless focus on user experience and real-world impact.
+
+I leverage design thinking, personas, journey mapping, and usability testing to drive data-driven product decisions. From rapid prototyping to high-fidelity wireframing and validation, I ensure every solution is intuitive and effective.
+
+With an agile mindset and startup spirit, I collaborate with teams to deliver products that drive growth and push the limits of web3 and software innovation.
+
+---
+
+## 🚀 Technologies
+
+- **[Next.js](https://nextjs.org/):** React framework for hybrid static/server rendering, fast refresh, and more.
+- **[Tailwind CSS](https://tailwindcss.com/):** Utility-first CSS for rapid UI development.
+- **[GSAP](https://greensock.com/gsap/):** Professional-grade JavaScript animation platform.
+- **Blockchain/Web3:** Smart contracts, dApps, decentralized protocols.
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- [Git](https://git-scm.com/)
+- [Node.js v16.13+](https://nodejs.org/)
+- [pnpm](https://pnpm.io/) (recommended)
+
+### Installation
+
+```git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
+cd justinjdaniel.com
+pnpm install
+pnpm dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 📸 Preview
+
+<p align="center">
+  <img src=".github/images/landing.png" width="600" alt="Landing page screenshot"/>
 </p>
 
-<p align='left'>
-    <a href="https://justinjdaniel.com">
+<!-- ---
+
+## 🌐 Connect
+
+<p align="center">
+  <a href="https://justinjdaniel.com">
     <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/MyPortfolio/myportfolio3.svg" alt="Website" />
   </a>
   <a href="https://linkedin.com/in/justin-j-daniel">
@@ -47,42 +85,14 @@
   <a href="https://dev.to/justinjdaniel">
     <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Devto/devto3.svg" alt="Dev.to" />
   </a>
-</p>
+</p> -->
 
-> [!NOTE]
-> This repository contains the source code and content for my personal portfolio website. You can view it live at <https://justinjdaniel.com/>.
+---
 
-<hr/>
+## 📄 License
 
-## Technologies
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This project uses [Next.js](next-js), a React framework that enables hybrid static and server rendering, fast refresh, code splitting, built-in CSS support, and more. To learn more about Next.js, you can visit their [documentation](next-js-docs) or [blog](next-js-blog).
+---
 
-It also uses [Tailwind CSS](tailwind-css), a utility-first CSS framework for rapidly building custom designs. Tailwind CSS works by scanning your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file. It's fast, flexible, and reliable — with zero runtime. You can read the [installation guide](tailwind-css-installation).
-
-Another key technology in this project is [GSAP](https://greensock.com/gsap/), a professional-grade animation platform for the modern web. GSAP is a robust JavaScript tool set that turns developers into animation superheroes. It can animate anything JavaScript can touch, in any framework, with blazing speed and cross-browser compatibility. It also offers a variety of plugins for specific animation challenges, such as scroll-based animation, draggable interactions, morphing, and more. You can watch the [screen-casts](https://greensock.com/get-started) or visit the [npm page](https://www.npmjs.com/package/gsap) to learn more about GSAP.
-
-## Running Locally
-
-To run this website locally, you need to have [Git](https://git-scm.com/), [Node.js v16.13+](https://nodejs.org/en/), and [npm](https://www.npmjs.com/) installed on your machine.
-
-- Clone this repository using the following command:
-
-<!-- TODO: add other installation methods -->
-<!-- add optional step to install with npm too instead of pnpm only -->
-<!-- labels: enhancement -->
-
-```bash
-git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
-cd justinjdaniel.com
-pnpm install
-pnpm dev
-```
-
-- Open <http://localhost:3000> in your web browser to view the website.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-<!-- link reference -->
+> [!NOTE] > _This repository contains the source code and content for my personal portfolio website. You can view it live at [justinjdaniel.com](https://justinjdaniel.com/)._

@@ -30,11 +30,11 @@ export async function GET(req) {
   const site = "justinjdaniel.com";
   const bgImage = "https://justinjdaniel.com/images/og-bg.png";
 
-  // Dynamically adjust font size for long titles
-  const baseFontSize = 84;
+  // Dynamically adjust font size for long titles (for 1200x630 images)
+  const baseFontSize = 56;
   let fontSize = baseFontSize;
-  if (postTitle.length > 80) fontSize = 54;
-  if (postTitle.length > 120) fontSize = 38;
+  if (postTitle.length > 70) fontSize = 40;
+  if (postTitle.length > 110) fontSize = 32;
 
   // Load fonts from Google Fonts
   const interFont = await loadGoogleFont(
@@ -55,7 +55,12 @@ export async function GET(req) {
         flexDirection: "column",
         justifyContent: "flex-end",
         alignItems: "stretch",
-        background: `url(${bgImage}) center/cover no-repeat`,
+        background: "url(https://justinjdaniel.com/images/og-bg.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundColor: "#0A0A0A",
+        backgroundBlendMode: "darken",
+        backgroundRepeat: "no-repeat",
         position: "relative",
       }}
     >
@@ -92,7 +97,7 @@ export async function GET(req) {
             textAlign: "center",
             lineHeight: 1.1,
             textShadow: "0 2px 32px rgba(0,0,0,0.5)",
-            maxWidth: 1400,
+            maxWidth: 900,
             wordBreak: "break-word",
             whiteSpace: "normal",
             overflowWrap: "break-word",
@@ -101,6 +106,7 @@ export async function GET(req) {
         >
           {postTitle}
         </div>
+
         {/* Author Row */}
         <div
           style={{
@@ -154,8 +160,8 @@ export async function GET(req) {
       </div>
     </div>,
     {
-      width: 1920,
-      height: 1080,
+      width: 1200,
+      height: 630,
       fonts: [
         {
           name: "Inter",
