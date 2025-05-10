@@ -12,7 +12,8 @@
 <p align='center'>
   <a href='LICENSE'><img src='https://img.shields.io/badge/License-MIT-yellow.svg' alt='license'></a>
   <a href='https://nextjs.org/'><img src='https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white' alt='Next.js version'></a>
-  <a href='repo'><img src='https://img.shields.io/github/repo-size/justinjdaniel/justinjdaniel.com?color=009cdf&label=repo%20size&logo=git&logoColor=white' alt='Next.js version'></a>
+  <a href='repo'><img src='https://img.shields.io/github/repo-size/justinjdaniel/justinjdaniel.com?color=009cdf&label=repo%20size&logo=git&logoColor=white' alt='repo size'></a>
+  <a href='https://biomejs.dev'><img src='https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome' alt='Checked with Biome'></a>
 </p>
 
 <p align='center'>

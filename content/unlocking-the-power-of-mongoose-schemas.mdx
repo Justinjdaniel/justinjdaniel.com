@@ -1,5 +1,5 @@
 ---
-title: "Unlocking the Power of Mongoose Schemas: Enhancements for Better Data Handling"
+title: 'Unlocking the Power of Mongoose Schemas: Enhancements for Better Data Handling'
 publishedAt: '2024-03-07'
 summary: This article discusses improving Mongoose schemas with features like indexes, validation, virtuals, methods, and hooks, enhancing MongoDB applications' functionality, security, and maintainability.
 image: /images/blogs/unlocking-the-power-of-mongoose-schemas.png
@@ -17,7 +17,7 @@ First on our list is the power of indexes. Indexes are like the backbone of any 
 userSchema.index({ lastLogin: -1 });
 ```
 
-**Example Usage in Controller:**
+### Example Usage in Controller:
 
 ```js
 const recentUsers = await User.find().sort({ lastLogin: -1 }).limit(10);
@@ -31,21 +31,21 @@ Next, let's talk about validation. In any application, data integrity is paramou
 
 ```js
 userSchema.path('email').validate(function (value) {
- // Custom validation logic here
- return true; // or false, depending on the validation result
+  // Custom validation logic here
+  return true; // or false, depending on the validation result
 }, 'Email validation failed');
 ```
 
-**Example Usage in Controller:**
+### Example Usage in Controller:
 
 ```js
 try {
- const user = new User(req.body);
- await user.save();
+  const user = new User(req.body);
+  await user.save();
 } catch (error) {
- if (error.name === 'ValidationError') {
+  if (error.name === 'ValidationError') {
     // Handle validation error
- }
+  }
 }
 ```
 
@@ -57,11 +57,11 @@ Virtuals are a powerful feature in Mongoose that allows you to define computed p
 
 ```js
 userSchema.virtual('fullName').get(function () {
- return `${this.firstName} ${this.lastName}`;
+  return `${this.firstName} ${this.lastName}`;
 });
 ```
 
-**Example Usage in Controller:**
+### Example Usage in Controller:
 
 ```js
 const user = await User.findById(userId);
@@ -76,7 +76,7 @@ Mongoose schemas allow you to define methods that can be executed on instances o
 
 ```js
 userSchema.methods.hasRole = function (role) {
- return this.role === role;
+  return this.role === role;
 };
 ```
 
@@ -84,16 +84,16 @@ Static methods, on the other hand, are defined on the model itself and can be us
 
 ```js
 userSchema.statics.findByUsername = function (username) {
- return this.findOne({ username });
+  return this.findOne({ username });
 };
 ```
 
-**Example Usage in Controller:**
+### Example Usage in Controller:
 
 ```js
 const user = await User.findByUsername('johndoe');
 if (user.hasRole('admin')) {
- // Perform admin-specific actions
+  // Perform admin-specific actions
 }
 ```
 
@@ -103,20 +103,20 @@ Hooks, or middleware, are functions that are executed at various stages of a doc
 
 ```js
 userSchema.pre('save', function (next) {
- // Perform actions before saving
- this.email = this.email.toLowerCase();
- next();
+  // Perform actions before saving
+  this.email = this.email.toLowerCase();
+  next();
 });
 ```
 
-**Example Usage in Controller:**
+### Example Usage in Controller:
 
 ```js
 try {
- const user = new User(req.body);
- await user.save();
+  const user = new User(req.body);
+  await user.save();
 } catch (error) {
- // Handle any errors that occurred during the save operation
+  // Handle any errors that occurred during the save operation
 }
 ```
 

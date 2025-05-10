@@ -1,15 +1,19 @@
-import { getBlogPosts } from "@/db/blog";
+import { getBlogPosts } from "@/_db/blog";
+
+export const baseUrl = "https://justinjdaniel.com";
 
 export default async function sitemap() {
-	const blogs = getBlogPosts().map((post) => ({
-		url: `https://justinjdaniel.com/blog/${post.slug}`,
-		lastModified: post.metadata.publishedAt,
-	}));
+  const blogs = await getBlogPosts();
 
-	const routes = ["", "/blog", "/projects", "/uses"].map((route) => ({
-		url: `https://justinjdaniel.com${route}`,
-		lastModified: new Date().toISOString().split("T")[0],
-	}));
+  const blogEntries = blogs.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.metadata.publishedAt,
+  }));
 
-	return [...routes, ...blogs];
+  const routes = ["", "/blog"].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date().toISOString().split("T")[0],
+  }));
+
+  return [...routes, ...blogEntries];
 }

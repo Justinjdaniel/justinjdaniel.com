@@ -1,73 +1,68 @@
-import AnalyticsGTM from "@/components/analytics";
 import { Analytics } from "@vercel/analytics/react";
-import Header from "@/components/header";
-import { Inter } from "next/font/google";
-import IntroAnimation from "@/components/animations/intro-animation";
-import Particles from "@/components/animations/backgrounds/particles";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import { Suspense } from "react";
+
+import GoogleTagManager from "./_components/analytics/google-tag-manager";
+import Footer from "./_components/layout/footer";
+import Header from "./_components/layout/header";
+import Particles from "./_components/ui/particles";
 import "./globals.css";
+import { Suspense } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+// If loading a variable font, you don't need to specify the font weight
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
 
-// MARK: Metadata
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata = {
-	metadataBase: new URL("https://justinjdaniel.com"),
-	title: {
-		default: "Justin J Daniel",
-		template: "%s | Justin J Daniel",
-	},
-	description:
-		"Programmer, Blockchain Developer, Web Developer, and UI/UX Designer.",
-	openGraph: {
-		title: "Justin J Daniel",
-		description:
-			"Programmer, Blockchain Developer, Web Developer, and UI/UX Designer.",
-		url: "https://justinjdaniel.com",
-		siteName: "justinjdaniel.com",
-		locale: "en-US",
-		type: "website",
-	},
-	robots: {
-		index: true,
-		follow: true,
-		googleBot: {
-			index: true,
-			follow: true,
-			"max-video-preview": -1,
-			"max-image-preview": "large",
-			"max-snippet": -1,
-		},
-	},
-	icons: {
-		shortcut: "/favicon.ico",
-	},
+  metadataBase: new URL("https://justinjdaniel.com"),
+  alternates: {
+    canonical: "/",
+  },
+  title: {
+    default: "Justin J Daniel",
+    template: "%s | Justin Daniel",
+  },
+  description: "Fullstack developer, optimist, researcher.",
+  keywords: "fullstack, developer, blockchain, researcher",
+  author: "Justin Daniel",
 };
 
-// MARK: Layout
 export default function RootLayout({ children }) {
-	return (
-		<html lang="en" className="scroll-smooth">
-			<body className={inter.className}>
-				<NextTopLoader />
-				<main className="flex flex-col h-[100dvh] overflow-x-hidden">
-					<Particles className="fixed inset-0 -z-10" quantity={1500} refresh />
-					<IntroAnimation />
-					<content className="overflow-hidden animate-appear">
-						<div
-							className="flex flex-col animate-[fade-in_1.5s_linear_forwards] text-pretty overflow-auto"
-							style={{ animationDelay: "-0.5s" }}
-						>
-							<Header />
-							{children}
-						</div>
-					</content>
-				</main>
-				<Suspense>
-					<Analytics />
-					<AnalyticsGTM />
-				</Suspense>
-			</body>
-		</html>
-	);
+  return (
+    <html
+      lang="en"
+      className={`${inter.className} ${jetbrainsMono.className} scroll-smooth`}
+    >
+      <body className="font-sans bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased tracking-tight">
+        <NextTopLoader height={4} color="#818cf8" showSpinner={false} />
+        <div className="min-h-screen grid relative dark:bg-zinc-900/95 bg-zinc-50/95 text-zinc-800 dark:text-zinc-200">
+          {/* Particles as background */}
+          <Particles
+            className="col-start-1 row-start-1 animate-fade-in"
+            quantity={500}
+          />
+          {/* Foreground content */}
+          <Header />
+          <main className="col-start-1 row-start-1 mx-auto w-full space-y-6">
+            {children}
+          </main>
+          <Footer />
+        </div>
+
+        <Suspense fallback={null}>
+          <GoogleTagManager />
+        </Suspense>
+        <Analytics />
+      </body>
+    </html>
+  );
 }

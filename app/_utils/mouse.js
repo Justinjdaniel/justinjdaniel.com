@@ -6,22 +6,22 @@ import { useEffect, useState } from "react";
  * @return {Object} An object with x and y coordinates representing the mouse position.
  */
 export function useMousePosition() {
-	const [mousePosition, setMousePosition] = useState({
-		x: 0,
-		y: 0,
-	});
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0,
+  });
 
-	useEffect(() => {
-		const handleMouseMove = (event) => {
-			setMousePosition({ x: event.clientX, y: event.clientY });
-		};
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
 
-		window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
-		return () => {
-			window.removeEventListener("mousemove", handleMouseMove);
-		};
-	}, []);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
-	return mousePosition;
+  return mousePosition;
 }
