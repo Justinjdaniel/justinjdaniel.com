@@ -1,4 +1,5 @@
 import BackButton from "@/_components/buttons/back-button";
+import BookDoodleIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/book";
 import { getBlogPosts } from "@/_db/blog";
 import { formatDate } from "@/_utils/format-date";
 import Link from "next/link";
@@ -15,9 +16,12 @@ export default function BlogPage() {
   return (
     <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto">
       <BackButton />
-      <h1 className="font-medium text-2xl mb-8 tracking-tighter">
-        Read my blog
-      </h1>
+      <div className="flex items-center mb-6">
+        <BookDoodleIcon className="w-16 h-16 md:w-16 md:h-16 text-zinc-900 dark:text-zinc-100" />
+        <h2 className="text-balance text-4xl md:text-4xl font-sans text-zinc-900 dark:text-zinc-100">
+          My Articles & Updates
+        </h2>
+      </div>
 
       {allBlogs.length === 0 && <p>No blogs yet.</p>}
 
