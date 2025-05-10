@@ -1,65 +1,78 @@
-# Sample workflow for building a Next.js site
+# ========================================================================
+# GitHub Actions Workflow: Next.js CI with pnpm
 #
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
+# This workflow builds and lints the Next.js project on every push or pull
+# request to the 'main' branch, and can be run manually from the Actions tab.
 #
-name: Build Next.js site
+# Key Features:
+# - Uses pnpm as the package manager, with the version controlled via the
+#   "packageManager" field in package.json (e.g., "pnpm@10.0.0").
+# - Uses Node.js version from .nvmrc if present, or set directly in the workflow.
+# - Caches pnpm dependencies for faster builds.
+# - Runs linting before building to catch issues early.
+# - Runs the build in CI mode for strictness.
+#
+# How to Update pnpm Version:
+# - Change the "packageManager" field in package.json (e.g., "pnpm@10.0.0").
+# - Do NOT specify the pnpm version in the workflow; the action will auto-detect.
+#
+# How to Update Node Version:
+# - Update the .nvmrc file in the project root, or set the node-version in the
+#   "Setup Node.js" step below.
+#
+# How to Add More Steps (e.g., tests, deployment):
+# - Add additional steps after the build step as needed.
+#
+# Troubleshooting:
+# - If you see a pnpm version conflict, ensure only one version is specified
+#   (preferably in package.json).
+# - If builds fail due to dependency issues, try clearing the GitHub Actions
+#   cache or updating lockfiles.
+#
+# References:
+# - https://nextjs.org/docs
+# - https://pnpm.io/continuous-integration
+# - https://github.com/pnpm/action-setup
+# - https://github.com/actions/setup-node
+# ========================================================================
+
+name: Next.js CI
 
 on:
-  # Runs on pull_request targeting the default branch
+  push:
+    branches: [main]
   pull_request:
-    branches:
-      - main
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: [main]
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: 'pages'
-  cancel-in-progress: false
 
 jobs:
-  # Build job
-  build:
+  build-and-lint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20]
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: latest
+        # No version specified here; uses packageManager from package.json
 
-      - name: Set package manager and command
-        run: |
-          if [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=pnpm" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '20' # or set node-version-file: '.nvmrc' if you don't specify a version
           cache: 'pnpm'
-          
-      - name: Install dependencies
-        run: pnpm install
 
-      - name: Build with Next.js
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run lint check
+        run: pnpm run check
+
+      - name: Build application
         run: pnpm run build
+        env:
+          CI: true
