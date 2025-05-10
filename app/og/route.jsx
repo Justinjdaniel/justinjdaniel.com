@@ -58,7 +58,8 @@ export async function GET() {
             height: "120px",
             border: "1px solid rgba(255, 255, 255, 0.1)",
             marginBottom: "16px",
-            backgroundImage: "url(https://justinjdaniel.com/images/og-bg.png)",
+            backgroundImage:
+              "url(https://avatars.githubusercontent.com/u/62233773)",
           }}
         >
           {/* <Image src='/images/icon.png' alt='Profile' width={120} height={120} /> */}

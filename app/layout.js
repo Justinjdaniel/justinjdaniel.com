@@ -7,6 +7,7 @@ import Footer from "./_components/layout/footer";
 import Header from "./_components/layout/header";
 import Particles from "./_components/ui/particles";
 import "./globals.css";
+import { Suspense } from "react";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -57,7 +58,9 @@ export default function RootLayout({ children }) {
           <Footer />
         </div>
 
-        <GoogleTagManager />
+        <Suspense fallback={null}>
+          <GoogleTagManager />
+        </Suspense>
         <Analytics />
       </body>
     </html>

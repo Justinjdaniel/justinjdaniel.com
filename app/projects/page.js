@@ -4,6 +4,10 @@ import ProjectCard from "@/_components/ui/project-card";
 import { projects } from "@/_data/projects";
 
 export default function ProjectsPage() {
+  if (!projects || projects.length === 0) {
+    return <div>No projects found.</div>;
+  }
+
   return (
     <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto">
       <BackButton />
