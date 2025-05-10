@@ -1,17 +1,48 @@
+# ============================================================================
+# GitHub Actions Workflow: Automated Version Bump for package.json
+#
+# This workflow automatically bumps the version in package.json and creates a
+# corresponding Git tag when certain keywords appear in commit messages pushed
+# to the main branch.
+#
+# How It Works:
+# - Triggers on every push to the 'main' branch.
+# - Uses phips28/gh-action-bump-version to increment the version in package.json:
+#     - If commit message contains a patch keyword (e.g., "fix", "patches"), bumps patch version.
+#     - If commit message contains a minor keyword (e.g., "add", "new"), bumps minor version.
+#     - If commit message contains a major keyword (e.g., "MAJOR", "cut-major"), bumps major version.
+# - Commits the updated package.json and creates a new tag (with prefix 'v').
+#
+# Developer Notes:
+# - The workflow requires 'contents: write' permissions to push changes back to the repository.
+# - Only commit messages containing the specified keywords will trigger a version bump.
+# - Workflow-generated commits using the default GITHUB_TOKEN will not retrigger the workflow (prevents infinite loops).
+# - If you want to change the keywords, edit the 'patch-wording', 'minor-wording', or 'major-wording' inputs.
+# - To manually bump the version, push a commit to main with the appropriate keyword in the message.
+#
+# References:
+# - https://github.com/phips28/gh-action-bump-version
+# - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+# - https://semver.org/
+# ============================================================================
+
 name: Bump package version
 
 on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   bump-version:
-    name: 'Bump Version on master'
+    name: 'Bump Version on main'
     runs-on: ubuntu-latest
 
     steps:
       - name: 'Checkout source code'
-        uses: 'actions/checkout@v4'
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
       - name: 'cat package.json'
@@ -22,9 +53,9 @@ jobs:
         with:
           tag-prefix: 'v'
           commit-message: 'CI: bumps version to {{version}} [skip ci]'
-          minor-wording:  'add,Adds,new'
-          major-wording:  'MAJOR,cut-major'
-          patch-wording:  'patch,fixes'
+          minor-wording: 'add,Adds,new'
+          major-wording: 'MAJOR,cut-major'
+          patch-wording: 'patch,fixes'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'cat package.json'
