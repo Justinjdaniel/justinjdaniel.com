@@ -55,13 +55,13 @@ export default function Blog({ params }) {
   }
 
   return (
-    <section className="z-10 antialiased max-w-2xl m-4 mt-16 mb-8 md:mx-auto">
+    <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto px-2">
       <BackButton />
       <ScrollProgress />
       <BlogSchema post={post} baseURL={baseURL} />
 
-      <article className="prose prose-zinc dark:prose-invert max-w-none animate-in fade-in slide-in-from-bottom-2 duration-700">
-        <h1 className="text-3xl font-bold tracking-tight !mt-0 !mb-4">
+      <article className="prose prose-zinc dark:prose-invert max-w-none w-full animate-in fade-in slide-in-from-bottom-2 duration-700 pb-8">
+        <h1 className="text-3xl font-bold tracking-tight !mt-0 !mb-4 text-pretty">
           {post.metadata.title}
         </h1>
 

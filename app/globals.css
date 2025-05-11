@@ -110,22 +110,35 @@ pre::-webkit-scrollbar {
 }
 
 pre {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  background-color: var(--bg-secondary);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  line-height: 1.4;
+  position: relative;
+  border: 1px solid rgba(var(--text-primary-rgb), 0.1);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-/* Improved code font stack */
+/* code: Styles for inline code (single backtick in markdown) */
 code {
-  font-family: var(--font-mono), "Fira Code", "Cascadia Code", "Menlo", "Monaco",
-    "Consolas", "Courier New", monospace;
+  display: inline;
+  font-family: var(--font-mono), "JetBrains Mono", "Fira Code", "Cascadia Code",
+    "Menlo", "Monaco", "Consolas", "Courier New", monospace;
   font-size: 14px;
   padding: 0.2em 0.4em;
   border-radius: 0.3em;
   background-color: var(--bg-secondary);
   color: var(--text-secondary);
-  font-feature-settings: "liga" 1, "calt" 1; /* Enable font ligatures */
+  word-break: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
+/* pre code: Styles for code blocks (triple backtick in markdown) */
 pre code {
   background-color: transparent;
   padding: 0;
@@ -134,6 +147,8 @@ pre code {
   line-height: 1.5;
   display: block;
   counter-reset: line;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 pre code > span {
@@ -148,13 +163,18 @@ pre code > span::before {
   content: counter(line);
   position: absolute;
   left: -1em;
-  color: #666;
+  color: hsl(0, 0%, 45%);
   text-align: right;
   width: 1.5em;
 }
 
 pre code > span .sh__token--identifier {
-  color: #e6e6e6 !important;
+  color: hsl(35, 50%, 50%) !important;
+}
+
+/* Syntax highlighting tokens */
+.sh__token--identifier {
+  color: hsl(218, 23%, 23%) !important; /* Dev: Variable/function names, dark gray for light mode */
 }
 
 .sh__token--keyword {
@@ -180,7 +200,7 @@ pre code > span .sh__token--identifier {
 
 code:not(pre code) span {
   font-weight: 500;
-  color: #e6e6e6 !important;
+  color: hsl(0, 0%, 90%) !important;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -189,8 +209,12 @@ code:not(pre code) span {
     color: var(--text-secondary);
   }
 
+  .sh__token--identifier {
+    color: hsl(0, 0%, 90%) !important; /* Dev: Variable/function names, light gray for dark mode */
+  }
+
   code:not(pre code) span {
-    color: #e6e6e6 !important;
+    color: hsl(0, 0%, 90%) !important;
   }
 }
 
@@ -214,6 +238,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2em;
   margin-bottom: 1em;
 } */
+
+table {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
 
 /* Remove Safari input shadow on mobile */
 input[type="text"],

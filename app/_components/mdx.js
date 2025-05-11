@@ -134,7 +134,7 @@ function RoundedImage(props) {
     >
       <Image
         alt={props.alt}
-        className="rounded-lg"
+        className="rounded-lg max-w-full h-auto"
         {...props}
         width={props.width || 1200}
         height={props.height || 630}
@@ -145,8 +145,14 @@ function RoundedImage(props) {
 
 function Code({ children, ...props }) {
   const codeHTML = highlight(children);
-  // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+  return (
+    <code
+      className="block overflow-x-auto max-w-full"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+      dangerouslySetInnerHTML={{ __html: codeHTML }}
+      {...props}
+    />
+  );
 }
 
 function CustomLink(props) {
