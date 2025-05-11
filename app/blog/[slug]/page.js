@@ -1,7 +1,7 @@
 import BlogSchema from "@/_components/blog/blog-schema";
 import BackButton from "@/_components/buttons/back-button";
 import BackToTopButton from "@/_components/buttons/back-to-top";
-import { CustomMDX } from "@/_components/mdx";
+import { CustomMDX } from "@/_components/mdx-components";
 import ScrollProgress from "@/_components/ui/scroll-progress";
 import { getBlogPosts } from "@/_db/blog";
 import { formatDate } from "@/_utils/format-date";
