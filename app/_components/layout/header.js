@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import GitHubIcon from "../icons/simple-icons/github";
+import LinkedInIcon from "../icons/simple-icons/linked-in";
 
 const NAVIGATION_ITEMS = [
   { name: "Home", href: "/" },
@@ -13,12 +14,16 @@ const SOCIAL_LINKS = [
   {
     name: "GitHub",
     href: "https://github.com/justinjdaniel",
-    icon: "/icons/github.svg",
+    icon: (
+      <GitHubIcon className="w-4 h-4 md:w-5 md:h-5 fill-zinc-800/90 dark:fill-zinc-200/90" />
+    ),
   },
   {
     name: "LinkedIn",
     href: "https://linkedin.com/in/justinjdaniel",
-    icon: "/icons/linked-in.svg",
+    icon: (
+      <LinkedInIcon className="w-4 h-4 md:w-5 md:h-5 fill-zinc-800/90 dark:fill-zinc-200/90" />
+    ),
   },
 ];
 
@@ -66,13 +71,7 @@ export default function Header({ className = "" }) {
               className="p-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-all duration-200 hover:scale-110"
               aria-label={link.name}
             >
-              <Image
-                src={link.icon}
-                alt={link.name}
-                width={20}
-                height={20}
-                className="w-5 h-5"
-              />
+              {link.icon}
             </a>
           ))}
         </div>

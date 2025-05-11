@@ -14,18 +14,18 @@ export default function BlogPage() {
   const allBlogs = getBlogPosts();
 
   return (
-    <section className="z-10 antialiased max-w-2xl m-4 mt-16 mb-8 md:mx-auto">
+    <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto">
       <BackButton />
       <div className="flex items-center mb-6">
         <BookDoodleIcon className="w-16 h-16 md:w-16 md:h-16 text-zinc-900 dark:text-zinc-100" />
-        <h2 className="text-balance text-4xl md:text-4xl font-sans text-zinc-900 dark:text-zinc-100">
+        <h2 className="text-balance text-2xl md:text-4xl font-sans text-zinc-900 dark:text-zinc-100">
           My Articles & Updates
         </h2>
       </div>
 
       {allBlogs.length === 0 && <p>No blogs yet.</p>}
 
-      <div className="grid gap-8">
+      <div className="grid gap-8 pb-8 mb-8">
         {allBlogs
           .sort((a, b) => {
             if (

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-export default function BackButton() {
+export default function BackButton({ className = "" }) {
   const router = useRouter();
 
   const goBack = () => {
@@ -20,9 +20,9 @@ export default function BackButton() {
       type="button"
       onClick={goBack}
       aria-label="Go back"
-      className="
-        !fixed top-6 left-6 md:top-8 md:left-8 z-[9999]
-        flex items-center justify-center p-2
+      className={`
+        !fixed top-8 left-6 md:top-8 md:left-8 z-[9999]
+        hidden md:flex items-center justify-center p-2
         bg-zinc-100/80 dark:bg-zinc-800/80
         border border-black/[0.1] dark:border-white/[0.1]
         rounded-full
@@ -31,7 +31,8 @@ export default function BackButton() {
         transition-all duration-200 ease-out
         hover:bg-indigo-500 hover:text-white hover:scale-105
         animate-in slide-in-from-left
-      "
+        ${className}
+      `}
     >
       <svg
         className="w-5 h-5"
