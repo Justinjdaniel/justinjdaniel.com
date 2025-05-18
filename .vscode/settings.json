@@ -2,7 +2,7 @@
   // MARK: Editor settings
   "editor.fontSize": 14,
   "editor.tabSize": 2,
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "Monaspace Argon Var, JetBrains Mono, Fira Code, MesloLGM Nerd Font, Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.wordWrap": "on",
@@ -13,7 +13,6 @@
 
   // MARK:Theme settings
   "workbench.colorTheme": "Bearded Theme Arc Blueberry",
-  "workbench.iconTheme": "bearded-icons",
   "workbench.editor.customLabels.enabled": true,
   "workbench.editor.customLabels.patterns": {
     "**/app/**/page.js": "${dirname}/page.js",

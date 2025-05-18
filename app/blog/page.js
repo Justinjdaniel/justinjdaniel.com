@@ -2,6 +2,7 @@ import BackButton from "@/_components/buttons/back-button";
 import BookDoodleIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/book";
 import { getBlogPosts } from "@/_db/blog";
 import { formatDate } from "@/_utils/format-date";
+import TimeToRead from "@/_utils/time-to-read";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -49,9 +50,15 @@ export default function BlogPage() {
               href={`/blog/${post.slug}`}
             >
               <div className="flex flex-col gap-2">
-                <time className="text-sm text-zinc-600 dark:text-zinc-400">
-                  {formatDate(post.metadata.publishedAt)}
-                </time>
+                <span>
+                  <time className="text-sm text-zinc-600 dark:text-zinc-400">
+                    {formatDate(post.metadata.publishedAt)}
+                  </time>
+                  <span className="text-sm text-zinc-600 dark:text-zinc-400">
+                    {" • "}
+                    <TimeToRead content={post.content} className="text-sm" />
+                  </span>
+                </span>
                 <h2
                   className="
                   text-xl font-semibold text-zinc-900 dark:text-zinc-100

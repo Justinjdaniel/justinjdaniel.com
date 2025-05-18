@@ -1,0 +1,169 @@
+---
+title: 'Effortless Token Refresh in React Using Axios Interceptors'
+publishedAt: '2025-05-18'
+summary: 'Learn how to implement secure and seamless token rotation in your React applications using Axios interceptors. This beginner-friendly guide covers the essentials of setting up Axios, handling token expiration, and ensuring a smooth user experience without interruptions, plus tips on choosing the best token storage method.'
+ogDescription: Effortlessly handle token refresh in React using Axios interceptors. Learn how to keep users logged in securely and choose the best token storage for your app.
+image: /images/blogs/effortless-token-refresh-in-react-using-axios-interceptors.jpg
+---
+
+Keeping users logged in securely is essential for any modern web app. One way to achieve this is with **token rotation**-a method that automatically refreshes expired access tokens using a refresh token, all without interrupting the user experience. In this beginner-friendly guide, you'll learn how to implement token rotation in a React app using Axios interceptors, without interfering with your server logic. We'll also compare common token storage options so you can choose what's best for your project.
+
+## **What is Token Rotation?**
+
+Token rotation is a technique where, instead of keeping a refresh token forever, you get a new refresh token each time you use it. This makes your app more secure because even if a refresh token is stolen, it can only be used once before it becomes invalid.
+
+## **How Does Axios Interceptor Help?**
+
+Axios interceptors let you run logic before a request is sent or after a response is received. Here, we'll use a **response interceptor** to detect when an access token has expired and automatically fetch a new one using the refresh token-without the user noticing.
+
+## **Step-by-Step Example: Token Rotation with Axios**
+
+Below is a simple implementation. Comments are included for clarity.
+
+```javascript
+// api.js
+import axios from 'axios';
+
+// Create an Axios instance
+const api = axios.create({
+  baseURL: 'https://your-api-url.com', // Replace with your backend URL
+});
+
+// Function to get tokens from storage
+const getTokens = () => {
+  return {
+    accessToken: localStorage.getItem('accessToken'),
+    refreshToken: localStorage.getItem('refreshToken'),
+  };
+};
+
+// Function to save tokens to storage
+const setTokens = ({ accessToken, refreshToken }) => {
+  localStorage.setItem('accessToken', accessToken);
+  if (refreshToken) localStorage.setItem('refreshToken', refreshToken);
+};
+
+// Add the access token to every request
+api.interceptors.request.use(config => {
+  const { accessToken } = getTokens();
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+  return config;
+});
+
+// Handle token expiration and rotation
+api.interceptors.response.use(
+  response => response,
+  async error => {
+    const originalRequest = error.config;
+    // If access token expired, try to refresh
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      !originalRequest._retry
+    ) {
+      originalRequest._retry = true;
+      const { refreshToken } = getTokens();
+      if (refreshToken) {
+        try {
+          // Request new access token
+          const res = await axios.post(
+            'https://your-api-url.com/auth/refresh',
+            {
+              refreshToken,
+            }
+          );
+          // Save new tokens
+          setTokens(res.data);
+          // Retry the original request with new token
+          originalRequest.headers.Authorization = `Bearer ${res.data.accessToken}`;
+          return api(originalRequest);
+        } catch (refreshError) {
+          // Refresh token invalid, force logout or redirect to login
+          localStorage.clear();
+          window.location.href = '/login';
+        }
+      }
+    }
+    // Any other error
+    return Promise.reject(error);
+  }
+);
+
+export default api;
+```
+
+**How it works:**
+
+- Every request includes the access token.
+- If the server returns 401 (Unauthorized), the interceptor tries to refresh the token using the refresh token.
+- If successful, it retries the original request with the new access token.
+- If refresh fails, it logs the user out.
+
+---
+
+## Token Storage Options: Pros & Cons
+
+### 1. **Local Storage**
+
+<ProsCard
+  pros={[
+    'Very easy to use in React (`localStorage.setItem` and `localStorage.getItem`)',
+    'Data persists even after the browser is closed or refreshed',
+  ]}
+/>
+<ConsCard
+  cons={[
+    'Vulnerable to XSS (cross-site scripting) attacks',
+    'Not accessible from server-side code',
+  ]}
+/>
+
+### 2. **Session Storage**
+
+<ProsCard
+  pros={[
+    'Works just like local storage but data is cleared when the browser tab is closed',
+    'Easy to use',
+  ]}
+/>
+<ConsCard
+  cons={[
+    'Still vulnerable to XSS attacks',
+    'Data does not persist after closing the tab or browser',
+  ]}
+/>
+
+### 3. **HttpOnly Cookies**
+
+<ProsCard
+  pros={[
+    'More secure than local or session storage',
+    'Not accessible from JavaScript, so protected from XSS attacks',
+    'Automatically sent with every request to the server',
+  ]}
+/>
+
+<ConsCard
+  cons={[
+    'Requires backend support to set and read cookies',
+    'Vulnerable to CSRF (cross-site request forgery) unless you implement extra protection',
+  ]}
+/>
+
+<Callout type='info'>
+  For most personal projects or prototypes, local storage or session storage is
+  fine. For production apps, especially those handling sensitive data, use
+  HttpOnly cookies with CSRF protection.
+</Callout>
+
+---
+
+## **Conclusion**
+
+With Axios interceptors, you can easily implement token rotation in your React app. This keeps users logged in seamlessly and securely, without extra hassle. Remember to choose the token storage method that best fits your security needs and app requirements.
+
+---
+
+Thank you for reading, and have a beautiful day! ❤️

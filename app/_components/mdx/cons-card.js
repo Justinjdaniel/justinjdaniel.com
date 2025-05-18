@@ -5,7 +5,7 @@
  * @param {Array<string>} cons - An array of strings representing the cons.
  * @returns {JSX.Element} The ConsCard component.
  * @example
- * <ConsCard title="React" cons={["Slow", "Verbose", "Complex"]} />
+ * C
  * // Renders a card with the title "React" and a list of cons.
  */
 export default function ConsCard({ title, cons = [] }) {

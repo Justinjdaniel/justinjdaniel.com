@@ -1,10 +1,13 @@
 import BlogSchema from "@/_components/blog/blog-schema";
+import PrevNextNav from "@/_components/blog/prev-next-nav";
 import BackButton from "@/_components/buttons/back-button";
 import BackToTopButton from "@/_components/buttons/back-to-top";
+import ClockDoodleIcon from "@/_components/icons/doodle-icons/clock";
 import { CustomMDX } from "@/_components/mdx-components";
 import ScrollProgress from "@/_components/ui/scroll-progress";
 import { getBlogPosts } from "@/_db/blog";
 import { formatDate } from "@/_utils/format-date";
+import TimeToRead from "@/_utils/time-to-read";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -23,16 +26,19 @@ export async function generateMetadata({ params }) {
     publishedAt: publishedTime,
     summary: description,
     image,
+    ogDescription,
   } = post.metadata;
 
   const ogImage = image ? `${baseURL}${image}` : `${baseURL}/og?title=${title}`;
+
+  const openGraphDescription = ogDescription || description;
 
   return {
     title,
     description,
     openGraph: {
       title,
-      description,
+      description: openGraphDescription,
       type: "article",
       publishedTime,
       url: `${baseURL}/blog/${post.slug}`,
@@ -41,7 +47,7 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: openGraphDescription,
       images: [ogImage],
     },
   };
@@ -49,6 +55,11 @@ export async function generateMetadata({ params }) {
 
 export default function Blog({ params }) {
   const post = getBlogPosts().find((post) => post.slug === params.slug);
+  const posts = getBlogPosts();
+  const currentIndex = posts.findIndex((p) => p.slug === params.slug);
+  const prevPost =
+    currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+  const nextPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
 
   if (!post) {
     notFound();
@@ -71,6 +82,10 @@ export default function Blog({ params }) {
               {formatDate(post.metadata.publishedAt)}
             </time>
           </Suspense>
+          <span>
+            <ClockDoodleIcon className="w-3 h-3 mr-2 inline-block" />
+            <TimeToRead content={post.content} />
+          </span>
         </div>
 
         {post.metadata.image && (
@@ -88,6 +103,8 @@ export default function Blog({ params }) {
           <CustomMDX source={post.content} />
         </div>
       </article>
+
+      <PrevNextNav prevPost={prevPost} nextPost={nextPost} />
 
       <BackToTopButton />
     </section>
