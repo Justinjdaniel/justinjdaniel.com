@@ -43,5 +43,15 @@ function getMDXData(dir) {
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "content"));
+  const posts = getMDXData(path.join(process.cwd(), "content"));
+
+  // Sort posts by publishedAt date (newest first)
+  posts.sort((a, b) => {
+    // Convert publishedAt to Date objects for comparison
+    const dateA = new Date(a.metadata.publishedAt);
+    const dateB = new Date(b.metadata.publishedAt);
+    return dateB - dateA; // Descending order (latest first)
+  });
+
+  return posts;
 }
