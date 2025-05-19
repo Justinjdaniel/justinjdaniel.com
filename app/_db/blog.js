@@ -38,6 +38,7 @@ function getMDXData(dir) {
       metadata,
       slug,
       content,
+      date: new Date(metadata.publishedAt), // Precompute date
     };
   });
 }
@@ -47,10 +48,8 @@ export function getBlogPosts() {
 
   // Sort posts by publishedAt date (newest first)
   posts.sort((a, b) => {
-    // Convert publishedAt to Date objects for comparison
-    const dateA = new Date(a.metadata.publishedAt);
-    const dateB = new Date(b.metadata.publishedAt);
-    return dateB - dateA; // Descending order (latest first)
+    // Use precomputed date for comparison
+    return b.date - a.date; // Descending order (latest first)
   });
 
   return posts;
