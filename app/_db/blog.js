@@ -38,10 +38,19 @@ function getMDXData(dir) {
       metadata,
       slug,
       content,
+      date: new Date(metadata.publishedAt), // Precompute date
     };
   });
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "content"));
+  const posts = getMDXData(path.join(process.cwd(), "content"));
+
+  // Sort posts by publishedAt date (newest first)
+  posts.sort((a, b) => {
+    // Use precomputed date for comparison
+    return b.date - a.date; // Descending order (latest first)
+  });
+
+  return posts;
 }
