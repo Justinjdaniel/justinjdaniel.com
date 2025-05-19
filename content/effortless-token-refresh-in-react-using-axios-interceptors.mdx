@@ -18,7 +18,7 @@ Axios interceptors let you run logic before a request is sent or after a respons
 
 ## **Step-by-Step Example: Token Rotation with Axios**
 
-Below is a simple implementation. Comments are included for clarity.
+Below is a simple implementation.
 
 ```javascript
 // api.js
@@ -69,7 +69,7 @@ api.interceptors.response.use(
         try {
           // Request new access token
           const res = await axios.post(
-            'https://your-api-url.com/auth/refresh',
+            '/auth/refresh',
             {
               refreshToken,
             }
@@ -95,6 +95,20 @@ export default api;
 ```
 
 **How it works:**
+
+```
+Visual Flow
+
+User clicks "Profile" →
+  Access token expired →
+    401 error →
+      Interceptor calls refresh endpoint →
+        Success? →
+          Retry original request →
+            User sees profile (no error)
+        Failure? →
+          Show login prompt (user sees error)
+```
 
 - Every request includes the access token.
 - If the server returns 401 (Unauthorized), the interceptor tries to refresh the token using the refresh token.
