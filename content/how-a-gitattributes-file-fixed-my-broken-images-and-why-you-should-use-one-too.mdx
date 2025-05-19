@@ -6,7 +6,7 @@ ogDescription: Learn how a .gitattributes file can fix broken images and file mi
 image: /images/blogs/how-a-gitattributes-file-fixed-my-broken-images.jpg
 ---
 
-Recently, I ran into an issue where images in a documentation repository wouldn't render locally. After some digging, I realized the problem was that Git wasn't treating image files as binary, causing them to break-even in VSCode. The fix? Adding a `.gitattributes` file!
+Recently, I ran into an issue where images in a documentation repository wouldn't render locally. After some digging, I realized the problem was that Git wasn't treating image files as binary, causing them to break, even in VSCode. The fix? Adding a `.gitattributes` file!
 
 This post explains why `.gitattributes` matters, what problems it solves, and how you can use it to avoid file mishandling in your own projects.
 
@@ -71,7 +71,7 @@ A `.gitattributes` file is a simple text file you add to your repository to tell
 *.png binary
 *.jpg binary
 *.gif binary
-*.svg binary
+*.svg binary # SVGs are text-based (XML) but often treated as binary to prevent line-ending/merge issues.
 
 # Treat markdown as text
 *.md text
