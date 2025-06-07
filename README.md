@@ -95,4 +95,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-> [!NOTE] > _This repository contains the source code and content for my personal portfolio website. You can view it live at [justinjdaniel.com](https://justinjdaniel.com/)._
+> [!NOTE]
+> _This repository contains the source code and content for my personal portfolio website. You can view it live at [justinjdaniel.com](https://justinjdaniel.com/)._
