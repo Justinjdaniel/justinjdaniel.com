@@ -3,13 +3,6 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts"
-    },
-    "ghcr.io/devcontainers-contrib/features/pnpm:2": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/oh-my-posh:1": {
-      "version": "latest",
-      "shell": "zsh"
     }
   },
   "forwardPorts": [3000],
