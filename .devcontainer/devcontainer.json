@@ -4,9 +4,6 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts"
-    },
-    "ghcr.io/devcontainers-contrib/features/pnpm:2": {
-      "version": "latest"
     }
   },
   "forwardPorts": [3000],
@@ -16,7 +13,7 @@
       "onAutoForward": "openPreview"
     }
   },
-  "postCreateCommand": "pnpm install",
+  "postCreateCommand": "corepack enable pnpm && pnpm install",
   "postStartCommand": "pnpm run dev",
   "containerEnv": {
     "NEXT_TELEMETRY_DISABLED": "1"
