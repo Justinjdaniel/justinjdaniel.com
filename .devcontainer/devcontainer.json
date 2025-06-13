@@ -1,6 +1,6 @@
 {
   "name": "justinjdaniel.com",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20.11-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts"
