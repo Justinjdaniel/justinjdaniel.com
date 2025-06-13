@@ -1,6 +1,6 @@
 {
   "name": "justinjdaniel.com",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20.11-bullseye",
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts"
@@ -10,7 +10,17 @@
     }
   },
   "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "openPreview"
+    }
+  },
   "postCreateCommand": "pnpm install",
+  "postStartCommand": "pnpm run dev",
+  "containerEnv": {
+    "NEXT_TELEMETRY_DISABLED": "1"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
