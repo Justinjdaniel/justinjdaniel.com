@@ -1,6 +1,6 @@
 {
   "name": "justinjdaniel.com",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "description": "My portfolio website built with Next.js and React.",
   "homepage": "https://justinjdaniel.com",
   "repository": {
@@ -14,7 +14,11 @@
   "bugs": {
     "url": "https://github.com/justinjdaniel/justinjdaniel.com/issues"
   },
-  "keywords": ["portfolio", "nextJs", "react"],
+  "keywords": [
+    "portfolio",
+    "nextJs",
+    "react"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -28,6 +32,7 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@next/mdx": "15.3.1",
+    "@stackframe/stack": "^2.8.12",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "gsap": "^3.13.0",
@@ -56,6 +61,8 @@
       "biome format --write --no-errors-on-unmatched",
       "biome lint --write --no-errors-on-unmatched"
     ],
-    "*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
+    "*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
   }
 }
