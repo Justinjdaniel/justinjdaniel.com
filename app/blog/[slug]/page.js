@@ -12,6 +12,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+import ViewCounter from "@/_components/blog/view-counter";
+
 const baseURL = "https://justinjdaniel.com";
 
 export async function generateMetadata({ params }) {
@@ -86,6 +88,7 @@ export default function Blog({ params }) {
             <ClockDoodleIcon className="w-3 h-3 mr-2 inline-block" />
             <TimeToRead content={post.content} />
           </span>
+          <ViewCounter slug={post.slug} />
         </div>
 
         {post.metadata.image && (
