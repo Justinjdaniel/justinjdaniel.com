@@ -1,10 +1,10 @@
+import { StackProvider, StackTheme } from "@stackframe/stack";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { StackProvider, StackTheme } from "@stackframe/stack";
-import { stackServerApp } from "../stack";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { Suspense } from "react";
+import { stackServerApp } from "../stack";
 
 import GoogleTagManager from "./_components/analytics/google-tag-manager";
 import Footer from "./_components/layout/footer";

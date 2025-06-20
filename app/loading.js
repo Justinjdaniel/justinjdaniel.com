@@ -1,11 +1,11 @@
 export default function Loading() {
   // Stack uses React Suspense, which will render this page while user data is being fetched.
   // See: https://nextjs.org/docs/app/api-reference/file-conventions/loading
- 
+
   // This loading component uses an animated SVG spinner with accessibility support.
   return (
     <div className="flex items-center justify-center h-screen bg-background/60 backdrop-blur-sm">
-      <output
+      <div
         className="inline-flex items-center justify-center rounded-full p-4 bg-white/80 shadow-lg"
         aria-live="polite"
       >
@@ -30,7 +30,7 @@ export default function Loading() {
           />
         </svg>
         <span className="sr-only">Loading...</span>
-      </output>
+      </div>
     </div>
   );
 }

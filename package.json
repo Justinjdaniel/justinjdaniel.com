@@ -14,11 +14,7 @@
   "bugs": {
     "url": "https://github.com/justinjdaniel/justinjdaniel.com/issues"
   },
-  "keywords": [
-    "portfolio",
-    "nextJs",
-    "react"
-  ],
+  "keywords": ["portfolio", "nextJs", "react"],
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -40,6 +36,7 @@
     "next": "15.3.1",
     "next-mdx-remote": "^5.0.0",
     "nextjs-toploader": "^3.8.16",
+    "pg": "^8.16.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "sugar-high": "^0.9.3"
@@ -61,8 +58,6 @@
       "biome format --write --no-errors-on-unmatched",
       "biome lint --write --no-errors-on-unmatched"
     ],
-    "*": [
-      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
-    ]
+    "*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
   }
 }
