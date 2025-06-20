@@ -51,6 +51,7 @@ This project uses [Playwright](https://playwright.dev/) for integration and end-
 
 5. **View Playwright HTML report:**
    After running tests, you can view a detailed report:
+
    ```bash
    pnpm test:e2e:report
    ```
