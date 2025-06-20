@@ -1,17 +1,18 @@
 export const projects = [
   {
-    slug: "my-awesome-app",
-    title: "My Awesome App",
-    description:
-      "A productivity app that helps you organize your tasks efficiently.",
+    slug: "demo-app",
+    title: "Demo App",
+    description: "A demonstration application showcasing various features.",
     about: `It features a clean UI, dark mode, and real-time collaboration.
     Built with Next.js and Tailwind CSS.
     It is a full-stack application with a REST API and a MongoDB database.
-    The app allows users to create, update, and delete tasks.
-    It also includes user authentication and authorization.
+    The app includes user authentication, allowing users to sign up and log in securely.
+    Users can create, read, update, and delete items in their personal dashboard.
+    The application also supports real-time updates using WebSockets, enabling collaborative features.
+    The UI is designed to be intuitive and user-friendly, with a focus on accessibility.
     The app is responsive and works well on mobile devices.`,
-    github: "https://github.com/justinjdaniel/my-awesome-app",
-    demo: "https://myawesomeapp.vercel.app",
+    github: "https://github.com/justinjdaniel/demo-app",
+    demo: "https://demoapp-justinjdaniel.vercel.app",
     stack: ["Next.js", "Tailwind CSS", "MongoDB"],
     media: [
       {
@@ -27,8 +28,14 @@ export const projects = [
     ],
     extra: {
       // Any other info, e.g. launch date, role, etc.
-      launched: "2024-05-10",
+      launched: "2025-05-15",
       role: "Full Stack Developer",
+      features: [
+        "User authentication",
+        "Real-time collaboration",
+        "Responsive design",
+        "Dark mode support",
+      ],
     },
   },
   // ...more projects
