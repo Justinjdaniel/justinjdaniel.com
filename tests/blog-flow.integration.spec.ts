@@ -32,12 +32,16 @@ test.describe("Blog integration flow", () => {
     const _blogUrl = await firstBlog.getAttribute("href");
     await firstBlog.click();
 
+    // Helper to escape regex special characters in a string
+    function escapeRegExp(string: string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
     // Assert: Blog detail page loads and URL matches the blog link
     if (_blogUrl) {
-      await expect(page).toHaveURL(
-        new RegExp(`${_blogUrl.replace(/\//g, "\\/")}$`),
-        { timeout: 5000 },
-      );
+      await expect(page).toHaveURL(new RegExp(`${escapeRegExp(_blogUrl)}$`), {
+        timeout: 5000,
+      });
     } else {
       throw new Error("Blog link href not found");
     }
