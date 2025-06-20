@@ -1,0 +1,18 @@
+{
+  "servers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "Neon": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.neon.tech/sse"]
+      // "args": [
+      //   "-y",
+      //   "@neondatabase/mcp-server-neon",
+      //   "start",
+      //   "<YOUR_NEON_API_KEY>"
+      // ]
+    }
+  }
+}

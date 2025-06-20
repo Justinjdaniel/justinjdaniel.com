@@ -2,14 +2,14 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
-export default function Error({ error, reset }) {
+// biome-ignore lint/suspicious/noShadowRestrictedNames: intentional, `error` is a reserved prop in Next.js error boundaries
+export default function Error({ error: errorObj, reset }) {
   const router = useRouter();
 
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+    console.error(errorObj);
+  }, [errorObj]);
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen px-4">
