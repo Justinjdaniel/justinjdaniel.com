@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { notFound } from "next/navigation";
 import BackButton from "@/_components/buttons/back-button";
 import BackToTopButton from "@/_components/buttons/back-to-top";
 import DesktopIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/desktop";
@@ -5,7 +7,50 @@ import DrawSVG from "@/_components/icons/draw-svg";
 import ScrollProgress from "@/_components/ui/scroll-progress";
 import StackBadge from "@/_components/ui/stack-badge";
 import { projects } from "@/_data/projects";
-import { notFound } from "next/navigation";
+
+function MediaGallery({ media }) {
+  return (
+    <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {media.map((item) =>
+        item.type === "image"
+          ? <div
+              key={item.src}
+              className="relative group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow hover:shadow-lg transition"
+            >
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={600}
+                height={224}
+                className="w-full h-56 object-cover transition-transform duration-200 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
+            </div>
+          : <div
+              key={item.src}
+              className="relative group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow hover:shadow-lg transition"
+            >
+              <video
+                src={item.src}
+                controls
+                className="w-full h-56 object-cover transition-transform duration-200 group-hover:scale-105"
+                aria-label={item.alt}
+              >
+                <track
+                  kind="captions"
+                  src={item.captions || null}
+                  srcLang="en"
+                  label="English captions"
+                  default
+                />
+              </video>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
+            </div>,
+      )}
+    </div>
+  );
+}
 
 export default function ProjectInfoPage({ params }) {
   const project = projects.find((p) => p.slug === params.slug);
@@ -24,7 +69,7 @@ export default function ProjectInfoPage({ params }) {
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 text-zinc-700 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
               >
-                <img
+                <Image
                   src="/icons/github.svg"
                   alt="GitHub"
                   width={20}
@@ -68,46 +113,7 @@ export default function ProjectInfoPage({ params }) {
           ))}
         </div>
         {/* Media Gallery */}
-        {project.media?.length > 0 && (
-          <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {project.media.map((item) =>
-              item.type === "image" ? (
-                <div
-                  key={item.src}
-                  className="relative group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow hover:shadow-lg transition"
-                >
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-56 object-cover transition-transform duration-200 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
-                </div>
-              ) : (
-                <div
-                  key={item.src}
-                  className="relative group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow hover:shadow-lg transition"
-                >
-                  <video
-                    src={item.src}
-                    controls
-                    className="w-full h-56 object-cover transition-transform duration-200 group-hover:scale-105"
-                    aria-label={item.alt}
-                  >
-                    <track
-                      kind="captions"
-                      src={item.captions || ""}
-                      srcLang="en"
-                      label="English captions"
-                      default
-                    />
-                  </video>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
-                </div>
-              ),
-            )}
-          </div>
-        )}
+        {project.media?.length > 0 && <MediaGallery media={project.media} />}
         {/* Extra Info */}
         {(project.extra?.launched || project.extra?.role) && (
           <div className="flex flex-wrap gap-6 text-sm text-zinc-600 dark:text-zinc-400 mb-8">

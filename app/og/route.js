@@ -28,7 +28,7 @@ export async function GET(req) {
   const profileImg =
     "https://avatars.githubusercontent.com/u/62233773?s=120&v=4";
   const site = "justinjdaniel.com";
-  const bgImage = "https://justinjdaniel.com/images/og-bg.png";
+  const _bgImage = "https://justinjdaniel.com/images/og-bg.png";
 
   // Dynamically adjust font size for long titles (for 1200x630 images)
   const baseFontSize = 56;
@@ -116,6 +116,7 @@ export async function GET(req) {
             marginTop: 40,
           }}
         >
+          {/** biome-ignore lint/performance/noImgElement: intentional, <img> is used for profile picture */}
           <img
             src={profileImg}
             alt={author}

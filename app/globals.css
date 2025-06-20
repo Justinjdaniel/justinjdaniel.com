@@ -168,13 +168,12 @@ pre code > span::before {
   width: 1.5em;
 }
 
-pre code > span .sh__token--identifier {
-  color: hsl(35, 50%, 50%) !important;
-}
-
 /* Syntax highlighting tokens */
 .sh__token--identifier {
   color: hsl(218, 23%, 23%) !important; /* Dev: Variable/function names, dark gray for light mode */
+}
+pre code > span .sh__token--identifier {
+  color: hsl(35, 50%, 50%) !important;
 }
 
 .sh__token--keyword {
@@ -209,10 +208,10 @@ code:not(pre code) span {
     color: var(--text-secondary);
   }
 
+  /* Syntax highlighting tokens */
   .sh__token--identifier {
     color: hsl(0, 0%, 90%) !important; /* Dev: Variable/function names, light gray for dark mode */
   }
-
   code:not(pre code) span {
     color: hsl(0, 0%, 90%) !important;
   }
@@ -265,13 +264,7 @@ table {
   view-transition-name: viewTransition;
 }
 
-::view-transition-old(viewTransition) {
-  animation: fade-out 0.8s ease-in-out;
-}
-
-::view-transition-new(viewTransition) {
-  animation: fade-in-up 0.4s ease-in-out;
-}
+/* View Transitions API selectors removed for compatibility. See MDN for updates. */
 
 @keyframes fade-out {
   0% {
@@ -360,27 +353,7 @@ table {
   }
 }
 
-/* View Transitions API */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-::view-transition-old(root) {
-  z-index: 1;
-}
-::view-transition-new(root) {
-  z-index: 2;
-}
-
-::view-transition-old(test) {
-  animation: fade-out 0.5s ease-in-out;
-}
-
-::view-transition-new(test) {
-  animation: fade-in 0.5s ease-in-out;
-}
+/* View Transitions API selectors removed for compatibility. See MDN for updates. */
 
 @keyframes fade-out {
   from {
@@ -403,10 +376,14 @@ table {
 /* Add smooth transitions for color scheme changes */
 @media (prefers-reduced-motion: no-preference) {
   :root {
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
   * {
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease;
   }
 }
 

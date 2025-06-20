@@ -1,6 +1,6 @@
 "use client";
-import { useMousePosition } from "@/_utils/mouse";
 import { useEffect, useRef, useState } from "react";
+import { useMousePosition } from "@/_utils/mouse";
 
 /**
  * Renders a particle effect on a canvas.
@@ -45,6 +45,7 @@ export default function Particles({
     return () => media.removeEventListener("change", handler);
   }, []);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional, useEffect is stable
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d");
@@ -58,12 +59,12 @@ export default function Particles({
     };
   }, []);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional, onMouseMove is stable
   useEffect(() => {
     onMouseMove();
   }, [mousePosition.x, mousePosition.y]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional, initCanvas is stable
   useEffect(() => {
     initCanvas();
   }, [refresh]);

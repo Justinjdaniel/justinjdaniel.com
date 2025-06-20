@@ -7,14 +7,13 @@ import { GTM_ID, pageview } from "../../../lib/gtm";
 
 export default function GoogleTagManager() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const _searchParams = useSearchParams();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (pathname) {
       pageview(pathname);
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") {
     return null;
@@ -33,7 +32,7 @@ export default function GoogleTagManager() {
       <Script
         id="gtm-script"
         strategy="afterInteractive"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: intentional, use of dangerouslySetInnerHTML for GTM script
         dangerouslySetInnerHTML={{
           __html: `
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
