@@ -18,7 +18,7 @@ export default function ViewCounter({ slug }) {
         } else {
           setError(data.error || "Failed to fetch views");
         }
-      } catch (err) {
+      } catch (_error) {
         setError("Network error");
       }
     };
@@ -34,10 +34,7 @@ export default function ViewCounter({ slug }) {
   }
 
   return (
-    <span
-      className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400"
-      aria-label="View count"
-    >
+    <span className="inline-flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
       <svg
         width="16"
         height="16"
@@ -53,11 +50,9 @@ export default function ViewCounter({ slug }) {
         />
         <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
       </svg>
-      {views === null ? (
-        <span>Loading...</span>
-      ) : (
-        <span>{views.toLocaleString()} views</span>
-      )}
+      {views === null
+        ? <span>Loading...</span>
+        : <span>{views.toLocaleString()} views</span>}
     </span>
   );
 }

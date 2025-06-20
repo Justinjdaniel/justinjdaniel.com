@@ -7,13 +7,6 @@ const typeStyles = {
   danger: "border-red-400 bg-red-50 dark:bg-red-950/40 dark:border-red-700",
 };
 
-const accentStyles = {
-  info: "bg-blue-400",
-  success: "bg-emerald-400",
-  warning: "bg-yellow-400",
-  danger: "bg-red-400",
-};
-
 /**
  * Callout component
  * @description A visually distinctive callout box with emoji, accent bar, and type-based color.

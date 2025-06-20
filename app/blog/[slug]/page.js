@@ -1,5 +1,9 @@
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import BlogSchema from "@/_components/blog/blog-schema";
 import PrevNextNav from "@/_components/blog/prev-next-nav";
+import ViewCounter from "@/_components/blog/view-counter";
 import BackButton from "@/_components/buttons/back-button";
 import BackToTopButton from "@/_components/buttons/back-to-top";
 import ClockDoodleIcon from "@/_components/icons/doodle-icons/clock";
@@ -8,11 +12,6 @@ import ScrollProgress from "@/_components/ui/scroll-progress";
 import { getBlogPosts } from "@/_db/blog";
 import { formatDate } from "@/_utils/format-date";
 import TimeToRead from "@/_utils/time-to-read";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { Suspense } from "react";
-
-import ViewCounter from "@/_components/blog/view-counter";
 
 const baseURL = "https://justinjdaniel.com";
 

@@ -60,6 +60,7 @@ export default async function Image() {
             justifyContent: "center",
           }}
         >
+          {/** biome-ignore lint/performance/noImgElement: intentional, <img> is used for profile picture */}
           <img
             src="https://avatars.githubusercontent.com/u/62233773?s=120&v=4"
             alt="Profile"

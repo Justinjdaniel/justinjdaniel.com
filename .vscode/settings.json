@@ -2,10 +2,14 @@
   // MARK: Editor settings
   "editor.fontSize": 14,
   "editor.tabSize": 2,
-  "editor.fontFamily": "Monaspace Argon Var, JetBrains Mono, Fira Code, MesloLGM Nerd Font, Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "JetBrains Mono, Fira Code, MesloLGM Nerd Font, Consolas, monospace",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.wordWrap": "on",
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "always",
+    "source.fixAll.biome": "explicit"
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
@@ -13,6 +17,8 @@
 
   // MARK:Theme settings
   "workbench.colorTheme": "Bearded Theme Arc Blueberry",
+  "workbench.sideBar.location": "right",
+  // "workbench.activityBar.location": "hidden",
   "workbench.editor.customLabels.enabled": true,
   "workbench.editor.customLabels.patterns": {
     "**/app/**/page.js": "${dirname}/page.js",
@@ -85,6 +91,7 @@
     "rehype",
     "staticity",
     "tailwindcss",
-    "toploader"
+    "toploader",
+    "wght"
   ]
 }
