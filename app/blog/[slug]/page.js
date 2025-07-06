@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BlogSchema from "@/_components/blog/blog-schema";
 import PrevNextNav from "@/_components/blog/prev-next-nav";
+import { useBlogViewCount } from "@/_components/blog/use-blog-view-count";
 import BackButton from "@/_components/buttons/back-button";
 import BackToTopButton from "@/_components/buttons/back-to-top";
 import ClockDoodleIcon from "@/_components/icons/doodle-icons/clock";
@@ -65,6 +66,8 @@ export default function Blog({ params }) {
     notFound();
   }
 
+  const viewCount = useBlogViewCount(post.slug);
+
   return (
     <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto px-2">
       <BackButton />
@@ -85,6 +88,11 @@ export default function Blog({ params }) {
           <span>
             <ClockDoodleIcon className="w-3 h-3 mr-2 inline-block" />
             <TimeToRead content={post.content} />
+            {typeof viewCount === "number" && (
+              <span className="ml-4" title="View count">
+                👁️ {viewCount.toLocaleString()} views
+              </span>
+            )}
           </span>
         </div>
 
