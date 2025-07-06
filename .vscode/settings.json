@@ -33,7 +33,7 @@
     },
     {
       "fileMatch": ["/biome.json"],
-      "url": "https://biomejs.dev/schemas/1.9.4/schema.json"
+      "url": "https://biomejs.dev/schemas/2.0.6/schema.json"
     },
     {
       "fileMatch": ["/jsconfig.json"],
