@@ -8,7 +8,7 @@ This project uses [Playwright](https://playwright.dev/) for integration and end-
 
    ```bash
    pnpm install
-   ```
+   ``` 
 
    Or, if you prefer npm:
 

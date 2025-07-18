@@ -49,15 +49,6 @@
     }
   ],
 
-  // MARK: Copilot settings
-  "github.copilot.chat.codeGeneration.instructions": [
-    {
-      "file": "docs/code-style.md" // import instructions from file `code-style.md`
-    },
-    { "file": "docs/spec.md" },
-    { "file": "docs/commit.md" }
-  ],
-
   //MARK: Explorer settings
   // updated 2025-03-27 03:47
   // https://github.com/antfu/vscode-file-nesting-config
