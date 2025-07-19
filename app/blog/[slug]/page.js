@@ -16,7 +16,8 @@ import TimeToRead from "@/_utils/time-to-read";
 const baseURL = "https://justinjdaniel.com";
 
 export async function generateMetadata({ params }) {
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+  const { slug } = await params;
+  const post = getBlogPosts().find((post) => post.slug === slug);
 
   if (!post) {
     return {};
@@ -55,9 +56,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Blog({ params }) {
-  const post = getBlogPosts().find((post) => post.slug === params.slug);
+  const { slug } = await params;
+  const post = getBlogPosts().find((post) => post.slug === slug);
   const posts = getBlogPosts();
-  const currentIndex = posts.findIndex((p) => p.slug === params.slug);
+  const currentIndex = posts.findIndex((p) => p.slug === slug);
   const prevPost =
     currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
   const nextPost = currentIndex > 0 ? posts[currentIndex - 1] : null;
