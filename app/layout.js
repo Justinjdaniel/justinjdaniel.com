@@ -1,14 +1,13 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-
+import { Suspense } from "react";
 import GoogleTagManager from "./_components/analytics/google-tag-manager";
 import Footer from "./_components/layout/footer";
 import Header from "./_components/layout/header";
 import Particles from "./_components/ui/particles";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Suspense } from "react";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({

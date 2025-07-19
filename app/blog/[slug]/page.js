@@ -6,6 +6,7 @@ import PrevNextNav from "@/_components/blog/prev-next-nav";
 import BackButton from "@/_components/buttons/back-button";
 import BackToTopButton from "@/_components/buttons/back-to-top";
 import ClockDoodleIcon from "@/_components/icons/doodle-icons/clock";
+import BookDoodleIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/book";
 import { CustomMDX } from "@/_components/mdx-components";
 import ScrollProgress from "@/_components/ui/scroll-progress";
 import { getBlogPosts } from "@/_db/blog";
@@ -88,11 +89,12 @@ export default async function Blog({ params }) {
             </time>
           </Suspense>
           <span>
-            <ClockDoodleIcon className="w-3 h-3 mr-2 inline-block" />
+            <ClockDoodleIcon className="w-3 h-3 mr-1 inline-block" />
             <TimeToRead content={post.content} />
             {typeof viewCount === "number" && (
               <span className="ml-4" title="View count">
-                👁️ {viewCount.toLocaleString()} views
+                <BookDoodleIcon className="w-5 h-5 mr-1 inline-block" />
+                {viewCount.toLocaleString()} views
               </span>
             )}
           </span>
