@@ -3,13 +3,13 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BlogSchema from "@/_components/blog/blog-schema";
 import PrevNextNav from "@/_components/blog/prev-next-nav";
-import { useBlogViewCount } from "@/_components/blog/use-blog-view-count";
 import BackButton from "@/_components/buttons/back-button";
 import BackToTopButton from "@/_components/buttons/back-to-top";
 import ClockDoodleIcon from "@/_components/icons/doodle-icons/clock";
 import { CustomMDX } from "@/_components/mdx-components";
 import ScrollProgress from "@/_components/ui/scroll-progress";
 import { getBlogPosts } from "@/_db/blog";
+import { incrementAndGetBlogViewCount } from "@/_db/queries/blog-post-views";
 import { formatDate } from "@/_utils/format-date";
 import TimeToRead from "@/_utils/time-to-read";
 
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function Blog({ params }) {
+export default async function Blog({ params }) {
   const post = getBlogPosts().find((post) => post.slug === params.slug);
   const posts = getBlogPosts();
   const currentIndex = posts.findIndex((p) => p.slug === params.slug);
@@ -66,7 +66,7 @@ export default function Blog({ params }) {
     notFound();
   }
 
-  const viewCount = useBlogViewCount(post.slug);
+  const viewCount = await incrementAndGetBlogViewCount(post.slug);
 
   return (
     <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto px-2">

@@ -7,13 +7,14 @@
 
     "neon": {
       "command": "npx",
+      // "args": ["-y", "mcp-remote", "https://mcp.neon.tech/sse"], // Use the remote MCP server
       "args": [
+        // Use the local MCP server
         "-y",
         "@neondatabase/mcp-server-neon",
         "start",
-        "${env:NEON_KEY}"
+        "{env:NEON_KEY}" // Neon api key
       ]
-      // "args": ["-y", "mcp-remote", "https://mcp.neon.tech/sse"]
     }
   }
 }
