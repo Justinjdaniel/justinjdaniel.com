@@ -93,7 +93,7 @@ export default async function Blog({ params }) {
             <TimeToRead content={post.content} />
             {typeof viewCount === "number" && (
               <span className="ml-4" title="View count">
-                <BookDoodleIcon className="w-5 h-5 mr-1 inline-block" />
+                <BookDoodleIcon className="w-6 h-6 mr-1 inline-block" />
                 {viewCount.toLocaleString()} views
               </span>
             )}
