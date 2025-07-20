@@ -50,7 +50,7 @@ With an agile mindset and startup spirit, I collaborate with teams to deliver pr
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
-- [Node.js v16.13+](https://nodejs.org/)
+- [Node.js v20.x+](https://nodejs.org/)
 - [pnpm](https://pnpm.io/) (recommended)
 
 ### Installation
