@@ -1,6 +1,6 @@
 {
   "name": "justinjdaniel.com",
-  "version": "4.4.0",
+  "version": "4.5.1",
   "description": "My portfolio website built with Next.js and React.",
   "homepage": "https://justinjdaniel.com",
   "repository": {
@@ -41,7 +41,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "gsap": "^3.13.0",
     "motion": "^12.23.0",
-    "next": "15.3.5",
+    "next": "15.3.3",
     "next-mdx-remote": "^5.0.0",
     "nextjs-toploader": "^3.8.16",
     "pg": "^8.16.3",

@@ -31,7 +31,9 @@
         "GitHub.copilot",
         "GitHub.copilot-chat",
         "ms-playwright.playwright",
-        "ms-vscode.test-adapter-converter"
+        "ms-vscode.test-adapter-converter",
+        "mhutchie.git-graph",
+        "aaron-bond.better-comments"
       ],
       "settings": {
         "editor.formatOnSave": true,
