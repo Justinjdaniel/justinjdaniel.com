@@ -50,7 +50,7 @@
     "sugar-high": "^0.9.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0.6",
+    "@biomejs/biome": "^2.1.2",
     "@playwright/test": "^1.54.1",
     "@tailwindcss/postcss": "^4.1.11",
     "husky": "^9.1.7",
