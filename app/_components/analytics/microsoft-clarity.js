@@ -1,3 +1,4 @@
+"use client";
 // Microsoft Clarity Analytics Script
 import { useEffect } from "react";
 
