@@ -47,6 +47,7 @@
 ## External Integrations
 
 - **Google Tag Manager:** See `lib/gtm.js` and `app/_components/analytics/google-tag-manager.js`.
+- **Microsoft Clarity:** See `app/_components/analytics/microsoft-clarity.js`.
 - **Vercel:** Deployment is automated via GitHub Actions and Vercel (see badges in README).
 
 ## Example: Adding a Blog Post
