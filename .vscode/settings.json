@@ -7,7 +7,6 @@
   "editor.formatOnSave": true,
   "editor.wordWrap": "on",
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "always",
     "source.fixAll.biome": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -100,6 +99,7 @@
     "staticity",
     "tailwindcss",
     "toploader",
+    "turbopack",
     "wght"
   ]
 }

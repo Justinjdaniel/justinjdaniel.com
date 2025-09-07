@@ -12,41 +12,43 @@ function MediaGallery({ media }) {
   return (
     <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
       {media.map((item) =>
-        item.type === "image"
-          ? <div
-              key={item.src}
-              className="relative group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow hover:shadow-lg transition"
+        item.type === "image" ? (
+          <div
+            key={item.src}
+            className="relative group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow hover:shadow-lg transition"
+          >
+            <Image
+              src={item.src}
+              alt={item.alt}
+              width={600}
+              height={224}
+              className="w-full h-56 object-cover transition-transform duration-200 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
+          </div>
+        ) : (
+          <div
+            key={item.src}
+            className="relative group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow hover:shadow-lg transition"
+          >
+            <video
+              src={item.src}
+              controls
+              className="w-full h-56 object-cover transition-transform duration-200 group-hover:scale-105"
+              aria-label={item.alt}
             >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                width={600}
-                height={224}
-                className="w-full h-56 object-cover transition-transform duration-200 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, 50vw"
+              <track
+                kind="captions"
+                src={item.captions || null}
+                srcLang="en"
+                label="English captions"
+                default
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
-            </div>
-          : <div
-              key={item.src}
-              className="relative group overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow hover:shadow-lg transition"
-            >
-              <video
-                src={item.src}
-                controls
-                className="w-full h-56 object-cover transition-transform duration-200 group-hover:scale-105"
-                aria-label={item.alt}
-              >
-                <track
-                  kind="captions"
-                  src={item.captions || null}
-                  srcLang="en"
-                  label="English captions"
-                  default
-                />
-              </video>
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
-            </div>,
+            </video>
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition" />
+          </div>
+        ),
       )}
     </div>
   );

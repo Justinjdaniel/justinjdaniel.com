@@ -18,41 +18,45 @@ export default function PrevNextNav({ prevPost, nextPost, className = "" }) {
     <nav
       className={`flex justify-between items-center gap-4 mb-8 pb-8 ${className}`}
     >
-      {prevPost
-        ? <Link
-            href={`/blog/${prevPost.slug}`}
-            className={`flex items-center gap-3 px-4 py-3 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition ${btnWidth}`}
-            aria-label={`Previous post: ${prevPost.metadata.title}`}
-          >
-            <ArrowWideDoodleIcon className="w-10 h-10 flex-shrink-0 -scale-x-100" />
-            <span className="flex flex-col items-start justify-center leading-snug text-left w-full">
-              <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                Previous
-              </span>
-              <span className="font-medium break-words line-clamp-2">
-                {limitWords(prevPost.metadata.title, 10)}
-              </span>
+      {prevPost ? (
+        <Link
+          href={`/blog/${prevPost.slug}`}
+          className={`flex items-center gap-3 px-4 py-3 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition ${btnWidth}`}
+          aria-label={`Previous post: ${prevPost.metadata.title}`}
+        >
+          <ArrowWideDoodleIcon className="w-10 h-10 flex-shrink-0 -scale-x-100" />
+          <span className="flex flex-col items-start justify-center leading-snug text-left w-full">
+            <span className="text-xs text-zinc-500 dark:text-zinc-400">
+              Previous
             </span>
-          </Link>
-        : <div className={btnWidth} />}
+            <span className="font-medium break-words line-clamp-2">
+              {limitWords(prevPost.metadata.title, 10)}
+            </span>
+          </span>
+        </Link>
+      ) : (
+        <div className={btnWidth} />
+      )}
 
-      {nextPost
-        ? <Link
-            href={`/blog/${nextPost.slug}`}
-            className={`flex items-center gap-3 px-4 py-3 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition ${btnWidth} justify-end`}
-            aria-label={`Next post: ${nextPost.metadata.title}`}
-          >
-            <span className="flex flex-col items-end justify-center leading-snug text-right w-full">
-              <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                Next
-              </span>
-              <span className="font-medium break-words line-clamp-2">
-                {limitWords(nextPost.metadata.title, 10)}
-              </span>
+      {nextPost ? (
+        <Link
+          href={`/blog/${nextPost.slug}`}
+          className={`flex items-center gap-3 px-4 py-3 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition ${btnWidth} justify-end`}
+          aria-label={`Next post: ${nextPost.metadata.title}`}
+        >
+          <span className="flex flex-col items-end justify-center leading-snug text-right w-full">
+            <span className="text-xs text-zinc-500 dark:text-zinc-400">
+              Next
             </span>
-            <ArrowWideDoodleIcon className="w-10 h-10 flex-shrink-0" />
-          </Link>
-        : <div className={btnWidth} />}
+            <span className="font-medium break-words line-clamp-2">
+              {limitWords(nextPost.metadata.title, 10)}
+            </span>
+          </span>
+          <ArrowWideDoodleIcon className="w-10 h-10 flex-shrink-0" />
+        </Link>
+      ) : (
+        <div className={btnWidth} />
+      )}
     </nav>
   );
 }
