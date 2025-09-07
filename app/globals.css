@@ -171,7 +171,11 @@ pre code > span::before {
 
 /* Syntax highlighting tokens */
 .sh__token--identifier {
-  color: hsl(218, 23%, 23%) !important; /* Dev: Variable/function names, dark gray for light mode */
+  color: hsl(
+    218,
+    23%,
+    23%
+  ) !important; /* Dev: Variable/function names, dark gray for light mode */
 }
 pre code > span .sh__token--identifier {
   color: hsl(35, 50%, 50%) !important;
@@ -211,7 +215,11 @@ code:not(pre code) span {
 
   /* Syntax highlighting tokens */
   .sh__token--identifier {
-    color: hsl(0, 0%, 90%) !important; /* Dev: Variable/function names, light gray for dark mode */
+    color: hsl(
+      0,
+      0%,
+      90%
+    ) !important; /* Dev: Variable/function names, light gray for dark mode */
   }
   code:not(pre code) span {
     color: hsl(0, 0%, 90%) !important;

@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { Suspense } from "react";
 import GoogleTagManager from "./_components/analytics/google-tag-manager";
+import MicrosoftClarity from "./_components/analytics/microsoft-clarity";
 import Footer from "./_components/layout/footer";
 import Header from "./_components/layout/header";
 import Particles from "./_components/ui/particles";
@@ -61,6 +62,8 @@ export default function RootLayout({ children }) {
         <Suspense fallback={null}>
           <GoogleTagManager />
         </Suspense>
+        {/* Microsoft Clarity Analytics */}
+        {process.env.NODE_ENV === "production" && <MicrosoftClarity />}
         <SpeedInsights />
         <Analytics />
       </body>
