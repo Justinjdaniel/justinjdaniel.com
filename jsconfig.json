@@ -7,7 +7,6 @@
       "@lib/*": ["lib/*"],
       "@styles/*": ["_styles/*"],
       "@utils/*": ["_utils/*"],
-      "@layouts/*": ["_layouts/*"],
       "@hooks/*": ["_hooks/*"],
       "@db/*": ["_db/*"]
     }

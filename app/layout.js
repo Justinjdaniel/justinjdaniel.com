@@ -1,12 +1,12 @@
+import MicrosoftClarity from "@components/analytics/microsoft-clarity";
+import Footer from "@components/layout/footer";
+import Header from "@components/layout/header";
+import Particles from "@components/ui/particles";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { Suspense } from "react";
-import MicrosoftClarity from "./_components/analytics/microsoft-clarity";
-import Footer from "./_components/layout/footer";
-import Header from "./_components/layout/header";
-import Particles from "./_components/ui/particles";
 import "./globals.css";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GTM_ID } from "../lib/gtm";
