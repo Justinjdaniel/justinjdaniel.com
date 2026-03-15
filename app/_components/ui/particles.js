@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { useMousePosition } from "@/_utils/mouse";
-
+import { useMousePosition } from "@utils/mouse";
 /**
  * Renders a particle effect on a canvas.
  *

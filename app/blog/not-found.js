@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DrawSVG from "@/_components/icons/draw-svg";
+import DrawSVG from "@components/icons/draw-svg";
 
 export default function NotFound() {
   return (

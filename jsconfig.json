@@ -1,4 +1,17 @@
 {
-  "compilerOptions": { "paths": { "@/*": ["./app/*"] } },
+  "compilerOptions": {
+    "baseUrl": "app/",
+    "paths": {
+      "@/*": ["app/*"],
+      "@components/*": ["_components/*"],
+      "@lib/*": ["lib/*"],
+      "@styles/*": ["_styles/*"],
+      "@utils/*": ["_utils/*"],
+      "@layouts/*": ["_layouts/*"],
+      "@hooks/*": ["_hooks/*"],
+      "@db/*": ["_db/*"]
+    }
+  },
+
   "exclude": ["node_modules", "dist"]
 }

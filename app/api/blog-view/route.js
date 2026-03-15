@@ -8,7 +8,7 @@
 // import {
 //   getBlogViewCount,
 //   incrementBlogViewCount,
-// } from "@/_db/queries/blog-post-views";
+// } from "@db/queries/blog-post-views";
 
 // POST: increment view count
 // export async function POST(request) {

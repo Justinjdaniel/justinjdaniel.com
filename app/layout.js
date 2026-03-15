@@ -3,12 +3,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { Suspense } from "react";
-import GoogleTagManager from "./_components/analytics/google-tag-manager";
 import MicrosoftClarity from "./_components/analytics/microsoft-clarity";
 import Footer from "./_components/layout/footer";
 import Header from "./_components/layout/header";
 import Particles from "./_components/ui/particles";
 import "./globals.css";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { GTM_ID } from "../lib/gtm";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -60,8 +61,9 @@ export default function RootLayout({ children }) {
         </div>
 
         <Suspense fallback={null}>
-          <GoogleTagManager />
+          <GoogleTagManager gtmId={GTM_ID} />
         </Suspense>
+
         {/* Microsoft Clarity Analytics */}
         {process.env.NODE_ENV === "production" && <MicrosoftClarity />}
         <SpeedInsights />
