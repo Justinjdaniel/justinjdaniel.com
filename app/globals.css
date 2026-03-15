@@ -175,36 +175,36 @@ pre code > span::before {
     218,
     23%,
     23%
-  ) !important; /* Dev: Variable/function names, dark gray for light mode */
+  ); /* Dev: Variable/function names, dark gray for light mode */
 }
 pre code > span .sh__token--identifier {
-  color: hsl(35, 50%, 50%) !important;
+  color: hsl(35, 50%, 50%);
 }
 
 .sh__token--keyword {
-  color: var(--sh-keyword) !important;
+  color: var(--sh-keyword);
 }
 
 .sh__token--string {
-  color: var(--sh-string) !important;
+  color: var(--sh-string);
 }
 
 .sh__token--function {
-  color: var(--sh-entity) !important;
+  color: var(--sh-entity);
 }
 
 .sh__token--operator {
-  color: var(--sh-sign) !important;
+  color: var(--sh-sign);
 }
 
 .sh__token--comment {
-  color: var(--sh-comment) !important;
+  color: var(--sh-comment);
   font-style: italic;
 }
 
 code:not(pre code) span {
   font-weight: 500;
-  color: hsl(0, 0%, 90%) !important;
+  color: hsl(0, 0%, 90%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -219,10 +219,10 @@ code:not(pre code) span {
       0,
       0%,
       90%
-    ) !important; /* Dev: Variable/function names, light gray for dark mode */
+    ); /* Dev: Variable/function names, light gray for dark mode */
   }
   code:not(pre code) span {
-    color: hsl(0, 0%, 90%) !important;
+    color: hsl(0, 0%, 90%);
   }
 }
 
