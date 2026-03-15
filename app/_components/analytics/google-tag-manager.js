@@ -32,7 +32,7 @@ export default function GoogleTagManager() {
       <Script
         id="gtm-script"
         strategy="afterInteractive"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: intentional, use of dangerouslySetInnerHTML for GTM script
+        // intentional, use of dangerouslySetInnerHTML for GTM script
         dangerouslySetInnerHTML={{
           __html: `
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
