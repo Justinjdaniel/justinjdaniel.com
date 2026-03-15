@@ -1,3 +1,9 @@
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
@@ -11,10 +17,13 @@ const nextConfig = {
     viewTransition: true,
   },
   turbopack: {
+    root: __dirname,
     resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".json"],
   },
 };
 
-const withMDX = createMDX({});
+const withMDX = createMDX({
+  extension: /\.(md|mdx)$/,
+});
 
 export default withMDX(nextConfig);
