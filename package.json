@@ -54,7 +54,7 @@
     "@tailwindcss/postcss": "^4.1.13",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.6",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.2.1"
   },
   "packageManager": "pnpm@10.0.0",
   "lint-staged": {
