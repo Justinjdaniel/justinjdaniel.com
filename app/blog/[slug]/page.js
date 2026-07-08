@@ -1,18 +1,18 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import BlogSchema from "@/_components/blog/blog-schema";
-import PrevNextNav from "@/_components/blog/prev-next-nav";
-import BackButton from "@/_components/buttons/back-button";
-import BackToTopButton from "@/_components/buttons/back-to-top";
-import ClockDoodleIcon from "@/_components/icons/doodle-icons/clock";
-import BookDoodleIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/book";
-import { CustomMDX } from "@/_components/mdx-components";
-import ScrollProgress from "@/_components/ui/scroll-progress";
-import { getBlogPosts } from "@/_db/blog";
-import { incrementAndGetBlogViewCount } from "@/_db/queries/blog-post-views";
-import { formatDate } from "@/_utils/format-date";
-import TimeToRead from "@/_utils/time-to-read";
+import BlogSchema from "@/components/blog/blog-schema";
+import PrevNextNav from "@/components/blog/prev-next-nav";
+import BackButton from "@/components/buttons/back-button";
+import BackToTopButton from "@/components/buttons/back-to-top";
+import ClockDoodleIcon from "@/components/icons/doodle-icons/clock";
+import BookDoodleIcon from "@/components/icons/doodle-library-hand-drawn-vectors/book";
+import { CustomMDX } from "@/components/mdx-components";
+import ScrollProgress from "@/components/ui/scroll-progress";
+import { getBlogPosts } from "@/lib/db/blog";
+import { incrementAndGetBlogViewCount } from "@/lib/db/queries/blog-post-views";
+import { formatDate } from "@/lib/utils/format-date";
+import TimeToRead from "@/lib/utils/time-to-read";
 
 const baseURL = "https://justinjdaniel.com";
 

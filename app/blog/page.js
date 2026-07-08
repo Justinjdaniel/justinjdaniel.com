@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import BackButton from "@/_components/buttons/back-button";
-import BookDoodleIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/book";
-import { getBlogPosts } from "@/_db/blog";
-import { formatDate } from "@/_utils/format-date";
-import TimeToRead from "@/_utils/time-to-read";
+import BackButton from "@/components/buttons/back-button";
+import BookDoodleIcon from "@/components/icons/doodle-library-hand-drawn-vectors/book";
+import { getBlogPosts } from "@/lib/db/blog";
+import { formatDate } from "@/lib/utils/format-date";
+import TimeToRead from "@/lib/utils/time-to-read";
 
 export const metadata = {
   title: "Blog",
