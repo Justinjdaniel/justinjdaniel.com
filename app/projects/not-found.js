@@ -1,6 +1,6 @@
 import Link from "next/link";
-import MindBlownIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/mind-blown";
-import DrawSVG from "@/_components/icons/draw-svg";
+import MindBlownIcon from "@/components/icons/doodle-library-hand-drawn-vectors/mind-blown";
+import DrawSVG from "@/components/icons/draw-svg";
 
 export default function NotFound() {
   return (

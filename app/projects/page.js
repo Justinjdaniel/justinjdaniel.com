@@ -1,7 +1,7 @@
-import BackButton from "@/_components/buttons/back-button";
-import LightBulbIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/light-bulb";
-import ProjectCard from "@/_components/ui/project-card";
-import { projects } from "@/_data/projects";
+import BackButton from "@/components/buttons/back-button";
+import LightBulbIcon from "@/components/icons/doodle-library-hand-drawn-vectors/light-bulb";
+import ProjectCard from "@/components/ui/project-card";
+import { projects } from "@/lib/data/projects";
 
 export default function ProjectsPage() {
   if (!projects || projects.length === 0) {

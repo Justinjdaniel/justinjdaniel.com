@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import BackButton from "@/_components/buttons/back-button";
-import BackToTopButton from "@/_components/buttons/back-to-top";
-import DesktopIcon from "@/_components/icons/doodle-library-hand-drawn-vectors/desktop";
-import DrawSVG from "@/_components/icons/draw-svg";
-import ScrollProgress from "@/_components/ui/scroll-progress";
-import StackBadge from "@/_components/ui/stack-badge";
-import { projects } from "@/_data/projects";
+import BackButton from "@/components/buttons/back-button";
+import BackToTopButton from "@/components/buttons/back-to-top";
+import DesktopIcon from "@/components/icons/doodle-library-hand-drawn-vectors/desktop";
+import DrawSVG from "@/components/icons/draw-svg";
+import ScrollProgress from "@/components/ui/scroll-progress";
+import StackBadge from "@/components/ui/stack-badge";
+import { projects } from "@/lib/data/projects";
 
 function MediaGallery({ media }) {
   return (

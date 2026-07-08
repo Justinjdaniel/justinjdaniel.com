@@ -63,7 +63,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # or set node-version-file: '.nvmrc' if you don't specify a version
+          node-version: '22' # or set node-version-file: '.nvmrc' if you don't specify a version
           cache: 'pnpm'
 
       - name: Install dependencies
