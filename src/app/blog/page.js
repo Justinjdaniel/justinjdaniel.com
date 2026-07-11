@@ -19,9 +19,9 @@ export default function BlogPage() {
       <BackButton />
       <div className="flex items-center mb-6">
         <BookDoodleIcon className="w-16 h-16 md:w-16 md:h-16 text-zinc-900 dark:text-zinc-100" />
-        <h2 className="text-balance text-2xl md:text-4xl font-sans text-zinc-900 dark:text-zinc-100">
-          My Articles & Updates
-        </h2>
+        <h1 className="text-balance text-2xl md:text-4xl font-sans text-zinc-900 dark:text-zinc-100">
+          My Blog & Articles
+        </h1>
       </div>
 
       {allBlogs.length === 0 && <p>No blogs yet.</p>}

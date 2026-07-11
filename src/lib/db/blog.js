@@ -26,7 +26,13 @@ function getMDXData(dir) {
   });
 }
 
+let cachedPosts = null;
+
 export function getBlogPosts() {
+  if (process.env.NODE_ENV === "production" && cachedPosts) {
+    return [...cachedPosts];
+  }
+
   const posts = getMDXData(path.join(process.cwd(), "content"));
 
   // Sort posts by publishedAt date (newest first)
@@ -35,5 +41,9 @@ export function getBlogPosts() {
     return b.date - a.date; // Descending order (latest first)
   });
 
-  return posts;
+  if (process.env.NODE_ENV === "production") {
+    cachedPosts = posts;
+  }
+
+  return [...posts];
 }
