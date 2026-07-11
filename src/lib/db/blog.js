@@ -30,7 +30,7 @@ let cachedPosts = null;
 
 export function getBlogPosts() {
   if (process.env.NODE_ENV === "production" && cachedPosts) {
-    return [...cachedPosts];
+    return structuredClone(cachedPosts);
   }
 
   const posts = getMDXData(path.join(process.cwd(), "content"));
