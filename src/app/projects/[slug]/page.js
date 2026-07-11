@@ -54,8 +54,9 @@ function MediaGallery({ media }) {
   );
 }
 
-export default function ProjectInfoPage({ params }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function ProjectInfoPage({ params }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
   return (
     <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto">

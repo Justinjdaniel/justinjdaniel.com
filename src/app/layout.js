@@ -1,13 +1,12 @@
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import { Suspense } from "react";
-import GoogleTagManager from "./_components/analytics/google-tag-manager";
-import MicrosoftClarity from "./_components/analytics/microsoft-clarity";
-import Footer from "./_components/layout/footer";
-import Header from "./_components/layout/header";
-import Particles from "./_components/ui/particles";
+import MicrosoftClarity from "@/components/analytics/microsoft-clarity";
+import Footer from "@/components/layout/footer";
+import Header from "@/components/layout/header";
+import Particles from "@/components/ui/particles";
 import "./globals.css";
 
 // If loading a variable font, you don't need to specify the font weight
@@ -38,6 +37,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const gtmId = process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID || "GTM-MOCK";
+
   return (
     <html
       lang="en"
@@ -59,9 +60,7 @@ export default function RootLayout({ children }) {
           <Footer />
         </div>
 
-        <Suspense fallback={null}>
-          <GoogleTagManager />
-        </Suspense>
+        <GoogleTagManager gtmId={gtmId} />
         {/* Microsoft Clarity Analytics */}
         {process.env.NODE_ENV === "production" && <MicrosoftClarity />}
         <SpeedInsights />

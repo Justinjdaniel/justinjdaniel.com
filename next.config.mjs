@@ -1,22 +1,20 @@
-import NextMDX from "@next/mdx";
+import createMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  pageExtensions: ["mdx", "js", "jsx"],
+  transpilePackages: ["next-mdx-remote"],
+  // Note: Using the Rust compiler means we cannot use
+  // rehype or remark plugins. For my app, this is fine.
   experimental: {
-    mdxRs: false,
+    mdxRs: true,
     viewTransition: true,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
+  turbopack: {
+    resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".json"],
   },
 };
 
-const withMDX = NextMDX();
+const withMDX = createMDX({});
 
 export default withMDX(nextConfig);

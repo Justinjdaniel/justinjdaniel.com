@@ -1,9 +1,7 @@
-// "use client";
-
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import Alert from "./mdx/alert";
 import Callout from "./mdx/callout";
-import Code from "./mdx/code";
 import ConsCard from "./mdx/cons-card";
 import CustomLink from "./mdx/custom-link";
 import CustomList from "./mdx/custom-list";
@@ -66,8 +64,6 @@ const components = {
   ConsCard,
   Alert,
   YouTube,
-  // CustomButton,
-  code: Code,
   ul: ({ children }) => <CustomList ordered={false}>{children}</CustomList>,
   ol: ({ children }) => <CustomList ordered={true}>{children}</CustomList>,
   strong: ({ children }) => (
@@ -91,6 +87,11 @@ const components = {
   ),
 };
 
+const options = {
+  theme: "one-dark-pro",
+  keepBackground: true,
+};
+
 export function CustomMDX(props) {
   return (
     <MDXRemote
@@ -98,6 +99,11 @@ export function CustomMDX(props) {
       components={{
         ...components,
         ...(props.components || {}),
+      }}
+      options={{
+        mdxOptions: {
+          rehypePlugins: [[rehypePrettyCode, options]],
+        },
       }}
     />
   );

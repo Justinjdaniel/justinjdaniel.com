@@ -1,5 +1,7 @@
 import { ensureTable, pool } from "../db";
 
+const isMock = !pool;
+
 // Initialization promise to ensure all required tables exist before any DB access
 const dbInitPromise = ensureTable(
   "blog_views",
@@ -12,6 +14,7 @@ const dbInitPromise = ensureTable(
  * @returns {Promise<number|null>} The updated view count or null on error.
  */
 export async function incrementAndGetBlogViewCount(slug) {
+  if (isMock) return 0;
   await dbInitPromise;
   const client = await pool.connect();
   try {
@@ -42,6 +45,7 @@ export async function incrementAndGetBlogViewCount(slug) {
  * @returns {Promise<void>}
  */
 export async function incrementBlogViewCount(slug) {
+  if (isMock) return;
   await dbInitPromise;
   const client = await pool.connect();
   try {
@@ -69,6 +73,7 @@ export async function incrementBlogViewCount(slug) {
  * @returns {Promise<number|null>} The current view count or null if not found.
  */
 export async function getBlogViewCount(slug) {
+  if (isMock) return 0;
   await dbInitPromise;
   const client = await pool.connect();
   try {
