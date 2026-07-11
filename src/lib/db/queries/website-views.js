@@ -1,11 +1,18 @@
 import { ensureTable, pool } from "../db";
 
 const isMock = !pool;
+let dbInitPromise = null;
 
-const dbInitPromise = ensureTable(
-  "website_views",
-  "CREATE TABLE IF NOT EXISTS website_views (id SERIAL PRIMARY KEY, count INTEGER DEFAULT 0);",
-);
+function getDbInit() {
+  if (isMock) return Promise.resolve();
+  if (!dbInitPromise) {
+    dbInitPromise = ensureTable(
+      "website_views",
+      "CREATE TABLE IF NOT EXISTS website_views (id SERIAL PRIMARY KEY, count INTEGER DEFAULT 0);",
+    );
+  }
+  return dbInitPromise;
+}
 
 /**
  * Increments the website view count by 1.
@@ -14,8 +21,8 @@ const dbInitPromise = ensureTable(
  */
 export async function incrementWebsiteViewCount() {
   if (isMock) return;
-  await dbInitPromise;
-  let client;
+  await getDbInit();
+  const client = await pool.connect();
   try {
     client = await pool.connect();
     await client.query(`
