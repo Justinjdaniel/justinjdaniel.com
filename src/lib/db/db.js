@@ -1,17 +1,13 @@
 import { Pool } from "pg";
 
-export const pool =
-  process.env.DATABASE_URL && process.env.DATABASE_URL !== "mock"
-    ? new Pool({
-        connectionString: process.env.DATABASE_URL,
-        ssl: true,
-      })
-    : {
-        connect: async () => ({
-          query: async () => ({ rows: [] }),
-          release: () => {},
-        }),
-      };
+const isMock = process.env.DATABASE_URL === "mock" || !process.env.DATABASE_URL;
+
+export const pool = !isMock
+  ? new Pool({
+      connectionString: process.env.DATABASE_URL,
+      ssl: true,
+    })
+  : null;
 
 // Generic table initializer for extensibility
 const initializedTables = new Set();
@@ -22,6 +18,7 @@ const initializedTables = new Set();
  * @param {string} createTableSQL - The SQL statement to create the table if it doesn't exist.
  */
 export async function ensureTable(tableName, createTableSQL) {
+  if (isMock) return;
   if (initializedTables.has(tableName)) return;
   const client = await pool.connect();
   try {

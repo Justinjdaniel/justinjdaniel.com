@@ -2,26 +2,38 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-const contentDir = path.join(process.cwd(), "src/content");
+function getMDXFiles(dir) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
+}
 
-export function getBlogPosts() {
-  const mdxFiles = fs
-    .readdirSync(contentDir)
-    .filter((file) => path.extname(file) === ".mdx");
+function readMDXFile(filePath) {
+  const rawContent = fs.readFileSync(filePath, "utf-8");
+  const { data, content } = matter(rawContent);
+  return { metadata: data, content };
+}
 
-  const posts = mdxFiles.map((file) => {
-    const filePath = path.join(contentDir, file);
-    const rawContent = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(rawContent);
+function getMDXData(dir) {
+  const mdxFiles = getMDXFiles(dir);
+  return mdxFiles.map((file) => {
+    const { metadata, content } = readMDXFile(path.join(dir, file));
     const slug = path.basename(file, path.extname(file));
-
     return {
-      metadata: data,
+      metadata,
       slug,
       content,
-      date: new Date(data.publishedAt),
+      date: new Date(metadata.publishedAt), // Precompute date
     };
   });
+}
 
-  return posts.sort((a, b) => b.date - a.date);
+export function getBlogPosts() {
+  const posts = getMDXData(path.join(process.cwd(), "content"));
+
+  // Sort posts by publishedAt date (newest first)
+  posts.sort((a, b) => {
+    // Use precomputed date for comparison
+    return b.date - a.date; // Descending order (latest first)
+  });
+
+  return posts;
 }

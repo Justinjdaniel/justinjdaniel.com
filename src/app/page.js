@@ -5,9 +5,9 @@ import gsap from "gsap";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
 
-import AboutSection from "./_components/sections/about-section";
-import HeroSection from "./_components/sections/hero-section";
-import GridBackground from "./_components/ui/grid-background";
+import AboutSection from "@/components/sections/about-section";
+import HeroSection from "@/components/sections/hero-section";
+import GridBackground from "@/components/ui/grid-background";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 

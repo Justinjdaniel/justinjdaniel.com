@@ -1,10 +1,19 @@
 ---
-title: 'How a .gitattributes File Fixed My Broken Images (and Why You Should Use One Too!)'
+title: >-
+  How a .gitattributes File Fixed My Broken Images (and Why You Should Use One
+  Too!)
 publishedAt: '2025-05-20'
-summary: 'Discover the power of the .gitattributes file in managing your Git repository. Learn how it can prevent broken images and other issues in your projects, ensuring images and binaries render correctly, and improve collaboration across different systems.'
-ogDescription: Learn how a .gitattributes file can fix broken images and file mishandling in your Git repository and improve your development workflow.
+summary: >-
+  Discover the power of the .gitattributes file in managing your Git repository.
+  Learn how it can prevent broken images and other issues in your projects,
+  ensuring images and binaries render correctly, and improve collaboration
+  across different systems.
+ogDescription: >-
+  Learn how a .gitattributes file can fix broken images and file mishandling in
+  your Git repository and improve your development workflow.
 image: /images/blogs/how-a-gitattributes-file-fixed-my-broken-images.jpg
 ---
+
 
 Recently, I ran into an issue where images in a documentation repository wouldn't render locally. After some digging, I realized the problem was that Git wasn't treating image files as binary, causing them to break, even in VSCode. The fix? Adding a `.gitattributes` file!
 
