@@ -1,12 +1,18 @@
 import { ensureTable, pool } from "../db";
 
 const isMock = !pool;
+let dbInitPromise = null;
 
-// Initialization promise to ensure all required tables exist before any DB access
-const dbInitPromise = ensureTable(
-  "blog_views",
-  "CREATE TABLE IF NOT EXISTS blog_views (slug TEXT PRIMARY KEY, count INTEGER DEFAULT 0);",
-);
+function getDbInit() {
+  if (isMock) return Promise.resolve();
+  if (!dbInitPromise) {
+    dbInitPromise = ensureTable(
+      "blog_views",
+      "CREATE TABLE IF NOT EXISTS blog_views (slug TEXT PRIMARY KEY, count INTEGER DEFAULT 0);",
+    );
+  }
+  return dbInitPromise;
+}
 
 /**
  * Increments the view count for a blog post and returns the updated count.
@@ -15,7 +21,7 @@ const dbInitPromise = ensureTable(
  */
 export async function incrementAndGetBlogViewCount(slug) {
   if (isMock) return 0;
-  await dbInitPromise;
+  await getDbInit();
   const client = await pool.connect();
   try {
     const result = await client.query(
@@ -46,7 +52,7 @@ export async function incrementAndGetBlogViewCount(slug) {
  */
 export async function incrementBlogViewCount(slug) {
   if (isMock) return;
-  await dbInitPromise;
+  await getDbInit();
   const client = await pool.connect();
   try {
     await client.query(
@@ -74,7 +80,7 @@ export async function incrementBlogViewCount(slug) {
  */
 export async function getBlogViewCount(slug) {
   if (isMock) return 0;
-  await dbInitPromise;
+  await getDbInit();
   const client = await pool.connect();
   try {
     const result = await client.query(
