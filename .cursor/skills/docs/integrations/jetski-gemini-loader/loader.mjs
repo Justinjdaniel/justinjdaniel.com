@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 /**
  * @typedef {{
@@ -104,7 +104,10 @@ export async function loadSkillBodies(skillsRoot, metas) {
 
     const realPath = await fs.promises.realpath(fullPath);
     const realRelativePath = path.relative(rootRealPath, realPath);
-    if (realRelativePath.startsWith("..") || path.isAbsolute(realRelativePath)) {
+    if (
+      realRelativePath.startsWith("..") ||
+      path.isAbsolute(realRelativePath)
+    ) {
       throw new Error(`SKILL.md resolves outside the skills root: ${meta.id}`);
     }
 
