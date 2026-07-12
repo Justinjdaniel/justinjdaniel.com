@@ -19,6 +19,14 @@ export default function HeroSection() {
 
   // Animate heading and trigger typing
   useGSAP(() => {
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      setTypingStart(true);
+      return;
+    }
+
     const splitHeading = new SplitText(headingRef.current, {
       type: "chars,words,lines",
     });
@@ -45,6 +53,13 @@ export default function HeroSection() {
   // Animate buttons after typing is done
   useGSAP(() => {
     if (typingDone && buttonsRef.current) {
+      const prefersReducedMotion =
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReducedMotion) {
+        gsap.set(buttonsRef.current.children, { opacity: 1, y: 0 });
+        return;
+      }
       gsap.fromTo(
         buttonsRef.current.children,
         { opacity: 0, y: 30 },
@@ -60,7 +75,7 @@ export default function HeroSection() {
   }, [typingDone]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center p-8 max-w-[100ch] mx-auto snap-start">
+    <section className="relative min-h-screen flex items-center justify-center p-8 max-w-[100ch] mx-auto motion-safe:snap-start">
       <div className="max-w-5xl mx-auto text-center">
         <h1
           ref={headingRef}

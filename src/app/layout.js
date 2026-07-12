@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.className} ${jetbrainsMono.className} scroll-smooth`}
+      className={`${inter.className} ${jetbrainsMono.className} motion-safe:scroll-smooth`}
     >
       <body className="font-sans bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased tracking-tight">
         <NextTopLoader height={4} color="#818cf8" showSpinner={false} />
