@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { useMousePosition } from "@/lib/utils/mouse";
 
 /**
- * Renders a particle effect on a canvas.
+ * Renders a high-performance particle effect on a canvas.
+ * Optimized for zero-allocation animation loop, reduced motion,
+ * tab inactivity pausing, and memory leak prevention.
  *
  * @param {Object} props - The properties for the Particles component.
  * @param {string} [props.className=""] - The CSS class name for the container div.
@@ -28,6 +30,8 @@ export default function Particles({
   const mouse = useRef({ x: 0, y: 0 });
   const canvasSize = useRef({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const animationFrameId = useRef(null);
+  const prefersReducedMotion = useRef(false);
 
   const [colorScheme, setColorScheme] = useState(
     typeof window !== "undefined" &&
@@ -50,12 +54,47 @@ export default function Particles({
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d");
     }
+
+    if (typeof window !== "undefined" && window.matchMedia) {
+      prefersReducedMotion.current = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+    }
+
     initCanvas();
-    animate();
+
+    if (!prefersReducedMotion.current) {
+      animate();
+    }
+
     window.addEventListener("resize", initCanvas);
 
     return () => {
       window.removeEventListener("resize", initCanvas);
+      if (animationFrameId.current) {
+        window.cancelAnimationFrame(animationFrameId.current);
+      }
+    };
+  }, []);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional, useEffect is stable
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (animationFrameId.current) {
+          window.cancelAnimationFrame(animationFrameId.current);
+          animationFrameId.current = null;
+        }
+      } else {
+        if (!animationFrameId.current && !prefersReducedMotion.current) {
+          animate();
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
@@ -108,9 +147,7 @@ export default function Particles({
     const translateY = 0;
     const size = Math.floor(Math.random() * 2) + 0.1;
     const alpha = 0;
-    const targetAlpha = Number.parseFloat(
-      (Math.random() * 0.6 + 0.1).toFixed(1),
-    );
+    const targetAlpha = Math.random() * 0.6 + 0.1;
     const dx = (Math.random() - 0.5) * 0.2;
     const dy = (Math.random() - 0.5) * 0.2;
     const magnetism = 0.1 + Math.random() * 4;
@@ -126,6 +163,19 @@ export default function Particles({
       dy,
       magnetism,
     };
+  };
+
+  const resetCircle = (circle) => {
+    circle.x = Math.floor(Math.random() * canvasSize.current.w);
+    circle.y = Math.floor(Math.random() * canvasSize.current.h);
+    circle.translateX = 0;
+    circle.translateY = 0;
+    circle.size = Math.floor(Math.random() * 2) + 0.1;
+    circle.alpha = 0;
+    circle.targetAlpha = Math.random() * 0.6 + 0.1;
+    circle.dx = (Math.random() - 0.5) * 0.2;
+    circle.dy = (Math.random() - 0.5) * 0.2;
+    circle.magnetism = 0.1 + Math.random() * 4;
   };
 
   const drawCircle = (circle, update = false) => {
@@ -177,18 +227,20 @@ export default function Particles({
 
   const animate = () => {
     clearContext();
-    circles.current.forEach((circle, i) => {
-      // Handle the alpha value
-      const edge = [
-        circle.x + circle.translateX - circle.size, // distance from left edge
-        canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
-        circle.y + circle.translateY - circle.size, // distance from top edge
-        canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
-      ];
-      const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-      const remapClosestEdge = Number.parseFloat(
-        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
-      );
+    const len = circles.current.length;
+    for (let i = 0; i < len; i++) {
+      const circle = circles.current[i];
+
+      // Handle the alpha value: avoid array allocations & reduce
+      const edgeLeft = circle.x + circle.translateX - circle.size;
+      const edgeRight =
+        canvasSize.current.w - circle.x - circle.translateX - circle.size;
+      const edgeTop = circle.y + circle.translateY - circle.size;
+      const edgeBottom =
+        canvasSize.current.h - circle.y - circle.translateY - circle.size;
+      const closestEdge = Math.min(edgeLeft, edgeRight, edgeTop, edgeBottom);
+
+      const remapClosestEdge = remapValue(closestEdge, 0, 20, 0, 1);
       if (remapClosestEdge > 1) {
         circle.alpha += 0.02;
         if (circle.alpha > circle.targetAlpha) {
@@ -205,34 +257,22 @@ export default function Particles({
       circle.translateY +=
         (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
         ease;
-      // circle gets out of the canvas
+
+      // circle gets out of the canvas: reset in-place to avoid array splicing & object allocation
       if (
         circle.x < -circle.size ||
         circle.x > canvasSize.current.w + circle.size ||
         circle.y < -circle.size ||
         circle.y > canvasSize.current.h + circle.size
       ) {
-        // remove the circle from the array
-        circles.current.splice(i, 1);
-        // create a new circle
-        const newCircle = circleParams();
-        drawCircle(newCircle);
-        // update the circle position
+        resetCircle(circle);
+        drawCircle(circle, true);
       } else {
-        drawCircle(
-          {
-            ...circle,
-            x: circle.x,
-            y: circle.y,
-            translateX: circle.translateX,
-            translateY: circle.translateY,
-            alpha: circle.alpha,
-          },
-          true,
-        );
+        // Pass the circle directly without object cloning
+        drawCircle(circle, true);
       }
-    });
-    window.requestAnimationFrame(animate);
+    }
+    animationFrameId.current = window.requestAnimationFrame(animate);
   };
 
   return (
