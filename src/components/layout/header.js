@@ -53,6 +53,7 @@ export default function Header({ className = "" }) {
                   after:bg-indigo-500 after:scale-x-0 hover:after:scale-x-100 
                   after:transition-transform after:duration-300 after:ease-out
                   ${isActive ? "after:scale-x-100" : ""}
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 rounded-sm
                 `}
               >
                 {item.name}
@@ -68,8 +69,9 @@ export default function Header({ className = "" }) {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-all duration-200 hover:scale-110"
+              className="p-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-all duration-200 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 rounded-full"
               aria-label={link.name}
+              title={link.name}
             >
               {link.icon}
             </a>
