@@ -38,6 +38,7 @@ export default function BackToTopButton() {
     <button
       type="button"
       aria-label="Scroll to top"
+      title="Scroll to top"
       onClick={scrollToTop}
       className={`
         !fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[9999]
@@ -49,6 +50,7 @@ export default function BackToTopButton() {
         shadow-md backdrop-blur-sm
         transition-all duration-300 ease-out
         hover:bg-indigo-500 hover:text-white hover:scale-105
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}
       `}
     >

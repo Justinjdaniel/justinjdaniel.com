@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/all";
 import { useRef } from "react";
+import { prefersReducedMotion } from "@/lib/utils/motion";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -30,6 +31,12 @@ export default function TypingText({
 
   useGSAP(() => {
     if (start && textRef.current) {
+      if (prefersReducedMotion()) {
+        textRef.current.textContent = text;
+        if (onComplete) onComplete();
+        return;
+      }
+
       textRef.current.textContent = "";
       gsap.to(textRef.current, {
         duration: speed,
