@@ -145,7 +145,7 @@ pnpm run test:e2e
 ## 📸 Preview
 
 <p align="center">
-  <img src=".github/images/landing.png" width="700" style="border-radius: 8px; border: 1px solid #30363d;" alt="Landing page screenshot"/>
+  <img src=".github/images/landing.png" width="700" alt="Landing page screenshot"/>
 </p>
 
 <!-- ---
