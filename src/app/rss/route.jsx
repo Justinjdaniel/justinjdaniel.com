@@ -2,8 +2,9 @@ import { baseUrl } from "@/app/sitemap";
 import { getBlogPosts } from "@/lib/db/blog";
 
 function escapeXml(unsafe) {
-  if (typeof unsafe !== "string") return "";
-  return unsafe.replace(/[<>&'"]/g, (c) => {
+  if (unsafe === null || unsafe === undefined) return "";
+  const str = typeof unsafe === "string" ? unsafe : String(unsafe);
+  return str.replace(/[<>&'"]/g, (c) => {
     switch (c) {
       case "<":
         return "&lt;";
