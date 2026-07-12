@@ -1,8 +1,9 @@
 <p align="center">
-  <img src="https://avatars.githubusercontent.com/u/62233773?s=500&v=4" width="100" alt="Landing page preview"/>
+  <img src="https://avatars.githubusercontent.com/u/62233773?s=500&v=4" width="120" style="border-radius: 50%;" alt="Justin J Daniel Avatar"/>
 </p>
 
 <h1 align="center">Justin J Daniel</h1>
+
 <p align="center">
   <b>Fullstack Developer & Data Analytics Enthusiast</b><br/>
   <a href="https://justinjdaniel.com">Website</a> •
@@ -11,16 +12,17 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license"></a>
-  <a href="https://nextjs.org/"><img src="https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=ff4088&label=next.js&logo=nextdotjs&logoColor=white" alt="Next.js version"></a>
-  <a href="https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml">
-    <img src="https://github.com/Justinjdaniel/justinjdaniel.com/actions/workflows/build.yml/badge.svg" alt="Build status" />
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-0070f3.svg?style=flat-square" alt="License" />
   </a>
-  <a href="https://img.shields.io/github/deployments/Justinjdaniel/Justinjdaniel.com/production?label=vercel&logo=vercel&logoColor=white">
-    <img src="https://img.shields.io/github/deployments/Justinjdaniel/Justinjdaniel.com/production?label=vercel&logo=vercel&logoColor=white" alt="Vercel deployment" />
+  <a href="https://nextjs.org/">
+    <img src="https://img.shields.io/github/package-json/dependency-version/justinjdaniel/justinjdaniel.com/next/main?color=black&label=next.js&logo=nextdotjs&logoColor=white&style=flat-square" alt="Next.js version" />
+  </a>
+  <a href="https://github.com/justinjdaniel/justinjdaniel.com/actions/workflows/build.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/justinjdaniel/justinjdaniel.com/build.yml?branch=main&label=build&logo=github&style=flat-square" alt="Build status" />
   </a>
   <a href="https://justinjdaniel.com/">
-    <img src="https://img.shields.io/website?url=https%3A%2F%2Fjustinjdaniel.com%2F&up_message=live&down_message=down&logo=unitedairlines" alt="Website status" />
+    <img src="https://img.shields.io/website?url=https%3A%2F%2Fjustinjdaniel.com%2F&up_message=online&down_message=offline&label=website&logo=vercel&logoColor=white&style=flat-square&color=success" alt="Website status" />
   </a>
 </p>
 
@@ -38,37 +40,112 @@ With an agile mindset and startup spirit, I collaborate with teams to deliver pr
 
 ## 🚀 Technologies
 
-- **[Next.js](https://nextjs.org/):** React framework for hybrid static/server rendering, fast refresh, and more.
-- **[Tailwind CSS](https://tailwindcss.com/):** Utility-first CSS for rapid UI development.
-- **[GSAP](https://greensock.com/gsap/):** Professional-grade JavaScript animation platform.
-- **Blockchain/Web3:** Smart contracts, dApps, decentralized protocols.
+This portfolio is built using a modern, high-performance web stack. Here is a breakdown of the core technologies:
+
+> [!NOTE]
+> ### 💻 Core Frontend & Frameworks
+> - **[Next.js 16](https://nextjs.org/):** Leveraging App Router, React Server Components (RSC), and dynamic rendering.
+> - **[React 19](https://react.dev/):** Powering modern rendering patterns, concurrent features, and state hooks.
+> - **[GSAP](https://greensock.com/gsap/):** Professional-grade JS animation library driving sleek, high-fidelity UI animations.
+
+> [!TIP]
+> ### 🎨 Styling & Design
+> - **[Tailwind CSS 4](https://tailwindcss.com/):** Utility-first CSS using a modern, high-performance CSS-first setup via `@import "tailwindcss"`.
+> - **PostCSS:** Pre-configured modular styles and vendor prefix handling.
+
+> [!IMPORTANT]
+> ### 🗄️ Database & Dynamic Features
+> - **PostgreSQL / [Neon](https://neon.tech/):** High-performance serverless database for blog features and persistence.
+> - **[next-mdx-remote](https://github.com/hashicorp/next-mdx-remote):** Content parsing and syntax-highlighted markdown files with `rehype-pretty-code`.
+
+> [!WARNING]
+> ### 🛡️ Tooling, Linting & E2E Testing
+> - **[Biome](https://biomejs.dev/):** Lightning-fast toolchain to format, lint, and verify code quality.
+> - **[Playwright](https://playwright.dev/):** Bulletproof end-to-end framework for integration and user-journey tests.
 
 ---
 
-## 🛠️ Getting Started
+## 💻 Local Development
 
-### Prerequisites
+Follow these steps to get your local development environment up and running.
 
-- [Git](https://git-scm.com/)
-- [Node.js v20.x+](https://nodejs.org/)
-- [pnpm](https://pnpm.io/) (recommended)
+### 📋 Prerequisites
 
-### Installation
+> [!IMPORTANT]
+> Ensure you have the following installed on your machine:
+> - **Git**: Version control to clone the repository.
+> - **Node.js**: Version `20.x` or higher (Node.js `22` is recommended).
+> - **pnpm**: Version `10.x` or higher for package management.
 
-```git clone https://github.com/Justinjdaniel/Justinjdaniel.com.git
-cd justinjdaniel.com
-pnpm install
-pnpm dev
+### 🚀 Setup & Run
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/justinjdaniel/justinjdaniel.com.git
+   cd justinjdaniel.com
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Database Configuration**
+   > [!TIP]
+   > You can completely bypass Neon/PostgreSQL database requirements for local builds and development!
+   > Simply set the environment variable `DATABASE_URL=mock` in your local environment.
+
+   Create a `.env` file in the root directory:
+   ```bash
+   DATABASE_URL=mock
+   ```
+
+4. **Run the Development Server**
+   ```bash
+   pnpm dev
+   ```
+
+5. **Open in Browser**
+   Navigate to [http://localhost:3000](http://localhost:3000) to see your local instance.
+
+---
+
+### ⚙️ Developer Tooling & Commands
+
+<details>
+<summary><b>🔍 Code Quality & Formatting (Biome)</b></summary>
+
+This project uses [Biome](https://biomejs.dev/) to format and lint code instantly.
+
+```bash
+# Check code quality, linting, and formatting
+pnpm run check
+
+# Format all files in-place
+pnpm run format
 ```
+</details>
 
-Then open [http://localhost:3000](http://localhost:3000) in your browser.
+<details>
+<summary><b>🧪 Running End-to-End Tests (Playwright)</b></summary>
+
+We use Playwright to verify application behavior, layout responsiveness, and full-system correctness.
+
+```bash
+# Install Playwright browser binaries
+pnpm run test:e2e:install
+
+# Execute end-to-end test suite
+pnpm run test:e2e
+```
+</details>
 
 ---
 
 ## 📸 Preview
 
 <p align="center">
-  <img src=".github/images/landing.png" width="600" alt="Landing page screenshot"/>
+  <img src=".github/images/landing.png" width="700" style="border-radius: 8px; border: 1px solid #30363d;" alt="Landing page screenshot"/>
 </p>
 
 <!-- ---
@@ -89,11 +166,9 @@ Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
 > [!NOTE]
-> _This repository contains the source code and content for my personal portfolio website. You can view it live at [justinjdaniel.com](https://justinjdaniel.com/)._
+> **Source Code & Live Demo**
+> This repository contains the source code and content for my personal portfolio website. You can view the live site at [justinjdaniel.com](https://justinjdaniel.com/).
+>
+> **License**
+> This project is open source and licensed under the [MIT License](LICENSE).
