@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { prefersReducedMotion } from "@/lib/utils/motion";
 import TypingText from "../effects/typing-text";
 
 gsap.registerPlugin(SplitText);
@@ -19,10 +20,7 @@ export default function HeroSection() {
 
   // Animate heading and trigger typing
   useGSAP(() => {
-    const prefersReducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion()) {
       setTypingStart(true);
       return;
     }
@@ -53,11 +51,7 @@ export default function HeroSection() {
   // Animate buttons after typing is done
   useGSAP(() => {
     if (typingDone && buttonsRef.current) {
-      const prefersReducedMotion =
-        typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReducedMotion) {
-        gsap.set(buttonsRef.current.children, { opacity: 1, y: 0 });
+      if (prefersReducedMotion()) {
         return;
       }
       gsap.fromTo(
@@ -98,15 +92,13 @@ export default function HeroSection() {
         <div ref={buttonsRef} className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            style={{ opacity: 0 }}
-            className="px-8 py-3 rounded-full bg-indigo-500 text-white hover:bg-indigo-600 transition-all hover:scale-105"
+            className="px-8 py-3 rounded-full bg-indigo-500 text-white hover:bg-indigo-600 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900"
           >
             Read My Blog
           </Link>
           <a
             href="mailto:justinjdaniel@duck.com"
-            style={{ opacity: 0 }}
-            className="px-8 py-3 rounded-full border border-indigo-500 text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all hover:scale-105"
+            className="px-8 py-3 rounded-full border border-indigo-500 text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900"
             target="_blank"
             rel="noopener noreferrer"
           >

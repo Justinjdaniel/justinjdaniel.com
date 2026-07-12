@@ -1,6 +1,7 @@
 "use client";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import { prefersReducedMotion } from "@/lib/utils/motion";
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
@@ -8,10 +9,7 @@ export default function AboutSection() {
   // Fade-in animation on mount
   useEffect(() => {
     if (sectionRef.current) {
-      const prefersReducedMotion =
-        typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prefersReducedMotion) {
+      if (prefersReducedMotion()) {
         gsap.set(sectionRef.current.children, { opacity: 1, y: 0 });
         return;
       }
