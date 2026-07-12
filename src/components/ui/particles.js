@@ -32,6 +32,12 @@ export default function Particles({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
   const animationFrameId = useRef(null);
   const prefersReducedMotion = useRef(false);
+  const animateRef = useRef(null);
+  const tickRef = useRef(() => {
+    if (animateRef.current) {
+      animateRef.current();
+    }
+  });
 
   const [colorScheme, setColorScheme] = useState(
     typeof window !== "undefined" &&
@@ -64,7 +70,9 @@ export default function Particles({
     initCanvas();
 
     if (!prefersReducedMotion.current) {
-      animate();
+      if (animateRef.current) {
+        animateRef.current();
+      }
     }
 
     window.addEventListener("resize", initCanvas);
@@ -77,7 +85,6 @@ export default function Particles({
     };
   }, []);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional, useEffect is stable
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
@@ -87,7 +94,9 @@ export default function Particles({
         }
       } else {
         if (!animationFrameId.current && !prefersReducedMotion.current) {
-          animate();
+          if (animateRef.current) {
+            animateRef.current();
+          }
         }
       }
     };
@@ -272,8 +281,10 @@ export default function Particles({
         drawCircle(circle, true);
       }
     }
-    animationFrameId.current = window.requestAnimationFrame(animate);
+    animationFrameId.current = window.requestAnimationFrame(tickRef.current);
   };
+
+  animateRef.current = animate;
 
   return (
     <div className={className} ref={canvasContainerRef} aria-hidden="true">

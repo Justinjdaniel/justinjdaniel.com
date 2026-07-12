@@ -20,7 +20,6 @@ export default function BackButton({ className = "" }) {
       type="button"
       onClick={goBack}
       aria-label="Go back"
-      title="Go back"
       className={`
         !fixed top-8 left-6 md:top-8 md:left-8 z-[9999]
         hidden md:flex items-center justify-center p-2
@@ -31,7 +30,6 @@ export default function BackButton({ className = "" }) {
         shadow-md backdrop-blur-sm
         transition-all duration-200 ease-out
         hover:bg-indigo-500 hover:text-white hover:scale-105
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900
         animate-in slide-in-from-left
         ${className}
       `}

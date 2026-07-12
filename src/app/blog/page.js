@@ -46,7 +46,6 @@ export default function BlogPage() {
                 hover:border-zinc-200 dark:hover:border-zinc-700/50
                 transition-all duration-200
                 animate-in fade-in-50
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:border-indigo-500
               "
               href={`/blog/${post.slug}`}
             >
