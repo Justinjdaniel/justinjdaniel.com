@@ -10,7 +10,7 @@ import RoundedImage from "./mdx/rounded-image";
 import YouTube from "./mdx/youtube";
 
 function getTextContent(children) {
-  if (typeof children === "string" || typeof children === "number") return String(children);
+  if (typeof children === "string") return children;
   if (Array.isArray(children)) return children.map(getTextContent).join("");
   if (children?.props?.children) {
     return getTextContent(children.props.children);

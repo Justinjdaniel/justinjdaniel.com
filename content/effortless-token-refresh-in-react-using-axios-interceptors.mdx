@@ -130,50 +130,40 @@ User clicks "Profile" →
 
 ### 1. **Local Storage**
 
-<ProsCard
-  pros={[
-    'Very easy to use in React (`localStorage.setItem` and `localStorage.getItem`)',
-    'Data persists even after the browser is closed or refreshed',
-  ]}
-/>
-<ConsCard
-  cons={[
-    'Vulnerable to XSS (cross-site scripting) attacks',
-    'Not accessible from server-side code',
-  ]}
-/>
+<ProsCard>
+- Very easy to use in React (`localStorage.setItem` and `localStorage.getItem`)
+- Data persists even after the browser is closed or refreshed
+</ProsCard>
+
+<ConsCard>
+- Vulnerable to XSS (cross-site scripting) attacks
+- Not accessible from server-side code
+</ConsCard>
 
 ### 2. **Session Storage**
 
-<ProsCard
-  pros={[
-    'Works just like local storage but data is cleared when the browser tab is closed',
-    'Easy to use',
-  ]}
-/>
-<ConsCard
-  cons={[
-    'Still vulnerable to XSS attacks',
-    'Data does not persist after closing the tab or browser',
-  ]}
-/>
+<ProsCard>
+- Works just like local storage but data is cleared when the browser tab is closed
+- Easy to use
+</ProsCard>
+
+<ConsCard>
+- Still vulnerable to XSS attacks
+- Data does not persist after closing the tab or browser
+</ConsCard>
 
 ### 3. **HttpOnly Cookies**
 
-<ProsCard
-  pros={[
-    'More secure than local or session storage',
-    'Not accessible from JavaScript, so protected from XSS attacks',
-    'Automatically sent with every request to the server',
-  ]}
-/>
+<ProsCard>
+- More secure than local or session storage
+- Not accessible from JavaScript, so protected from XSS attacks
+- Automatically sent with every request to the server
+</ProsCard>
 
-<ConsCard
-  cons={[
-    'Requires backend support to set and read cookies',
-    'Vulnerable to CSRF (cross-site request forgery) unless you implement extra protection',
-  ]}
-/>
+<ConsCard>
+- Requires backend support to set and read cookies
+- Vulnerable to CSRF (cross-site request forgery) unless you implement extra protection
+</ConsCard>
 
 <Callout type='info'>
   For most personal projects or prototypes, local storage or session storage is
