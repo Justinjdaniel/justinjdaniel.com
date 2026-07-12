@@ -1,18 +1,12 @@
 import { ensureTable, pool } from "../db";
 
 const isMock = !pool;
-let dbInitPromise = null;
 
-function getDbInit() {
-  if (isMock) return Promise.resolve();
-  if (!dbInitPromise) {
-    dbInitPromise = ensureTable(
-      "blog_views",
-      "CREATE TABLE IF NOT EXISTS blog_views (slug TEXT PRIMARY KEY, count INTEGER DEFAULT 0);",
-    );
-  }
-  return dbInitPromise;
-}
+// Initialization promise to ensure all required tables exist before any DB access
+const dbInitPromise = ensureTable(
+  "blog_views",
+  "CREATE TABLE IF NOT EXISTS blog_views (slug TEXT PRIMARY KEY, count INTEGER DEFAULT 0);",
+);
 
 /**
  * Increments the view count for a blog post and returns the updated count.
@@ -21,9 +15,10 @@ function getDbInit() {
  */
 export async function incrementAndGetBlogViewCount(slug) {
   if (isMock) return 0;
-  await getDbInit();
-  const client = await pool.connect();
+  await dbInitPromise;
+  let client;
   try {
+    client = await pool.connect();
     const result = await client.query(
       `INSERT INTO blog_views (slug, count) VALUES ($1, 1)
        ON CONFLICT (slug) DO UPDATE SET count = blog_views.count + 1
@@ -40,7 +35,9 @@ export async function incrementAndGetBlogViewCount(slug) {
     }
     throw new Error("A database error occurred. Please try again later.");
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }
 
@@ -52,9 +49,10 @@ export async function incrementAndGetBlogViewCount(slug) {
  */
 export async function incrementBlogViewCount(slug) {
   if (isMock) return;
-  await getDbInit();
-  const client = await pool.connect();
+  await dbInitPromise;
+  let client;
   try {
+    client = await pool.connect();
     await client.query(
       `INSERT INTO blog_views (slug, count) VALUES ($1, 1)
        ON CONFLICT (slug) DO UPDATE SET count = blog_views.count + 1;`,
@@ -69,7 +67,9 @@ export async function incrementBlogViewCount(slug) {
     }
     throw new Error("A database error occurred. Please try again later.");
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }
 
@@ -80,9 +80,10 @@ export async function incrementBlogViewCount(slug) {
  */
 export async function getBlogViewCount(slug) {
   if (isMock) return 0;
-  await getDbInit();
-  const client = await pool.connect();
+  await dbInitPromise;
+  let client;
   try {
+    client = await pool.connect();
     const result = await client.query(
       "SELECT count FROM blog_views WHERE slug = $1;",
       [slug],
@@ -97,6 +98,8 @@ export async function getBlogViewCount(slug) {
     }
     throw new Error("A database error occurred. Please try again later.");
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }

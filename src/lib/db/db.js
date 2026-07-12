@@ -20,8 +20,9 @@ const initializedTables = new Set();
 export async function ensureTable(tableName, createTableSQL) {
   if (isMock) return;
   if (initializedTables.has(tableName)) return;
-  const client = await pool.connect();
+  let client;
   try {
+    client = await pool.connect();
     await client.query(createTableSQL);
     initializedTables.add(tableName);
   } catch (error) {
@@ -33,6 +34,8 @@ export async function ensureTable(tableName, createTableSQL) {
     }
     throw new Error("A database error occurred. Please try again later.");
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }
