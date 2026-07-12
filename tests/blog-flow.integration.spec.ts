@@ -21,7 +21,7 @@ test.describe("Blog integration flow", () => {
 
     // Act: Navigate to blog listing
     await page.goto(`${BASE_URL}/blog`);
-    await expect(page.locator("h2").first()).toContainText(/articles|updates/i);
+    await expect(page.locator("h1")).toContainText(/blog/i);
     // Assert: At least one blog post is listed
     const blogLinks = page.locator('a[href^="/blog/"]');
     const blogCount = await blogLinks.count();

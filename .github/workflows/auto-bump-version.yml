@@ -45,12 +45,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
-          fetch-depth: 0 # Fetches all tags and history, required for bump version tag logic
       - name: 'cat package.json'
         run: cat ./package.json
       - name: 'Automated Version Bump'
         id: version-bump
-        uses: 'phips28/gh-action-bump-version@v11.0.7' # Pinned to stable release v11.0.7
+        uses: 'phips28/gh-action-bump-version@master'
         with:
           tag-prefix: 'v'
           commit-message: 'CI: bumps version to {{version}} [skip ci]'
