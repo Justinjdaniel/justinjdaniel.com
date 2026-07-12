@@ -9,6 +9,15 @@ import ProsCard from "./mdx/pros-card";
 import RoundedImage from "./mdx/rounded-image";
 import YouTube from "./mdx/youtube";
 
+function getTextContent(children) {
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(getTextContent).join("");
+  if (children?.props?.children) {
+    return getTextContent(children.props.children);
+  }
+  return "";
+}
+
 function slugify(str) {
   return str
     .toString()
@@ -22,7 +31,8 @@ function slugify(str) {
 
 function createHeading(level) {
   return ({ children }) => {
-    const slug = slugify(children);
+    const textContent = getTextContent(children);
+    const slug = slugify(textContent);
     const Tag = `h${level}`;
 
     return (
@@ -40,7 +50,7 @@ function createHeading(level) {
             hover:text-zinc-700 dark:hover:text-zinc-300
             [&>svg]:h-4 [&>svg]:w-4
           "
-          aria-label={`Link to section: ${children}`}
+          aria-label={`Link to section: ${textContent}`}
         >
           #
         </a>

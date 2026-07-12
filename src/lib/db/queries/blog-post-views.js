@@ -16,8 +16,9 @@ const dbInitPromise = ensureTable(
 export async function incrementAndGetBlogViewCount(slug) {
   if (isMock) return 0;
   await dbInitPromise;
-  const client = await pool.connect();
+  let client;
   try {
+    client = await pool.connect();
     const result = await client.query(
       `INSERT INTO blog_views (slug, count) VALUES ($1, 1)
        ON CONFLICT (slug) DO UPDATE SET count = blog_views.count + 1
@@ -34,7 +35,9 @@ export async function incrementAndGetBlogViewCount(slug) {
     }
     throw new Error("A database error occurred. Please try again later.");
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }
 
@@ -47,8 +50,9 @@ export async function incrementAndGetBlogViewCount(slug) {
 export async function incrementBlogViewCount(slug) {
   if (isMock) return;
   await dbInitPromise;
-  const client = await pool.connect();
+  let client;
   try {
+    client = await pool.connect();
     await client.query(
       `INSERT INTO blog_views (slug, count) VALUES ($1, 1)
        ON CONFLICT (slug) DO UPDATE SET count = blog_views.count + 1;`,
@@ -63,7 +67,9 @@ export async function incrementBlogViewCount(slug) {
     }
     throw new Error("A database error occurred. Please try again later.");
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }
 
@@ -75,8 +81,9 @@ export async function incrementBlogViewCount(slug) {
 export async function getBlogViewCount(slug) {
   if (isMock) return 0;
   await dbInitPromise;
-  const client = await pool.connect();
+  let client;
   try {
+    client = await pool.connect();
     const result = await client.query(
       "SELECT count FROM blog_views WHERE slug = $1;",
       [slug],
@@ -91,6 +98,8 @@ export async function getBlogViewCount(slug) {
     }
     throw new Error("A database error occurred. Please try again later.");
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }

@@ -15,8 +15,9 @@ const dbInitPromise = ensureTable(
 export async function incrementWebsiteViewCount() {
   if (isMock) return;
   await dbInitPromise;
-  const client = await pool.connect();
+  let client;
   try {
+    client = await pool.connect();
     await client.query(`
       INSERT INTO website_views (id, count) VALUES (1, 1)
       ON CONFLICT (id) DO UPDATE SET count = website_views.count + 1;
@@ -30,6 +31,8 @@ export async function incrementWebsiteViewCount() {
     }
     throw new Error("A database error occurred. Please try again later.");
   } finally {
-    client.release();
+    if (client) {
+      client.release();
+    }
   }
 }
