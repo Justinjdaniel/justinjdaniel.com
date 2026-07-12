@@ -47,6 +47,10 @@ export default function Particles({
       : "light",
   );
 
+  const staticityRef = useRef(staticity);
+  const easeRef = useRef(ease);
+  const colorSchemeRef = useRef(colorScheme);
+
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) return;
     const media = window.matchMedia("(prefers-color-scheme: dark)");
@@ -54,6 +58,12 @@ export default function Particles({
     media.addEventListener("change", handler);
     return () => media.removeEventListener("change", handler);
   }, []);
+
+  useEffect(() => {
+    staticityRef.current = staticity;
+    easeRef.current = ease;
+    colorSchemeRef.current = colorScheme;
+  }, [staticity, ease, colorScheme]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: intentional, useEffect is stable
   useEffect(() => {
@@ -194,7 +204,7 @@ export default function Particles({
       context.current.beginPath();
       context.current.arc(x, y, size, 0, 2 * Math.PI);
       const color =
-        colorScheme === "dark"
+        colorSchemeRef.current === "dark"
           ? `rgba(255,255,255,${alpha})` // white for dark mode
           : `rgba(0,0,0,${alpha})`; // black for light mode
 
@@ -261,11 +271,13 @@ export default function Particles({
       circle.x += circle.dx;
       circle.y += circle.dy;
       circle.translateX +=
-        (mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
-        ease;
+        (mouse.current.x / (staticityRef.current / circle.magnetism) -
+          circle.translateX) /
+        easeRef.current;
       circle.translateY +=
-        (mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
-        ease;
+        (mouse.current.y / (staticityRef.current / circle.magnetism) -
+          circle.translateY) /
+        easeRef.current;
 
       // circle gets out of the canvas: reset in-place to avoid array splicing & object allocation
       if (
