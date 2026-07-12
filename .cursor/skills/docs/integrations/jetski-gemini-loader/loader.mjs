@@ -22,13 +22,18 @@ import path from "path";
 const SKILL_ID_REGEX = /@([a-zA-Z0-9-_./]+)/g;
 
 function collectReferencedSkillIds(messages, index) {
+  if (!Array.isArray(messages)) {
+    return [];
+  }
   const referencedSkillIds = new Set();
 
   for (const msg of messages) {
-    for (const match of msg.content.matchAll(SKILL_ID_REGEX)) {
-      const id = match[1];
-      if (index.has(id)) {
-        referencedSkillIds.add(id);
+    if (msg && typeof msg.content === "string") {
+      for (const match of msg.content.matchAll(SKILL_ID_REGEX)) {
+        const id = match[1];
+        if (index.has(id)) {
+          referencedSkillIds.add(id);
+        }
       }
     }
   }
