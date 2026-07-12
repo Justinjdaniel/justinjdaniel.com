@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { prefersReducedMotion } from "@/lib/utils/motion";
 import TypingText from "../effects/typing-text";
 
 gsap.registerPlugin(SplitText);
@@ -20,11 +19,6 @@ export default function HeroSection() {
 
   // Animate heading and trigger typing
   useGSAP(() => {
-    if (prefersReducedMotion()) {
-      setTypingStart(true);
-      return;
-    }
-
     const splitHeading = new SplitText(headingRef.current, {
       type: "chars,words,lines",
     });
@@ -51,9 +45,6 @@ export default function HeroSection() {
   // Animate buttons after typing is done
   useGSAP(() => {
     if (typingDone && buttonsRef.current) {
-      if (prefersReducedMotion()) {
-        return;
-      }
       gsap.fromTo(
         buttonsRef.current.children,
         { opacity: 0, y: 30 },
@@ -69,7 +60,7 @@ export default function HeroSection() {
   }, [typingDone]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center p-8 max-w-[100ch] mx-auto motion-safe:snap-start">
+    <section className="relative min-h-screen flex items-center justify-center p-8 max-w-[100ch] mx-auto snap-start">
       <div className="max-w-5xl mx-auto text-center">
         <h1
           ref={headingRef}
@@ -92,13 +83,15 @@ export default function HeroSection() {
         <div ref={buttonsRef} className="flex gap-4 justify-center">
           <Link
             href="/blog"
-            className="px-8 py-3 rounded-full bg-indigo-500 text-white hover:bg-indigo-600 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900"
+            style={{ opacity: 0 }}
+            className="px-8 py-3 rounded-full bg-indigo-500 text-white hover:bg-indigo-600 transition-all hover:scale-105"
           >
             Read My Blog
           </Link>
           <a
             href="mailto:justinjdaniel@duck.com"
-            className="px-8 py-3 rounded-full border border-indigo-500 text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900"
+            style={{ opacity: 0 }}
+            className="px-8 py-3 rounded-full border border-indigo-500 text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all hover:scale-105"
             target="_blank"
             rel="noopener noreferrer"
           >

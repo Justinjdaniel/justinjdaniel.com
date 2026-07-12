@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <div
       ref={main}
-      className="overflow-y-scroll h-screen motion-safe:snap-y motion-safe:snap-mandatory motion-safe:scroll-smooth"
+      className="overflow-y-scroll h-screen snap-y snap-mandatory scroll-smooth"
       id="smooth-wrapper"
       style={{ WebkitOverflowScrolling: "touch" }}
     >

@@ -21,7 +21,7 @@ export default function PrevNextNav({ prevPost, nextPost, className = "" }) {
       {prevPost ? (
         <Link
           href={`/blog/${prevPost.slug}`}
-          className={`flex items-center gap-3 px-4 py-3 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition ${btnWidth} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500`}
+          className={`flex items-center gap-3 px-4 py-3 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition ${btnWidth}`}
           aria-label={`Previous post: ${prevPost.metadata.title}`}
         >
           <ArrowWideDoodleIcon className="w-10 h-10 flex-shrink-0 -scale-x-100" />
@@ -41,7 +41,7 @@ export default function PrevNextNav({ prevPost, nextPost, className = "" }) {
       {nextPost ? (
         <Link
           href={`/blog/${nextPost.slug}`}
-          className={`flex items-center gap-3 px-4 py-3 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition ${btnWidth} justify-end focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500`}
+          className={`flex items-center gap-3 px-4 py-3 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition ${btnWidth} justify-end`}
           aria-label={`Next post: ${nextPost.metadata.title}`}
         >
           <span className="flex flex-col items-end justify-center leading-snug text-right w-full">

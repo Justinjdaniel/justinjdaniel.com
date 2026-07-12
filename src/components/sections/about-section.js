@@ -1,7 +1,6 @@
 "use client";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import { prefersReducedMotion } from "@/lib/utils/motion";
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
@@ -9,10 +8,6 @@ export default function AboutSection() {
   // Fade-in animation on mount
   useEffect(() => {
     if (sectionRef.current) {
-      if (prefersReducedMotion()) {
-        gsap.set(sectionRef.current.children, { opacity: 1, y: 0 });
-        return;
-      }
       gsap.fromTo(
         sectionRef.current.children,
         { opacity: 0, y: 40 },
@@ -28,7 +23,7 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center motion-safe:snap-start py-20">
+    <section className="min-h-screen flex items-center justify-center snap-start py-20">
       <div ref={sectionRef} className="w-full max-w-3xl mx-auto px-6 text-left">
         <h2 className="text-balance text-4xl md:text-4xl font-sans mb-6 text-zinc-900 dark:text-zinc-100">
           About Me
