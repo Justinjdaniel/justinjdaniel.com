@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://avatars.githubusercontent.com/u/62233773?s=500&v=4" width="120" style="border-radius: 50%;" alt="Justin J Daniel Avatar"/>
+  <img src="https://avatars.githubusercontent.com/u/62233773?s=500&v=4" width="120" alt="Justin J Daniel Avatar"/>
 </p>
 
 <h1 align="center">Justin J Daniel</h1>
