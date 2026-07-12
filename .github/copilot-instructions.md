@@ -3,65 +3,53 @@
 ## Project Overview
 
 - This is a personal portfolio and blog site built with **Next.js (App Router)**, using **Tailwind CSS** for styling and **MDX** for blog content.
-- The codebase is modular, with reusable components in `app/_components/` and content in `content/`.
-- Data flows are mostly static or file-based, with some dynamic API routes under `app/api/`.
+- The codebase is modular, with reusable components in `src/components/` and content in `content/`.
+- Data flows are mostly static or file-based, with some dynamic API routes under `src/app/api/`.
+
+## Reusable AI Agentic Skills
+
+This repository has 160+ reusable agentic skills installed under `.cursor/skills/`.
+- Whenever you are working on a feature, bug fix, or review, check if there's a relevant skill playbook in `.cursor/skills/` (e.g., `performance-optimizer`, `api-endpoint-builder`, `debugging-and-error-recovery`).
+- Use these playbooks to guide your development constraints, testing strategies, and outcome validation.
+
+## Modern Web Guidance
+
+We strictly adhere to the **Modern Web Guidance** (supported by Google Chrome and Microsoft Edge) to prefer high-performance, native web platform APIs and CSS-only behaviors over bloated JavaScript or heavy polyfills.
+- **Search Guidance**: Run `npx modern-web-guidance search "<query>"` to look up standard modern patterns (e.g. Popover API, `<dialog>`, native entry/exit animations, etc.).
+- **Retrieve Guides**: Run `npx modern-web-guidance retrieve <guide-id>` to get exact, expert-curated implementation patterns and progressive enhancement fallbacks.
+- **Example Pattern**: The scroll-progress bar in `src/components/ui/scroll-progress.js` is built with a native `@supports (animation-timeline: scroll())` CSS timeline, utilizing a safe, lightweight scroll-listener fallback only when CSS timelines are unsupported.
 
 ## Key Directories & Patterns
 
-- `app/` — Main Next.js app directory. Pages, layouts, and components are organized here.
-  - `app/_components/` — All UI, layout, icons, blog, and utility components. Subfolders group related components (e.g., `blog/`, `layout/`, `icons/`).
-  - `app/blog/` and `app/projects/` — Dynamic routes for blog and project pages. Slug-based routing is used for individual posts/projects.
-  - `app/_data/` and `app/_db/` — Data helpers and mock DB logic for blog/projects. Used for view counts and metadata.
-  - `content/` — Markdown/MDX files for blog posts. Each file is a post, with images in `public/images/blogs/`.
+- `src/app/` — Main Next.js app directory. Pages, layouts, and components are organized here.
+- `src/components/` — All UI, layout, icons, blog, and utility components. Subfolders group related components (e.g., `blog/`, `layout/`, `icons/`, `sections/`, `ui/`).
+- `content/` — Markdown/MDX files for blog posts.
 - `public/` — Static assets (images, fonts, icons).
-- `lib/` — Utility libraries (e.g., Google Tag Manager integration).
+- `src/lib/` — Utility libraries and third-party integrations.
 
 ## Developer Workflows
 
-- **Local Development:**
-  - Use `pnpm dev` or the VS Code task "Next.js: dev" to start the local server.
-  - Open [http://localhost:3000](http://localhost:3000).
-- **Build & Production:**
-  - Use `pnpm build` or the "Next.js: build" task for production builds.
-  - Docker support: Use the "Docker: build" and "Docker: run" tasks for containerized deployment.
-- **Testing:**
-  - Integration tests are in `tests/` (e.g., `blog-flow.integration.spec.ts`).
-  - No test runner config is present; add one if expanding tests.
+- **Local Development:** `pnpm dev`
+- **Build & Production:** `pnpm build`
+- **Lint & Format:** `pnpm check`
+- **Testing:** `pnpm test:e2e` (Playwright E2E tests under `tests/`)
 
 ## Conventions & Patterns
 
 - **Component Structure:**
-  - Prefer colocating related components in subfolders under `app/_components/`.
+  - Prefer colocating related components in subfolders under `src/components/`.
   - Use descriptive, domain-specific names (e.g., `hero-section.js`, `blog-schema.js`).
 - **MDX Content:**
   - Blog posts are written in MDX and imported via dynamic routes.
   - Images for posts are stored in `public/images/blogs/` and referenced by relative path.
 - **API Routes:**
-  - API endpoints (e.g., for view counts) are in `app/api/` and use Next.js route handlers.
+  - API endpoints (e.g., for view counts) are in `src/app/api/` and use Next.js route handlers.
 - **Styling:**
-  - Tailwind CSS is configured in `postcss.config.mjs` and used throughout components.
+  - Tailwind CSS 4 is configured CSS-first via `@import "tailwindcss";` in `src/app/globals.css`.
 - **Metadata & SEO:**
-  - Metadata for pages is managed in `app/lib/metadata.js` and related files.
-  - Open Graph and sitemap logic is in `app/opengraph-image.js`, `app/sitemap.js`, etc.
-
-## External Integrations
-
-- **Google Tag Manager:** See `lib/gtm.js` and `app/_components/analytics/google-tag-manager.js`.
-- **Microsoft Clarity:** See `app/_components/analytics/microsoft-clarity.js`.
-- **Vercel:** Deployment is automated via GitHub Actions and Vercel (see badges in README).
-
-## Example: Adding a Blog Post
-
-1. Add an `.mdx` file to `content/`.
-2. Add any images to `public/images/blogs/`.
-3. The post will be available via `/blog/[slug]`.
-
-## Tips for AI Agents
-
-- Always check for existing components before creating new ones.
-- Follow the folder structure and naming conventions for new features.
-- Reference the README for setup and deployment details.
-- When updating data logic, review `app/_db/` and `app/_data/` for patterns.
+  - Metadata for pages is managed dynamically.
+- **Next.js 15/16 Routing Async Rule:**
+  - In dynamic route segments and layouts, `params` and `searchParams` are Promises and must be explicitly awaited before accessing their keys.
 
 ---
 
