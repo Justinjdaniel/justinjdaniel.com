@@ -12,6 +12,7 @@ permissions:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
 
     steps:
       - name: Checkout code
@@ -37,6 +38,6 @@ jobs:
 
       - name: Run Lighthouse Audits
         run: |
-          lhci autorun --collect.staticDistDir=.next/server/app || echo "Lighthouse audit completed with warnings/errors"
+          lhci autorun || echo "Lighthouse audit completed with warnings/errors"
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
