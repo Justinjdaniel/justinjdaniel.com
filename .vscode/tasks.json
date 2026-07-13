@@ -3,20 +3,20 @@
   "tasks": [
     {
       "label": "Next.js: dev",
-      "type": "npm",
-      "script": "dev",
+      "type": "shell",
+      "command": "pnpm dev",
       "problemMatcher": []
     },
     {
       "label": "Next.js: build",
-      "type": "npm",
-      "script": "build",
+      "type": "shell",
+      "command": "pnpm build",
       "problemMatcher": []
     },
     {
       "label": "Next.js: start",
-      "type": "npm",
-      "script": "start",
+      "type": "shell",
+      "command": "pnpm start",
       "problemMatcher": []
     },
     {

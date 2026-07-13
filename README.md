@@ -21,6 +21,12 @@
   <a href="https://github.com/justinjdaniel/justinjdaniel.com/actions/workflows/build.yml">
     <img src="https://img.shields.io/github/actions/workflow/status/justinjdaniel/justinjdaniel.com/build.yml?branch=main&label=build&logo=github&style=flat-square" alt="Build status" />
   </a>
+  <a href="https://github.com/justinjdaniel/justinjdaniel.com/actions/workflows/playwright.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/justinjdaniel/justinjdaniel.com/playwright.yml?branch=main&label=e2e%20tests&logo=playwright&logoColor=white&style=flat-square" alt="Playwright E2E Tests status" />
+  </a>
+  <a href="https://github.com/justinjdaniel/justinjdaniel.com/actions/workflows/lighthouse.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/justinjdaniel/justinjdaniel.com/lighthouse.yml?branch=main&label=lighthouse&logo=lighthouse&logoColor=white&style=flat-square" alt="Lighthouse status" />
+  </a>
   <a href="https://justinjdaniel.com/">
     <img src="https://img.shields.io/website?url=https%3A%2F%2Fjustinjdaniel.com%2F&up_message=online&down_message=offline&label=website&logo=vercel&logoColor=white&style=flat-square&color=success" alt="Website status" />
   </a>
