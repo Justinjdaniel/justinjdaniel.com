@@ -19,7 +19,7 @@ jobs:
         id: dependabot-metadata
         uses: dependabot/fetch-metadata@v3
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check for breaking changes
         id: check_for_breaking_changes
