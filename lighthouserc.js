@@ -1,7 +1,8 @@
 module.exports = {
   ci: {
     collect: {
-      staticDistDir: "./.next/server/app",
+      startServerCommand: "pnpm start",
+      url: ["http://localhost:3000/"],
     },
     upload: {
       target: "temporary-public-storage",
