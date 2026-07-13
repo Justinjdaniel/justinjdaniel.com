@@ -7,7 +7,7 @@ This project uses JavaScript with the following styles:
 
 ## Next.js
 
-- Uses Next.js version 15.3.0 or above.
+- Uses Next.js version 16 or above with React 19.
 - Follow Next.js page/layout naming conventions.
 - Use route handlers for API endpoints.
 - Utilize Next.js built-in components like Image, Link, and Script for optimal performance.
@@ -31,7 +31,7 @@ This project uses JavaScript with the following styles:
 ## Code Style
 
 - Use Biome for formatting and linting as the primary toolchain.
-- Use ESLint with recommended rules and Prettier as secondary options for consistent formatting.
+- Prettier is used as a fallback only for files not natively supported by Biome (Markdown, HTML, YAML, etc.).
 - Follow SOLID principles and DRY (Don't Repeat Yourself) patterns.
 - Write meaningful comments for complex logic and document public APIs.
 - Use descriptive variable and function names that clearly explain their purpose.

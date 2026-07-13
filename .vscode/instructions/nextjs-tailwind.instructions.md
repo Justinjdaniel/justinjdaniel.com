@@ -9,9 +9,9 @@ Instructions for high-quality Next.js applications with Tailwind CSS styling and
 
 ## Project Context
 
-- Latest Next.js (App Router)
-- TypeScript for type safety
-- Tailwind CSS for styling
+- Latest Next.js (App Router) with React 19
+- Tailwind CSS v4 (CSS-first setup via `@import "tailwindcss"`)
+- TypeScript / JS with Biome for high-performance formatting and linting
 
 ## Development Standards
 
