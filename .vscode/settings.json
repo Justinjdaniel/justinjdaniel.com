@@ -13,6 +13,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit"
   },
+  "npm.packageManager": "pnpm",
 
   // Fallback to Prettier for non-biome supported files
   "[markdown]": {
