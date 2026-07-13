@@ -6,7 +6,6 @@
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.wordWrap": "on",
-  "npm.packageManager": "pnpm",
 
   // MARK: Default Formatter & Linters
   // Biome as first priority for supported files
