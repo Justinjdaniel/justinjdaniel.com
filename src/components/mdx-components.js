@@ -14,14 +14,22 @@ import YouTube from "./mdx/youtube";
 
 /**
  * Traverses React tree children to flatten and extract pure text content.
+ * Supports stringifying numeric and bigint values and explicit property-presence checks.
  *
  * @param {import("react").ReactNode} children - Component children nodes.
  * @returns {string} Flattened text string.
  */
 function getTextContent(children) {
   if (typeof children === "string") return children;
+  if (typeof children === "number" || typeof children === "bigint")
+    return children.toString();
   if (Array.isArray(children)) return children.map(getTextContent).join("");
-  if (children?.props?.children) {
+  if (
+    children &&
+    typeof children === "object" &&
+    children.props &&
+    "children" in children.props
+  ) {
     return getTextContent(children.props.children);
   }
   return "";
@@ -34,7 +42,7 @@ function getTextContent(children) {
  * @returns {string} Slugified lower-cased result.
  */
 function slugify(str) {
-  return str
+  const slug = str
     .toString()
     .toLowerCase()
     .trim()
@@ -42,6 +50,37 @@ function slugify(str) {
     .replace(/&/g, "-and-")
     .replace(/[^\w-]+/g, "")
     .replace(/--+/g, "-");
+  return slug || "heading";
+}
+
+// Track duplicate slugs per document/render dynamically.
+// We use a global registry that we can reset or clean up,
+// or track duplicates per render sequence. Since Next.js rendering
+// is synchronous per request/page render, we reset it or map it.
+let slugRegistry = {};
+
+/**
+ * Resets the slug registry.
+ */
+export function resetSlugRegistry() {
+  slugRegistry = {};
+}
+
+/**
+ * Generates a unique slug for a heading text.
+ *
+ * @param {string} textContent - Heading raw content.
+ * @returns {string} Unique slug within document sequence.
+ */
+function generateUniqueSlug(textContent) {
+  const baseSlug = slugify(textContent);
+  if (!slugRegistry[baseSlug]) {
+    slugRegistry[baseSlug] = 1;
+    return baseSlug;
+  }
+  const suffix = slugRegistry[baseSlug];
+  slugRegistry[baseSlug] += 1;
+  return `${baseSlug}-${suffix}`;
 }
 
 /**
@@ -51,9 +90,10 @@ function slugify(str) {
  * @returns {import("react").FC} Render-ready React component.
  */
 function createHeading(level) {
-  return ({ children }) => {
+  return ({ children, id }) => {
     const textContent = getTextContent(children);
-    const slug = slugify(textContent);
+    // Preserve explicit heading IDs when provided, otherwise generate a unique one.
+    const slug = id || generateUniqueSlug(textContent);
     const Tag = `h${level}`;
 
     return (
@@ -69,6 +109,7 @@ function createHeading(level) {
             text-zinc-500 dark:text-zinc-400
             transition-opacity duration-200
             hover:text-zinc-700 dark:hover:text-zinc-300
+            focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none rounded
             [&>svg]:h-4 [&>svg]:w-4
           "
           aria-label={`Link to section: ${textContent}`}
@@ -136,6 +177,9 @@ const options = {
  * @returns {import("react").JSX.Element}
  */
 export function CustomMDX(props) {
+  // Reset the slug registry at the beginning of rendering CustomMDX
+  resetSlugRegistry();
+
   return (
     <MDXRemote
       {...props}

@@ -4,11 +4,23 @@ import { ensureTable, pool } from "../db";
 // MARK: - Config & Constants
 const isMock = !pool;
 
-// Initialization promise to ensure all required tables exist before any DB access
-const dbInitPromise = ensureTable(
-  "blog_views",
-  "CREATE TABLE IF NOT EXISTS blog_views (slug TEXT PRIMARY KEY, count INTEGER DEFAULT 0);",
-);
+// Lazy initialization logic
+let dbInitPromise = null;
+
+/**
+ * Lazy helper to ensure all required tables exist before any DB access is made.
+ *
+ * @returns {Promise<void>}
+ */
+function initializeDatabase() {
+  if (!dbInitPromise) {
+    dbInitPromise = ensureTable(
+      "blog_views",
+      "CREATE TABLE IF NOT EXISTS blog_views (slug TEXT PRIMARY KEY, count INTEGER DEFAULT 0);",
+    );
+  }
+  return dbInitPromise;
+}
 
 // MARK: - Helper Functions
 
@@ -20,7 +32,7 @@ const dbInitPromise = ensureTable(
  */
 export async function incrementAndGetBlogViewCount(slug) {
   if (isMock) return 0;
-  await dbInitPromise;
+  await initializeDatabase();
   let client;
   try {
     client = await pool.connect();
@@ -54,7 +66,7 @@ export async function incrementAndGetBlogViewCount(slug) {
  */
 export async function incrementBlogViewCount(slug) {
   if (isMock) return;
-  await dbInitPromise;
+  await initializeDatabase();
   let client;
   try {
     client = await pool.connect();
@@ -86,7 +98,7 @@ export async function incrementBlogViewCount(slug) {
  */
 export async function getBlogViewCount(slug) {
   if (isMock) return 0;
-  await dbInitPromise;
+  await initializeDatabase();
   let client;
   try {
     client = await pool.connect();

@@ -88,10 +88,7 @@ export default function ConsCard({ title, cons = [], children }) {
       {cons && cons.length > 0 ? (
         <div className="space-y-2">
           {cons.map((con) => (
-            <div
-              key={`con-${con.substring(0, 20)}`}
-              className="flex items-start gap-2"
-            >
+            <div key={`con-${con}`} className="flex items-start gap-2">
               {xIcon}
               <span className="text-zinc-700 dark:text-zinc-300 font-medium">
                 {con}

@@ -215,10 +215,25 @@ export function useParticlesEngine({
       context.current = canvasRef.current.getContext("2d");
     }
 
-    let reducedMotionMedia = null;
+    let mediaQuery = null;
+    const handleMotionPreferenceChange = (e) => {
+      prefersReducedMotion.current = e.matches;
+      if (e.matches) {
+        if (animationFrameId.current) {
+          window.cancelAnimationFrame(animationFrameId.current);
+          animationFrameId.current = null;
+        }
+      } else {
+        if (!animationFrameId.current) {
+          animate();
+        }
+      }
+    };
+
     if (typeof window !== "undefined" && window.matchMedia) {
-      reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
-      prefersReducedMotion.current = reducedMotionMedia.matches;
+      mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      prefersReducedMotion.current = mediaQuery.matches;
+      mediaQuery.addEventListener("change", handleMotionPreferenceChange);
     }
 
     animateRef.current = animate;
@@ -229,32 +244,12 @@ export function useParticlesEngine({
       animate();
     }
 
-    const handleReducedMotionChange = (event) => {
-      prefersReducedMotion.current = event.matches;
-      if (event.matches) {
-        // Reduced motion enabled - cancel animation
-        if (animationFrameId.current) {
-          window.cancelAnimationFrame(animationFrameId.current);
-          animationFrameId.current = null;
-        }
-      } else {
-        // Reduced motion disabled - restart animation
-        if (!animationFrameId.current && animateRef.current) {
-          animateRef.current();
-        }
-      }
-    };
-
-    if (reducedMotionMedia) {
-      reducedMotionMedia.addEventListener("change", handleReducedMotionChange);
-    }
-
     window.addEventListener("resize", initCanvas);
 
     return () => {
       window.removeEventListener("resize", initCanvas);
-      if (reducedMotionMedia) {
-        reducedMotionMedia.removeEventListener("change", handleReducedMotionChange);
+      if (mediaQuery) {
+        mediaQuery.removeEventListener("change", handleMotionPreferenceChange);
       }
       if (animationFrameId.current) {
         window.cancelAnimationFrame(animationFrameId.current);
