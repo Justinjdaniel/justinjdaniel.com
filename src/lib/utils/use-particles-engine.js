@@ -215,10 +215,10 @@ export function useParticlesEngine({
       context.current = canvasRef.current.getContext("2d");
     }
 
+    let reducedMotionMedia = null;
     if (typeof window !== "undefined" && window.matchMedia) {
-      prefersReducedMotion.current = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
+      reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+      prefersReducedMotion.current = reducedMotionMedia.matches;
     }
 
     animateRef.current = animate;
@@ -229,10 +229,33 @@ export function useParticlesEngine({
       animate();
     }
 
+    const handleReducedMotionChange = (event) => {
+      prefersReducedMotion.current = event.matches;
+      if (event.matches) {
+        // Reduced motion enabled - cancel animation
+        if (animationFrameId.current) {
+          window.cancelAnimationFrame(animationFrameId.current);
+          animationFrameId.current = null;
+        }
+      } else {
+        // Reduced motion disabled - restart animation
+        if (!animationFrameId.current && animateRef.current) {
+          animateRef.current();
+        }
+      }
+    };
+
+    if (reducedMotionMedia) {
+      reducedMotionMedia.addEventListener("change", handleReducedMotionChange);
+    }
+
     window.addEventListener("resize", initCanvas);
 
     return () => {
       window.removeEventListener("resize", initCanvas);
+      if (reducedMotionMedia) {
+        reducedMotionMedia.removeEventListener("change", handleReducedMotionChange);
+      }
       if (animationFrameId.current) {
         window.cancelAnimationFrame(animationFrameId.current);
       }
