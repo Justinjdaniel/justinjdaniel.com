@@ -40,21 +40,39 @@ export default function ScrollReveal({
     const container = containerRef.current;
     if (!container) return;
 
+    // Feature-detect IntersectionObserver
+    if (typeof IntersectionObserver === "undefined") {
+      // No IntersectionObserver support - reveal all children immediately
+      const childElements = container.children;
+      setRevealedIndices(
+        new Set(Array.from({ length: childElements.length }, (_, i) => i)),
+      );
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
-            setTimeout(() => {
-              setRevealedIndices((prev) => {
-                const next = new Set(prev);
-                next.add(index);
-                return next;
-              });
-            }, index * staggerDelay);
-            observer.unobserve(entry.target);
-          }
-        }
+        // Sort entries by their data-index to ensure consistent stagger order
+        const intersectingEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => {
+            const indexA = Number(a.target.getAttribute("data-index"));
+            const indexB = Number(b.target.getAttribute("data-index"));
+            return indexA - indexB;
+          });
+
+        // Apply stagger delay based on position within current batch
+        intersectingEntries.forEach((entry, batchPosition) => {
+          const index = Number(entry.target.getAttribute("data-index"));
+          setTimeout(() => {
+            setRevealedIndices((prev) => {
+              const next = new Set(prev);
+              next.add(index);
+              return next;
+            });
+          }, batchPosition * staggerDelay);
+          observer.unobserve(entry.target);
+        });
       },
       { threshold, rootMargin: "0px 0px -50px 0px" },
     );

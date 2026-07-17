@@ -312,12 +312,9 @@ table {
   }
 }
 
-.scroll-progress-bar {
-  transform: scaleX(0);
-}
-
 @supports (animation-timeline: scroll()) {
   .scroll-progress-bar {
+    transform: scaleX(0);
     animation: grow-progress auto linear;
     animation-timeline: scroll();
     transform-origin: left;
