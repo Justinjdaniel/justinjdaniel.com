@@ -1,3 +1,4 @@
+// MARK: - Imports
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import Alert from "./mdx/alert";
@@ -9,6 +10,14 @@ import ProsCard from "./mdx/pros-card";
 import RoundedImage from "./mdx/rounded-image";
 import YouTube from "./mdx/youtube";
 
+// MARK: - Helper Functions
+
+/**
+ * Traverses React tree children to flatten and extract pure text content.
+ *
+ * @param {import("react").ReactNode} children - Component children nodes.
+ * @returns {string} Flattened text string.
+ */
 function getTextContent(children) {
   if (typeof children === "string") return children;
   if (Array.isArray(children)) return children.map(getTextContent).join("");
@@ -18,6 +27,12 @@ function getTextContent(children) {
   return "";
 }
 
+/**
+ * Standard slugification method for safe element IDs and URL references.
+ *
+ * @param {string} str - Raw input string.
+ * @returns {string} Slugified lower-cased result.
+ */
 function slugify(str) {
   return str
     .toString()
@@ -29,6 +44,12 @@ function slugify(str) {
     .replace(/--+/g, "-");
 }
 
+/**
+ * Dynamic React wrapper function generator for markdown headings with anchor links.
+ *
+ * @param {number} level - Heading scale depth (e.g., 1-6).
+ * @returns {import("react").FC} Render-ready React component.
+ */
 function createHeading(level) {
   return ({ children }) => {
     const textContent = getTextContent(children);
@@ -60,6 +81,7 @@ function createHeading(level) {
   };
 }
 
+// MARK: - Config & Constants
 const components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -102,6 +124,17 @@ const options = {
   keepBackground: true,
 };
 
+// MARK: - Render
+
+/**
+ * CustomMDX wraps next-mdx-remote and formats custom elements, images, lists, and highlighting.
+ *
+ * @component
+ * @param {Object} props - MDX properties.
+ * @param {string} props.source - Unrendered MDX raw payload.
+ * @param {Object} [props.components] - Inline react components list.
+ * @returns {import("react").JSX.Element}
+ */
 export function CustomMDX(props) {
   return (
     <MDXRemote

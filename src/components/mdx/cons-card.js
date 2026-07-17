@@ -1,15 +1,7 @@
-/**
- * ConsCard Component
- * @description This component is used to display a card with a list of cons for a specific technology or topic.
- * @param {string} title - The title of the card.
- * @param {Array<string>} cons - An array of strings representing the cons.
- * @returns {JSX.Element} The ConsCard component.
- * @example
- * C
- * // Renders a card with the title "React" and a list of cons.
- */
+// MARK: - Imports
 import React from "react";
 
+// MARK: - Config & Constants
 const xIcon = (
   <svg
     className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
@@ -25,6 +17,15 @@ const xIcon = (
   </svg>
 );
 
+// MARK: - Helper Functions
+
+/**
+ * Injects a React icon element recursively into a list structure.
+ *
+ * @param {import("react").ReactNode} children - Component nested child nodes.
+ * @param {import("react").ReactNode} icon - SVG/HTML icon payload to display on items.
+ * @returns {import("react").ReactNode} Modified virtual DOM node structure.
+ */
 function injectIcon(children, icon) {
   return React.Children.map(children, (child) => {
     if (!child || !React.isValidElement(child)) return child;
@@ -58,6 +59,18 @@ function injectIcon(children, icon) {
   });
 }
 
+// MARK: - Render
+
+/**
+ * ConsCard Component - displays a summary list of negative features or caveats.
+ *
+ * @component
+ * @param {Object} props - Component property arguments.
+ * @param {string} [props.title] - Name of subject/technology.
+ * @param {Array<string>} [props.cons=[]] - List items.
+ * @param {import("react").ReactNode} [props.children] - Children list fallback.
+ * @returns {import("react").JSX.Element}
+ */
 export default function ConsCard({ title, cons = [], children }) {
   return (
     <div
