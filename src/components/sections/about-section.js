@@ -2,6 +2,10 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
+/**
+ * Render the author's about section.
+ * @returns {JSX.Element} The about section content.
+ */
 export default function AboutSection() {
   const sectionRef = useRef(null);
   const animatedRef = useRef(false);

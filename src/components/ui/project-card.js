@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import StackBadge from "./stack-badge";
 
+/**
+ * Render a project summary card with optional hero media and technology badges.
+ * @param {{ project: Object }} props - The project data displayed in the card.
+ * @returns {JSX.Element} A link to the project's detail page.
+ */
 export default function ProjectCard({ project }) {
   const heroImage = project.media?.find((m) => m.type === "image");
 

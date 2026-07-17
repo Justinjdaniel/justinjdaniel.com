@@ -2,6 +2,15 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
+/**
+ * Reveals child elements as they enter the viewport with staggered transitions.
+ * Animations are bypassed when reduced motion is preferred or IntersectionObserver is unavailable.
+ * @param {React.ReactNode} children - The elements to reveal.
+ * @param {number} staggerDelay - The delay in milliseconds between elements revealed in the same batch.
+ * @param {number} threshold - The proportion of an element that must be visible to trigger its reveal.
+ * @param {string} className - CSS class applied to the container.
+ * @param {string} childClassName - CSS class applied to each child wrapper.
+ */
 export default function ScrollReveal({
   children,
   staggerDelay = 100, // delay in ms per item

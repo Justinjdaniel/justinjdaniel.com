@@ -12,6 +12,10 @@ export const metadata = {
   description: "Read my thoughts on software development, design, and more.",
 };
 
+/**
+ * Renders the blog listing page with posts sorted by publication date.
+ * @returns {JSX.Element} The blog listing page.
+ */
 export default function BlogPage() {
   const allBlogs = getBlogPosts();
 

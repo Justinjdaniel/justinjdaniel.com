@@ -1,5 +1,8 @@
 "use client";
 
+/**
+ * Render a fixed progress bar with an animated gradient at the top of the page.
+ */
 export default function ScrollProgress() {
   return (
     <div className="fixed top-0 left-0 w-full h-0.5 bg-transparent z-50">
