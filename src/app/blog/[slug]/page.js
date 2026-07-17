@@ -70,11 +70,12 @@ export async function generateMetadata({ params }) {
 // MARK: - Render
 
 /**
- * Render a blog post page with its content, metadata, view count, and navigation.
+ * Blog detail page component displaying rich MDX text, schemas, reading times, and dynamic view counts.
  *
- * @param {Object} props - Component properties.
- * @param {Promise<{slug: string}>} props.params - URL route parameters.
- * @returns {Promise<import("react").JSX.Element>} The rendered blog post page.
+ * @component
+ * @param {Object} props - Component page parameters.
+ * @param {Promise<{slug: string}>} props.params - URL route parameters promise.
+ * @returns {Promise<import("react").JSX.Element>}
  */
 export default async function Blog({ params }) {
   const { slug } = await params;

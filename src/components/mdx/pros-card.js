@@ -32,11 +32,11 @@ const checkIcon = (
 // MARK: - Helper Functions
 
 /**
- * Adds an icon to list items within a React children tree.
+ * Injects a React icon element recursively into a list structure.
  *
- * @param {import("react").ReactNode} children - The React children to process.
- * @param {import("react").ReactNode} icon - The icon to render before each list item's content.
- * @returns {import("react").ReactNode} The processed children tree with icons added to list items.
+ * @param {import("react").ReactNode} children - Component nested child nodes.
+ * @param {import("react").ReactNode} icon - SVG/HTML icon payload to display on items.
+ * @returns {import("react").ReactNode} Modified virtual DOM node structure.
  */
 function injectIcon(children, icon) {
   return React.Children.map(children, (child) => {
@@ -74,14 +74,14 @@ function injectIcon(children, icon) {
 // MARK: - Render
 
 /**
- * Renders a card containing a list of advantages or a fallback list of child elements.
+ * ProsCard Component - displays a summary list of positive features or topics.
  *
  * @component
- * @param {Object} props - Component properties.
- * @param {string} [props.title] - Subject or technology name displayed in the heading.
- * @param {Array<string>} [props.pros=[]] - Advantages to display as a checkmarked list.
- * @param {import("react").ReactNode} [props.children] - Fallback content containing list items.
- * @returns {import("react").JSX.Element} The rendered advantages card.
+ * @param {Object} props - Component property arguments.
+ * @param {string} [props.title] - Name of subject/technology.
+ * @param {Array<string>} [props.pros=[]] - List items.
+ * @param {import("react").ReactNode} [props.children] - Children list fallback.
+ * @returns {import("react").JSX.Element}
  */
 export default function ProsCard({ title, pros = [], children }) {
   return (

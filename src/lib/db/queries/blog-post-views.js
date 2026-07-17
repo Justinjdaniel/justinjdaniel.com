@@ -8,8 +8,9 @@ const isMock = !pool;
 let dbInitPromise = null;
 
 /**
- * Ensures the required database tables are initialized before database access.
- * @returns {Promise<void>} A promise that resolves when database initialization is complete.
+ * Lazy helper to ensure all required tables exist before any DB access is made.
+ *
+ * @returns {Promise<void>}
  */
 function initializeDatabase() {
   if (!dbInitPromise) {
@@ -24,10 +25,10 @@ function initializeDatabase() {
 // MARK: - Helper Functions
 
 /**
- * Increments a blog post's view count and provides the updated count.
+ * Increments the view count for a blog post and returns the updated count.
  *
  * @param {string} slug - The blog post slug.
- * @returns {Promise<number|null>} The updated view count, or `null` if no count is returned.
+ * @returns {Promise<number|null>} The updated view count or null on error.
  */
 export async function incrementAndGetBlogViewCount(slug) {
   if (isMock) return 0;
@@ -58,8 +59,10 @@ export async function incrementAndGetBlogViewCount(slug) {
 }
 
 /**
- * Increments the view count for a blog post.
+ * Increments the view count for a blog post (does not return the count).
+ *
  * @param {string} slug - The blog post slug.
+ * @returns {Promise<void>}
  */
 export async function incrementBlogViewCount(slug) {
   if (isMock) return;
@@ -88,10 +91,10 @@ export async function incrementBlogViewCount(slug) {
 }
 
 /**
- * Retrieves the current view count for a blog post.
+ * Gets the view count for a blog post.
  *
  * @param {string} slug - The blog post slug.
- * @returns {Promise<number|null>} The view count, or `null` if no record exists.
+ * @returns {Promise<number|null>} The current view count or null if not found.
  */
 export async function getBlogViewCount(slug) {
   if (isMock) return 0;

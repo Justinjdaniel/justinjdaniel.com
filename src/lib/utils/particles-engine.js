@@ -1,14 +1,14 @@
 // MARK: - Helper Functions
 
 /**
- * Maps a value from one range to another and floors non-positive results at zero.
+ * Maps a value from one range to another.
  *
  * @param {number} value - The input value to map.
  * @param {number} start1 - The lower bound of the input range.
  * @param {number} end1 - The upper bound of the input range.
  * @param {number} start2 - The lower bound of the output range.
  * @param {number} end2 - The upper bound of the output range.
- * @returns {number} The mapped value, or `0` when the mapped value is zero or negative.
+ * @returns {number} The mapped value.
  */
 export function remapValue(value, start1, end1, start2, end2) {
   const remapped =
@@ -49,10 +49,12 @@ export function createCircleParams(w, h) {
 }
 
 /**
- * Reinitialize a circle particle with randomized position and motion properties.
- * @param {Object} circle - The circle particle object to reinitialize.
+ * Resets the properties of an existing circle particle in-place to avoid allocation.
+ *
+ * @param {Object} circle - The circle particle object to reset.
  * @param {number} w - The width of the canvas.
  * @param {number} h - The height of the canvas.
+ * @returns {void}
  */
 export function resetCircleInPlace(circle, w, h) {
   circle.x = Math.floor(Math.random() * w);

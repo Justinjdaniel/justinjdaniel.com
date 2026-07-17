@@ -1,10 +1,10 @@
 // MARK: - Helper Functions
 
 /**
- * Determines the font size for a blog post title based on its length.
+ * Dynamically adjusts font size based on the length of the blog post title.
  *
  * @param {string} title - The blog post title.
- * @return {number} `32` for titles longer than 110 characters, `40` for titles longer than 70 characters, or `56` otherwise.
+ * @returns {number} The calculated optimal font size.
  */
 export function getFontSizeForTitle(title) {
   const baseFontSize = 56;
@@ -14,12 +14,11 @@ export function getFontSizeForTitle(title) {
 }
 
 /**
- * Loads a character subset of a font from Google Fonts.
+ * Loads font data from Google Fonts.
  *
- * @param {string} font - The font family and weight specification.
- * @param {string} text - The characters to include in the font subset.
- * @return {ArrayBuffer} The loaded font binary data.
- * @throws {Error} If the font resource cannot be loaded successfully.
+ * @param {string} font - The font name and weights (e.g. "Inter:wght@700").
+ * @param {string} text - The subset of characters to fetch for optimization.
+ * @returns {Promise<ArrayBuffer>} The loaded font binary data.
  */
 export async function loadGoogleFont(font, text) {
   const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`;
@@ -37,15 +36,15 @@ export async function loadGoogleFont(font, text) {
 }
 
 /**
- * Creates the layout for an OpenGraph image.
+ * Generates the SVG/HTML layout structure for the OpenGraph image.
  *
- * @param {Object} params - Content and styling values for the image.
- * @param {string} params.postTitle - Post title to display.
- * @param {number} params.fontSize - Title font size.
- * @param {string} params.author - Author name to display.
+ * @param {Object} params - Template parameters.
+ * @param {string} params.postTitle - The blog post title.
+ * @param {number} params.fontSize - Computed font size for title.
+ * @param {string} params.author - Branding author name.
  * @param {string} params.profileImg - Profile image URL.
- * @param {string} params.site - Site name or domain to display.
- * @returns {import("react").JSX.Element} The OpenGraph image layout.
+ * @param {string} params.site - Portfolio site domain.
+ * @returns {import("react").JSX.Element} The JSX-like element layout for Og Image generation.
  */
 export function getOgImageTemplate({
   postTitle,

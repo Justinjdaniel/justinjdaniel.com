@@ -12,15 +12,17 @@ import {
 // MARK: - Custom Hook
 
 /**
- * Manages a canvas-based particle animation with mouse interaction and motion preferences.
+ * Custom hook encapsulating the high-performance canvas particles engine logic.
+ * Manages resizing, particle initialization, tracking mouse coordinates,
+ * updating coordinates, and executing the zero-allocation animation loop.
  *
- * @param {Object} params - Particle engine configuration.
+ * @param {Object} params - The configuration options for the engine.
  * @param {import("react").RefObject<HTMLCanvasElement|null>} params.canvasRef - Ref to the canvas element.
- * @param {import("react").RefObject<HTMLDivElement|null>} params.canvasContainerRef - Ref to the canvas container.
+ * @param {import("react").RefObject<HTMLDivElement|null>} params.canvasContainerRef - Ref to the parent container element.
  * @param {number} params.quantity - Number of particles to render.
- * @param {number} params.staticity - Controls the strength of mouse-driven particle movement.
- * @param {number} params.ease - Controls how quickly particles approach their target positions.
- * @param {boolean} params.refresh - Reinitializes the particles when changed.
+ * @param {number} params.staticity - Controls the sensitivity of particle movement response to mouse.
+ * @param {number} params.ease - Animation ease multiplier.
+ * @param {boolean} params.refresh - Trigger to re-initialize particles.
  * @returns {void}
  */
 export function useParticlesEngine({

@@ -13,10 +13,11 @@ import YouTube from "./mdx/youtube";
 // MARK: - Helper Functions
 
 /**
- * Extracts plain text from nested React children.
+ * Traverses React tree children to flatten and extract pure text content.
+ * Supports stringifying numeric and bigint values and explicit property-presence checks.
  *
- * @param {import("react").ReactNode} children - React children to traverse.
- * @returns {string} The concatenated text content.
+ * @param {import("react").ReactNode} children - Component children nodes.
+ * @returns {string} Flattened text string.
  */
 function getTextContent(children) {
   if (typeof children === "string") return children;
@@ -35,10 +36,10 @@ function getTextContent(children) {
 }
 
 /**
- * Converts text into a normalized slug for use in element IDs and URL references.
+ * Standard slugification method for safe element IDs and URL references.
  *
- * @param {string} str - Text to normalize.
- * @return {string} A lowercase slug with spaces and ampersands replaced, or "heading" when no slug can be produced.
+ * @param {string} str - Raw input string.
+ * @returns {string} Slugified lower-cased result.
  */
 function slugify(str) {
   const slug = str
@@ -83,10 +84,10 @@ function generateUniqueSlug(textContent) {
 }
 
 /**
- * Creates a heading component with a section ID and anchor link.
+ * Dynamic React wrapper function generator for markdown headings with anchor links.
  *
- * @param {number} level - Heading level from 1 through 6.
- * @returns {import("react").FC} A React component that renders the specified heading level.
+ * @param {number} level - Heading scale depth (e.g., 1-6).
+ * @returns {import("react").FC} Render-ready React component.
  */
 function createHeading(level) {
   return ({ children, id }) => {
