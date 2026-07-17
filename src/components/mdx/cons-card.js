@@ -20,11 +20,11 @@ const xIcon = (
 // MARK: - Helper Functions
 
 /**
- * Injects a React icon element recursively into a list structure.
+ * Adds an icon to list items and applies list styling throughout nested React children.
  *
- * @param {import("react").ReactNode} children - Component nested child nodes.
- * @param {import("react").ReactNode} icon - SVG/HTML icon payload to display on items.
- * @returns {import("react").ReactNode} Modified virtual DOM node structure.
+ * @param {import("react").ReactNode} children - React children containing the list structure to decorate.
+ * @param {import("react").ReactNode} icon - Icon to display before each list item.
+ * @return {import("react").ReactNode} The decorated React children.
  */
 function injectIcon(children, icon) {
   return React.Children.map(children, (child) => {
@@ -62,14 +62,13 @@ function injectIcon(children, icon) {
 // MARK: - Render
 
 /**
- * ConsCard Component - displays a summary list of negative features or caveats.
+ * Renders a card containing caveats or a fallback list of child content.
  *
- * @component
- * @param {Object} props - Component property arguments.
- * @param {string} [props.title] - Name of subject/technology.
- * @param {Array<string>} [props.cons=[]] - List items.
- * @param {import("react").ReactNode} [props.children] - Children list fallback.
- * @returns {import("react").JSX.Element}
+ * @param {Object} props - Component properties.
+ * @param {string} [props.title] - Subject or technology name displayed in the heading.
+ * @param {Array<string>} [props.cons=[]] - Caveat descriptions to display.
+ * @param {import("react").ReactNode} [props.children] - Fallback content whose list items are decorated with the X icon.
+ * @returns {import("react").JSX.Element} The rendered caveat card.
  */
 export default function ConsCard({ title, cons = [], children }) {
   return (

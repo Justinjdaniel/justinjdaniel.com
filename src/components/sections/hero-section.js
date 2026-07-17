@@ -14,10 +14,10 @@ gsap.registerPlugin(SplitText);
 // MARK: - Render
 
 /**
- * HeroSection Component - renders the entry hero section with entrance GSAP animations, SplitText, and typewriter effects.
+ * Render the hero section with animated introductory content and call-to-action links.
  *
  * @component
- * @returns {import("react").JSX.Element}
+ * @returns {import("react").JSX.Element} The rendered hero section.
  */
 export default function HeroSection() {
   const headingRef = useRef(null);

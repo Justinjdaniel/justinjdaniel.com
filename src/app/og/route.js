@@ -12,11 +12,10 @@ export const runtime = "edge";
 // MARK: - Handlers & Logic
 
 /**
- * GET route handler to dynamically generate OpenGraph preview images.
- * Loads optimized Google fonts and renders customized JSX layouts.
+ * Generates an OpenGraph preview image for a blog post.
  *
- * @param {Request} req - Next.js Request object containing URL parameters.
- * @returns {Promise<ImageResponse>} Dynamic OpenGraph ImageResponse.
+ * @param {Request} req - Request containing the optional `title` query parameter.
+ * @return {Promise<ImageResponse>} An OpenGraph image response rendered at 1200 by 630 pixels.
  */
 export async function GET(req) {
   // Get blog post title from query parameter

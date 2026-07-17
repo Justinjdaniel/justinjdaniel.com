@@ -16,10 +16,10 @@ export const metadata = {
 // MARK: - Render
 
 /**
- * BlogPage Component - renders list of available blogs sorted by publishedAt dates.
+ * Renders the blog index with posts sorted by publication date.
  *
  * @component
- * @returns {import("react").JSX.Element}
+ * @returns {import("react").JSX.Element} The blog index page.
  */
 export default function BlogPage() {
   const allBlogs = getBlogPosts();

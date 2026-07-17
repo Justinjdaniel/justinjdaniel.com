@@ -16,10 +16,10 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 // MARK: - Render
 
 /**
- * Home component - main portfolio entry page layout with Snap sections and backgrounds.
+ * Render the portfolio entry page with smooth scrolling and snap-aligned sections.
  *
  * @component
- * @returns {import("react").JSX.Element}
+ * @returns {import("react").JSX.Element} The portfolio page layout.
  */
 export default function Home() {
   const main = useRef(null);

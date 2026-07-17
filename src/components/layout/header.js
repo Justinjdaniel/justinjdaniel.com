@@ -32,12 +32,11 @@ const SOCIAL_LINKS = [
 // MARK: - Render
 
 /**
- * Header Component - renders main site navigation and branding links with sticky state and blurs.
+ * Render the fixed site header with route-aware navigation and social links.
  *
- * @component
  * @param {Object} props - Component properties.
- * @param {string} [props.className=""] - Additional class names for styling.
- * @returns {import("react").JSX.Element}
+ * @param {string} [props.className=""] - Additional classes applied to the header.
+ * @return {import("react").JSX.Element} The rendered site header.
  */
 export default function Header({ className = "" }) {
   // MARK: - State & Hooks
