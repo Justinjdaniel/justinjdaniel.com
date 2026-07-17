@@ -2,15 +2,14 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BlogSchema from "@/components/blog/blog-schema";
+import BlogViewCounter from "@/components/blog/blog-view-counter";
 import PrevNextNav from "@/components/blog/prev-next-nav";
 import BackButton from "@/components/buttons/back-button";
 import BackToTopButton from "@/components/buttons/back-to-top";
 import ClockDoodleIcon from "@/components/icons/doodle-icons/clock";
-import BookDoodleIcon from "@/components/icons/doodle-library-hand-drawn-vectors/book";
 import { CustomMDX } from "@/components/mdx-components";
 import ScrollProgress from "@/components/ui/scroll-progress";
 import { getBlogPosts } from "@/lib/db/blog";
-import { incrementAndGetBlogViewCount } from "@/lib/db/queries/blog-post-views";
 import { formatDate } from "@/lib/utils/format-date";
 import TimeToRead from "@/lib/utils/time-to-read";
 
@@ -69,8 +68,6 @@ export default async function Blog({ params }) {
     notFound();
   }
 
-  const viewCount = await incrementAndGetBlogViewCount(post.slug);
-
   return (
     <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto px-2">
       <BackButton />
@@ -91,12 +88,9 @@ export default async function Blog({ params }) {
           <span>
             <ClockDoodleIcon className="w-3 h-3 mr-1 inline-block" />
             <TimeToRead content={post.content} />
-            {typeof viewCount === "number" && (
-              <span className="ml-4" title="View count">
-                <BookDoodleIcon className="w-6 h-6 mr-0.5 inline-block" />
-                {viewCount.toLocaleString()} views
-              </span>
-            )}
+            <Suspense fallback={null}>
+              <BlogViewCounter slug={post.slug} />
+            </Suspense>
           </span>
         </div>
 

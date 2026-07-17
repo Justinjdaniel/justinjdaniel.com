@@ -6,7 +6,14 @@ import DesktopIcon from "@/components/icons/doodle-library-hand-drawn-vectors/de
 import DrawSVG from "@/components/icons/draw-svg";
 import ScrollProgress from "@/components/ui/scroll-progress";
 import StackBadge from "@/components/ui/stack-badge";
-import { projects } from "@/lib/data/projects";
+import { getProjects } from "@/lib/data/get-projects";
+
+export async function generateStaticParams() {
+  const projects = await getProjects();
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
 
 function MediaGallery({ media }) {
   return (
@@ -56,6 +63,7 @@ function MediaGallery({ media }) {
 
 export default async function ProjectInfoPage({ params }) {
   const { slug } = await params;
+  const projects = await getProjects();
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
   return (
