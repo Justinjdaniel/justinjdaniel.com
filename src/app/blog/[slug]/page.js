@@ -55,6 +55,11 @@ export async function generateMetadata({ params }) {
   };
 }
 
+/**
+ * Renders a blog post page with metadata, content, reading information, and adjacent-post navigation.
+ * @param {Object} params - Route parameters containing the blog post slug.
+ * @returns {JSX.Element} The rendered blog post page.
+ */
 export default async function Blog({ params }) {
   const { slug } = await params;
   const post = getBlogPosts().find((post) => post.slug === slug);

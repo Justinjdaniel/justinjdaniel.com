@@ -3,6 +3,10 @@ import LightBulbIcon from "@/components/icons/doodle-library-hand-drawn-vectors/
 import ProjectCard from "@/components/ui/project-card";
 import { getProjects } from "@/lib/data/get-projects";
 
+/**
+ * Renders the projects page with available project cards or an empty-state message.
+ * @returns {JSX.Element} The projects page or a "No projects found." message.
+ */
 export default async function ProjectsPage() {
   const projects = await getProjects();
 

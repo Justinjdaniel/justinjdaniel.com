@@ -1,10 +1,7 @@
 /**
- * Utility to fetch projects metadata.
- * Uses the native fetch API with stale-while-revalidate caching (revalidate: 3600).
- * Falls back to reading the projects.json file directly during build time (prerendering)
- * or when the local dev/prod server is not yet running on port 3000.
+ * Retrieves project metadata from the configured API or a local fallback file.
  *
- * @returns {Promise<Array<Object>>} List of projects.
+ * @return {Promise<Array<Object>>} The list of project metadata.
  */
 export async function getProjects() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";

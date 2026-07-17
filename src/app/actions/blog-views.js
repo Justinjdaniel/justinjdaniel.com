@@ -6,9 +6,10 @@ import {
 } from "@/lib/db/queries/blog-post-views";
 
 /**
- * Server Action to increment the view count of a blog post and return the updated count.
+ * Increments the view count for a blog post.
  * @param {string} slug - The blog post slug.
  * @returns {Promise<number|null>} The updated view count.
+ * @throws {Error} If the blog post slug is missing.
  */
 export async function incrementBlogView(slug) {
   if (!slug) {
@@ -18,9 +19,10 @@ export async function incrementBlogView(slug) {
 }
 
 /**
- * Server Action to get the current view count of a blog post.
+ * Retrieves the current view count for a blog post.
  * @param {string} slug - The blog post slug.
- * @returns {Promise<number|null>} The current view count.
+ * @returns {number|null} The current view count, or `null` if no count exists.
+ * @throws {Error} If `slug` is missing.
  */
 export async function getBlogView(slug) {
   if (!slug) {

@@ -8,6 +8,10 @@ import ScrollProgress from "@/components/ui/scroll-progress";
 import StackBadge from "@/components/ui/stack-badge";
 import { getProjects } from "@/lib/data/get-projects";
 
+/**
+ * Generates static route parameters for all available projects.
+ * @returns {Array<{slug: string}>} The project slug parameters.
+ */
 export async function generateStaticParams() {
   const projects = await getProjects();
   return projects.map((project) => ({
@@ -15,6 +19,17 @@ export async function generateStaticParams() {
   }));
 }
 
+/**
+ * Renders project images and videos in a responsive media gallery.
+ * @param {Array<Object>} media - Media items containing `type`, `src`, and `alt`, with optional video captions.
+ * @returns {JSX.Element} The rendered media gallery.
+ */
+
+/**
+ * Renders the project details page for a route slug.
+ * @param {Object} params - Route parameters containing the project `slug`.
+ * @returns {JSX.Element} The rendered project details page.
+ */
 function MediaGallery({ media }) {
   return (
     <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
