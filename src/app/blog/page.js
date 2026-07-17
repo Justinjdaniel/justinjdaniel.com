@@ -12,6 +12,9 @@ export const metadata = {
   description: "Read my thoughts on software development, design, and more.",
 };
 
+/**
+ * Render the blog index page with posts sorted by publication date.
+ */
 export default function BlogPage() {
   const allBlogs = getBlogPosts();
 

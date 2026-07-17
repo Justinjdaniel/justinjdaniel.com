@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import StackBadge from "./stack-badge";
 
+/**
+ * Render a clickable summary card for a project.
+ * @param {Object} project - The project data displayed in the card.
+ * @returns {JSX.Element} The project card linking to its details page.
+ */
 export default function ProjectCard({ project }) {
   const heroImage = project.media?.find((m) => m.type === "image");
 

@@ -2,6 +2,11 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
+/**
+ * Renders the About Me section with viewport-triggered content animations.
+ * Respects the user's reduced-motion preference by displaying content immediately.
+ * @returns {JSX.Element} The rendered About Me section.
+ */
 export default function AboutSection() {
   const sectionRef = useRef(null);
   const animatedRef = useRef(false);
