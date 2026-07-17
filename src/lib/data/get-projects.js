@@ -33,9 +33,12 @@ export async function getProjects() {
     const path = await import("node:path");
     const filePath = path.join(process.cwd(), "src/lib/data/projects.json");
     const fileContent = fs.readFileSync(filePath, "utf-8");
-    return JSON.parse(fileContent);
+    const projects = JSON.parse(fileContent);
+    // Return empty array only if the file explicitly contains an empty array
+    return projects;
   } catch (err) {
     console.error("Critical: Failed to read projects fallback file", err);
-    return [];
+    // Rethrow the error to surface failures during build/deployment
+    throw err;
   }
 }
