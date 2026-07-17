@@ -4,9 +4,6 @@ import LightBulbIcon from "@/components/icons/doodle-library-hand-drawn-vectors/
 import ProjectCard from "@/components/ui/project-card";
 import { projects } from "@/lib/data/projects";
 
-/**
- * Render the projects page with a list of project cards.
- */
 export default function ProjectsPage() {
   if (!projects || projects.length === 0) {
     return <div>No projects found.</div>;
