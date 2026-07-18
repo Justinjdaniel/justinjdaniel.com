@@ -1,4 +1,3 @@
-import { existsSync, renameSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import * as nextNavigation from "next/navigation";
 import { GET } from "../src/app/api/projects/route";
@@ -43,13 +42,16 @@ test.describe("Projects API & Loader & Page Tests", () => {
   });
 
   test("GET handler handles 500 read/parse failure gracefully", async () => {
-    const originalPath = "src/lib/data/projects.json";
-    const tempPath = "src/lib/data/projects.temp.json";
+    const fs = await import("node:fs/promises");
+    const originalReadFile = fs.readFile;
 
-    // Temporarily rename the projects JSON file to trigger a read failure
-    if (existsSync(originalPath)) {
-      renameSync(originalPath, tempPath);
-    }
+    // Mock readFile to simulate a failure
+    Object.defineProperty(fs, "readFile", {
+      configurable: true,
+      value: async () => {
+        throw new Error("Mock read error");
+      },
+    });
 
     try {
       const response = await GET();
@@ -57,10 +59,11 @@ test.describe("Projects API & Loader & Page Tests", () => {
       const data = await response.json();
       expect(data.error).toBe("Failed to read projects metadata");
     } finally {
-      // Restore file
-      if (existsSync(tempPath)) {
-        renameSync(tempPath, originalPath);
-      }
+      // Restore original readFile
+      Object.defineProperty(fs, "readFile", {
+        configurable: true,
+        value: originalReadFile,
+      });
     }
   });
 
@@ -120,14 +123,11 @@ test.describe("Projects API & Loader & Page Tests", () => {
     });
     expect(validResult).toBeDefined();
 
-    // 2. Not found slug
-    try {
-      await ProjectInfoPage({
+    // 2. Not found slug - should reject
+    await expect(
+      ProjectInfoPage({
         params: Promise.resolve({ slug: "non-existent-project" }),
-      });
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
-      expect(message).toMatch(/(notFound|NEXT_HTTP_ERROR_FALLBACK;404)/);
-    }
+      }),
+    ).rejects.toThrow(/(notFound|NEXT_HTTP_ERROR_FALLBACK;404)/);
   });
 });

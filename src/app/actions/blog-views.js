@@ -4,9 +4,12 @@ import {
   getBlogViewCount,
   incrementAndGetBlogViewCount,
 } from "@/lib/db/queries/blog-post-views";
-
-// Bounded set to deduplicate rapid increments for the same visit
-const recentVisits = new Set();
+import {
+  hasRecentVisit,
+  recordVisit,
+  removeVisit,
+} from "@/lib/db/queries/blog-visit-tracking";
+import { getBlogPosts } from "@/lib/db/blog";
 
 /**
  * Server Action to increment the view count of a blog post and return the updated count.
@@ -20,17 +23,31 @@ export async function incrementBlogView(slug, visitId) {
     throw new Error("Slug is required to increment blog views.");
   }
 
+  // Validate slug against canonical blog posts
+  const allPosts = getBlogPosts();
+  const validSlugs = new Set(allPosts.map((post) => post.slug));
+  if (!validSlugs.has(slug)) {
+    throw new Error("Slug is required to increment blog views.");
+  }
+
   if (visitId) {
     const visitKey = `${slug}:${visitId}`;
-    if (recentVisits.has(visitKey)) {
+    // Check if this visit was recently recorded
+    if (await hasRecentVisit(visitKey)) {
       // If already visited, retrieve the existing count without incrementing
       return await getBlogViewCount(slug);
     }
-    recentVisits.add(visitKey);
-    // Boundary checks to prevent memory leaks over long processes
-    if (recentVisits.size > 10000) {
-      recentVisits.clear();
-      recentVisits.add(visitKey);
+
+    // Record the visit before incrementing
+    await recordVisit(visitKey);
+
+    try {
+      // Attempt to increment the view count
+      return await incrementAndGetBlogViewCount(slug);
+    } catch (error) {
+      // If increment fails, remove the visit key to allow retry
+      await removeVisit(visitKey);
+      throw error;
     }
   }
 
