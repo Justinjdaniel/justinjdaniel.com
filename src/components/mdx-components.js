@@ -1,4 +1,3 @@
-// MARK: - Imports
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import Alert from "./mdx/alert";
@@ -10,39 +9,17 @@ import ProsCard from "./mdx/pros-card";
 import RoundedImage from "./mdx/rounded-image";
 import YouTube from "./mdx/youtube";
 
-// MARK: - Helper Functions
-
-/**
- * Traverses React tree children to flatten and extract pure text content.
- * Supports stringifying numeric and bigint values and explicit property-presence checks.
- *
- * @param {import("react").ReactNode} children - Component children nodes.
- * @returns {string} Flattened text string.
- */
 function getTextContent(children) {
   if (typeof children === "string") return children;
-  if (typeof children === "number" || typeof children === "bigint")
-    return children.toString();
   if (Array.isArray(children)) return children.map(getTextContent).join("");
-  if (
-    children &&
-    typeof children === "object" &&
-    children.props &&
-    "children" in children.props
-  ) {
+  if (children?.props?.children) {
     return getTextContent(children.props.children);
   }
   return "";
 }
 
-/**
- * Standard slugification method for safe element IDs and URL references.
- *
- * @param {string} str - Raw input string.
- * @returns {string} Slugified lower-cased result.
- */
 function slugify(str) {
-  const slug = str
+  return str
     .toString()
     .toLowerCase()
     .trim()
@@ -50,50 +27,12 @@ function slugify(str) {
     .replace(/&/g, "-and-")
     .replace(/[^\w-]+/g, "")
     .replace(/--+/g, "-");
-  return slug || "heading";
 }
 
-// Track duplicate slugs per document/render dynamically.
-// We use a global registry that we can reset or clean up,
-// or track duplicates per render sequence. Since Next.js rendering
-// is synchronous per request/page render, we reset it or map it.
-let slugRegistry = {};
-
-/**
- * Resets the slug registry.
- */
-export function resetSlugRegistry() {
-  slugRegistry = {};
-}
-
-/**
- * Generates a unique slug for a heading text.
- *
- * @param {string} textContent - Heading raw content.
- * @returns {string} Unique slug within document sequence.
- */
-function generateUniqueSlug(textContent) {
-  const baseSlug = slugify(textContent);
-  if (!slugRegistry[baseSlug]) {
-    slugRegistry[baseSlug] = 1;
-    return baseSlug;
-  }
-  const suffix = slugRegistry[baseSlug];
-  slugRegistry[baseSlug] += 1;
-  return `${baseSlug}-${suffix}`;
-}
-
-/**
- * Dynamic React wrapper function generator for markdown headings with anchor links.
- *
- * @param {number} level - Heading scale depth (e.g., 1-6).
- * @returns {import("react").FC} Render-ready React component.
- */
 function createHeading(level) {
-  return ({ children, id }) => {
+  return ({ children }) => {
     const textContent = getTextContent(children);
-    // Preserve explicit heading IDs when provided, otherwise generate a unique one.
-    const slug = id || generateUniqueSlug(textContent);
+    const slug = slugify(textContent);
     const Tag = `h${level}`;
 
     return (
@@ -109,7 +48,6 @@ function createHeading(level) {
             text-zinc-500 dark:text-zinc-400
             transition-opacity duration-200
             hover:text-zinc-700 dark:hover:text-zinc-300
-            focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none rounded
             [&>svg]:h-4 [&>svg]:w-4
           "
           aria-label={`Link to section: ${textContent}`}
@@ -122,7 +60,6 @@ function createHeading(level) {
   };
 }
 
-// MARK: - Config & Constants
 const components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -165,21 +102,7 @@ const options = {
   keepBackground: true,
 };
 
-// MARK: - Render
-
-/**
- * CustomMDX wraps next-mdx-remote and formats custom elements, images, lists, and highlighting.
- *
- * @component
- * @param {Object} props - MDX properties.
- * @param {string} props.source - Unrendered MDX raw payload.
- * @param {Object} [props.components] - Inline react components list.
- * @returns {import("react").JSX.Element}
- */
 export function CustomMDX(props) {
-  // Reset the slug registry at the beginning of rendering CustomMDX
-  resetSlugRegistry();
-
   return (
     <MDXRemote
       {...props}

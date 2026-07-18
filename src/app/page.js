@@ -1,6 +1,5 @@
 "use client";
 
-// MARK: - Imports
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
@@ -10,24 +9,25 @@ import AboutSection from "@/components/sections/about-section";
 import HeroSection from "@/components/sections/hero-section";
 import GridBackground from "@/components/ui/grid-background";
 
-// MARK: - Config & Constants
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
-// MARK: - Render
-
-/**
- * Home component - main portfolio entry page layout with Snap sections and backgrounds.
- *
- * @component
- * @returns {import("react").JSX.Element}
- */
 export default function Home() {
   const main = useRef(null);
 
-  // In Next.js App Router, global scroll management can be tricky.
-  // ScrollSmoother triggers are registered, but smooth scroll initialization
-  // is deferred to layout structure adjustments if needed in the future.
-  useGSAP(() => {}, []);
+  useGSAP(() => {
+    // ScrollSmoother requires a wrapper and a content element.
+    // However, if we don't have them in the layout, it might fail or behave unexpectedly.
+    // In Next.js App Router, global scroll management can be tricky.
+    // For now, let's ensure it has the correct structure or disable if not needed.
+    // smoother.current = ScrollSmoother.create({
+    //   smooth: 2,
+    //   effects: true,
+    //   smoothTouch: 0.1,
+    // });
+    // return () => {
+    //   if (smoother.current) smoother.current.kill();
+    // };
+  }, []);
 
   return (
     <div

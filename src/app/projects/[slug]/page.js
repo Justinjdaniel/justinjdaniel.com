@@ -1,4 +1,3 @@
-// MARK: - Imports
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/buttons/back-button";
@@ -9,16 +8,6 @@ import ScrollProgress from "@/components/ui/scroll-progress";
 import StackBadge from "@/components/ui/stack-badge";
 import { projects } from "@/lib/data/projects";
 
-// MARK: - Helper Components
-
-/**
- * MediaGallery renders images and video previews for a project.
- *
- * @component
- * @param {Object} props - Component properties.
- * @param {Array<{type: 'image'|'video', src: string, alt: string, captions?: string}>} props.media - Media items to showcase.
- * @returns {import("react").JSX.Element}
- */
 function MediaGallery({ media }) {
   if (!media || media.length === 0) return null;
 
@@ -67,16 +56,6 @@ function MediaGallery({ media }) {
   );
 }
 
-// MARK: - Handlers & Render
-
-/**
- * ProjectInfoPage displays detailed structured info and resources for a given project slug.
- *
- * @component
- * @param {Object} props - Page properties.
- * @param {Promise<{slug: string}>} props.params - Dynamic route path parameters.
- * @returns {Promise<import("react").JSX.Element>}
- */
 export default async function ProjectInfoPage({ params }) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);

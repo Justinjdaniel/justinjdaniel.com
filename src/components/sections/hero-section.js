@@ -1,6 +1,4 @@
 "use client";
-
-// MARK: - Imports
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
@@ -8,27 +6,16 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import TypingText from "../effects/typing-text";
 
-// MARK: - Config & Constants
 gsap.registerPlugin(SplitText);
 
-// MARK: - Render
-
-/**
- * HeroSection Component - renders the entry hero section with entrance GSAP animations, SplitText, and typewriter effects.
- *
- * @component
- * @returns {import("react").JSX.Element}
- */
 export default function HeroSection() {
   const headingRef = useRef(null);
   const buttonsRef = useRef(null);
 
-  // MARK: - State & Hooks
+  // Animation control states
   const [typingStart, setTypingStart] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [typingDone, setTypingDone] = useState(false);
-
-  // MARK: - Handlers & Logic
 
   // Animate heading and trigger typing
   useGSAP(() => {
