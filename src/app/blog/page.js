@@ -1,3 +1,4 @@
+// MARK: - Imports
 import Link from "next/link";
 import { Suspense } from "react";
 import BackButton from "@/components/buttons/back-button";
@@ -7,14 +8,19 @@ import { getBlogPosts } from "@/lib/db/blog";
 import { formatDate } from "@/lib/utils/format-date";
 import TimeToRead from "@/lib/utils/time-to-read";
 
+// MARK: - Config & Constants
 export const metadata = {
   title: "Blog",
   description: "Read my thoughts on software development, design, and more.",
 };
 
+// MARK: - Render
+
 /**
- * Renders the blog listing page with posts sorted by publication date.
- * @returns {JSX.Element} The blog listing page.
+ * BlogPage Component - renders list of available blogs sorted by publishedAt dates.
+ *
+ * @component
+ * @returns {import("react").JSX.Element}
  */
 export default function BlogPage() {
   const allBlogs = getBlogPosts();
