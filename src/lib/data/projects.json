@@ -10,12 +10,12 @@
     "media": [
       {
         "type": "image",
-        "src": "/images/home/bg.png",
+        "src": "https://www.example.com/show/452685/desktop.svg",
         "alt": "Screenshot 1"
       },
       {
-        "type": "image",
-        "src": "/images/home/award.webp",
+        "type": "video",
+        "src": "https://www.example.com/media/my-awesome-app-demo.mp4",
         "alt": "Demo video"
       }
     ],

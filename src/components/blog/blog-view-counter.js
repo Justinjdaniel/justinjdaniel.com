@@ -4,12 +4,6 @@ import { useEffect, useState } from "react";
 import { incrementBlogView } from "@/app/actions/blog-views";
 import BookDoodleIcon from "@/components/icons/doodle-library-hand-drawn-vectors/book";
 
-/**
- * Increment and display a blog post's view count.
- * @param {Object} props - The component props.
- * @param {string} props.slug - The blog post slug used to identify the post.
- * @return {JSX.Element|null} The formatted view count, or `null` while unavailable.
- */
 export default function BlogViewCounter({ slug }) {
   const [viewCount, setViewCount] = useState(null);
 

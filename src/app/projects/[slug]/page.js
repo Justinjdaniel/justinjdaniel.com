@@ -1,3 +1,4 @@
+// MARK: - Imports
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/buttons/back-button";
@@ -8,10 +9,6 @@ import ScrollProgress from "@/components/ui/scroll-progress";
 import StackBadge from "@/components/ui/stack-badge";
 import { getProjects } from "@/lib/data/get-projects";
 
-/**
- * Generates static route parameters for all available projects.
- * @returns {Array<{slug: string}>} The project slug parameters.
- */
 export async function generateStaticParams() {
   const projects = await getProjects();
   return projects.map((project) => ({
@@ -19,16 +16,15 @@ export async function generateStaticParams() {
   }));
 }
 
-/**
- * Renders project images and videos in a responsive media gallery.
- * @param {Array<Object>} media - Media items containing `type`, `src`, and `alt`, with optional video captions.
- * @returns {JSX.Element} The rendered media gallery.
- */
+// MARK: - Helper Components
 
 /**
- * Renders the project details page for a route slug.
- * @param {Object} params - Route parameters containing the project `slug`.
- * @returns {JSX.Element} The rendered project details page.
+ * MediaGallery renders images and video previews for a project.
+ *
+ * @component
+ * @param {Object} props - Component properties.
+ * @param {Array<{type: 'image'|'video', src: string, alt: string, captions?: string}>} props.media - Media items to showcase.
+ * @returns {import("react").JSX.Element}
  */
 function MediaGallery({ media }) {
   return (
@@ -76,6 +72,16 @@ function MediaGallery({ media }) {
   );
 }
 
+// MARK: - Handlers & Render
+
+/**
+ * ProjectInfoPage displays detailed structured info and resources for a given project slug.
+ *
+ * @component
+ * @param {Object} props - Page properties.
+ * @param {Promise<{slug: string}>} props.params - Dynamic route path parameters.
+ * @returns {Promise<import("react").JSX.Element>}
+ */
 export default async function ProjectInfoPage({ params }) {
   const { slug } = await params;
   const projects = await getProjects();
@@ -145,7 +151,6 @@ export default async function ProjectInfoPage({ params }) {
           <div className="flex flex-wrap gap-6 text-sm text-zinc-600 dark:text-zinc-400 mb-8">
             {project.extra.launched && (
               <div className="flex items-center gap-2">
-                {/* <FaCalendarAlt className="text-indigo-400" /> */}
                 <span>
                   <span className="font-medium">Launched:</span>{" "}
                   {project.extra.launched}
@@ -158,12 +163,4 @@ export default async function ProjectInfoPage({ params }) {
       <BackToTopButton />
     </section>
   );
-
-  // return (
-  //   <section className="relative z-10 antialiased max-w-3xl mx-auto mt-20 px-4 py-8 bg-white/80 dark:bg-zinc-900/80 rounded-2xl shadow-xl border border-zinc-100 dark:border-zinc-800">
-  //     <ScrollProgress />
-  //     <BackButton />
-
-  //   </section>
-  // );
 }

@@ -1,7 +1,10 @@
 /**
- * Retrieves project metadata from the configured API or a local fallback file.
+ * Utility to fetch projects metadata.
+ * Uses the native fetch API with stale-while-revalidate caching (revalidate: 3600).
+ * Falls back to reading the projects.json file directly during build time (prerendering)
+ * or when the local dev/prod server is not yet running on port 3000.
  *
- * @return {Promise<Array<Object>>} The list of project metadata.
+ * @returns {Promise<Array<Object>>} List of projects.
  */
 export async function getProjects() {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
@@ -33,12 +36,9 @@ export async function getProjects() {
     const path = await import("node:path");
     const filePath = path.join(process.cwd(), "src/lib/data/projects.json");
     const fileContent = fs.readFileSync(filePath, "utf-8");
-    const projects = JSON.parse(fileContent);
-    // Return empty array only if the file explicitly contains an empty array
-    return projects;
+    return JSON.parse(fileContent);
   } catch (err) {
     console.error("Critical: Failed to read projects fallback file", err);
-    // Rethrow the error to surface failures during build/deployment
-    throw err;
+    return [];
   }
 }

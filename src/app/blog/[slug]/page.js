@@ -1,3 +1,4 @@
+// MARK: - Imports
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -13,8 +14,18 @@ import { getBlogPosts } from "@/lib/db/blog";
 import { formatDate } from "@/lib/utils/format-date";
 import TimeToRead from "@/lib/utils/time-to-read";
 
+// MARK: - Config & Constants
 const baseURL = "https://justinjdaniel.com";
 
+// MARK: - Helper Functions
+
+/**
+ * Generates OpenGraph and Twitter metadata for a blog post slug.
+ *
+ * @param {Object} props - Metadata query parameters.
+ * @param {Promise<{slug: string}>} props.params - Route parameter container.
+ * @returns {Promise<Object>} Formatted Next.js Metadata object.
+ */
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = getBlogPosts().find((post) => post.slug === slug);
@@ -55,10 +66,15 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// MARK: - Render
+
 /**
- * Renders a blog post page with metadata, content, reading information, and adjacent-post navigation.
- * @param {Object} params - Route parameters containing the blog post slug.
- * @returns {JSX.Element} The rendered blog post page.
+ * Blog detail page component displaying rich MDX text, schemas, reading times, and dynamic view counts.
+ *
+ * @component
+ * @param {Object} props - Component page parameters.
+ * @param {Promise<{slug: string}>} props.params - URL route parameters promise.
+ * @returns {Promise<import("react").JSX.Element>}
  */
 export default async function Blog({ params }) {
   const { slug } = await params;
