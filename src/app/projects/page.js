@@ -2,9 +2,11 @@ import BackButton from "@/components/buttons/back-button";
 import ScrollReveal from "@/components/effects/scroll-reveal";
 import LightBulbIcon from "@/components/icons/doodle-library-hand-drawn-vectors/light-bulb";
 import ProjectCard from "@/components/ui/project-card";
-import { projects } from "@/lib/data/projects";
+import { getProjects } from "@/lib/data/get-projects";
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   if (!projects || projects.length === 0) {
     return <div>No projects found.</div>;
   }
