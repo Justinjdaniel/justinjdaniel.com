@@ -1,4 +1,3 @@
-// MARK: - Imports
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/buttons/back-button";
@@ -16,17 +15,9 @@ export async function generateStaticParams() {
   }));
 }
 
-// MARK: - Helper Components
-
-/**
- * MediaGallery renders images and video previews for a project.
- *
- * @component
- * @param {Object} props - Component properties.
- * @param {Array<{type: 'image'|'video', src: string, alt: string, captions?: string}>} props.media - Media items to showcase.
- * @returns {import("react").JSX.Element}
- */
 function MediaGallery({ media }) {
+  if (!media || media.length === 0) return null;
+
   return (
     <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
       {media.map((item) =>
@@ -72,27 +63,24 @@ function MediaGallery({ media }) {
   );
 }
 
-// MARK: - Handlers & Render
-
-/**
- * ProjectInfoPage displays detailed structured info and resources for a given project slug.
- *
- * @component
- * @param {Object} props - Page properties.
- * @param {Promise<{slug: string}>} props.params - Dynamic route path parameters.
- * @returns {Promise<import("react").JSX.Element>}
- */
 export default async function ProjectInfoPage({ params }) {
   const { slug } = await params;
   const projects = await getProjects();
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
+
+  const heroImage = project.media?.find((m) => m.type === "image");
+  const galleryMedia =
+    project.media?.filter((item) => {
+      return item !== heroImage;
+    }) || [];
+
   return (
     <section className="z-10 antialiased max-w-2xl m-4 mt-16 md:mx-auto">
       <BackButton />
       <ScrollProgress />
       <div className="relative z-10 antialiased max-w-3xl mx-auto my-20 p-6 px-8 bg-white/80 dark:bg-zinc-900/80 rounded-2xl shadow-xl border border-zinc-100 dark:border-zinc-800">
-        <div className="flex items-center justify-between mb-6 ">
+        <div className="flex items-center justify-between mb-6">
           <div className="flex gap-3">
             {project.github && (
               <a
@@ -126,7 +114,25 @@ export default async function ProjectInfoPage({ params }) {
             )}
           </div>
         </div>
-        <h1 className="text-4xl font-bold font-sans tracking-tight mb-2 text-zinc-900 dark:text-zinc-100">
+
+        {heroImage && (
+          <div className="relative overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 shadow-md mb-6 h-64 bg-zinc-100 dark:bg-zinc-800">
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt || project.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+              style={{ viewTransitionName: `project-media-${project.slug}` }}
+              priority
+            />
+          </div>
+        )}
+
+        <h1
+          className="text-4xl font-bold font-sans tracking-tight mb-2 text-zinc-900 dark:text-zinc-100"
+          style={{ viewTransitionName: `project-title-${project.slug}` }}
+        >
           {project.title}
         </h1>
         <p className="mb-6 text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
@@ -144,8 +150,10 @@ export default async function ProjectInfoPage({ params }) {
             />
           ))}
         </div>
-        {/* Media Gallery */}
-        {project.media?.length > 0 && <MediaGallery media={project.media} />}
+
+        {/* Media Gallery (excluding hero image) */}
+        {galleryMedia.length > 0 && <MediaGallery media={galleryMedia} />}
+
         {/* Extra Info */}
         {(project.extra?.launched || project.extra?.role) && (
           <div className="flex flex-wrap gap-6 text-sm text-zinc-600 dark:text-zinc-400 mb-8">

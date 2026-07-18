@@ -1,4 +1,5 @@
 import BackButton from "@/components/buttons/back-button";
+import ScrollReveal from "@/components/effects/scroll-reveal";
 import LightBulbIcon from "@/components/icons/doodle-library-hand-drawn-vectors/light-bulb";
 import ProjectCard from "@/components/ui/project-card";
 import { getProjects } from "@/lib/data/get-projects";
@@ -20,11 +21,11 @@ export default async function ProjectsPage() {
         </h2>
       </div>
 
-      <div className="grid gap-8">
+      <ScrollReveal className="grid gap-8" staggerDelay={120}>
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

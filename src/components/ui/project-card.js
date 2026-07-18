@@ -1,7 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import StackBadge from "./stack-badge";
 
 export default function ProjectCard({ project }) {
+  const heroImage = project.media?.find((m) => m.type === "image");
+
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -18,10 +21,28 @@ export default function ProjectCard({ project }) {
         hover:bg-indigo-50 dark:hover:bg-zinc-800/60
         cursor-pointer
         focus:outline-none focus:ring-2 focus:ring-indigo-400
+        overflow-hidden
       "
       aria-label={`View details for ${project.title}`}
     >
-      <h3 className="text-xl font-sans mb-2">{project.title}</h3>
+      {heroImage && (
+        <div className="relative -mx-6 -mt-6 mb-4 h-48 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700 overflow-hidden">
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt || project.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, 50vw"
+            style={{ viewTransitionName: `project-media-${project.slug}` }}
+          />
+        </div>
+      )}
+      <h3
+        className="text-xl font-sans mb-2"
+        style={{ viewTransitionName: `project-title-${project.slug}` }}
+      >
+        {project.title}
+      </h3>
       <p className="mb-4 text-zinc-700 dark:text-zinc-300">
         {project.description}
       </p>
@@ -30,7 +51,6 @@ export default function ProjectCard({ project }) {
           <StackBadge key={tech} tech={tech} />
         ))}
       </div>
-      {/* Optional: subtle call-to-action */}
       <span className="text-indigo-600 dark:text-indigo-400 font-medium hover:underline inline-flex items-center gap-1">
         View Details →
       </span>
