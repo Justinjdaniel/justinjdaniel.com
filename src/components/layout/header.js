@@ -1,10 +1,12 @@
 "use client";
 
+// MARK: - Imports
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import GitHubIcon from "../icons/simple-icons/github";
 import LinkedInIcon from "../icons/simple-icons/linked-in";
 
+// MARK: - Config & Constants
 const NAVIGATION_ITEMS = [
   { name: "Home", href: "/" },
   { name: "Blog", href: "/blog" },
@@ -27,7 +29,18 @@ const SOCIAL_LINKS = [
   },
 ];
 
+// MARK: - Render
+
+/**
+ * Header Component - renders main site navigation and branding links with sticky state and blurs.
+ *
+ * @component
+ * @param {Object} props - Component properties.
+ * @param {string} [props.className=""] - Additional class names for styling.
+ * @returns {import("react").JSX.Element}
+ */
 export default function Header({ className = "" }) {
+  // MARK: - State & Hooks
   const pathname = usePathname();
 
   return (
