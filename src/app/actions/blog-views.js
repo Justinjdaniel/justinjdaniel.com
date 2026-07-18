@@ -5,15 +5,35 @@ import {
   incrementAndGetBlogViewCount,
 } from "@/lib/db/queries/blog-post-views";
 
+// Bounded set to deduplicate rapid increments for the same visit
+const recentVisits = new Set();
+
 /**
  * Server Action to increment the view count of a blog post and return the updated count.
+ * Deduplicates rapid re-visits or StrictMode remounts based on a stable visitId.
  * @param {string} slug - The blog post slug.
+ * @param {string} [visitId] - A stable identifier for the user session/visit.
  * @returns {Promise<number|null>} The updated view count.
  */
-export async function incrementBlogView(slug) {
+export async function incrementBlogView(slug, visitId) {
   if (!slug) {
     throw new Error("Slug is required to increment blog views.");
   }
+
+  if (visitId) {
+    const visitKey = `${slug}:${visitId}`;
+    if (recentVisits.has(visitKey)) {
+      // If already visited, retrieve the existing count without incrementing
+      return await getBlogViewCount(slug);
+    }
+    recentVisits.add(visitKey);
+    // Boundary checks to prevent memory leaks over long processes
+    if (recentVisits.size > 10000) {
+      recentVisits.clear();
+      recentVisits.add(visitKey);
+    }
+  }
+
   return await incrementAndGetBlogViewCount(slug);
 }
 

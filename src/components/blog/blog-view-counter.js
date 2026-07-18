@@ -4,15 +4,29 @@ import { useEffect, useState } from "react";
 import { incrementBlogView } from "@/app/actions/blog-views";
 import BookDoodleIcon from "@/components/icons/doodle-library-hand-drawn-vectors/book";
 
+// Module-level cache to keep a stable visit identifier per slug across component re-renders/StrictMode mounts
+const clientVisitIds = new Map();
+
+function getOrCreateVisitId(slug) {
+  if (!clientVisitIds.has(slug)) {
+    clientVisitIds.set(slug, Math.random().toString(36).substring(2, 15));
+  }
+  return clientVisitIds.get(slug);
+}
+
 export default function BlogViewCounter({ slug }) {
   const [viewCount, setViewCount] = useState(null);
 
   useEffect(() => {
     let active = true;
+    // Clear the previous view count immediately on slug changes
+    setViewCount(null);
+
+    const visitId = getOrCreateVisitId(slug);
 
     async function incrementAndSetView() {
       try {
-        const updatedCount = await incrementBlogView(slug);
+        const updatedCount = await incrementBlogView(slug, visitId);
         if (active && typeof updatedCount === "number") {
           setViewCount(updatedCount);
         }
