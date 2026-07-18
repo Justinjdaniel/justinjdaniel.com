@@ -1,26 +1,17 @@
-// MARK: - Imports
 import Link from "next/link";
 import { Suspense } from "react";
 import BackButton from "@/components/buttons/back-button";
+import ScrollReveal from "@/components/effects/scroll-reveal";
 import BookDoodleIcon from "@/components/icons/doodle-library-hand-drawn-vectors/book";
 import { getBlogPosts } from "@/lib/db/blog";
 import { formatDate } from "@/lib/utils/format-date";
 import TimeToRead from "@/lib/utils/time-to-read";
 
-// MARK: - Config & Constants
 export const metadata = {
   title: "Blog",
   description: "Read my thoughts on software development, design, and more.",
 };
 
-// MARK: - Render
-
-/**
- * BlogPage Component - renders list of available blogs sorted by publishedAt dates.
- *
- * @component
- * @returns {import("react").JSX.Element}
- */
 export default function BlogPage() {
   const allBlogs = getBlogPosts();
 
@@ -36,7 +27,7 @@ export default function BlogPage() {
 
       {allBlogs.length === 0 && <p>No blogs yet.</p>}
 
-      <div className="grid gap-8 pb-8 mb-8">
+      <ScrollReveal className="grid gap-8 pb-8 mb-8" staggerDelay={100}>
         {allBlogs
           .sort((a, b) => {
             if (
@@ -85,7 +76,7 @@ export default function BlogPage() {
               </div>
             </Link>
           ))}
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -4,22 +4,46 @@ import { useEffect, useRef } from "react";
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
+  const animatedRef = useRef(false);
 
-  // Fade-in animation on mount
   useEffect(() => {
-    if (sectionRef.current) {
-      gsap.fromTo(
-        sectionRef.current.children,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.25,
-          duration: 1,
-          ease: "power2.out",
-        },
-      );
+    const element = sectionRef.current;
+    if (!element) return;
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) {
+      // Instant layout, no GSAP animation
+      gsap.set(element.children, { opacity: 1, y: 0 });
+      return;
     }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !animatedRef.current) {
+          animatedRef.current = true;
+          gsap.fromTo(
+            element.children,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              stagger: 0.25,
+              duration: 1,
+              ease: "power2.out",
+            },
+          );
+          observer.unobserve(element);
+        }
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
   }, []);
 
   return (
