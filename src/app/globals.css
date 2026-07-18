@@ -316,11 +316,20 @@ table {
   transform-origin: left;
 }
 
-@supports (animation-timeline: scroll()) {
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress-bar {
+      transform: scaleX(0);
+      animation: grow-progress auto linear;
+      animation-timeline: scroll();
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .scroll-progress-bar {
-    transform: scaleX(0);
-    animation: grow-progress auto linear;
-    animation-timeline: scroll();
+    transform: scaleX(1);
+    animation: none;
   }
 }
 
