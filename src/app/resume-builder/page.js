@@ -59,26 +59,18 @@ export default function ResumeBuilderPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    const saved = localStorage.getItem(STORAGE_KEY) || "";
-    if (saved) {
-      setPasscode(saved);
-      setIsKeySaved(true);
-    }
   }, []);
 
   const handleSavePasscode = (e) => {
     e.preventDefault();
     if (!passcode.trim()) {
-      localStorage.removeItem(STORAGE_KEY);
       setIsKeySaved(false);
       return;
     }
-    localStorage.setItem(STORAGE_KEY, passcode.trim());
     setIsKeySaved(true);
   };
 
   const handleClearPasscode = () => {
-    localStorage.removeItem(STORAGE_KEY);
     setPasscode("");
     setIsKeySaved(false);
   };
