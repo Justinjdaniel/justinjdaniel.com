@@ -1,11 +1,10 @@
-import { Pool } from "pg";
+import { Pool } from "@neondatabase/serverless";
 
 const isMock = process.env.DATABASE_URL === "mock" || !process.env.DATABASE_URL;
 
 export const pool = !isMock
   ? new Pool({
       connectionString: process.env.DATABASE_URL,
-      ssl: true,
     })
   : null;
 
