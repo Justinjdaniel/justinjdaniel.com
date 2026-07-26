@@ -2,13 +2,19 @@ import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 import { createResumeDocx } from "@/lib/docx-builder";
 
+export const maxDuration = 60;
+
 export async function POST(req) {
-  // 1. Passcode Check
-  const authHeader = req.headers.get("x-admin-secret");
-  if (!authHeader || authHeader !== process.env.MY_APP_SECRET) {
+  // 1. Extract the user-provided Gemini API key from request headers
+  const userApiKey = req.headers.get("x-gemini-api-key");
+
+  if (!userApiKey) {
     return NextResponse.json(
-      { error: "Unauthorized: Invalid access passcode." },
-      { status: 401 },
+      {
+        error:
+          "Gemini API Key is missing. Please enter your API key in the UI.",
+      },
+      { status: 400 },
     );
   }
 
@@ -25,20 +31,19 @@ export async function POST(req) {
 
     const systemPrompt = process.env.SYSTEM_PROMPT;
     const masterProfile = process.env.MASTER_PROFILE_JSON;
-    const apiKey = process.env.GEMINI_API_KEY;
 
-    if (!systemPrompt || !masterProfile || !apiKey) {
+    if (!systemPrompt || !masterProfile) {
       return NextResponse.json(
         {
           error:
-            "Server configuration error: missing env variables (SYSTEM_PROMPT, MASTER_PROFILE_JSON, or GEMINI_API_KEY).",
+            "Server configuration error: missing env variables (SYSTEM_PROMPT or MASTER_PROFILE_JSON).",
         },
         { status: 500 },
       );
     }
 
-    // Initialize GoogleGenAI with the live environment key
-    const ai = new GoogleGenAI({ apiKey });
+    // Initialize GoogleGenAI with the user-provided key
+    const ai = new GoogleGenAI({ apiKey: userApiKey });
 
     // Enhance system instruction to mandate:
     // 1. High-fidelity single-column resume details
@@ -139,6 +144,19 @@ ${masterProfile}
       throw new Error("Gemini response did not contain valid JSON.");
     }
 
+    // Payload Validation
+    if (
+      !tailoredData ||
+      typeof tailoredData !== "object" ||
+      !tailoredData.header ||
+      !tailoredData.summary
+    ) {
+      return NextResponse.json(
+        { error: "Invalid resume data structure returned from Gemini API." },
+        { status: 422 },
+      );
+    }
+
     // 3. Compile DOCX buffer
     const docxBuffer = await createResumeDocx(tailoredData, options);
 
@@ -156,7 +174,10 @@ ${masterProfile}
   } catch (error) {
     console.error("Resume Generation Error:", error);
     return NextResponse.json(
-      { error: "Failed to generate tailored resume." },
+      {
+        error:
+          "Failed to generate tailored resume. Please verify your API key and try again.",
+      },
       { status: 500 },
     );
   }

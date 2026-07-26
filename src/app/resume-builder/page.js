@@ -5,7 +5,7 @@ import BackButton from "@/components/buttons/back-button";
 import ScrollReveal from "@/components/effects/scroll-reveal";
 import MindBlownIcon from "@/components/icons/doodle-library-hand-drawn-vectors/mind-blown";
 
-const STORAGE_KEY = "resume_app_secret";
+const SESSION_KEY = "temp_gemini_api_key";
 
 const SAMPLE_JDS = [
   {
@@ -36,15 +36,15 @@ Requirements:
 ];
 
 export default function ResumeBuilderPage() {
-  const [passcode, setPasscode] = useState("");
-  const [isKeySaved, setIsKeySaved] = useState(false);
-  const [showPasscode, setShowPasscode] = useState(false);
+  const [apiKey, setApiKey] = useState("");
+  const [isKeySet, setIsKeySet] = useState(false);
+  const [showKey, setShowKey] = useState(false);
 
   const [jobDescription, setJobDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Configuration settings
+  // Layout configuration settings
   const [compact, setCompact] = useState(true);
   const [headingBorders, setHeadingBorders] = useState(true);
 
@@ -54,25 +54,48 @@ export default function ResumeBuilderPage() {
   const [keywords, setKeywords] = useState([]);
   const [docxBase64, setDocxBase64] = useState("");
 
+  // Notification / Alert Banner state
+  const [notification, setNotification] = useState(null);
+
   // UI state for tabs
   const [activeTab, setActiveTab] = useState("preview"); // 'preview', 'insights', 'keywords'
 
   useEffect(() => {
     setIsMounted(true);
+    // Load from sessionStorage (clears automatically when tab closes)
+    const savedKey = sessionStorage.getItem(SESSION_KEY) || "";
+    if (savedKey) {
+      setApiKey(savedKey);
+      setIsKeySet(true);
+    }
   }, []);
 
-  const handleSavePasscode = (e) => {
-    e.preventDefault();
-    if (!passcode.trim()) {
-      setIsKeySaved(false);
-      return;
-    }
-    setIsKeySaved(true);
+  const showBanner = (message, type = "info") => {
+    setNotification({ message, type });
+    // Auto-dismiss after 6 seconds
+    setTimeout(() => {
+      setNotification((prev) => (prev?.message === message ? null : prev));
+    }, 6000);
   };
 
-  const handleClearPasscode = () => {
-    setPasscode("");
-    setIsKeySaved(false);
+  const handleSaveKey = (e) => {
+    e.preventDefault();
+    if (!apiKey.trim()) {
+      sessionStorage.removeItem(SESSION_KEY);
+      setIsKeySet(false);
+      showBanner("API Key removed from session.", "info");
+      return;
+    }
+    sessionStorage.setItem(SESSION_KEY, apiKey.trim());
+    setIsKeySet(true);
+    showBanner("API Key active for this browser session.", "success");
+  };
+
+  const handleClearKey = () => {
+    sessionStorage.removeItem(SESSION_KEY);
+    setApiKey("");
+    setIsKeySet(false);
+    showBanner("API Key removed from session.", "info");
   };
 
   const loadSampleJD = (text) => {
@@ -80,23 +103,24 @@ export default function ResumeBuilderPage() {
   };
 
   const handleGenerate = async () => {
-    if (!passcode) {
-      alert("Please set and save your API passcode first.");
+    if (!apiKey.trim()) {
+      showBanner("Please paste your Gemini API Key first.", "error");
       return;
     }
     if (!jobDescription.trim()) {
-      alert("Please paste a target job description.");
+      showBanner("Please paste a target job description.", "error");
       return;
     }
 
     setLoading(true);
+    setNotification(null);
 
     try {
       const res = await fetch("/api/generate-resume", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-admin-secret": passcode,
+          "x-gemini-api-key": apiKey.trim(),
         },
         body: JSON.stringify({
           jobDescription,
@@ -108,14 +132,9 @@ export default function ResumeBuilderPage() {
         }),
       });
 
-      if (res.status === 401) {
-        alert("Unauthorized: Invalid passcode.");
-        return;
-      }
-
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || "Failed to generate document");
+        throw new Error(errData.error || "Failed to generate tailored resume.");
       }
 
       const result = await res.json();
@@ -125,10 +144,17 @@ export default function ResumeBuilderPage() {
         setKeywords(result.keywords);
         setDocxBase64(result.docxBase64);
         setActiveTab("preview");
+        showBanner(
+          "Resume tailored successfully! Live preview loaded below.",
+          "success",
+        );
       }
     } catch (err) {
       console.error(err);
-      alert(err?.message || "An error occurred during generation.");
+      showBanner(
+        err?.message || "Error generating document. Verify your API key.",
+        "error",
+      );
     } finally {
       setLoading(false);
     }
@@ -156,13 +182,12 @@ export default function ResumeBuilderPage() {
       a.click();
       a.remove();
       window.URL.revokeObjectURL(url);
+      showBanner("Tailored resume downloaded successfully!", "success");
     } catch (err) {
       console.error("Failed to download docx file", err);
-      alert("Error saving file locally.");
+      showBanner("Error saving file locally.", "error");
     }
   };
-
-  if (!isMounted) return null;
 
   return (
     <main className="min-h-screen pt-24 pb-20 px-4 md:px-8 max-w-[95ch] mx-auto w-full antialiased text-zinc-800 dark:text-zinc-200">
@@ -181,71 +206,95 @@ export default function ResumeBuilderPage() {
         </div>
       </div>
 
+      {/* Notification Banner */}
+      {notification && (
+        <div
+          className={`mb-6 p-4 rounded-xl border text-sm font-medium transition-all animate-in fade-in duration-300 flex items-center justify-between ${
+            notification.type === "success"
+              ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20"
+              : notification.type === "error"
+                ? "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20"
+                : "bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-500/20"
+          }`}
+        >
+          <span>{notification.message}</span>
+          <button
+            type="button"
+            onClick={() => setNotification(null)}
+            className="text-xs ml-4 opacity-60 hover:opacity-100 transition-opacity"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       <ScrollReveal className="space-y-6" staggerDelay={80}>
-        {/* Passcode Protection Card */}
+        {/* Session API Key Card (selective mount around content to allow server-side layout shells) */}
         <div className="bg-white dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800/80 rounded-xl p-5 shadow-sm backdrop-blur-md">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
             <div className="space-y-1">
               <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-                Security Access Passcode
+                GEMINI API KEY (SESSION ONLY)
               </span>
               <p className="text-xs text-zinc-400 dark:text-zinc-500">
-                Protects the Gemini API from unauthorized usage. Saved securely
-                in local storage.
+                Protects the Gemini API from unauthorized usage. Stored only in
+                browser sessionStorage.
               </p>
             </div>
-            <div className="flex items-center gap-2">
-              <span
-                className={`text-[10px] px-2.5 py-0.5 rounded-full font-medium ${
-                  isKeySaved
-                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
-                    : "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
-                }`}
-              >
-                {isKeySaved ? "Passcode Saved" : "Passcode Required"}
-              </span>
-              {isKeySaved && (
-                <button
-                  type="button"
-                  onClick={handleClearPasscode}
-                  className="text-xs text-red-500 hover:text-red-400 hover:underline transition-colors"
+            {isMounted && (
+              <div className="flex items-center gap-2">
+                <span
+                  className={`text-[10px] px-2.5 py-0.5 rounded-full font-medium ${
+                    isKeySet
+                      ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
+                      : "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"
+                  }`}
                 >
-                  Clear
-                </button>
-              )}
-            </div>
+                  {isKeySet ? "Key Active" : "Key Needed"}
+                </span>
+                {isKeySet && (
+                  <button
+                    type="button"
+                    onClick={handleClearKey}
+                    className="text-xs text-red-500 hover:text-red-400 hover:underline transition-colors"
+                  >
+                    Clear Key
+                  </button>
+                )}
+              </div>
+            )}
           </div>
 
-          <form onSubmit={handleSavePasscode} className="flex gap-2">
+          <form onSubmit={handleSaveKey} className="flex gap-2">
             <div className="relative flex-1">
               <input
-                id="passcode-input"
-                type={showPasscode ? "text" : "password"}
-                value={passcode}
+                id="api-key-input"
+                type={showKey ? "text" : "password"}
+                value={apiKey}
                 onChange={(e) => {
-                  setPasscode(e.target.value);
-                  setIsKeySaved(false);
+                  setApiKey(e.target.value);
+                  setIsKeySet(false);
                 }}
-                placeholder="Enter your MY_APP_SECRET..."
+                placeholder="AIzaSy..."
                 className="w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-sm text-zinc-900 dark:text-zinc-50 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 pr-12 transition-all"
               />
               <button
                 type="button"
-                onClick={() => setShowPasscode(!showPasscode)}
+                onClick={() => setShowKey(!showKey)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300"
               >
-                {showPasscode ? "Hide" : "Show"}
+                {showKey ? "Hide" : "Show"}
               </button>
             </div>
             <button
               type="submit"
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 shrink-0 ${
-                isKeySaved
+                isKeySet
                   ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-750"
                   : "bg-indigo-600 hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/15 text-white active:scale-95"
               }`}
             >
-              {isKeySaved ? "Saved" : "Save Passcode"}
+              {isKeySet ? "Saved" : "Save"}
             </button>
           </form>
         </div>
@@ -255,13 +304,13 @@ export default function ResumeBuilderPage() {
           {/* Inputs Section */}
           <div className="md:col-span-1 space-y-4">
             <div className="bg-white dark:bg-zinc-800/40 border border-zinc-200 dark:border-zinc-800/80 rounded-xl p-5 shadow-sm backdrop-blur-md">
-              <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+              <span className="block text-sm font-semibold text-zinc-950 dark:text-zinc-50 mb-2">
                 Sample JDs
               </span>
               <div className="flex flex-col gap-2 mb-4">
                 {SAMPLE_JDS.map((jd) => (
                   <button
-                    key={jd.title}
+                    key={`jd-btn-${jd.title}`}
                     type="button"
                     onClick={() => loadSampleJD(jd.text)}
                     className="text-left text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/40 hover:bg-zinc-50 dark:hover:bg-zinc-800/30 transition-all text-zinc-600 dark:text-zinc-400 line-clamp-1"
@@ -273,7 +322,7 @@ export default function ResumeBuilderPage() {
 
               <div className="border-t border-zinc-200 dark:border-zinc-800/80 my-4" />
 
-              <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+              <span className="block text-sm font-semibold text-zinc-950 dark:text-zinc-50 mb-2">
                 Layout Options
               </span>
               <div className="space-y-3 text-sm">
@@ -306,7 +355,7 @@ export default function ResumeBuilderPage() {
               <div className="flex-1 mb-4">
                 <label
                   htmlFor="jd-textarea"
-                  className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-2"
+                  className="block text-sm font-semibold text-zinc-950 dark:text-zinc-50 mb-2"
                 >
                   Target Job Description
                 </label>
@@ -323,7 +372,7 @@ export default function ResumeBuilderPage() {
               <button
                 type="button"
                 onClick={handleGenerate}
-                disabled={loading || !isKeySaved || !jobDescription.trim()}
+                disabled={loading || !isKeySet || !jobDescription.trim()}
                 className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 disabled:bg-zinc-100 dark:disabled:bg-zinc-850 disabled:text-zinc-400 dark:disabled:text-zinc-600 text-white rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 active:scale-98 shadow-md hover:shadow-indigo-500/20"
               >
                 {loading ? (
@@ -508,7 +557,7 @@ export default function ResumeBuilderPage() {
                             <div className="space-y-3.5">
                               {tailoredData.workExperience.map((item) => (
                                 <div
-                                  key={`${item.role}-${item.company}`}
+                                  key={`experience-${item.role}-${item.company}`}
                                   className="space-y-1"
                                 >
                                   <div className="flex justify-between text-zinc-950 dark:text-zinc-100 font-medium">
@@ -528,7 +577,9 @@ export default function ResumeBuilderPage() {
                                   {Array.isArray(item.bullets) && (
                                     <ul className="list-disc pl-4 space-y-1">
                                       {item.bullets.map((bullet) => (
-                                        <li key={bullet}>{bullet}</li>
+                                        <li key={`bullet-exp-${bullet}`}>
+                                          {bullet}
+                                        </li>
                                       ))}
                                     </ul>
                                   )}
@@ -549,7 +600,10 @@ export default function ResumeBuilderPage() {
                             </h4>
                             <div className="space-y-3.5">
                               {tailoredData.projects.map((proj) => (
-                                <div key={proj.name} className="space-y-1">
+                                <div
+                                  key={`project-${proj.name}`}
+                                  className="space-y-1"
+                                >
                                   <div className="flex justify-between text-zinc-950 dark:text-zinc-100 font-medium">
                                     <span>
                                       <strong className="font-sans font-bold">
@@ -566,7 +620,9 @@ export default function ResumeBuilderPage() {
                                   {Array.isArray(proj.bullets) && (
                                     <ul className="list-disc pl-4 space-y-1">
                                       {proj.bullets.map((bullet) => (
-                                        <li key={bullet}>{bullet}</li>
+                                        <li key={`bullet-proj-${bullet}`}>
+                                          {bullet}
+                                        </li>
                                       ))}
                                     </ul>
                                   )}
@@ -588,7 +644,7 @@ export default function ResumeBuilderPage() {
                             <div className="space-y-1.5">
                               {tailoredData.education.map((edu) => (
                                 <div
-                                  key={`${edu.degree}-${edu.institution}`}
+                                  key={`education-${edu.degree}-${edu.institution}`}
                                   className="flex justify-between"
                                 >
                                   <span>
@@ -620,14 +676,14 @@ export default function ResumeBuilderPage() {
                     alignment with the Target Job Description requirements.
                   </p>
                   <div className="grid gap-4">
-                    {insights.map((ins, idx) => (
+                    {insights.map((ins) => (
                       <div
-                        key={ins.change}
+                        key={`insight-${ins.change}`}
                         className="bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-100 dark:border-zinc-800/80 rounded-lg p-4 transition-all hover:border-indigo-500/30"
                       >
                         <h4 className="text-sm font-semibold text-zinc-950 dark:text-zinc-50 flex items-center gap-2">
                           <span className="w-5 h-5 rounded-full bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xs font-sans">
-                            {idx + 1}
+                            ✓
                           </span>
                           {ins.change}
                         </h4>
@@ -670,7 +726,7 @@ export default function ResumeBuilderPage() {
                   <div className="flex flex-wrap gap-2 bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-800/60 rounded-xl p-5">
                     {keywords.map((kw) => (
                       <span
-                        key={kw.word}
+                        key={`keyword-${kw.word}`}
                         className={`text-xs px-3 py-1.5 rounded-full font-semibold border transition-all hover:scale-105 flex items-center gap-1.5 ${
                           kw.matched
                             ? "bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 border-emerald-500/15"

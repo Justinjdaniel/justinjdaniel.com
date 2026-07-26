@@ -2,7 +2,6 @@ import {
   AlignmentType,
   BorderStyle,
   Document,
-  HeadingLevel,
   Packer,
   Paragraph,
   TextRun,
@@ -60,7 +59,7 @@ export async function createResumeDocx(data, options = {}) {
     children.push(
       new Paragraph({
         alignment: AlignmentType.CENTER,
-        space: { after: 200 },
+        spacing: { after: 200 },
         children: [
           new TextRun({
             text: data.header.contact,
@@ -75,8 +74,7 @@ export async function createResumeDocx(data, options = {}) {
   const addSectionHeading = (title) => {
     children.push(
       new Paragraph({
-        heading: HeadingLevel.HEADING_2,
-        space: { before: compact ? 180 : 240, after: compact ? 80 : 120 },
+        spacing: { before: compact ? 180 : 240, after: compact ? 80 : 120 },
         border:
           borderSize > 0
             ? {
@@ -104,7 +102,7 @@ export async function createResumeDocx(data, options = {}) {
     addSectionHeading("Professional Summary");
     children.push(
       new Paragraph({
-        space: { after: compact ? 120 : 160 },
+        spacing: { after: compact ? 120 : 160 },
         children: [new TextRun({ text: data.summary, size: 20 })],
       }),
     );
@@ -117,7 +115,7 @@ export async function createResumeDocx(data, options = {}) {
     if (skills.languagesAndFrameworks) {
       children.push(
         new Paragraph({
-          space: { after: 40 },
+          spacing: { after: 40 },
           children: [
             new TextRun({
               text: "Languages & Frameworks: ",
@@ -132,7 +130,7 @@ export async function createResumeDocx(data, options = {}) {
     if (skills.toolsAndPlatforms) {
       children.push(
         new Paragraph({
-          space: { after: 40 },
+          spacing: { after: 40 },
           children: [
             new TextRun({ text: "Tools & Platforms: ", bold: true, size: 20 }),
             new TextRun({ text: skills.toolsAndPlatforms, size: 20 }),
@@ -143,7 +141,7 @@ export async function createResumeDocx(data, options = {}) {
     if (skills.methodologiesAndPractices) {
       children.push(
         new Paragraph({
-          space: { after: 40 },
+          spacing: { after: 40 },
           children: [
             new TextRun({
               text: "Methodologies & Practices: ",
@@ -163,7 +161,7 @@ export async function createResumeDocx(data, options = {}) {
     for (const item of data.workExperience) {
       children.push(
         new Paragraph({
-          space: { before: compact ? 80 : 120, after: 40 },
+          spacing: { before: compact ? 80 : 120, after: 40 },
           children: [
             new TextRun({ text: item.role, bold: true, size: 20 }),
             new TextRun({
@@ -181,7 +179,7 @@ export async function createResumeDocx(data, options = {}) {
           children.push(
             new Paragraph({
               bullet: { level: 0 },
-              space: { after: 20 },
+              spacing: { after: 20 },
               children: [new TextRun({ text: bullet, size: 20 })],
             }),
           );
@@ -196,7 +194,7 @@ export async function createResumeDocx(data, options = {}) {
     for (const proj of data.projects) {
       children.push(
         new Paragraph({
-          space: { before: compact ? 80 : 120, after: 40 },
+          spacing: { before: compact ? 80 : 120, after: 40 },
           children: [
             new TextRun({ text: proj.name, bold: true, size: 20 }),
             new TextRun({
@@ -213,7 +211,7 @@ export async function createResumeDocx(data, options = {}) {
           children.push(
             new Paragraph({
               bullet: { level: 0 },
-              space: { after: 20 },
+              spacing: { after: 20 },
               children: [new TextRun({ text: bullet, size: 20 })],
             }),
           );
@@ -228,7 +226,7 @@ export async function createResumeDocx(data, options = {}) {
     for (const edu of data.education) {
       children.push(
         new Paragraph({
-          space: { before: compact ? 60 : 80, after: 40 },
+          spacing: { before: compact ? 60 : 80, after: 40 },
           children: [
             new TextRun({ text: edu.degree, bold: true, size: 20 }),
             new TextRun({ text: `, ${edu.institution}`, size: 20 }),
