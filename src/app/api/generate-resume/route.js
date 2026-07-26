@@ -156,7 +156,7 @@ ${masterProfile}
   } catch (error) {
     console.error("Resume Generation Error:", error);
     return NextResponse.json(
-      { error: error?.message || "Failed to generate tailored resume." },
+      { error: "Failed to generate tailored resume." },
       { status: 500 },
     );
   }
