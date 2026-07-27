@@ -10,6 +10,7 @@ import LinkedInIcon from "../icons/simple-icons/linked-in";
 const NAVIGATION_ITEMS = [
   { name: "Home", href: "/" },
   { name: "Blog", href: "/blog" },
+  { name: "Resume Builder", href: "/resume-builder" },
 ];
 
 const SOCIAL_LINKS = [
