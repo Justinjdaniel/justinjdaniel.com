@@ -34,9 +34,9 @@ This codebase is a modern personal portfolio built with:
 - Prefer small, targeted changes over broad rewrites.
 - Preserve the existing visual tone, accessibility, and content structure.
 - Keep edits localized to the relevant route, component, or data layer.
-- Follow the project’s quality standards: write tests when behavior changes, and verify with Biome and relevant test commands.
+- Follow the project’s quality standards: write tests before implementation code using the TDD / “Prove-It” pattern, and verify with Biome and relevant test commands.
 - Avoid mixing formatting-only changes with functional updates.
-- Before making any update or modification, first check the current branch state and compare it with main. If the working branch is behind or out of sync, sync or update it before proceeding.
+- Before making any update or modification, inspect the current branch state and compare it with main. If the branch is behind or out of sync, report that state and request explicit approval before syncing, rebasing, or merging.branch state and compare it with main. If the working branch is behind or out of sync, sync or update it before proceeding.
 
 ## Preferred Approach
 
