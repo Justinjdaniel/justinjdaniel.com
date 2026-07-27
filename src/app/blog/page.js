@@ -42,7 +42,7 @@ export default function BlogPage() {
             <Link
               key={post.slug}
               className="
-                group p-4 rounded-lg border border-transparent
+                group block p-4 rounded-lg border border-transparent
                 hover:bg-zinc-100 dark:hover:bg-zinc-800/50
                 hover:border-zinc-200 dark:hover:border-zinc-700/50
                 transition-all duration-200
