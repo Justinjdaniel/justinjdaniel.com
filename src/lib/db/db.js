@@ -1,11 +1,26 @@
-import { Pool } from "@neondatabase/serverless";
+import { neonConfig, Pool } from "@neondatabase/serverless";
+
+// Configure Neon WebSocket constructor using the native WebSocket implementation
+if (typeof globalThis.WebSocket !== "undefined") {
+  neonConfig.webSocketConstructor = globalThis.WebSocket;
+}
 
 const isMock = process.env.DATABASE_URL === "mock" || !process.env.DATABASE_URL;
 
 export const pool = !isMock
-  ? new Pool({
-      connectionString: process.env.DATABASE_URL,
-    })
+  ? (() => {
+      const p = new Pool({
+        connectionString: process.env.DATABASE_URL,
+      });
+      // Handle idle connection errors gracefully to prevent process crashes or unhandled rejections
+      p.on("error", (err) => {
+        console.error(
+          "[database pool error] Idle connection client error:",
+          err,
+        );
+      });
+      return p;
+    })()
   : null;
 
 // Generic table initializer for extensibility
