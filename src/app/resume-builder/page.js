@@ -6,6 +6,33 @@ import ScrollReveal from "@/components/effects/scroll-reveal";
 import MindBlownIcon from "@/components/icons/doodle-library-hand-drawn-vectors/mind-blown";
 
 const SESSION_KEY = "temp_gemini_api_key";
+const OBFUSCATION_KEY = "ats-generator-salt";
+
+function encryptKey(text) {
+  if (!text) return "";
+  const chars = Array.from(text).map((char, index) => {
+    const saltChar = OBFUSCATION_KEY.charCodeAt(index % OBFUSCATION_KEY.length);
+    return String.fromCharCode(char.charCodeAt(0) ^ saltChar);
+  });
+  return btoa(encodeURIComponent(chars.join("")));
+}
+
+function decryptKey(cipher) {
+  if (!cipher) return "";
+  try {
+    const text = decodeURIComponent(atob(cipher));
+    const chars = Array.from(text).map((char, index) => {
+      const saltChar = OBFUSCATION_KEY.charCodeAt(
+        index % OBFUSCATION_KEY.length,
+      );
+      return String.fromCharCode(char.charCodeAt(0) ^ saltChar);
+    });
+    return chars.join("");
+  } catch (e) {
+    console.error("Failed to decrypt API key", e);
+    return "";
+  }
+}
 
 const SAMPLE_JDS = [
   {
@@ -65,7 +92,7 @@ export default function ResumeBuilderPage() {
     // Load from sessionStorage (clears automatically when tab closes)
     const savedKey = sessionStorage.getItem(SESSION_KEY) || "";
     if (savedKey) {
-      setApiKey(savedKey);
+      setApiKey(decryptKey(savedKey));
       setIsKeySet(true);
     }
   }, []);
@@ -86,7 +113,7 @@ export default function ResumeBuilderPage() {
       showBanner("API Key removed from session.", "info");
       return;
     }
-    sessionStorage.setItem(SESSION_KEY, apiKey.trim());
+    sessionStorage.setItem(SESSION_KEY, encryptKey(apiKey.trim()));
     setIsKeySet(true);
     showBanner("API Key active for this browser session.", "success");
   };
@@ -269,6 +296,7 @@ export default function ResumeBuilderPage() {
             <div className="relative flex-1">
               <input
                 id="api-key-input"
+                aria-label="Gemini API Key"
                 type={showKey ? "text" : "password"}
                 value={apiKey}
                 onChange={(e) => {

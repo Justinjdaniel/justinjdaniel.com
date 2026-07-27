@@ -4,6 +4,86 @@ import { createResumeDocx } from "@/lib/docx-builder";
 
 export const maxDuration = 60;
 
+function validateResumeData(data) {
+  if (!data || typeof data !== "object") return false;
+
+  // Header validation
+  if (!data.header || typeof data.header !== "object") return false;
+  if (typeof data.header.fullName !== "string") return false;
+  if (data.header.title && typeof data.header.title !== "string") return false;
+  if (data.header.contact && typeof data.header.contact !== "string")
+    return false;
+
+  // Summary validation
+  if (typeof data.summary !== "string") return false;
+
+  // Technical Skills validation
+  if (data.technicalSkills) {
+    if (typeof data.technicalSkills !== "object") return false;
+    if (
+      data.technicalSkills.languagesAndFrameworks &&
+      typeof data.technicalSkills.languagesAndFrameworks !== "string"
+    )
+      return false;
+    if (
+      data.technicalSkills.toolsAndPlatforms &&
+      typeof data.technicalSkills.toolsAndPlatforms !== "string"
+    )
+      return false;
+    if (
+      data.technicalSkills.methodologiesAndPractices &&
+      typeof data.technicalSkills.methodologiesAndPractices !== "string"
+    )
+      return false;
+  }
+
+  // Work Experience validation
+  if (data.workExperience) {
+    if (!Array.isArray(data.workExperience)) return false;
+    for (const exp of data.workExperience) {
+      if (!exp || typeof exp !== "object") return false;
+      if (typeof exp.role !== "string") return false;
+      if (typeof exp.company !== "string") return false;
+      if (typeof exp.period !== "string") return false;
+      if (
+        exp.bullets &&
+        (!Array.isArray(exp.bullets) ||
+          !exp.bullets.every((b) => typeof b === "string"))
+      )
+        return false;
+    }
+  }
+
+  // Projects validation
+  if (data.projects) {
+    if (!Array.isArray(data.projects)) return false;
+    for (const proj of data.projects) {
+      if (!proj || typeof proj !== "object") return false;
+      if (typeof proj.name !== "string") return false;
+      if (proj.techStack && typeof proj.techStack !== "string") return false;
+      if (
+        proj.bullets &&
+        (!Array.isArray(proj.bullets) ||
+          !proj.bullets.every((b) => typeof b === "string"))
+      )
+        return false;
+    }
+  }
+
+  // Education validation
+  if (data.education) {
+    if (!Array.isArray(data.education)) return false;
+    for (const edu of data.education) {
+      if (!edu || typeof edu !== "object") return false;
+      if (typeof edu.degree !== "string") return false;
+      if (typeof edu.institution !== "string") return false;
+      if (typeof edu.year !== "string") return false;
+    }
+  }
+
+  return true;
+}
+
 export async function POST(req) {
   // 1. Extract the user-provided Gemini API key from request headers
   const userApiKey = req.headers.get("x-gemini-api-key");
@@ -145,12 +225,7 @@ ${masterProfile}
     }
 
     // Payload Validation
-    if (
-      !tailoredData ||
-      typeof tailoredData !== "object" ||
-      !tailoredData.header ||
-      !tailoredData.summary
-    ) {
+    if (!validateResumeData(tailoredData)) {
       return NextResponse.json(
         { error: "Invalid resume data structure returned from Gemini API." },
         { status: 422 },

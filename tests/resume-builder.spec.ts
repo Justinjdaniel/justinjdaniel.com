@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { POST } from "../src/app/api/generate-resume/route";
 import { createResumeDocx } from "../src/lib/docx-builder";
 
 test.describe("Resume Builder Page E2E Tests", () => {
@@ -121,22 +122,33 @@ test.describe("generate-resume API Unit Tests", () => {
     expect(body.error).toContain("Job description is required");
   });
 
-  test("POST /api/generate-resume should return 500 when SYSTEM_PROMPT or MASTER_PROFILE_JSON env variable is missing", async ({
-    request,
-  }) => {
-    // Note: Since this executes in the Next.js process where SYSTEM_PROMPT might be set or not,
-    // if we mock the request and system prompt isn't set, it returns 500.
-    // We can check if it returns either 500 (due to missing profile/prompt configs) or succeeds if mock variables exist.
-    const response = await request.post("/api/generate-resume", {
-      headers: {
-        "x-gemini-api-key": "test-key",
-      },
-      data: {
-        jobDescription: "React developer.",
-      },
-    });
+  test("POST /api/generate-resume should return 500 when SYSTEM_PROMPT or MASTER_PROFILE_JSON env variable is missing", async () => {
+    const originalPrompt = process.env.SYSTEM_PROMPT;
+    const originalProfile = process.env.MASTER_PROFILE_JSON;
 
-    const status = response.status();
-    expect([500, 422, 200]).toContain(status);
+    process.env.SYSTEM_PROMPT = "";
+    process.env.MASTER_PROFILE_JSON = "";
+
+    try {
+      const req = new Request("http://localhost/api/generate-resume", {
+        method: "POST",
+        headers: {
+          "x-gemini-api-key": "test-key",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          jobDescription: "React developer.",
+        }),
+      });
+
+      const res = await POST(req);
+      expect(res.status).toBe(500);
+
+      const body = await res.json();
+      expect(body.error).toContain("Server configuration error");
+    } finally {
+      process.env.SYSTEM_PROMPT = originalPrompt;
+      process.env.MASTER_PROFILE_JSON = originalProfile;
+    }
   });
 });
