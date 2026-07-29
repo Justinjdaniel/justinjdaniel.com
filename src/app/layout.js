@@ -44,7 +44,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${inter.className} ${jetbrainsMono.className} scroll-smooth`}
     >
-      <body className="font-sans bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased tracking-tight">
+      <body
+        // suppressHydrationWarning
+        className="font-sans bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 antialiased tracking-tight"
+      >
         <NextTopLoader height={4} color="#818cf8" showSpinner={false} />
         <div className="min-h-screen grid relative dark:bg-zinc-900/95 bg-zinc-50/95 text-zinc-800 dark:text-zinc-200">
           {/* Particles as background */}
