@@ -79,11 +79,11 @@ export default function HeroSection() {
           ref={headingRef}
           className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-500"
         >
-          Fullstack Developer & Data Analytics Enthusiast
+          Fullstack Developer & Responsible AI Advocate
         </h1>
         <TypingText
           as="p"
-          text="Building the future of Web3 with innovative, user-centric, data-driven solutions."
+          text="Building responsible AI systems and intelligent agents focused on user-centric, ethical, and data-driven solutions."
           className="font-mono text-xl md:text-2xl dark:text-zinc-400 text-zinc-600 mb-8"
           speed={2.5}
           start={typingStart}

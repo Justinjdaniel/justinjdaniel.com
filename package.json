@@ -59,7 +59,7 @@
     "lint-staged": "^17.2.0",
     "tailwindcss": "^4.3.3"
   },
-  "packageManager": "pnpm@10.0.0",
+  "packageManager": "pnpm@11.18.0",
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
       "biome check --files-ignore-unknown=true",
