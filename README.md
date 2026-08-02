@@ -5,7 +5,7 @@
 <h1 align="center">Justin J Daniel</h1>
 
 <p align="center">
-  <b>Fullstack Developer & Data Analytics Enthusiast</b><br/>
+  <b>Fullstack Developer & Responsible AI Advocate</b><br/>
   <a href="https://justinjdaniel.com">Website</a> •
   <a href="https://github.com/justinjdaniel">GitHub</a> •
   <a href="https://www.linkedin.com/in/justin-j-daniel">LinkedIn</a>
@@ -36,11 +36,13 @@
 
 ## 👋 About Me
 
-I'm a full stack developer specializing in blockchain technology, passionate about transforming complex challenges into innovative, forward-thinking solutions. My expertise spans smart contract development, decentralized applications, and robust web platforms, all built with a relentless focus on user experience and real-world impact.
+I am a **Software Engineer and Full-Stack Developer** specializing in building high-performance web applications, integrating modern **Generative AI workflows**, and architecting scalable digital platforms.
 
-I leverage design thinking, personas, journey mapping, and usability testing to drive data-driven product decisions. From rapid prototyping to high-fidelity wireframing and validation, I ensure every solution is intuitive and effective.
+With a strong foundation in **distributed systems, Next.js, React, and Web3 architectures**, I bridge the gap between complex backend infrastructure and intuitive, user-centric interfaces. My recent work focuses on leveraging modern AI frameworks—such as Google Cloud Vertex AI and Azure AI—to build smart, data-driven applications that solve real-world problems.
 
-With an agile mindset and startup spirit, I collaborate with teams to deliver products that drive growth and push the limits of web3 and software innovation.
+I combine engineering rigor with design thinking, rapid prototyping, and product analytics to deliver software that scales effortlessly and drives measurable user engagement. Always eager to explore emergent AI technologies, collaborate on innovative systems, and push the boundaries of full-stack engineering.
+
+Always building, learning, and open to collaboration on high-impact software projects!
 
 ---
 
