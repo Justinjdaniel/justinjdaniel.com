@@ -53,25 +53,26 @@ export default function AboutSection() {
           About Me
         </h2>
         <p className="text-pretty mb-6 text-base md:text-lg text-zinc-700 dark:text-zinc-300">
-          I'm a full stack developer specializing in blockchain technology,
-          passionate about transforming complex challenges into innovative,
-          forward-thinking solutions. My expertise spans smart contract
-          development, decentralized applications, and robust web platforms, all
-          built with a relentless focus on user experience and real-world
-          impact.
+          I am a Software Engineer and Full-Stack Developer specializing in
+          building high-performance web applications, integrating modern
+          Generative AI workflows, architecting scalable digital platforms,
+          decentralized applications, and robust web platforms, all built with a
+          relentless focus on user experience and real-world impact.
         </p>
         <p className="text-pretty mb-6 text-base md:text-lg text-zinc-700 dark:text-zinc-300">
-          Drawing on a strong foundation in design thinking, I leverage detailed
-          personas, journey mapping, and rigorous usability testing to guide
-          data-driven decisions throughout the product lifecycle. From rapid
-          prototyping and high-fidelity wireframing to evidence-based
-          validation, I ensure that every solution is both intuitive and
-          effective.
+          With a strong foundation in distributed systems, React, and Web3
+          architectures, I bridge the gap between complex backend infrastructure
+          and intuitive, user-centric interfaces. My recent work focuses on
+          leveraging modern AI frameworks—such as Google Cloud Vertex AI and
+          Azure AI—to build smart, data-driven applications that solve
+          real-world problems.
         </p>
         <p className="text-pretty text-base md:text-lg text-zinc-700 dark:text-zinc-300">
-          With an agile mindset and startup spirit, I collaborate with teams to
-          deliver products that drive growth and push the limits of web3 and
-          software innovation.
+          I combine engineering rigor with design thinking, rapid prototyping,
+          and product analytics to deliver software that scales effortlessly and
+          drives measurable user engagement. Always eager to explore emergent AI
+          technologies, collaborate on innovative systems, and push the
+          boundaries of full-stack engineering.
         </p>
       </div>
     </section>
