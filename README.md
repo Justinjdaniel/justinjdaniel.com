@@ -99,9 +99,9 @@ Follow these steps to get your local development environment up and running.
    ```
 
 3. **Database Configuration**
-   > [!TIP]
-   > You can completely bypass Neon/PostgreSQL database requirements for local builds and development!
-   > Simply set the environment variable `DATABASE_URL=mock` in your local environment.
+> [!TIP]
+> You can completely bypass Neon/PostgreSQL database requirements for local builds and development!
+> Simply set the environment variable `DATABASE_URL=mock` in your local environment.
 
    Create a `.env` file in the root directory:
    ```bash
