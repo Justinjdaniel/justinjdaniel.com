@@ -80,7 +80,7 @@ Follow these steps to get your local development environment up and running.
 > [!IMPORTANT]
 > Ensure you have the following installed on your machine:
 > - **Git**: Version control to clone the repository.
-> - **Node.js**: Version `20.x` or higher (Node.js `22` is recommended).
+> - **Node.js**: Version `22` or newer.
 > - **pnpm**: Version `10.x` or higher for package management.
 
 ### 🚀 Setup & Run
